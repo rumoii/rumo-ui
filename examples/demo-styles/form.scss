@@ -1,0 +1,73 @@
+.demo-form {
+  .rumo-select .rumo-input {
+    width: 380px;
+  }
+  .rumo-form {
+    width: 460px;
+  }
+
+  .line {
+    text-align: center;
+  }
+
+  .rumo-checkbox-group {
+    width: 320px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &:after,
+    &:before {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+      visibility: hidden;
+      font-size: 0;
+      height: 0;
+    }
+
+    .rumo-checkbox {
+      float: left;
+      width: 160px;
+      padding-right: 20px;
+      margin: 0;
+      padding: 0;
+
+      + .rumo-checkbox {
+        margin-left: 0;
+      }
+    }
+  }
+  .demo-form-normal {
+    width: 460px;
+  }
+  .demo-form-inline {
+    width: auto;
+
+    .rumo-input {
+      width: 150px;
+    }
+    > * {
+      margin-right: 10px;
+    }
+  }
+  .demo-ruleForm {
+    width: 460px;
+
+    .rumo-select .rumo-input {
+      width: 360px;
+    }
+  }
+  .demo-dynamic {
+    .rumo-input {
+      margin-right: 10px;
+      width: 270px;
+      vertical-align: top;
+    }
+  }
+  .fr {
+    float: right;
+  }
+}

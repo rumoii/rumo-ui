@@ -1,0 +1,189 @@
+@import "../mixins/mixins";
+@import "../common/var";
+@import "../common/transition";
+
+@include b(date-editor) {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+
+  &.rumo-input,
+  &.rumo-input__inner {
+    width: 160px;
+  }
+
+  &:hover .rumo-input__icon:not(.rumo-range__close-icon, .icon-close-fill) {
+    color: $--color-primary;
+  }
+
+  @include m((daterange, timerange, monthrange)) {
+    &.rumo-input,
+    &.rumo-input__inner {
+      width: 220px;
+    }
+  }
+
+  @include m((datetimerange)) {
+    &.rumo-input,
+    &.rumo-input__inner {
+      width: 312px;
+    }
+  }
+
+  .icon-close-fill {
+    cursor: pointer;
+  }
+
+  .rumo-range-separator i {
+    color: $--color-text-placeholder;
+  }
+  .rumo-input__icon {
+    font-size: 14px;
+  }
+  .rumo-range__icon,
+  .rumo-range__close-icon {
+    color: $--color-text-placeholder;
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .rumo-range-input {
+    appearance: none;
+    border: none;
+    outline: none;
+    outline: unset;
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 35%;
+    text-align: center;
+    font-size: $--font-size-base;
+    color: $--color-text-regular;
+
+    &::placeholder {
+      color: $--color-text-placeholder;
+    }
+  }
+
+  &.rumo-date-editor--datetimerange .rumo-range-input {
+    width: 38%;
+  }
+
+  .rumo-range-separator {
+    display: inline-block;
+    height: 100%;
+    padding: 0 5px;
+    margin: 0;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    width: 7%;
+    color: $--color-text-primary;
+  }
+}
+
+@include b(range-editor) {
+  &.rumo-input__inner {
+    padding: 3px 5px;
+  }
+
+  @include when(active) {
+    border-color: $--color-primary;
+
+    &:hover {
+      border-color: $--color-primary;
+    }
+  }
+
+  @include m(medium) {
+    &.rumo-input__inner {
+      height: $--input-medium-height;
+    }
+
+    .rumo-range-separator {
+      line-height: 28px;
+      font-size: $--input-medium-font-size;
+    }
+
+    .rumo-range-input {
+      font-size: $--input-medium-font-size;
+    }
+
+    .rumo-range__icon,
+    .rumo-range__close-icon {
+      line-height: 28px;
+    }
+  }
+
+  @include m(small) {
+    &.rumo-input__inner {
+      height: $--input-small-height;
+    }
+
+    .rumo-range-separator {
+      line-height: 20px;
+      font-size: $--input-small-font-size;
+    }
+
+    .rumo-range-input {
+      font-size: $--input-small-font-size;
+    }
+
+    .rumo-range-input,
+    .rumo-range-separator {
+      vertical-align: top;
+    }
+
+    .rumo-range__icon,
+    .rumo-range__close-icon {
+      line-height: 20px;
+    }
+  }
+
+  @include m(mini) {
+    &.rumo-input__inner {
+      height: $--input-mini-height;
+    }
+
+    .rumo-range-separator {
+      line-height: 20px;
+      font-size: $--input-mini-font-size;
+    }
+
+    .rumo-range-input {
+      font-size: $--input-mini-font-size;
+    }
+
+    .rumo-range__icon,
+    .rumo-range__close-icon {
+      line-height: 20px;
+    }
+  }
+
+  @include when(disabled) {
+    background-color: $--input-disabled-fill;
+    border-color: $--input-disabled-border;
+    color: $--input-disabled-color;
+    cursor: not-allowed;
+
+    &:hover, &:focus {
+      border-color: $--input-disabled-border;
+    }
+
+    input {
+      background-color: $--input-disabled-fill;
+      color: $--input-disabled-color;
+      cursor: not-allowed;
+      &::placeholder {
+        color: $--input-disabled-placeholder-color;
+      }
+    }
+
+    .rumo-range-separator {
+      color: $--input-disabled-color;
+    }
+  }
+}

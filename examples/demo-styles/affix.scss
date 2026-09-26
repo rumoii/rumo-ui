@@ -1,0 +1,16 @@
+.demo-affix__box {
+    width: auto;
+    /* height: 40px; */
+    display: inline-block;
+    color: #fff;
+    padding: 10px 30px;
+    margin: 5px 0;
+    text-align: center;
+    background: rgba(0,153,229,.9);
+
+    .demo-affix__dom{
+        position: fixed;
+        top:0;
+        right:0;
+    }
+}

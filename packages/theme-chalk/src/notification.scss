@@ -1,0 +1,141 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(notification) {
+  display: flex;
+  width: $--notification-width;
+  padding: $--notification-padding;
+  border-radius: $--notification-raduis;
+  box-sizing: border-box;
+  border: 1px solid $--notification-border-color;
+  position: fixed;
+  background-color: $--color-white;
+  box-shadow: $--notification-shadow;
+  transition: opacity .3s, transform .3s, left .3s, right .3s, top 0.4s, bottom .3s;
+  overflow: hidden;
+
+  &.right {
+    right: 16px;
+  }
+
+  &.left {
+    left: 16px;
+  }
+
+  @include e(group) {
+    margin-left: $--notification-group-margin;
+  }
+
+  @include e(title) {
+    font-weight: bold;
+    font-size: $--notification-title-font-size;
+    color: $--notification-title-color;
+    margin: 0;
+  }
+
+  @include e(content) {
+    font-size: $--notification-font-size;
+    line-height: 21px;
+    margin: 6px 0 0 0;
+    color: $--notification-color;
+    text-align: justify;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include e(icon) {
+    height: $--notification-icon-size;
+    width: $--notification-icon-size;
+    font-size: $--notification-icon-size;
+    transform: translateY(-1px);
+  }
+
+  @include e(closeBtn) {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    color: $--notification-close-color;
+    font-size: $--notification-close-font-size;
+
+    &:hover {
+      color: $--notification-close-hover-color;
+    }
+  }
+
+  .icon-check-fill {
+    color: $--notification-success-color;
+  }
+
+  .icon-info-fill {
+    color: $--notification-info-color;
+  }
+
+  .icon-warning-fill {
+    color: $--notification-warning-color;
+  }
+
+  .icon-close-fill {
+    color: $--notification-danger-color;
+  }
+}
+
+// .rumo-notification-fade-enter {
+//   &.right {
+//     right: 0;
+//     transform: translateX(100%);
+//   }
+
+//   &.left {
+//     left: 0;
+//     transform: translateX(-100%);
+//   }
+// }
+
+// .rumo-notification-fade-leave-active {
+//   opacity: 0;
+// }
+
+.rumo-notification-fade-enter-active {
+  animation-fill-mode: both;
+  animation-play-state: running;
+  
+  &.right {
+    animation: rumoNotificationFadeInRight .24s cubic-bezier(.645,.045,.355,1);
+  }
+  &.left {
+    animation: rumoNotificationFadeInLeft .24s cubic-bezier(.645,.045,.355,1);
+  }
+}
+
+.rumo-notification-fade-leave-active {
+  // todo 优化
+  opacity: 0;
+  transition: opacity .24s cubic-bezier(.645,.045,.355,1);
+}
+
+@keyframes rumoNotificationFadeInLeft {
+  0% {
+    opacity: 0;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rumoNotificationFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+    right: 0;
+  }
+
+  100% {
+    opacity: 1; 
+  }
+}

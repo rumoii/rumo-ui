@@ -1,0 +1,6 @@
+@import "mixins/mixins";
+
+@include b(affix) {
+  position: fixed;
+  z-index: 10;
+}

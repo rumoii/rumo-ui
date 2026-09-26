@@ -1,0 +1,422 @@
+@charset "UTF-8";
+@import "common/var";
+@import "mixins/mixins";
+
+@include b(input) {
+  position: relative;
+  font-size: $--font-size-base;
+  display: inline-block;
+  width: 100%;
+  @include scroll-bar;
+
+  & .rumo-input__clear {
+    color: $--input-icon-color;
+    // font-size: $--input-font-size;
+    line-height: 16px;
+    cursor: pointer;
+    transition: $--color-transition-base;
+
+    &:hover {
+      color: $--input-clear-hover-color;
+    }
+  }
+
+  & .rumo-input__visible {
+    font-size: $--input-font-size;
+    cursor: pointer;
+    transition: $--color-transition-base;
+
+    &:hover {
+      color: $--input-clear-hover-color;
+    }
+  }
+
+  & .rumo-input__count {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    color: $--input-placeholder-color;
+    font-size: 12px;
+
+    .rumo-input__count-inner {
+      background: $--color-white;
+      line-height: initial;
+      display: inline-block;
+      padding: 0 5px;
+    }
+  }
+
+  @include e(inner) {
+    -webkit-appearance: none;
+    background-color: $--input-fill;
+    background-image: none;
+    border-radius: $--input-border-radius;
+    border: $--input-border;
+    box-sizing: border-box;
+    color: $--input-color;
+    display: inline-block;
+    font-size: inherit;
+    height: $--input-height;
+    line-height: 1.5;
+    outline: none;
+    outline: unset;
+    padding: 0 $--input-padding-horizontal;
+    transition: $--border-transition-base;
+    width: 100%;
+
+    &::placeholder {
+      color: $--input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: $--input-hover-border;
+    }
+
+    &:focus {
+      outline: none;
+      outline: unset;
+      border-color: $--input-focus-border;
+      box-shadow: $--input-base-focus-box-shadow;
+    }
+  }
+
+  @include e(suffix) {
+    position: absolute;
+    height: 100%;
+    right: 5px;
+    top: 0;
+    text-align: center;
+    color: $--input-icon-color;
+    transition: all .3s;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  @include e(suffix-inner) {
+    pointer-events: all;
+  }
+
+  @include e(prefix) {
+    position: absolute;
+    height: 100%;
+    left: 5px;
+    top: 0;
+    text-align: center;
+    color: $--input-icon-color;
+    transition: all .3s;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  @include e(icon) {
+    text-align: center;
+    transition: all .3s;
+    // height: 100%;
+    width: 24px;
+    // line-height: $--input-height;
+
+    &:after {
+      content: '';
+      height: 100%;
+      width: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  @include e(validateIcon) {
+    pointer-events: none;
+  }
+
+  @include when(active) {
+    .rumo-input__inner {
+      outline: none;
+      outline: unset;
+      border-color: $--input-focus-border;
+    }
+  }
+
+  @include when(disabled) {
+    .rumo-input__inner {
+      background-color: $--input-disabled-fill;
+      border-color: $--input-disabled-border;
+      color: $--input-disabled-color;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $--input-disabled-placeholder-color;
+      }
+    }
+
+    .rumo-input__icon {
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(suffix) {
+    .rumo-input__inner {
+      padding-right: $--input-padding-horizontal * 3;
+    }
+  }
+
+  @include m(prefix) {
+    .rumo-input__inner {
+      padding-left: $--input-padding-horizontal * 3;
+    }
+  }
+
+  @include m(large) {
+    font-size: $--input-large-font-size;
+
+    @include e(inner) {
+      height: $--input-large-height;
+      padding: $--input-large-padding-vertical $--input-large-padding-horizontal;
+    }
+
+    // .rumo-input__icon {
+    //   line-height: $--input-large-height;
+    //   width: $--input-large-padding-horizontal * 2;
+    // }
+    
+    &.rumo-input--suffix{
+      .rumo-input__inner {
+        padding-right: $--input-large-padding-horizontal * 2.5;
+      }
+    }
+    
+    &.rumo-input--prefix{
+      .rumo-input__inner {
+        padding-left: $--input-large-padding-horizontal * 2.5;
+      }
+    }
+  }
+
+  @include m(medium) {
+    font-size: $--input-medium-font-size;
+
+    @include e(inner) {
+      height: $--input-medium-height;
+      padding: $--input-medium-padding-vertical $--input-medium-padding-horizontal;
+    }
+
+    // .rumo-input__icon {
+    //   line-height: $--input-medium-height;
+    //   width: $--input-medium-padding-horizontal * 2;
+    // }
+    
+    &.rumo-input--suffix{
+      .rumo-input__inner {
+        padding-right: $--input-medium-padding-horizontal * 2.5;
+      }
+    }
+    
+    &.rumo-input--prefix{
+      .rumo-input__inner {
+        padding-left: $--input-medium-padding-horizontal * 2.5;
+      }
+    }
+  }
+  @include m(small) {
+    font-size: $--input-small-font-size;
+
+    @include e(inner) {
+      height: $--input-small-height;
+      padding: $--input-small-padding-vertical $--input-small-padding-horizontal;
+    }
+
+    // .rumo-input__icon {
+    //   line-height: $--input-small-height;
+    //   width: $--input-small-padding-horizontal * 2.5;
+    // }
+    
+    &.rumo-input--suffix{
+      .rumo-input__inner {
+        padding-right: $--input-small-padding-horizontal * 3;
+      }
+    }
+    
+    &.rumo-input--prefix{
+      .rumo-input__inner {
+        padding-left: $--input-small-padding-horizontal * 3;
+      }
+    }
+  }
+
+  @include m(mini) {
+    font-size: $--input-mini-font-size;
+
+    @include e(inner) {
+      height: $--input-mini-height;
+      border-radius: $--border-radius-base;
+      padding: $--input-mini-padding-vertical $--input-mini-padding-horizontal;
+    }
+
+    // .rumo-input__icon {
+    //   line-height: $--input-mini-height;
+    //   width: $--input-mini-padding-horizontal * 2.5;
+    // }
+    
+    &.rumo-input--suffix{
+      .rumo-input__inner {
+        padding-right: $--input-mini-padding-horizontal * 3;
+      }
+    }
+    
+    &.rumo-input--prefix{
+      .rumo-input__inner {
+        padding-left: $--input-mini-padding-horizontal * 3;
+      }
+    }
+  }
+}
+
+@include b(input-group) {
+  line-height: normal;
+  display: inline-table;
+  width: 100%;
+  border-collapse: separate;
+
+  > .rumo-input__inner {
+    vertical-align: middle;
+    display: table-cell;
+  }
+
+  @include e((append, prepend)) {
+    background-color: $--background-color-base;
+    color: $--color-default;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    border: $--border-base;
+    border-radius: $--input-border-radius;
+    padding: 0 $--input-padding-horizontal;
+    width: 1px;
+    white-space: nowrap;
+
+    &:focus {
+      outline: none;
+      outline: unset;
+    }
+
+    .rumo-select,
+    .rumo-button {
+      display: inline-block;
+      margin: -$--input-padding-horizontal;
+    }
+
+    button.rumo-button,
+    div.rumo-select .rumo-input__inner,
+    div.rumo-select:hover .rumo-input__inner {
+      border-color: transparent;
+      background-color: transparent;
+      color: inherit;
+      border-top: 0;
+      border-bottom: 0;
+    }
+
+    .rumo-button,
+    .rumo-input {
+      font-size: inherit;
+    }
+  }
+
+  @include e(prepend) {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  @include e(append) {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  @include m(prepend) {
+    .rumo-input__inner {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  @include m(append) {
+    .rumo-input__inner {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+@include b(textarea) {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: $--font-size-base;
+
+  @include e(inner) {
+    display: block;
+    resize: vertical;
+    padding: $--input-padding-vertical $--input-padding-horizontal;
+    line-height: 1.5;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: inherit;
+    color: $--input-color;
+    background-color: $--input-fill;
+    background-image: none;
+    border: $--input-border;
+    border-radius: $--input-border-radius;
+    transition: $--border-transition-base;
+
+    &::placeholder {
+      color: $--input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: $--input-hover-border;
+    }
+
+    &:focus {
+      outline: none;
+      outline: unset;
+      border-color: $--input-focus-border;
+      box-shadow: $--input-base-focus-box-shadow;
+    }
+  }
+
+  & .rumo-input__count {
+    color: $--input-placeholder-color;
+    background: $--color-white;
+    position: absolute;
+    font-size: 12px;
+    bottom: 5px;
+    right: 10px;
+  }
+
+  @include when(disabled) {
+    .rumo-textarea__inner {
+      background-color: $--input-disabled-fill;
+      border-color: $--input-disabled-border;
+      color: $--input-disabled-color;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $--input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  @include when(exceed) {
+    .rumo-textarea__inner {
+      border-color: $--color-danger;
+    }
+
+    .rumo-input__count {
+      color: $--color-danger;
+    }
+  }
+}

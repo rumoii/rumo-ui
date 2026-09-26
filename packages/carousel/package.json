@@ -1,0 +1,16 @@
+{
+  "name": "rumo-carousel",
+  "version": "2.0.0",
+  "description": "A carousel component for Vue.js.",
+  "main": "lib/index.js",
+  "keywords": [
+    "ued",
+    "vue",
+    "component"
+  ],
+  "author": "ued",
+  "license": "MIT",
+  "dependencies": {
+    "throttle-debounce": "^1.0.1"
+  }
+}

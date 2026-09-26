@@ -1,0 +1,322 @@
+[
+    {
+        "name": "回到顶部",
+        "class": "return-top"
+    },
+    {
+        "name": "上",
+        "class": "up-solid"
+    },
+    {
+        "name": "左",
+        "class": "left-solid"
+    },
+    {
+        "name": "增加2",
+        "class": "add-circle"
+    },
+    {
+        "name": "移除2",
+        "class": "delete-circle"
+    },
+    {
+        "name": "关闭",
+        "class": "close"
+    },
+    {
+        "name": "完成",
+        "class": "check"
+    },
+    {
+        "name": "缩小",
+        "class": "delete"
+    },
+    {
+        "name": "放大",
+        "class": "add"
+    },
+    {
+        "name": "启用",
+        "class": "check-circle"
+    },
+    {
+        "name": "警用",
+        "class": "close-circle"
+    },
+    {
+        "name": "警示提示",
+        "class": "warning-circle"
+    },
+    {
+        "name": "提示",
+        "class": "question-circle"
+    },
+    {
+        "name": "一般提示",
+        "class": "info-circle"
+    },
+    {
+        "name": "列表",
+        "class": "list"
+    },
+    {
+        "name": "收起列表",
+        "class": "collapse-list"
+    },
+    {
+        "name": "展开列表",
+        "class": "expand-list"
+    },
+    {
+        "name": "列表类",
+        "class": "search-list"
+    },
+    {
+        "name": "适应屏幕",
+        "class": "adapt"
+    },
+    {
+        "name": "取消全屏",
+        "class": "narrow-line"
+    },
+    {
+        "name": "全屏预览",
+        "class": "enlarge-line"
+    },
+    {
+        "name": "用户",
+        "class": "user"
+    },
+    {
+        "name": "文件",
+        "class": "report"
+    },
+    {
+        "name": "文件夹",
+        "class": "folder"
+    },
+    {
+        "name": "前进",
+        "class": "forward"
+    },
+    {
+        "name": "后退",
+        "class": "back"
+    },
+    {
+        "name": "更多-横向",
+        "class": "more-transverse"
+    },
+    {
+        "name": "更多-竖向",
+        "class": "more-vertical"
+    },
+    {
+        "name": "显示",
+        "class": "visible"
+    },
+    {
+        "name": "隐藏",
+        "class": "invisible"
+    },
+    {
+        "name": "转发",
+        "class": "share"
+    },
+    {
+        "name": "垃圾桶-满",
+        "class": "trash-full"
+    },
+    {
+        "name": "删除",
+        "class": "trash-empty"
+    },
+    {
+        "name": "菜单",
+        "class": "menu"
+    },
+    {
+        "name": "分类",
+        "class": "bullet"
+    },
+    {
+        "name": "导航",
+        "class": "classification"
+    },
+    {
+        "name": "首页",
+        "class": "homepage"
+    },
+    {
+        "name": "筛选",
+        "class": "funnel"
+    },
+    {
+        "name": "设置",
+        "class": "cog"
+    },
+    {
+        "name": "搜索",
+        "class": "search"
+    },
+    {
+        "name": "编辑",
+        "class": "editing"
+    },
+    {
+        "name": "加载-圆形",
+        "class": "load-circle"
+    },
+    {
+        "name": "加载-线性",
+        "class": "load-linear"
+    },
+    {
+        "name": "等待",
+        "class": "hourglass"
+    },
+    {
+        "name": "记录",
+        "class": "clock"
+    },
+    {
+        "name": "收藏",
+        "class": "star"
+    },
+    {
+        "name": "常用",
+        "class": "like"
+    },
+    {
+        "name": "邮件",
+        "class": "mail"
+    },
+    {
+        "name": "消息",
+        "class": "chatbox"
+    },
+    {
+        "name": "关联",
+        "class": "link-tilt"
+    },
+    {
+        "name": "复制",
+        "class": "copy"
+    },
+    {
+        "name": "粘贴",
+        "class": "paste"
+    },
+    {
+        "name": "日期和时间",
+        "class": "calendar"
+    },
+    {
+        "name": "时间进度",
+        "class": "range-separate"
+    },
+    {
+        "name": "上传",
+        "class": "upload"
+    },
+    {
+        "name": "下载",
+        "class": "download"
+    },
+    {
+        "name": "日期左翻",
+        "class": "left-doubleline"
+    },
+    {
+        "name": "日期右翻",
+        "class": "right-doubleline"
+    },
+    {
+        "name": "问号",
+        "class": "question"
+    },
+    {
+        "name": "回到底部",
+        "class": "return-bottom"
+    },
+    {
+        "name": "刷新",
+        "class": "refresh"
+    },
+    {
+        "name": "警用-面",
+        "class": "close-fill"
+    },
+    {
+        "name": "启用-面",
+        "class": "check-fill"
+    },
+    {
+        "name": "收藏-面",
+        "class": "star-fill"
+    },
+    {
+        "name": "添加-面",
+        "class": "add-circle-fill"
+    },
+    {
+        "name": "删除-面",
+        "class": "delete-circle-fill"
+    },
+    {
+        "name": "警示提示-面",
+        "class": "warning-fill"
+    },
+    {
+        "name": "一般提示-面",
+        "class": "info-fill"
+    },
+    {
+        "name": "提示-面",
+        "class": "question-fill"
+    },
+    {
+        "name": "常用--面",
+        "class": "like-fill"
+    },
+    {
+        "name": "树收起",
+        "class": "right-solid"
+    },
+    {
+        "name": "树展开",
+        "class": "down-solid"
+    },
+    {
+        "name": "向下-线",
+        "class": "down-line"
+    },
+    {
+        "name": "向左-线",
+        "class": "left-line"
+    },
+    {
+        "name": "向上-线",
+        "class": "up-line"
+    },
+    {
+        "name": "向右-线",
+        "class": "right-line"
+    },
+    {
+        "name": "全屏",
+        "class": "full-screen"
+    },
+    {
+        "name": "缩小",
+        "class": "zoom-out"
+    },
+    {
+        "name": "放大",
+        "class": "zoom-in"
+    },
+    {
+        "name": "还原",
+        "class": "c-scale-to-original"
+    }
+]

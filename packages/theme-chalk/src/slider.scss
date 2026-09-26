@@ -1,0 +1,262 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "input-number";
+@import "tooltip";
+@import "common/var";
+
+@include b(slider) {
+  @include utils-clearfix;
+
+  @include e(runway) {
+    width: 100%;
+    height: $--slider-line-height;
+    margin: $--slider-margin;
+    background-color: #eeeeee;
+    border-radius: $--slider-border-radius;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    &.stop {
+      background-color: #eaf2ff;
+      .rumo-slider__button {
+        height: 14px;
+        background-color: $--slider-main-background-color;
+      }
+    }
+    &.show-input {
+      margin-right: 160px;
+      width: auto;
+    }
+
+    &.disabled {
+      cursor: default;
+
+      .rumo-slider__bar {
+        background-color: $--slider-disable-color;
+      }
+
+      .rumo-slider__button {
+        border-color: $--slider-disable-color;
+      }
+
+      .rumo-slider__button-wrapper {
+        &:hover,
+        &.hover {
+          cursor: not-allowed;
+        }
+
+        &.dragging {
+          cursor: not-allowed;
+        }
+      }
+
+      .rumo-slider__button {
+        &:hover,
+        &.hover,
+        &.dragging {
+          transform: scale(1);
+        }
+
+        &:hover,
+        &.hover {
+          cursor: not-allowed;
+        }
+
+        &.dragging {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  @include e(input) {
+    float: right;
+    margin-top: 3px;
+    width: 130px;
+    
+    &.rumo-input-number--mini {
+      margin-top: 5px;
+    }
+
+    &.rumo-input-number--medium {
+      margin-top: 0;
+    }
+
+    &.rumo-input-number--large {
+      margin-top: -2px;
+    }
+  }
+
+  @include e(bar) {
+    height: 3px;
+    background-color: $--slider-main-background-color;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    position: absolute;
+  }
+
+  @include e(button-wrapper) {
+    height: $--slider-button-wrapper-size;
+    width: $--slider-button-wrapper-size;
+    position: absolute;
+    z-index: 1001;
+    top: $--slider-button-wrapper-offset;
+    transform: translateX(-50%);
+    background-color: transparent;
+    text-align: center;
+    user-select: none;
+    line-height: normal;
+    @include utils-vertical-center;
+
+    .rumo-tooltip {
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &:hover,
+    &.hover {
+      cursor: grab;
+    }
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+
+  @include e(button) {
+    width: $--slider-button-width;
+    height: 14px;
+    background:#ffffff;
+    box-shadow:0px 1px 4px rgba(0, 0, 0, 0.16);
+    // border: solid 2px $--slider-main-background-color;
+    // background-color: $--slider-main-background-color;
+    border-radius: 2px;
+    transition: .2s;
+    user-select: none;
+
+    &:hover,
+    &.hover,
+    &.dragging {
+      transform: scale(1.1);
+    }
+
+    &:hover,
+    &.hover {
+      cursor: grab;
+    }
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+
+  @include e(stop) {
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    top: -2.5px;
+    border-radius: $--border-radius-circle;
+    background-color: $--slider-stop-background-color;
+    border: 1px solid #accbfd;
+    transform: translateX(-50%);
+  }
+
+  @include e(marks) {
+    top: 0;
+    left: 12px;
+    width: 18px;
+    height: 100%;
+
+    @include e(marks-text) {
+      position: absolute;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: $--color-text-secondary;
+      margin-top: 15px;
+      &.active {
+        color: $--color-text-primary;
+      }
+    }
+  }
+
+
+  @include when(vertical) {
+    position: relative;
+    .rumo-slider__runway {
+      width: 3px;
+      height: 100%;
+      margin: 0 16px;
+    }
+    .rumo-slider__bar {
+      width: 3px;
+      height: auto;
+      border-radius: 0 0 2px 2px;
+    }
+    .rumo-slider__button-wrapper {
+      top: auto;
+      left: -16px;
+      transform: translateY(50%);
+    }
+    .rumo-slider__stop {
+      top: unset;
+      transform: translateY(50%);
+      -webkit-transform: translateY(50%);
+      -moz-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+      -o-transform: translateY(50%);
+}
+    &.rumo-slider--with-input {
+      padding-bottom: #{$--input-medium-height + 22px};
+      .rumo-slider__input {
+        overflow: visible;
+        float: none;
+        position: absolute;
+        bottom: 22px;
+        width: 36px;
+        margin-top: 15px;
+        .rumo-input__inner {
+          text-align: center;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        .rumo-input-number__decrease,
+        .rumo-input-number__increase
+        {
+          top: $--input-small-height;
+          margin-top: -1px;
+          border: $--input-border;
+          line-height: 20px;
+          box-sizing: border-box;
+          transition: $--border-transition-base;
+        }
+        .rumo-input-number__decrease {
+          width: 18px;
+          right: 18px;
+          border-bottom-left-radius: $--input-border-radius;
+        }
+        .rumo-input-number__increase {
+          width: 19px;
+          border-bottom-right-radius: $--input-border-radius;
+          & ~ .rumo-input .rumo-input__inner {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+        &:hover {
+          .rumo-input-number__decrease,
+          .rumo-input-number__increase
+          {
+            border-color: $--input-hover-border;
+          }
+        }
+        &:active {
+          .rumo-input-number__decrease,
+          .rumo-input-number__increase
+          {
+            border-color: $--input-focus-border;
+          }
+        }
+      }
+    }
+  }
+}

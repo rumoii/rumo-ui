@@ -1,0 +1,420 @@
+@import "common/var";
+
+@font-face {
+  font-family: "rumo-icons";
+  src: url('#{$--font-path}/rumo-icons.ttf?t=1596616333743') format('truetype'), url('#{$--font-path}/rumo-icons.woff?t=1596616333743') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.rumo-icons {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "rumo-icons" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.rumo-icon--right {
+    margin-left: 5px;
+  }
+
+  &.rumo-icons-14 {
+    font-size: 14px;
+  }
+
+  &.rumo-icons-18 {
+    font-size: 18px;
+  }
+
+  &.rumo-icons-24 {
+    font-size: 24px;
+  }
+
+  &.rumo-icons-36 {
+    font-size: 36px;
+  }
+
+  &.rumo-icons-48 {
+    font-size: 48px;
+  }
+
+  &.icon-refresh-left:before {
+    content: "\e627";
+  }
+
+  &.icon-zoom-out:before {
+    content: "\e626";
+  }
+
+  &.icon-c-scale-to-original:before {
+    content: "\e619";
+  }
+
+  &.icon-zoom-in:before {
+    content: "\e621";
+  }
+
+  &.icon-full-screen:before {
+    content: "\e622";
+  }
+
+  &.rumo-icons-spin {
+    animation: rumo-icons-spin 2s infinite linear;
+  }
+
+  &.rumo-icons-rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  &.rumo-icons-rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  &.rumo-icons-rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  &.rumo-icons-flip-horizontal {
+    transform: scale(-1, 1);
+  }
+
+  &.rumo-icons-flip-vertical {
+    transform: scale(1, -1);
+  }
+    
+  &.icon-caret-up:before {
+    content: "\e616";
+  }
+
+  &.icon-caret-down:before {
+    content: "\e617";
+  }
+
+  &.icon-editing:before {
+    content: "\e652";
+  }
+
+  &.icon-return-top:before {
+    content: "\e6f9";
+  }
+
+  &.icon-up-solid:before {
+    content: "\e6f7";
+  }
+
+  &.icon-left-solid:before {
+    content: "\e6f8";
+  }
+
+  &.icon-add-circle:before {
+    content: "\e6f3";
+  }
+
+  &.icon-delete-circle:before {
+    content: "\e6f4";
+  }
+
+  &.icon-close:before {
+    content: "\e609";
+  }
+
+  &.icon-check:before {
+    content: "\e60a";
+  }
+
+  &.icon-delete:before {
+    content: "\e60b";
+  }
+
+  &.icon-add:before {
+    content: "\e60c";
+  }
+
+  &.icon-check-circle:before {
+    content: "\e614";
+  }
+
+  &.icon-close-circle:before {
+    content: "\e615";
+  }
+
+  &.icon-warning-circle:before {
+    content: "\e61a";
+  }
+
+  &.icon-question-circle:before {
+    content: "\e61b";
+  }
+
+  &.icon-info-circle:before {
+    content: "\e61c";
+  }
+
+  &.icon-list:before {
+    content: "\e61d";
+  }
+
+  &.icon-collapse-list:before {
+    content: "\e61e";
+  }
+
+  &.icon-expand-list:before {
+    content: "\e61f";
+  }
+
+  &.icon-search-list:before {
+    content: "\e620";
+  }
+
+  &.icon-adapt:before {
+    content: "\e623";
+  }
+
+  &.icon-narrow-line:before {
+    content: "\e624";
+  }
+
+  &.icon-enlarge-line:before {
+    content: "\e625";
+  }
+
+  &.icon-user:before {
+    content: "\e62d";
+  }
+
+  &.icon-report:before {
+    content: "\e633";
+  }
+
+  &.icon-folder:before {
+    content: "\e636";
+  }
+
+  &.icon-forward:before {
+    content: "\e637";
+  }
+
+  &.icon-back:before {
+    content: "\e638";
+  }
+
+  &.icon-more-transverse:before {
+    content: "\e639";
+  }
+
+  &.icon-more-vertical:before {
+    content: "\e63a";
+  }
+
+  &.icon-visible:before {
+    content: "\e63b";
+  }
+
+  &.icon-invisible:before {
+    content: "\e63c";
+  }
+
+  &.icon-share:before {
+    content: "\e63f";
+  }
+
+  &.icon-trash-full:before {
+    content: "\e642";
+  }
+
+  &.icon-trash-empty:before {
+    content: "\e643";
+  }
+
+  &.icon-menu:before {
+    content: "\e645";
+  }
+
+  &.icon-bullet:before {
+    content: "\e646";
+  }
+
+  &.icon-classification:before {
+    content: "\e64d";
+  }
+
+  &.icon-homepage:before {
+    content: "\e64e";
+  }
+
+  &.icon-funnel:before {
+    content: "\e64f";
+  }
+
+  &.icon-cog:before {
+    content: "\e650";
+  }
+
+  &.icon-search:before {
+    content: "\e651";
+  }
+
+  &.icon-editing:before {
+    content: "\e652";
+  }
+
+  &.icon-load-circle:before {
+    content: "\e655";
+  }
+
+  &.icon-load-linear:before {
+    content: "\e656";
+  }
+
+  &.icon-hourglass:before {
+    content: "\e657";
+  }
+
+  &.icon-clock:before {
+    content: "\e658";
+  }
+
+  &.icon-star:before {
+    content: "\e659";
+  }
+
+  &.icon-like:before {
+    content: "\e65a";
+  }
+
+  &.icon-mail:before {
+    content: "\e65b";
+  }
+
+  &.icon-chatbox:before {
+    content: "\e65c";
+  }
+
+  &.icon-link-tilt:before {
+    content: "\e668";
+  }
+
+  &.icon-copy:before {
+    content: "\e66b";
+  }
+
+  &.icon-paste:before {
+    content: "\e66c";
+  }
+
+  &.icon-calendar:before {
+    content: "\e677";
+  }
+
+  &.icon-range-separate:before {
+    content: "\e6e8";
+  }
+
+  &.icon-upload:before {
+    content: "\e6e7";
+  }
+
+  &.icon-download:before {
+    content: "\e6e9";
+  }
+
+  &.icon-left-doubleline:before {
+    content: "\e6eb";
+  }
+
+  &.icon-right-doubleline:before {
+    content: "\e6ec";
+  }
+
+  &.icon-question:before {
+    content: "\e6ed";
+  }
+
+  &.icon-return-bottom:before {
+    content: "\e6ee";
+  }
+
+  &.icon-refresh:before {
+    content: "\e6f0";
+  }
+
+  &.icon-close-fill:before {
+    content: "\e65e";
+  }
+
+  &.icon-check-fill:before {
+    content: "\e65f";
+  }
+
+  &.icon-star-fill:before {
+    content: "\e667";
+  }
+
+  &.icon-add-circle-fill:before {
+    content: "\e670";
+  }
+
+  &.icon-delete-circle-fill:before {
+    content: "\e672";
+  }
+
+  &.icon-warning-fill:before {
+    content: "\e673";
+  }
+
+  &.icon-info-fill:before {
+    content: "\e674";
+  }
+
+  &.icon-question-fill:before {
+    content: "\e675";
+  }
+
+  &.icon-like-fill:before {
+    content: "\e676";
+  }
+
+  &.icon-right-solid:before {
+    content: "\e6ea";
+  }
+
+  &.icon-down-solid:before {
+    content: "\e6f2";
+  }
+
+  &.icon-down-line:before {
+    content: "\e605";
+  }
+
+  &.icon-left-line:before {
+    content: "\e606";
+  }
+
+  &.icon-up-line:before {
+    content: "\e607";
+  }
+
+  &.icon-right-line:before {
+    content: "\e608";
+  }
+}
+
+@keyframes rumo-icons-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}

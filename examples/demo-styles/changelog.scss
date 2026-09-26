@@ -1,0 +1,21 @@
+.changelog .timeline-item .item-head {
+    margin-top: -6px !important;
+    margin-left: 10px;
+  }
+  .changelog .timeline-item .item-title {
+    font-size: 18px;
+    width: auto !important;
+    padding-right: 10px;
+  }
+  .changelog .timeline-item .timeline-circle{
+      border: 2px solid #1890ff !important;
+  }
+  .changelog .timeline-item .item-body {
+    margin-left: 30px !important;
+    padding-bottom: 10px;
+  }
+  .changelog .timeline-item .item-content li{
+    list-style-type: circle;
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.65);
+  }

@@ -1,0 +1,272 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+@import "input";
+@import "button";
+@import "checkbox";
+@import "checkbox-group";
+
+@include b(transfer) {
+  font-size: $--font-size-base;
+
+  @include e(buttons) {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 24px;
+  }
+
+  @include e(button) {
+    display: block;
+    margin: 0 auto;
+    padding: 0 10px;
+    // border-radius: 50%;
+    color: $--color-white;
+    background-color: $--color-primary;
+    font-size: 0;
+
+    @include when(with-texts) {
+      border-radius: $--border-radius-base;
+    }
+
+    @include when(disabled) {
+      border: $--border-base;
+      background-color: $--background-color-base;
+      color: $--color-text-placeholder;
+
+      &:hover {
+        border: $--border-base;
+        background-color: $--background-color-base;
+        color: $--color-text-placeholder;
+      }
+    }
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
+
+    &:nth-child(2) {
+      margin: 0;
+    }
+
+    i, span {
+      font-size: 14px;
+    }
+
+    & [class*="rumo-icon-"] + span {
+      margin-left: 0;
+    }
+  }
+}
+
+@include b(transfer-panel) {
+  border: 1px solid $--transfer-border-color;
+  border-radius: $--transfer-border-radius;
+  overflow: hidden;
+  background: $--color-white;
+  display: inline-block;
+  vertical-align: middle;
+  width: $--transfer-panel-width;
+  box-sizing: border-box;
+  position: relative;
+
+  @include e(body) {
+    height: $--transfer-panel-body-height;
+
+    @include when(with-footer) {
+      padding-bottom: $--transfer-panel-footer-height;
+    }
+  }
+
+  @include e(list) {
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    height: $--transfer-panel-body-height;
+    overflow: auto;
+    box-sizing: border-box;
+
+    @include when(filterable) {
+      height: #{$--transfer-panel-body-height - $--transfer-filter-height - 20px};
+      padding-top: 0;
+    }
+  }
+
+  @include e(item) {
+    height: $--transfer-item-height;
+    line-height: $--transfer-item-height;
+    padding-left: 15px;
+    display: block;
+    width: calc(100% - 15px);
+
+    & + .rumo-transfer-panel__item {
+      margin-left: 0;
+    }
+
+    &.rumo-checkbox {
+      color: $--color-text-regular;
+      margin-right: 0px!important;
+    }
+
+    &:hover {
+      color: $--color-text-regular;
+      background-color: $--background-color-base;
+    }
+
+    @include when(checked) {
+      color: $--color-primary;
+      background-color: $--background-color-light;
+    }
+
+    &.rumo-checkbox .rumo-checkbox__label {
+      width: 100%;
+      @include utils-ellipsis;
+      display: block;
+      box-sizing: border-box;
+      padding-left: 24px;
+      line-height: $--transfer-item-height;
+    }
+
+    .rumo-checkbox__input {
+      position: absolute;
+      top: 8px;
+    }
+  }
+
+  @include e(filter) {
+    text-align: center;
+    margin: 10px;
+    box-sizing: border-box;
+    display: block;
+    width: auto;
+
+    .rumo-input__inner {
+      height: $--transfer-filter-height;
+      width: 100%;
+      font-size: 12px;
+      display: inline-block;
+      box-sizing: border-box;
+      // border-radius: #{$--transfer-filter-height / 2};
+      padding-right: 10px;
+      padding-left: 30px;
+    }
+
+    .rumo-input__icon {
+      margin-left: 5px;
+    }
+
+    .icon-close-fill {
+      cursor: pointer;
+    }
+  }
+
+  .rumo-transfer-panel__header {
+    height: $--transfer-panel-header-height;
+    line-height: $--transfer-panel-header-height;
+    background: $--transfer-panel-header-background;
+    margin: 0;
+    padding-left: 15px;
+    border-bottom: 1px solid $--transfer-border-color;
+    box-sizing: border-box;
+    color: $--color-black;
+
+    .rumo-transfer-header{
+      font-size:16px;
+      color:#303133;
+      font-weight:normal;
+      span {
+        position: absolute;
+        right: 15px;
+        color: $--color-text-secondary;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+    .rumo-checkbox {
+      display: block;
+      line-height: 40px;
+
+      .rumo-checkbox__label {
+        font-size: 16px;
+        color: $--color-text-primary;
+        font-weight: normal;
+
+        span {
+          position: absolute;
+          right: 15px;
+          color: $--color-text-secondary;
+          font-size: 12px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .rumo-transfer-panel__body{
+    &.is-with-area-select{
+      height: 300px;
+      &.is-with-input{
+        height: 310px;
+      }
+    }
+    .rumo-table th.is-leaf, .rumo-table td{
+      border-bottom: 0;
+    }
+    .rumo-table--group::after, .rumo-table--border::after, .rumo-table::before{
+      background-color: rgba(0,0,0,0)
+    }
+    .rumo-transfer-panel__areafilter{
+      margin: 10px;
+      span{
+        color: rgba(8,30,48,0.7)
+      }
+      .rumo-cascader{
+        width: 100%;
+      }
+    }
+    thead th{
+      padding: 5px 0;
+    }
+  }
+
+  .rumo-transfer-panel__footer {
+    height: $--transfer-panel-footer-height;
+    background: $--color-white;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid $--transfer-border-color;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: $--index-normal;
+    @include utils-vertical-center;
+
+    .rumo-checkbox {
+      padding-left: 20px;
+      color: $--color-text-regular;
+    }
+  }
+
+  .rumo-transfer-panel__empty {
+    margin: 0;
+    height: $--transfer-item-height;
+    line-height: $--transfer-item-height;
+    padding: 6px 15px 0;
+    color: $--color-text-secondary;
+    text-align: center;
+  }
+
+  .rumo-checkbox__label {
+    padding-left: 8px;
+  }
+
+  .rumo-checkbox__inner {
+    height: 14px;
+    width: 14px;
+    border-radius: 3px;
+    &::after {
+      height: 6px;
+      width: 3px;
+      left: 4px;
+    }
+  }
+}

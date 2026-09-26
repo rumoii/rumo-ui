@@ -1,0 +1,16 @@
+{
+  "name": "rumo-table",
+  "version": "2.0.0",
+  "description": "A table component for Vue.",
+  "keywords": [
+    "rumo-ui",
+    "vue",
+    "component"
+  ],
+  "main": "./lib/index.js",
+  "author": "ued",
+  "license": "MIT",
+  "dependencies": {
+    "throttle-debounce": "^1.0.1"
+  }
+}

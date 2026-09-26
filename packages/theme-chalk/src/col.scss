@@ -1,0 +1,158 @@
+@use 'sass:math';
+
+@import "./common/var.scss";
+@import "./mixins/mixins.scss";
+
+[class*="rumo-col-"] {
+  float: left;
+  box-sizing: border-box;
+}
+
+.rumo-col-0 {
+  display: none;
+}
+
+@for $i from 0 through 24 {
+  .rumo-col-#{$i} {
+    width: (math.div(1, 24) * $i * 100) * 1%;
+  }
+
+  .rumo-col-offset-#{$i} {
+    margin-left: (math.div(1, 24) * $i * 100) * 1%;
+  }
+
+  .rumo-col-pull-#{$i} {
+    position: relative;
+    right: (math.div(1, 24) * $i * 100) * 1%;
+  }
+
+  .rumo-col-push-#{$i} {
+    position: relative;
+    left: (math.div(1, 24) * $i * 100) * 1%;
+  }
+}
+
+@include res(xs) {
+  .rumo-col-xs-0 {
+    display: none;
+  }
+  @for $i from 0 through 24 {
+    .rumo-col-xs-#{$i} {
+      width: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-xs-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-xs-pull-#{$i} {
+      position: relative;
+      right: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-xs-push-#{$i} {
+      position: relative;
+      left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(sm) {
+  .rumo-col-sm-0 {
+    display: none;
+  }
+  @for $i from 0 through 24 {
+    .rumo-col-sm-#{$i} {
+      width: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-sm-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-sm-pull-#{$i} {
+      position: relative;
+      right: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-sm-push-#{$i} {
+      position: relative;
+      left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(md) {
+  .rumo-col-md-0 {
+    display: none;
+  }
+  @for $i from 0 through 24 {
+    .rumo-col-md-#{$i} {
+      width: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-md-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-md-pull-#{$i} {
+      position: relative;
+      right: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-md-push-#{$i} {
+      position: relative;
+      left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(lg) {
+  .rumo-col-lg-0 {
+    display: none;
+  }
+  @for $i from 0 through 24 {
+    .rumo-col-lg-#{$i} {
+      width: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-lg-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-lg-pull-#{$i} {
+      position: relative;
+      right: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-lg-push-#{$i} {
+      position: relative;
+      left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}
+
+@include res(xl) {
+  .rumo-col-xl-0 {
+    display: none;
+  }
+  @for $i from 0 through 24 {
+    .rumo-col-xl-#{$i} {
+      width: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-xl-offset-#{$i} {
+      margin-left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-xl-pull-#{$i} {
+      position: relative;
+      right: (math.div(1, 24) * $i * 100) * 1%;
+    }
+
+    .rumo-col-xl-push-#{$i} {
+      position: relative;
+      left: (math.div(1, 24) * $i * 100) * 1%;
+    }
+  }
+}

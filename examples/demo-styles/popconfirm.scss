@@ -1,0 +1,43 @@
+.demo-popconfirm {
+    .box {
+      width: 450px;
+
+      .rumo-popconfirm + .rumo-popconfirm {
+        margin-left: 15px;
+      }
+
+      .top {
+        text-align: center;
+      }
+      .left {
+        float: left;
+        width: 80px;
+      }
+      .right {
+        float: right;
+        width: 80px;
+      }
+      .bottom {
+        clear: both;
+        text-align: center;
+      }
+      .item {
+        margin: 4px;
+      }
+      .left .rumo-popconfirm,
+      .right .rumo-popconfirm {
+        margin-left: 0;
+      }
+      .rumo-popconfirm {
+        margin-left: 0;
+      }
+    }
+  }
+  .demo-popconfirm-ol{
+    padding: 0 20px;
+    padding-left: 20px;
+
+    li {
+      margin-top:10px;
+    }
+  }

@@ -1,0 +1,14 @@
+{
+  "name": "rumo-pagination",
+  "version": "2.0.0",
+  "description": "A pagination component for Vue.js.",
+  "keywords": [
+    "rumo",
+    "vue",
+    "component"
+  ],
+  "main": "./lib/index.js",
+  "author": "rumo",
+  "license": "MIT",
+  "dependencies": {}
+}

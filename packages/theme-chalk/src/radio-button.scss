@@ -1,0 +1,139 @@
+@import "mixins/mixins";
+@import "mixins/_button";
+@import "common/var";
+
+@include b(radio-button) {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  outline: unset;
+
+  @include e(inner) {
+    display: inline-block;
+    // line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: $--button-default-background-color;
+    border: $--border-base;
+    font-weight: $--button-font-weight;
+    border-left: 0;
+    color: $--button-default-font-color;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    outline: unset;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    transition: $--all-transition;
+    line-height: $--button-height;
+
+    @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, 0, $--button-min-width, $--button-height);
+
+    &:hover {
+      color: $--color-primary;
+    }
+
+    & [class*="rumo-icon-"] {
+      line-height: 0.9;
+
+      & + span {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &:first-child {
+    .rumo-radio-button__inner {
+      border-left: $--border-base;
+      border-radius: $--border-radius-base 0 0 $--border-radius-base;
+      box-shadow: none !important;
+    }
+  }
+
+  @include e(orig-radio) {
+    opacity: 0;
+    outline: none;
+    outline: unset;
+    position: absolute;
+    z-index: -1;
+
+    &:checked {
+      & + .rumo-radio-button__inner {
+        color: $--radio-button-checked-color;
+        background-color: $--radio-button-checked-fill;
+        border-color: $--radio-button-checked-border-color;
+        box-shadow: -1px 0 0 0 $--radio-button-checked-border-color;
+      }
+    }
+
+    &:disabled {
+      & + .rumo-radio-button__inner {
+        color: $--button-disabled-font-color;
+        cursor: not-allowed;
+        background-image: none;
+        background-color: $--button-disabled-background-color;
+        border-color: $--button-disabled-border-color;
+        box-shadow: none;
+      }
+      &:checked + .rumo-radio-button__inner {
+        background-color: $--radio-button-disabled-checked-fill;
+      }
+    }
+  }
+
+  &:first-child {
+    @include e(orig-radio) {
+      &:checked {
+        & + .rumo-radio-button__inner {
+          border-color: $--radio-button-checked-border-color;
+        }
+      }
+      &:disabled {
+        & + .rumo-radio-button__inner {
+          border-color: $--button-disabled-border-color;
+        }
+      }
+    }
+  }
+  &:last-child {
+    .rumo-radio-button__inner {
+      border-radius: 0 $--border-radius-base $--border-radius-base 0;
+    }
+  }
+
+  &:first-child:last-child {
+    .rumo-radio-button__inner {
+      border-radius: $--border-radius-base;
+    }
+  }
+
+  @include m(large) {
+    & .rumo-radio-button__inner {
+      line-height: $--button-large-height;
+      @include button-size($--button-large-padding-vertical, $--button-large-padding-horizontal, $--button-large-font-size, 0, $--button-large-min-width, $--button-large-height);
+    }
+  }
+  @include m(medium) {
+    & .rumo-radio-button__inner {
+      line-height: $--button-medium-height;
+      @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, 0, $--button-medium-min-width, $--button-medium-height);
+    }
+  }
+  @include m(small) {
+    & .rumo-radio-button__inner {
+      line-height: $--button-small-height;
+      @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--button-small-font-size, 0, $--button-small-min-width, $--button-small-height);
+    }
+  }
+  @include m(mini) {
+    & .rumo-radio-button__inner {
+      line-height: $--button-mini-height;
+      @include button-size($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--button-mini-font-size, 0, $--button-mini-min-width, $--button-mini-height);
+    }
+  }
+  // &:focus:not(.is-focus):not(:active){ /*获得焦点时 样式提醒*/
+  //   box-shadow: 0 0 2px 2px $--radio-button-checked-border-color;
+  // }
+}

@@ -1,0 +1,172 @@
+@import "../common/var";
+@mixin button-plain($color) {
+  color: $color;
+  background: $--color-white;
+  border-color: mix($--color-white, $color, 60%);
+
+  &:hover {
+    color: $color;
+    background: $--color-white;
+    border-color: mix($--color-white, $color, 10%);
+  }
+
+  &:active {
+    color: $color;
+    background: $--color-white;
+    border-color: mix($--color-white, $color, 10%);
+    outline: none;
+    outline: unset;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--button-disabled-font-color;
+      background-color: $--color-white;
+      border-color: $--button-disabled-border-color;
+    }
+  }
+
+  &.is-noborder {
+    color: $color;
+    background-color: unset;
+  }
+}
+
+@mixin button-dashed($color) {
+  color: $color;
+  background: $--color-white;
+  border-color: mix($--color-white, $color, 60%);
+
+  &:hover,
+  &:focus {
+    color: $color;
+    background: mix($--color-white, $color, 90%);
+    border-color: mix($--color-white, $color, 10%);
+  }
+
+  &:active {
+    color: $color;
+    background: mix($--color-white, $color, 90%);
+    border-color: mix($--color-white, $color, 10%);
+    outline: none;
+    outline: unset;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--button-disabled-font-color;
+      background-color: $--color-white;
+      border-color: $--button-disabled-border-color;
+    }
+  }
+}
+
+@mixin button-text($color, $background-color, $border-color) {
+  color: $background-color;
+  background: transparent;
+  border-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: mix($--color-white, $background-color, $--button-hover-tint-percent);
+    background-color: transparent;
+    border-color: transparent;
+  }
+  &:active {
+    color: mix($--color-black, $background-color, $--button-active-shade-percent);
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    color: $--button-disabled-font-color;
+    // background-color: mix($--color-white, $--button-default-font-color, 95%);
+    // border-color: mix($--color-white, $--button-default-font-color, 80%);
+    border-color: transparent;
+  }
+}
+
+@mixin button-variant($color, $background-color, $border-color) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &:hover,
+  &:focus {
+    background: mix($--color-white, $background-color, $--button-hover-tint-percent);
+    border-color: mix($--color-white, $border-color, $--button-hover-tint-percent);
+    color: $color;
+  }
+  
+  &:active {
+    background: mix($--color-black, $background-color, $--button-active-shade-percent);
+    border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
+    color: $color;
+    outline: none;
+    outline: unset;
+  }
+
+  &.is-active {
+    background: mix($--color-black, $background-color, $--button-active-shade-percent);
+    border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
+    color: $color;
+  }
+
+
+  &.is-plain {
+    @include button-plain($background-color);
+  }
+  &.is-dashed {
+    @include button-dashed($background-color);
+  }
+  &.is-clicked:after {
+    border-color: $border-color;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $--color-white;
+      background-color: mix($background-color, $--color-white, 40%);
+      border-color: mix($border-color, $--color-white, 40%);
+      // color: $--button-disabled-font-color;
+      // background-color: $--button-disabled-background-color;
+      // border-color: $--button-disabled-background-color;
+    }
+  }
+}
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $border-radius, $button-min-width, $button-height) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+  min-width: $button-min-width;
+  height: $button-height;
+
+  &.is-icon-only {
+    min-width: auto;
+    padding: 0;
+    width: $button-height;
+  }
+  &.is-circle {
+    height: $button-height;
+    min-width: $button-height;
+    width: $button-height;
+    word-break: break-all;
+    white-space: pre-wrap;
+    overflow: hidden;
+    padding-left: 5px;
+    letter-spacing: 5px;
+    line-height: $button-height;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "rumo-datepicker",
+  "version": "2.0.0",
+  "description": "A datepicker component for Vue.",
+  "keywords": [
+    "ued",
+    "vue",
+    "component"
+  ],
+  "main": "./lib/index.js",
+  "author": "ued",
+  "license": "MIT",
+  "dependencies": {}
+}

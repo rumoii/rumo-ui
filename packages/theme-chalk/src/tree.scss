@@ -1,0 +1,160 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(tree) {
+  position: relative;
+  cursor: default;
+  background: $--color-white;
+  color: $--tree-text-color;
+  display: table; // 解决IE10横向填充
+  width: 100%;
+  height: 100%;
+
+  @include e(empty-block) {
+    position: relative;
+    min-height: 60px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+  @include e(empty-slot) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    width: 100%;
+    height: 100%;
+  }
+  @include e(empty-text) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: mix($--color-primary, rgb(158, 68, 0), 50%);
+  }
+
+  @include e(drop-indicator) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $--color-primary;
+  }
+
+  &>.rumo-tree-node:first-child {
+    margin-top: 0;
+  }
+}
+
+@include b(tree-node) {
+  // width: max-content;
+  white-space: nowrap;
+  outline: none;
+  outline: unset;
+  margin-top: 4px;
+
+  &:focus { /* focus */
+    > .rumo-tree-node__content {
+      background-color: $--tree-node-hover-color;
+      color: $--color-primary;
+    }
+  }
+
+  // &.is-current {
+  //   > .rumo-tree-node__content {
+  //     background-color: $--background-color-light;
+  //     color: $--color-primary;
+  //   }
+  // }
+
+  @include when(drop-inner) {
+    > .rumo-tree-node__content .rumo-tree-node__label {
+      background-color: $--color-primary;
+      color: #fff;
+    }
+  }
+
+  @include e(content) {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    
+    // width: max-content;
+    cursor: pointer;
+    > span,
+    > label {
+      vertical-align: middle;
+    }
+
+    & > .rumo-tree-node__expand-icon {
+      padding: 0px 6px;
+    }
+    & > .rumo-checkbox {
+      margin-right: 6px!important;
+    }
+    &:hover {
+      background-color: $--background-color-base;
+    }
+
+    .rumo-tree.is-dragging & {
+      cursor: move;
+
+      & * {
+        pointer-events: none;
+      }
+    }
+
+    .rumo-tree.is-dragging.is-drop-not-allow & {
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(expand-icon) {
+    cursor: pointer;
+    color: $--tree-expand-icon-color;
+    font-size: 12px;
+
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+
+    &.expanded {
+      transform: rotate(90deg);
+    }
+
+    &.is-leaf {
+      color: transparent;
+      cursor: default;
+    }
+  }
+
+  @include e(label) {
+    padding: 0px 6px;
+    font-size: $--font-size-base;
+  }
+
+  @include e(loading-icon) {
+    margin-right: 6px;
+    margin-top: 2px;
+    font-size: $--font-size-base;
+    color: $--tree-expand-icon-color;
+  }
+
+  & > .rumo-tree-node__children {
+    overflow: hidden;
+    background-color: transparent;
+  }
+
+  &.is-expanded > .rumo-tree-node__children {
+    display: block;
+  }
+}
+
+.rumo-tree--highlight-current .rumo-tree-node.is-current > .rumo-tree-node__content {
+  // background-color: mix($--color-white, $--color-primary, 92%);
+  background-color: $--background-color-light;
+  color: $--color-primary;
+  
+}
+.isHidden {
+  display: none;
+}

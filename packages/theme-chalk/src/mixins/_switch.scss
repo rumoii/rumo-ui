@@ -1,0 +1,44 @@
+@import "../common/var";
+
+@mixin switch-size($font-size, $width, $height, $button-size, $border-radius) {
+  & .rumo-switch__label {
+    font-size: $font-size;
+
+    & * {
+      font-size: $font-size;
+    }
+  }
+
+  & .rumo-switch__core {
+    font-size: $font-size;
+    min-width: $width;
+    height: $height;
+
+    & .rumo-switch__inner {
+      font-size: $font-size - 1px;
+      line-height: $height - 1px;
+      // height: $height;
+      padding-left: $button-size + 3px;
+      padding-right: 5px;
+    }
+
+    & .rumo-switch__button {
+      width: $button-size;
+      height: $button-size;
+    }
+  }
+
+  &.is-checked {
+    & .rumo-switch__core {
+      & .rumo-switch__inner {
+        padding-left: 5px;
+        padding-right: $button-size + 3px;
+      }
+      
+      & .rumo-switch__button {
+        margin-right: $button-size;
+        transform: translate3d(100%, 0px, 0px);
+      }
+    }
+  }
+}

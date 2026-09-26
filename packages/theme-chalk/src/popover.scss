@@ -1,0 +1,90 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "./popper";
+
+@include b(popover) {
+  position: absolute;
+  background: $--popover-fill;
+  min-width: 150px;
+  border-radius: $--border-radius-base;
+  border: 1px solid $--popover-border-color;
+  padding: $--popover-padding;
+  z-index: $--index-popper;
+  color: $--color-text-regular;
+  line-height: 1.4;
+  text-align: justify;
+  font-size: $--popover-font-size;
+  box-shadow: $--box-shadow-light;
+
+  
+  @include m(info) {
+    .rumo-popover__icon {
+      color: $--message-info-color;
+    }
+  }
+
+  @include m(success) {
+    .rumo-popover__icon {
+      color: $--message-success-color;
+    }
+  }
+
+  @include m(warning) {
+    .rumo-popover__icon {
+      color: $--message-warning-color;
+    }
+  }
+
+  @include m(error) {
+    .rumo-popover__icon {
+      color: $--message-danger-color;
+    }
+  }
+
+  @include e(icon) {
+    margin-right: 8px;
+    font-size: 18px;
+    vertical-align: middle;
+  }
+
+  @include m(plain) {
+    padding: $--popover-padding-large;
+  }
+
+  @include e(title) {
+    color: $--popover-title-color;
+    font-size: $--popover-title-font-size;
+    line-height: 1;
+    margin-bottom: 12px;
+
+    span {
+      vertical-align: middle;
+    }
+  }
+  
+  @include e(message) {
+    margin: $--popover-message-margin;
+    // font-size: $--popover-message-font-size;
+    // font-size: $--popover-title-font-size;
+    color: $--color-text-regular;
+
+    > span > .rumo-icons {
+      color: $--color-warning;
+    }
+  }
+  
+  @include e(buttons) {
+    text-align: $--popover-buttons-text-align;
+    margin: 0;
+  }
+
+  @include e(reference) {
+    &:focus:not(.focusing), &:focus:hover {
+      outline-width: 0;
+    }
+  }
+  
+   &:focus:active, &:focus {
+    outline-width: 0;
+  }
+}

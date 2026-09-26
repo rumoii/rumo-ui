@@ -1,0 +1,14 @@
+{
+  "name": "rumo-color-picker",
+  "version": "0.0.0",
+  "description": "A color-picker component for Vue.js.",
+  "keywords": [
+    "ued",
+    "vue",
+    "component"
+  ],
+  "main": "./lib/index.js",
+  "author": "ued",
+  "license": "MIT",
+  "dependencies": {}
+}

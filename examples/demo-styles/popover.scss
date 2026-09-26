@@ -1,0 +1,11 @@
+.demo-block.demo-popover {
+  .rumo-popover + .rumo-popover {
+    margin-left: 10px;
+  }
+  .rumo-input {
+    width: 360px;
+  }
+  .rumo-button {
+    margin-left: 10px;
+  }
+}

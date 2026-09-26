@@ -1,0 +1,314 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+@import "select";
+
+@include b(pagination) {
+  white-space: nowrap;
+  padding: 2px 5px;
+  color: $--pagination-color;
+  // font-weight: bold;
+  @include utils-clearfix;
+
+  span:not([class*=suffix]),
+  button {
+    display: inline-block;
+    font-size: $--pagination-font-size;
+    min-width: $--pagination-button-width;
+    height: $--pagination-button-height;
+    line-height: $--pagination-button-height;
+    vertical-align: top;
+    box-sizing: border-box;
+  }
+
+  .rumo-input__inner {
+    text-align: center;
+    -moz-appearance: textfield;
+    line-height: normal;
+  }
+
+  // pagesize 的下拉 icon
+  .rumo-input__suffix {
+    right: 0;
+    transform: scale(.8);
+  }
+
+  .rumo-select .rumo-input {
+    width: 100px;
+    margin: 0 5px;
+
+    .rumo-input__inner {
+      padding-right: 25px;
+      border-radius: $--pagination-border-radius;
+      // height: $--pagination-button-height;
+    }
+  }
+
+  button {
+    border: none;
+    padding: 0 6px;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: $--pagination-hover-fill;
+    }
+
+    &:disabled {
+      color: $--pagination-button-disabled-color;
+      background-color: $--pagination-button-disabled-fill;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-prev,
+  .btn-next {
+    background: center center no-repeat;
+    background-size: 16px;
+    background-color: $--pagination-fill;
+    cursor: pointer;
+    margin: 0;
+    color: $--pagination-button-color;
+
+    .rumo-icon {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  .btn-prev {
+    padding-right: 12px;
+  }
+
+  .btn-next {
+    padding-left: 12px;    
+  }
+
+  .rumo-pager li.disabled {
+    color: $--color-text-placeholder;
+    cursor: not-allowed;
+  }
+
+  @include m(small) {
+    .btn-prev,
+    .btn-next,
+    .rumo-pager li,
+    .rumo-pager li.btn-quicknext,
+    .rumo-pager li.btn-quickprev,
+    .rumo-pager li:last-child {
+      border-color: transparent;
+      font-size: 12px;
+      line-height: 22px;
+      height: 22px;
+      min-width: 22px;
+    }
+
+    .arrow.disabled {
+      visibility: hidden;
+    }
+
+    .more::before,
+    li.more::before {
+      line-height: 24px;
+    }
+
+    span:not([class*=suffix]),
+    button {
+      height: 22px;
+      line-height: 22px;
+    }
+
+    @include e(editor) {
+      height: 22px;
+      &.rumo-input .rumo-input__inner {
+        height: 22px;
+      }
+    }
+
+    .rumo-select {
+      .rumo-input {
+        .rumo-input__icon {
+          line-height: 22px;
+        }
+        .rumo-input__inner {
+          height: 22px;
+        }
+      }
+    }
+  }
+
+  @include e(sizes) {
+    font-weight: normal;
+    color: $--color-text-primary;
+
+    .rumo-input .rumo-input__inner {
+      font-size: $--pagination-font-size;
+      padding-left: 8px;
+
+      &:hover {
+        border-color: $--pagination-hover-fill;
+      }
+    }
+  }
+
+  @include e(total) {
+    margin-right: 8px;
+    font-weight: normal;
+    color: $--color-text-primary;
+  }
+
+  @include e(jump) {
+    margin-left: 8px;
+    font-weight: normal;
+    color: $--color-text-primary;
+
+    .rumo-input__inner {
+      padding: 0 3px;
+    }
+  }
+
+  @include e(rightwrapper) {
+    float: right;
+  }
+
+  @include e(editor) {
+    line-height: 18px;
+    padding: 0 2px;
+    height: $--pagination-button-height;
+      
+    text-align: center;
+    margin: 0 2px;
+    box-sizing: border-box;
+    border-radius: $--pagination-border-radius;
+
+    &.rumo-input {
+      width: 50px;
+    }
+
+    &.rumo-input .rumo-input__inner {
+      height: $--pagination-button-height;
+    }
+
+    .rumo-input__inner::-webkit-inner-spin-button,
+    .rumo-input__inner::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  @include when(background) {
+    .btn-prev,
+    .btn-next,
+    .rumo-pager li {
+      margin: 0 4px;
+      background-color: $--color-white;
+      color: $--color-text-primary;
+      min-width: 30px;
+      border-radius: 2px;
+      border: 1px solid $--border-color-base;
+
+      &.disabled {
+        color: $--color-text-placeholder;
+      }
+
+      &:not([disabled]):hover {
+        border: 1px solid $--color-primary;
+      }
+    }
+
+    .btn-prev, .btn-next {
+      padding: 0;
+
+      &:disabled {
+        color: $--color-text-placeholder;
+      }
+    }
+
+    .rumo-pager li:not(.disabled) {
+      &:hover {
+        border-color: $--pagination-hover-fill;
+        color: $--pagination-hover-fill;
+      }
+
+      &.active {
+        background-color: $--color-primary;
+        color: $--color-white;
+        border: 1px solid $--color-primary;
+      }
+    }
+
+    &.rumo-pagination--small {
+      .btn-prev,
+      .btn-next,
+      .rumo-pager li {
+        margin: 0 3px;
+        min-width: 22px;
+      }
+    }
+  }
+}
+
+@include b(pager) {
+  user-select: none;
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+
+  .more::before {
+    line-height: 30px;
+  }
+
+  li {
+    padding: 0 4px;
+    background: $--pagination-fill;
+    vertical-align: top;
+    display: inline-block;
+    font-size: $--pagination-font-size;
+    min-width: $--pagination-button-width;
+    height: $--pagination-button-height;
+    line-height: $--pagination-button-height;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0;
+
+    &.btn-quicknext,
+    &.btn-quickprev {
+      line-height: 28px;
+      transform: scale(1);
+      color: $--pagination-button-color;
+
+      &.disabled {
+        color: $--color-text-placeholder;
+      }
+    }
+
+    &.btn-quickprev:hover {
+      cursor: pointer;
+    }
+
+    &.btn-quicknext:hover {
+      cursor: pointer;
+    }
+
+    &.active + li {
+      border-left: 0;
+    }
+
+    &:hover {
+      color: $--pagination-hover-fill;
+    }
+
+    &.active {
+      color: $--pagination-hover-fill;
+      cursor: default;
+    }
+  }
+}

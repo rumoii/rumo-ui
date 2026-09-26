@@ -1,0 +1,139 @@
+@use 'sass:math';
+
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+@import "common/popup";
+
+
+@include b(dialog) {
+  position: relative;
+  margin: 0 auto 50px;
+  background: $--dialog-background-color;
+  border-radius: $--border-radius-small;
+  box-shadow: $--dialog-box-shadow;
+  box-sizing: border-box;
+  width: 50%;
+
+  @include when(fullscreen) {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    overflow: auto;
+  }
+
+  @include e(wrapper) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    margin: 0;
+  }
+
+  @include e(header) {
+    padding: #{$--dialog-padding-primary - 6} $--dialog-padding-primary;
+    color: $--color-text-primary;
+    border-bottom: 1px solid $--border-color-lighter;
+  }
+
+  @include e(headerbtn) {
+    position: absolute;
+    top: #{$--dialog-padding-primary - 2};
+    right: $--dialog-padding-primary;
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: $--message-close-size;
+
+    .rumo-dialog__close {
+      color: $--color-text-secondary;
+    }
+
+    &:focus, &:hover {
+      .rumo-dialog__close {
+        color: $--color-primary;
+      }
+    }
+  }
+
+  @include e(title) {
+    font-size: $--dialog-title-font-size;
+    color: $--color-text-primary;
+  }
+
+  @include e(body) {
+    padding: #{$--dialog-padding-primary + 8};
+    color: $--color-text-regular;
+    font-size: $--dialog-font-size;
+  }
+
+  @include e(footer) {
+    padding: 0 #{$--dialog-padding-primary + 4} #{$--dialog-padding-primary + 4};
+    text-align: right;
+    font-size: 0;
+    box-sizing: border-box;
+    // border-top: 1px solid $--border-color-lighter;
+
+    & button {
+      margin: 0;
+    }
+
+    & button:nth-child(2) {
+      margin-left: #{math.div($--dialog-padding-primary, 2)};
+    }
+  }
+
+  // 内容居中布局
+  @include m(center) {
+    text-align: center;
+
+    // @include e(header) {
+    //   padding-top: 30px;
+    // }
+
+    @include e(body) {
+      text-align: inherit;
+      padding: #{$--dialog-padding-primary + 8};
+    }
+
+    @include e(footer) {
+      text-align: inherit;
+      // padding-bottom: 30px;
+    }
+  }
+}
+
+.dialog-fade-enter-active {
+  animation: dialog-fade-in .3s;
+}
+
+.dialog-fade-leave-active {
+  animation: dialog-fade-out .3s;
+}
+
+@keyframes dialog-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}

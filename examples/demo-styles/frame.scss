@@ -1,0 +1,45 @@
+.demo-basic-frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  &>.rumo-container {
+    width: 400px;
+    height: 200px;
+    line-height: 200px;
+    &:first-child {
+      margin-right: 15px;
+    }
+    &:nth-child(2) {
+      margin-left: 15px;
+    }
+    &>.rumo-main {
+      border: 5px solid #ddd;
+    }
+    .rumo-container {
+      border: 5px solid #ddd;
+      .rumo-aside {
+        background-color: #E9EEF3;
+        border-right: 5px solid #ddd;
+      }
+    }
+  }
+  
+  .rumo-header {
+    background-color: #55677d;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .rumo-aside {
+    background-color: #55677d;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .rumo-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+  }
+}

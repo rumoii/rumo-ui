@@ -1,0 +1,14 @@
+{
+  "name": "rumo-loading",
+  "version": "2.0.0",
+  "description": "A loading component for Vue.js.",
+  "keywords": [
+    "ued",
+    "vue",
+    "component"
+  ],
+  "main": "./lib/index.js",
+  "author": "ued",
+  "license": "MIT",
+  "dependencies": {}
+}

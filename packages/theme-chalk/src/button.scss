@@ -1,0 +1,387 @@
+@charset "UTF-8";
+@use 'sass:math';
+
+@import "common/var";
+@import "mixins/button";
+@import "mixins/mixins";
+@import "mixins/utils";
+
+@include b(button) {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: $--button-default-background-color;
+  border: $--border-base;
+  border-color: $--button-default-border;
+  color: $--button-default-font-color;
+  -webkit-appearance: none;
+  touch-action: manipulation;
+  user-select: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  outline: unset;
+  margin: 0;
+  transition: .1s;
+  font-weight: $--button-font-weight;
+  @include utils-user-select(none);
+  & + .rumo-button {
+    margin-left: 8px;
+  }
+  @include when(circle) {
+    border-radius: 50%;
+    padding: 0;
+  }
+
+  span {
+    pointer-events: none;
+  }
+
+  @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius, $--button-min-width, $--button-height);
+
+  &:hover {
+    color: $--color-info;
+    background-color: mix($--color-white, $--color-info, 90%);
+    border-color: mix($--color-white, $--color-info, $--button-active-shade-percent);
+  }
+
+  &:active {
+    color: mix($--color-white, $--button-default-font-color, $--button-active-shade-percent);
+    background-color: mix($--color-white, $--button-default-font-color, 90%);
+    border-color: mix($--color-black, $--button-default-border, $--button-active-shade-percent);
+    outline: none;
+    outline: unset;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & [class*="rumo-icons"] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  &.is-clicked:after,&.is-remind:before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    border-radius: inherit;
+    border: 0 solid mix($--color-black, $--button-default-font-color, 90%);
+    opacity: 0.4;
+    animation: button-effect .4s;
+    display: block;
+  }
+
+  &.is-remind:before{
+    animation: button-effect .8s infinite;
+  }
+
+  &.is-text {
+    border-color: transparent;
+    color: $--button-default-font-color;
+    background: transparent;
+    padding-left: math.div($--button-padding-horizontal, 2);
+    padding-right: math.div($--button-padding-horizontal, 2);
+    min-width: auto;
+  
+    &:hover,
+    &:focus {
+      color: mix($--color-white, $--color-primary, $--button-hover-tint-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+    &:active {
+      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+  
+    &.is-disabled,
+    &.is-disabled:hover,
+    &.is-disabled:focus {
+      border-color: transparent;
+      color: $--disabled-color-base;
+    }
+
+    & + .rumo-button {
+      margin-left: 0;
+    }
+  }
+  &.is-noborder {
+    border: unset;
+    background-color: unset;
+
+    &:hover,
+    &:focus {
+      background-color: unset;
+    }
+
+    &:active {
+      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    }
+  }
+
+  @include when(plain) {
+    background-color: $--color-white;
+    &:hover {
+      background: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+
+    &:active {
+      background: $--color-white;
+      border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      outline: none;
+      outline: unset;
+    }
+  }
+
+  @include when(dashed) {
+    border-style: dashed;
+    
+    &:hover,
+    &:focus {
+      background: $--color-white;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+
+    &:active {
+      background: $--color-white;
+      border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      outline: none;
+      outline: unset;
+    }
+  }
+
+  @include when(active) {
+    color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+  }
+
+  @include when(disabled) {
+    &,
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      background-image: none;
+      color: $--button-disabled-font-color;
+      background-color: $--color-white;
+      border-color: $--button-disabled-border-color;
+    }
+
+    &.rumo-button--text {
+      background-color: transparent;
+    }
+
+    &.is-plain {
+      &,
+      &:hover,
+      &:focus {
+        color: $--button-disabled-font-color;
+        background-color: $--color-white;
+        border-color: $--button-disabled-border-color;
+      }
+    }
+    // &.is-dashed {
+    //   &,
+    //   &:hover,
+    //   &:focus {
+    //     color: $--button-disabled-font-color;
+    //     background-color: $--button-disabled-background-color;
+    //     border-color: $--button-disabled-border-color;
+    //   }
+    // }
+  }
+
+  @include when(loading) {
+    position: relative;
+    pointer-events: none;
+
+    &:before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: rgba(255,255,255,.35);
+    }
+  }
+  @include when(round) {
+    border-radius: 20px;
+  }
+  @include m(primary) {
+    @include button-variant($--button-primary-color, $--button-primary-fill, $--button-primary-border);
+
+    &.is-text {
+      @include button-text($--button-primary-color, $--button-primary-fill, $--button-primary-border);
+    }
+  }
+  @include m(success) {
+    @include button-variant($--button-success-color, $--button-success-fill, $--button-success-border);
+    
+    &.is-text {
+      @include button-text($--button-success-color, $--button-success-fill, $--button-success-border);
+    }
+  }
+  @include m(warning) {
+    @include button-variant($--button-warning-color, $--button-warning-fill, $--button-warning-border);
+    
+    &.is-text {
+      @include button-text($--button-warning-color, $--button-warning-fill, $--button-warning-border);
+    }
+  }
+  @include m(danger) {
+    @include button-variant($--button-danger-color, $--button-danger-fill, $--button-danger-border);
+    
+    &.is-text {
+      @include button-text($--button-danger-color, $--button-danger-fill, $--button-danger-border);
+    }
+  }
+  @include m(info) {
+    @include button-variant($--button-info-color, $--button-info-fill, $--button-info-border);
+    
+    &.is-text {
+      @include button-text($--button-info-color, $--button-info-fill, $--button-info-border);
+    }
+  }
+  @include m(large) {
+    @include button-size($--button-large-padding-vertical, $--button-large-padding-horizontal, $--button-large-font-size, $--button-large-border-radius, $--button-large-min-width, $--button-large-height);
+
+    &.is-text {
+      padding-left:math.div($--button-large-padding-horizontal, 2);
+      padding-right:math.div($--button-large-padding-horizontal, 2);
+    }
+  }
+  @include m(medium) {
+    @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius, $--button-medium-min-width, $--button-medium-height);
+
+    &.is-text {
+      padding-left: math.div($--button-medium-padding-horizontal, 2);
+      padding-right: math.div($--button-medium-padding-horizontal, 2);
+    }
+  }
+  @include m(small) {
+    @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--button-small-font-size, $--button-small-border-radius, $--button-small-min-width, $--button-small-height);
+
+    &.is-text {
+      padding-left: math.div($--button-small-padding-horizontal, 2);
+      padding-right: math.div($--button-small-padding-horizontal, 2);
+    }
+  }
+  @include m(mini) {
+    @include button-size($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--button-mini-font-size, $--button-mini-border-radius, $--button-mini-min-width, $--button-mini-height);
+
+    &.is-text {
+      padding-left: math.div($--button-mini-padding-horizontal, 2);
+      padding-right: math.div($--button-mini-padding-horizontal, 2);
+    }
+  }
+  // @include m(text) {
+  //   border-color: transparent;
+  //   color: $--color-primary;
+  //   background: transparent;
+  //   padding-left: 0;
+  //   padding-right: 0;
+
+  //   &:hover,
+  //   &:focus {
+  //     color: mix($--color-white, $--color-primary, $--button-hover-tint-percent);
+  //     border-color: transparent;
+  //     background-color: transparent;
+  //   }
+  //   &:active {
+  //     color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+  //     border-color: transparent;
+  //     background-color: transparent;
+  //   }
+
+  //   &.is-disabled,
+  //   &.is-disabled:hover,
+  //   &.is-disabled:focus {
+  //     border-color: transparent;
+  //   }
+  // }
+}
+
+@include b(button-group) {
+  @include utils-clearfix;
+  display: inline-block;
+  vertical-align: middle;
+
+  & + & {
+    margin-left: 8px;
+  }
+
+  & .rumo-button {
+    float: left;
+    position: relative;
+    & + .rumo-button {
+      margin-left: 0;
+    }
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+
+    @include when(active) {
+      z-index: 1;
+    }
+  }
+
+  @each $type in (primary, success, warning, danger, info) {
+    .rumo-button--#{$type} {
+      &:first-child {
+        border-right-color: rgba($--color-white, 0.5);
+      }
+      &:last-child {
+        border-left-color: rgba($--color-white, 0.5);
+      }
+      &:not(:first-child):not(:last-child) {
+        border-left-color: rgba($--color-white, 0.5);
+        border-right-color: rgba($--color-white, 0.5);
+      }
+    }
+  }
+}
+
+@keyframes button-effect {
+  to {
+    opacity: 0;
+    top: -6px;
+    left: -6px;
+    bottom: -6px;
+    right: -6px;
+    border-width: 8px;
+  }
+}

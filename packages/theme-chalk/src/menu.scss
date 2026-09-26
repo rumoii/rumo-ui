@@ -1,0 +1,313 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+
+@mixin menu-item {
+  height: 56px;
+  line-height: 56px;
+  font-size: 14px;
+  color: $--menu-item-color;
+  padding: 0 20px;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  transition: border-color .3s, background-color .3s, color .3s;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  * {
+    vertical-align: middle;
+  }
+
+  i {
+    color: $--color-text-secondary;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    outline: unset;
+    background-color: $--menu-item-hover-fill;
+  }
+
+  @include when(disabled) {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: none !important;
+  }
+
+  @include m(divided) {
+    $divided-offset: 6px;
+
+    position: relative;
+    margin-top: $divided-offset;
+    border-top: 1px solid $--border-color-lighter;
+
+    &:before {
+      content: '';
+      // height: $divided-offset;
+      display: block;
+      margin: 0 -20px;
+      background-color: $--color-white;
+    }
+  }
+}
+
+@include b(menu) {
+  border-right: solid 1px #e6e6e6;
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding-left: 0;
+  background-color: $--menu-item-fill;
+  @include utils-clearfix;
+  // & > .rumo-menu-item {
+  //   font-size: 13px;
+  // }
+
+  @include m(horizontal) {
+    border-right: none;
+    border-bottom: solid 1px #e6e6e6;
+    & > .rumo-menu-item {
+      padding: 0px;
+      margin: 0 20px;
+      float: left;
+      height: 50px;
+      line-height: 50px;
+      // margin: 0;
+      border-bottom: 1px solid transparent;
+      color: $--color-text-secondary;
+
+      a,
+      a:hover {
+        color: inherit;
+      }
+
+      &:not(.is-disabled):hover,
+      &:not(.is-disabled):focus{
+        background-color: #fff;
+      }
+    }
+    & > .rumo-submenu {
+      float: left;
+
+      &:focus,
+      &:hover {
+        outline: none;
+        outline: unset;
+        .rumo-submenu__title {
+          color: $--color-text-primary;
+        }
+      }
+
+      &.is-active {
+        .rumo-submenu__title {
+          padding: 0px;
+          margin: 0 20px;
+          border-bottom: 1px solid $--color-primary;
+          color: $--color-text-primary;
+        }
+      }
+
+      & .rumo-submenu__title {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid transparent;
+        color: $--color-text-secondary;
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+      & .rumo-submenu__icon-arrow {
+        position: static;
+        vertical-align: middle;
+        // margin-left: 8px;
+        // transform: scale(0.7);
+        margin-top: -3px;
+      }
+    }
+    & .rumo-menu {
+      & .rumo-menu-item,
+      & .rumo-submenu__title {
+        background-color: $--color-white;
+        float: none;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 10px;
+        color: $--color-text-secondary;
+
+        &.is-active {
+          color: $--color-text-primary;
+        }
+      }
+    }
+    & .rumo-menu-item:not(.is-disabled):hover,
+    & .rumo-menu-item:not(.is-disabled):focus {
+      outline: none;
+      outline: unset;
+      color: $--color-text-primary;
+    }
+    & > .rumo-menu-item.is-active {
+      border-bottom: 1px solid $--color-primary;
+      color: $--color-text-primary;
+    }
+  }
+  @include m(collapse) {
+    width: 64px;
+
+    > .rumo-menu-item,
+    > .rumo-submenu > .rumo-submenu__title {
+      [class*="icon-"] {
+        margin: 0;
+        vertical-align: middle;
+        width: 24px;
+        text-align: center;
+      }
+      .rumo-submenu__icon-arrow {
+        display: none;
+      }
+      span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
+    }
+
+    > .rumo-menu-item.is-active i {
+      color: inherit;
+    }
+
+    .rumo-menu .rumo-submenu {
+      min-width: 200px;
+    }
+
+    .rumo-submenu {
+      position: relative;
+      & .rumo-menu {
+        position: absolute;
+        margin-left: 3px;
+        top: 0;
+        left: 100%;
+        z-index: 10;
+        border: 1px solid $--border-color-light;
+        border-radius: $--border-radius-small;
+        box-shadow: $--box-shadow-light;
+      }
+
+      &.is-opened {
+        > .rumo-submenu__title .rumo-submenu__icon-arrow {
+          transform: scale(0.7);
+        }
+      }
+    }
+  }
+  @include m(popup) {
+    z-index: 100;
+    min-width: 200px;
+    border: none;
+    padding: 5px 0;
+    border-radius: $--border-radius-small;
+    box-shadow: $--box-shadow-light;
+
+    &-bottom-start {
+      margin-top: 5px;
+    }
+    &-right-start {
+      margin-left: 5px;
+    }
+  }
+}
+@include b(menu-item) {
+  @include menu-item;
+
+  & [class*="icon-"] {
+    margin-right: -4px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
+    vertical-align: middle;
+  }
+  @include when(active) {
+    color: $--color-primary;
+    i {
+      color: inherit;
+    }
+  }
+}
+  
+@include b(submenu) {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  @include e(title) {
+    @include menu-item;
+
+    &:hover {
+      background-color: $--menu-item-hover-fill;
+    }
+  }
+  & .rumo-menu {
+    border: none;
+  }
+  & .rumo-menu-item {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 45px;
+    min-width: 200px;
+  }
+  @include e(icon-arrow) {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -7px;
+    transform: scale(0.7);
+    transition: transform .3s;
+    font-size: 12px;
+  }
+  @include when(active) {
+    .rumo-submenu__title {
+      border-bottom-color: $--color-primary;
+    }
+  }
+  @include when(opened) {
+    > .rumo-submenu__title .rumo-submenu__icon-arrow {
+      transform: scale(0.7) rotateZ(180deg) ;
+    }
+  }
+  @include when(disabled) {
+    .rumo-submenu__title,
+    .rumo-menu-item {
+      opacity: 0.25;
+      cursor: not-allowed;
+      background: none !important;
+    }
+  }
+  [class*="icon-"] {
+    vertical-align: middle;
+    margin-right: -4px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+@include b(menu-item-group) {
+  > ul {
+    padding: 0;
+  }
+  @include e(title) {
+    padding: 7px 0 7px 20px;
+    line-height: normal;
+    font-size: 13px;
+    color: $--color-text-secondary;
+  }
+}
+
+.horizontal-collapse-transition .rumo-submenu__title .rumo-submenu__icon-arrow {
+  transition: .2s;
+  opacity: 0;
+}

@@ -1,0 +1,39 @@
+.demo-tooltip {
+  .rumo-tooltip + .rumo-tooltip {
+    margin-left: 15px;
+  }
+  .box {
+    width: 450px;
+
+    .top {
+      text-align: center;
+    }
+
+    .left {
+      float: left;
+      width: 80px;
+    }
+
+    .right {
+      float: right;
+      width: 80px;
+    }
+
+    .bottom {
+      clear: both;
+      text-align: center;
+    }
+
+    .item {
+      margin: 4px;
+    }
+
+    .left .rumo-tooltip__popper,
+    .right .rumo-tooltip__popper {
+      padding: 8px 10px;
+    }
+    .rumo-tooltip {
+      margin-left: 0;
+    }
+  }
+}

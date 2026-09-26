@@ -1,0 +1,584 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@mixin tail-color() {
+  @include when(tail) {
+    @include e(tail) {
+      background-color: $--color-primary!important;
+      &::after {
+        border-left-color: $--color-primary;
+      }
+    }
+    @include e(icon) {
+      @include when(text) {
+        border-color: $--color-white;
+        background-color: inherit;
+      }
+      @include when(icon) {
+        color: $--color-white;
+      }
+    }
+    @include e(icon-inner) {
+      color: $--color-white;
+    }
+    @include e(title) {
+      @include when(success) {
+        border-color: $--color-white;
+        color:  $--color-white;
+      }
+      @include when(process) {
+        border-color: $--color-white;
+        color:  $--color-white;
+      }
+      @include when(finish) {
+        border-color: $--color-white;
+        color:  $--color-white;
+      }
+    }
+  }
+}
+
+@include b(step) {
+  position: relative;
+  padding-right: 10px;
+  flex-shrink: 1;
+  @include e(head) {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    @include when(process) {
+      @include tail-color;
+      color: $--color-primary;
+      border-color: $--color-primary;
+      @include e(icon) {
+        color: $--color-primary;
+        &.is-text {
+          font-weight: bold;
+          color: $--color-white;
+          background-color: $--color-primary;
+        }
+      }
+    }
+
+    @include when(wait) {
+      @include e(icon) {
+        background: $--step-bg-wait-color;
+        border: none;
+        font-weight: normal;
+      }
+      color: $--color-text-primary;
+    }
+
+    @include when(success) {
+      @include e(icon) {
+        background: $--step-bg-success-color;
+        border: none;
+        .is-status {
+          font-weight: bold;
+        }
+      }
+      @include tail-color;
+      color: $--color-primary;
+      border-color: $--color-primary;
+    }
+
+    @include when(error) {
+      color: $--color-danger;
+      border-color: $--color-danger;
+    }
+
+    @include when(finish) {
+      color: $--color-primary;
+      border: nonde;
+      border-color: $--color-primary;
+
+      @include e(line) {
+        background-color: $--color-primary;
+      }
+      @include tail-color;
+    }
+  }
+  @include e(icon) {
+    position: relative;
+    top: 0;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: $--color-white;
+    transition: .15s ease-out;
+    margin-right: 8px;
+
+    @include when(text) {
+      border-radius: 50%;
+      border: 1px solid;
+      border-color: inherit;
+    }
+
+    @include when(icon) {
+      width: 40px;
+      margin-right: 0;
+      background: transparent;
+    }
+  }
+
+  @include e(icon-inner) {
+    display: inline-block;
+    user-select: none;
+    text-align: center;
+    line-height: 1;
+    color: inherit;
+
+    &[class*=rumo-icons]:not(.is-status) {
+      font-size: 24px;
+      font-weight: normal;
+    }
+
+    // 组件自身表示状态的图标
+    @include when(status) {
+      transform: translateY(1px);
+    }
+  }
+
+  @include e(line) {
+    display: none;
+    position: absolute;
+    border-color: inherit;
+    background-color: $--color-text-placeholder;
+  }
+  @include e(line-inner) {
+    display: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+    transition: .15s ease-out;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+  }
+
+  @include e(main) {
+    white-space: normal;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  @include e(title) {
+    padding-right: 8px;
+    font-size: 14px;
+    // font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 5px;
+    color: $--color-text-primary;
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 9999px;
+      display: block;
+      position: absolute;
+      top: 9px;
+      left: 100%;
+      background: $--color-text-placeholder;
+    }
+
+    @include when(process) {
+      font-weight: bold;
+      // color: $--color-primary;
+
+      // &::after {
+      //   background: $--color-primary;
+      // }
+    }
+
+    @include when(wait) {
+      color: $--color-text-primary;
+
+      &::after {
+        background: $--color-text-placeholder;
+      }
+    }
+
+    @include when(success) {
+      // color: $--color-primary;
+
+      // &::after {
+      //   background: $--color-primary;
+      // }
+    }
+
+    @include when(error) {
+      color: $--color-danger;
+
+      &::after {
+        background: $--color-danger;
+      }
+    }
+
+    @include when(finish) {
+      // color: $--color-primary;
+      // &::after {
+      //   background: $--color-primary;
+      // }
+    }
+  }
+
+  @include e(description) {
+    display: block;
+    padding-right: 10%;
+    // margin-top: -2px;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: normal;
+
+    @include when(process) {
+      color: $--color-text-primary;
+    }
+
+    @include when(wait) {
+      color: $--color-text-placeholder;
+    }
+
+    @include when(success) {
+      color: $--color-success;
+    }
+
+    @include when(error) {
+      color: $--color-danger;
+    }
+
+    @include when(finish) {
+      color: $--color-primary;
+    }
+  }
+
+  @include when(horizontal) {
+    display: inline-block;
+
+    @include e(line) {
+      height: 1px;
+      top: 11px;
+      left: 35px;
+      right: 0;
+    }
+    @include e(title) {
+      z-index: 9;
+      position: relative;
+      top: 2px;
+      display: inline-block;
+      // padding: 0 8px;
+      // background: #ffffff;
+    }
+    @include e(main) {
+      display: inline-block;
+      white-space: normal;
+      width: 100%;
+      text-align: left;
+      // padding-left: 32px;
+    }
+    @include e(description) {
+      // padding-left: 8px;
+    }
+  }
+
+  @include when(vertical) {
+    // display: flex;
+
+    @include e(head) {
+      flex-grow: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    @include e(main) {
+      display: inline-block;
+      // padding-left: 10px;
+      flex-grow: 1;
+    }
+
+    @include e(title) {
+      display: block;
+      line-height: 24px;
+      // padding-bottom: 8px;
+      width:100%;
+
+      &::after{
+        display: none;
+      }
+    }
+    @include e(description) {
+      display: block;
+      width:100%;
+    }
+
+    @include e(line) {
+      display: block;
+      width: 1px;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 11px;
+    }
+
+    @include e(icon) {
+      display: inline-flex;
+
+      @include when(icon) {
+        width: 24px;
+      }
+    }
+  }
+
+  @include when (tail) {
+    @include e(icon) {
+      margin-left: 40px;
+    }
+  }
+  @include when(center) {
+
+    @include e(head) {
+      overflow: visible;
+    }
+
+    @include e(line) {
+      display: inline-block;
+      width: calc(100% - 35px);
+      left: 100px;
+    }
+
+    @include e(icon) {
+      position: relative;
+      z-index: 3;
+      margin-left: 67px;
+    }
+
+    @include e(main) {
+      display: block;
+      position: relative;
+      z-index: 1;
+      // width: auto;
+      padding-left: 0;
+      width: 160px;
+      text-align: center;
+    }
+
+    @include e(description) {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    @include e(title) {
+      padding-left: 8px;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  @include when(tail) {
+    display: inline-block;
+    @include e(head) {
+      line-height: 28px;
+    }
+    @include e(title) {
+      display: inline-block;
+      padding: 0px;
+      &::after {
+        display: none;
+      }
+    }
+    @include e(icon) {
+      width: 16px;
+      height: 16px;
+      @include when(icon) {
+        @include e(icon-inner) {
+          font-size: 14px;
+        }
+        vertical-align: middle;
+      }
+    }
+    @include e(main) {
+      display: inline-block;
+      width: 100%;
+      line-height: 32px;
+      margin-top: -4px;
+      text-align: left;
+    }
+    @include e(description) {
+      text-align: center;
+      width: 70%;
+      transform: translateX(-30%);
+    }
+    &:not(.is-center) {
+      @include e(description) {
+        text-align: left;
+        transform: translateX(-25px);
+      }
+    }
+    @include e(tail) {
+      background-color: $--background-color-base;
+      height: 28px;
+      line-height: 28px;
+      width: 100%;
+      position: absolute;
+      overflow: hidden;
+    }
+    @at-root {
+      .#{'is-process'},
+      .#{'is-success'},
+      .#{'is-finish'},
+      .#{'is-process'} + .#{'is-wait'} {
+        @include e(tail) {
+          &::after {
+            border-left-color: $--color-primary!important;
+          }
+        }
+      }
+    }
+    @include pseudo('not(:first-of-type)') {
+      @include e(tail) {
+        &::before {
+          content: '';
+          border-width: 28px;
+          border-style: solid;
+          border-color: transparent;
+          position: absolute;
+          border-left-color: $--color-white;
+          top: -14px;
+          left: -4px;
+        }
+        &::after {
+          content: '';
+          border-width: 28px;
+          border-style: solid;
+          border-color: transparent;
+          position: absolute;
+          top: -14px;
+          left: -8px;
+          border-left-color: $--background-color-base;
+        }
+      }
+    }
+  }
+  @include when(simple) {
+    display: flex;
+    align-items: center;
+
+    @include e(head) {
+      // width: auto;
+      font-size: 0;
+      padding-right: 10px;
+    }
+
+    @include e(icon) {
+      display: inline-flex;
+      background: transparent;
+      width: 16px;
+      height: 16px;
+      font-size: 12px;
+      margin-right: 8px;
+    }
+
+    @include e(icon-inner) {
+      &[class*=rumo-icons]:not(.is-status) {
+        font-size: 18px;
+      }
+
+      &.is-status {
+        transform: scale(.8) translateY(1px);
+      }
+    }
+
+    @include e(main) {
+      display: inline-flex;
+      position: relative;
+      // display: flex;
+      // width: 60%;
+      align-items: stretch;
+      flex-grow: 1;
+    }
+
+    @include e(title) {
+      font-size: 14px;
+      line-height: 16px;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    @include pseudo('not(:last-of-type)') {
+      @include e(title) {
+        // max-width: 70%;
+        word-break: break-all;
+      }
+    }
+
+    @include e(arrow) {
+      position: relative;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -100%;
+
+      &::before,
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        height: 15px;
+        width: 1px;
+        background: $--color-text-placeholder;
+      }
+
+      &::before {
+        transform: rotate(-45deg) translateY(-4px);
+        transform-origin: 0 0;
+      }
+
+      &::after {
+        transform: rotate(45deg) translateY(4px);
+        transform-origin: 100% 100%;
+      }
+    }
+
+    @include pseudo(last-of-type) {
+      @include e(arrow) {
+        display: none;
+      }
+    }
+  }
+
+  // 最后一步，隐藏部分元素
+  @include pseudo(last-of-type) {
+    padding-right: 0px;
+
+    @include e(line) {
+      display: none;
+    }
+    @include e(title) {
+
+      &::after {
+        display: none;
+      }
+    }
+
+    // 只有未设置 space 的情况下才自适应宽度
+    @include when(flex) {
+      flex-basis: auto !important;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+    @include when(tail) {
+      flex-basis: 50% !important;
+    }
+
+    @include e((main, description)) {
+      padding-right: 0;
+    }
+  }
+}

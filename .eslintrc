@@ -1,0 +1,25 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "plugins": [
+    "html",
+    "json"
+  ],
+  "extends": ["elemefe", "plugin:vue/recommended"],
+  "rules": {
+    "no-restricted-globals": [
+      "error",
+      "event",
+      "fdescribe"
+    ],
+    "radix": ["error", "as-needed"],
+    "parser": "babel-eslint"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  }
+}

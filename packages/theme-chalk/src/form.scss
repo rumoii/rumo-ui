@@ -1,0 +1,185 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+
+@include b(form) {
+  @include m(label-left) {
+    & .rumo-form-item__label {
+      position: relative;
+      text-align: left;
+    }
+    .is-required {
+      .rumo-form-item__label:before,
+      .rumo-form-item__label-wrap > .rumo-form-item__label:before {
+        position: absolute;
+        left: -10px;
+      }
+    }
+  }
+  @include m(label-top) {
+    & .rumo-form-item__label {
+      float: none;
+      display: inline-block;
+      text-align: left;
+      // padding: 0 0 10px 0;
+    }
+  }
+  @include m(inline) {
+    & .rumo-form-item {
+      display: inline-block;
+      margin-right: 8px;
+      vertical-align: top;
+    }
+    & .rumo-form-item__label {
+      float: none;
+      display: inline-block;
+    }
+    & .rumo-form-item__content {
+      display: inline-block;
+      vertical-align: top;
+    }
+    &.rumo-form--label-top .rumo-form-item__content {
+      display: block;
+    }
+  }
+}
+@include b(form-item) {
+  margin-bottom: 16px;
+  @include utils-clearfix;
+
+  & .rumo-form-item {
+    margin-bottom: 0;
+  }
+
+  &.is-top-label {
+    & > .rumo-form-item__label {
+      float: none;
+      display: inline-block;
+    }
+    & > .rumo-form-item__content {
+      margin-left: 0!important;
+    }
+  }
+
+  & .rumo-input__validateIcon {
+    display: none;
+  }
+
+  @include m(medium) {
+    .rumo-form-item__label {
+      line-height: 36px;
+    }
+    .rumo-form-item__content {
+      line-height: 36px;
+    }
+  }
+  @include m(small) {
+    .rumo-form-item__label {
+      line-height: 28px;
+    }
+    .rumo-form-item__content {
+      line-height: 28px;
+    }
+    .rumo-form-item__error {
+      padding-top: 2px;
+    }
+  }
+  @include m(mini) {
+    .rumo-form-item__label {
+      line-height: 24px;
+    }
+    .rumo-form-item__content {
+      line-height: 24px;
+    }
+    .rumo-form-item__error {
+      padding-top: 2px;
+    }
+  }
+
+  @include e(label) {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    color: $--color-text-primary;
+    line-height: 32px;
+    padding: 0 12px 0 0;
+    box-sizing: border-box;
+  }
+  @include e(content) {
+    line-height: 32px;
+    position: relative;
+    font-size: 14px;
+    @include utils-clearfix;
+  }
+  @include e(error) {
+    color: $--color-danger;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 2px;
+    margin-bottom: -14px;
+    // position: absolute;
+    // top: 100%;
+    // left: 0;
+
+    @include m(inline) {
+      position: relative;
+      top: auto;
+      left: auto;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+
+  @include when(required) {
+    @include pseudo('not(.is-no-asterisk)') {
+      .rumo-form-item__label:before,
+      .rumo-form-item__label-wrap > .rumo-form-item__label:before {
+        content: '*';
+        color: $--color-danger;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  @include when(error) {
+    & .rumo-input__inner,
+    & .rumo-textarea__inner {
+      &, &:focus {
+        border-color: $--color-danger;
+      }
+    }
+    & .rumo-input-group__append,
+    & .rumo-input-group__prepend {
+      & .rumo-input__inner {
+        border-color: transparent;
+      }
+    }
+    .rumo-input__validateIcon {
+      color: $--color-danger;
+    }
+  }
+  @include when(success) {
+    & .rumo-input__inner,
+    & .rumo-textarea__inner {
+      &, &:focus {
+        border-color: $--color-success;
+        // box-shadow: 0 0 0 2px rgba($--color-success, 0.2);
+      }
+    }
+    & .rumo-input-group__append,
+    & .rumo-input-group__prepend {
+      & .rumo-input__inner {
+        border-color: transparent;
+      }
+    }
+    .rumo-input__validateIcon {
+      color: $--color-success;
+    }
+  }
+  @include m(feedback) {
+    .rumo-input__validateIcon {
+      display: inline-block;
+    }
+  }
+}

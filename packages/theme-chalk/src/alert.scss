@@ -1,0 +1,168 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(alert) {
+  width: 100%;
+  padding: $--alert-padding;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: $--alert-border-radius;
+  border-width: $--border-width-base;
+  border-style: $--border-style-base;
+  border-color: $--border-color-lighter;
+  position: relative;
+  background-color: $--color-white;
+  overflow: hidden;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  transition: opacity .2s;
+  color: $--color-text-primary;
+
+  @include when(light) {
+    .rumo-alert__closebtn {
+      color: $--color-text-placeholder;
+    }
+  }
+
+  @include when(dark) {
+    .rumo-alert__closebtn {
+      color: $--color-white;
+    }
+    .rumo-alert__description {
+      color: $--color-white;
+    }
+  }
+
+
+  @include when(center) {
+    justify-content: center;
+  }
+
+  @include m(success) {
+    &.is-light {
+      background-color: $--alert-success-color;
+      // border-color: $--color-success;
+      border-color: rgba($--color-success, 0.20);
+      i {
+        color: $--color-success;
+      }
+
+      .el-alert__description {
+        color: $--color-success;
+      }
+    }
+
+    &.is-dark {
+      background-color: $--color-success;
+      color: $--color-white;
+    }
+  }
+
+  @include m(info) {
+    &.is-light {
+      background-color: $--alert-info-color;
+      // border-color: $--color-info;
+      border-color: rgba($--color-info, 0.20);
+      i {
+        color: $--color-info;
+      }
+    }
+
+    &.is-dark {
+      background-color: $--color-info;
+      color: $--color-white;
+    }
+
+    .el-alert__description {
+      color: $--color-info;
+    }
+  }
+
+  @include m(warning) {
+    &.is-light {
+      background-color: $--alert-warning-color;
+      // border-color: $--color-warning;
+      border-color: rgba($--color-warning, 0.20);
+      i {
+        color: $--color-warning;
+      }
+      .el-alert__description {
+        color: $--color-warning;
+      }
+    }
+
+    &.is-dark {
+      background-color: $--color-warning;
+      color: $--color-white;
+    }
+  }
+
+  @include m(error) {
+    &.is-light {
+      background-color: $--alert-danger-color;
+      // border-color: $--color-danger;
+      border-color: rgba($--color-danger, 0.20);
+      i {
+        color: $--color-danger;
+      }
+      .el-alert__description {
+        color: $--color-danger;
+      }
+    }
+
+    &.is-dark {
+      background-color: $--color-danger;
+      color: $--color-white;
+    }
+  }
+
+  @include e(content) {
+    display: table-cell;
+    line-height: 1;
+    padding: 0 8px;
+  }
+
+  @include e(icon) {
+    font-size: $--alert-icon-size;
+    width: $--alert-icon-size;
+    @include when(big) {
+      font-size: $--alert-icon-large-size;
+      width: $--alert-icon-large-size;
+    }
+  }
+
+  @include e(title) {
+    font-size: $--alert-title-font-size;
+    line-height: 18px;
+    @include when(bold) {
+      font-weight: bold;
+    }
+  }
+
+  & .rumo-alert__description {
+    font-size: $--alert-description-font-size;
+    margin: 5px 0 0 0;
+  }
+
+  @include e(closebtn) {
+    font-size: $--alert-close-font-size;
+    color: $--color-text-placeholder;
+    opacity: 1;
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    cursor: pointer;
+
+    @include when(customed) {
+      font-style: normal;
+      font-size: $--alert-close-customed-font-size;
+      top: 9px;
+    }
+  }
+}
+
+.rumo-alert-fade-enter,
+.rumo-alert-fade-leave-active {
+  opacity: 0;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "rumo-cascader",
+  "version": "0.0.0",
+  "description": "A cascader component for Vue.js.",
+  "keywords": [
+    "ued",
+    "vue",
+    "component"
+  ],
+  "main": "./lib/index.js",
+  "author": "ued",
+  "license": "MIT",
+  "dependencies": {}
+}
