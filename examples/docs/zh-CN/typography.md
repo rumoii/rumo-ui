@@ -33,21 +33,21 @@
 :::demo
 ```html
 <div class="demo-typo-box demo-en typo-Helvetica-neue">
-  DBAPPSecurity
+  Rumo Design
   <div class="name">
     Helvetica Neue<br>
     优先字体
   </div>
 </div>
 <div class="demo-typo-box demo-en typo-Helvetica">
-  DBAPPSecurity
+  Rumo Design
   <div class="name">
     Helvetica<br>
     备用文字
   </div>
 </div>
 <div class="demo-typo-box demo-en typo-Arial">
-  DBAPPSecurity
+  Rumo Design
   <div class="name">
     Arial<br>
     次级备用文字

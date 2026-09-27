@@ -40,13 +40,13 @@ Vue.use(RumoUI)
 #### <strong>安装工具</strong>
 首先安装「主题生成工具」，可以全局安装或者安装在当前项目下，推荐安装在项目里，方便别人 clone 项目时能直接安装依赖并启动，这里以全局安装做演示。
 ```shell
-npm i cutui-theme -g
+npm i rumo-theme -g
 ```
 
 安装白垩主题，可以从 npm 安装或者从 GitHub 拉取最新代码。
 ```shell
 # 从 npm
-npm i cutui-theme-chalk -D
+npm i rumo-theme-chalk -D
 
 # 从 GitHub
 npm i https://github.com/RumoUI/theme-chalk -D

@@ -25,15 +25,15 @@
 :::demo
 ```html
 <div class="demo-typo-box demo-en typo-Segoe-UI">
-  DBAPPSecurity
+  Rumo Design
   <div class="name">Segoe UI</div>
 </div>
 <div class="demo-typo-box demo-en typo-Roboto">
-  DBAPPSecurity
+  Rumo Design
   <div class="name">Roboto</div>
 </div>
 <div class="demo-typo-box demo-en typo-Helvetica-neue">
-  DBAPPSecurity
+  Rumo Design
   <div class="name">Helvetica Neue</div>
 </div>
 ```
