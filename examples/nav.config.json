@@ -85,6 +85,10 @@
               "title": "Radio 单选框"
             },
             {
+              "path": "/segmented",
+              "title": "Segmented 分段控制器"
+            },
+            {
               "path": "/checkbox",
               "title": "Checkbox 多选框"
             },
@@ -158,6 +162,10 @@
               "title": "Tag 标签"
             },
             {
+              "path": "/check-tag",
+              "title": "CheckTag 可选标签"
+            },
+            {
               "path": "/progress",
               "title": "Progress 进度条"
             },
@@ -176,6 +184,34 @@
             {
               "path": "/avatar",
               "title": "Avatar 头像"
+            },
+            {
+              "path": "/avatar-group",
+              "title": "AvatarGroup 头像组"
+            },
+            {
+              "path": "/skeleton",
+              "title": "Skeleton 骨架屏"
+            },
+            {
+              "path": "/skeleton-item",
+              "title": "SkeletonItem 骨架项"
+            },
+            {
+              "path": "/descriptions",
+              "title": "Descriptions 描述列表"
+            },
+            {
+              "path": "/descriptions-item",
+              "title": "DescriptionsItem 描述项"
+            },
+            {
+              "path": "/statistic",
+              "title": "Statistic 统计数值"
+            },
+            {
+              "path": "/countdown",
+              "title": "Countdown 倒计时"
             },
             {
               "path": "/empty",
@@ -395,6 +431,10 @@
               "title": "Radio"
             },
             {
+              "path": "/segmented",
+              "title": "Segmented"
+            },
+            {
               "path": "/checkbox",
               "title": "Checkbox"
             },
@@ -468,6 +508,10 @@
               "title": "Tag"
             },
             {
+              "path": "/check-tag",
+              "title": "CheckTag"
+            },
+            {
               "path": "/progress",
               "title": "Progress"
             },
@@ -486,6 +530,34 @@
             {
               "path": "/avatar",
               "title": "Avatar"
+            },
+            {
+              "path": "/avatar-group",
+              "title": "AvatarGroup"
+            },
+            {
+              "path": "/skeleton",
+              "title": "Skeleton"
+            },
+            {
+              "path": "/skeleton-item",
+              "title": "SkeletonItem"
+            },
+            {
+              "path": "/descriptions",
+              "title": "Descriptions"
+            },
+            {
+              "path": "/descriptions-item",
+              "title": "DescriptionsItem"
+            },
+            {
+              "path": "/statistic",
+              "title": "Statistic"
+            },
+            {
+              "path": "/countdown",
+              "title": "Countdown"
             },
             {
               "path": "/result",

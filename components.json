@@ -87,5 +87,14 @@
   "space": "./packages/space/index.js",
   "watermark": "./packages/watermark/index.js",
   "text": "./packages/text/index.js",
-  "result": "./packages/result/index.js"
+  "result": "./packages/result/index.js",
+  "segmented": "./packages/segmented/index.js",
+  "check-tag": "./packages/check-tag/index.js",
+  "skeleton": "./packages/skeleton/index.js",
+  "skeleton-item": "./packages/skeleton-item/index.js",
+  "descriptions": "./packages/descriptions/index.js",
+  "descriptions-item": "./packages/descriptions-item/index.js",
+  "statistic": "./packages/statistic/index.js",
+  "countdown": "./packages/countdown/index.js",
+  "avatar-group": "./packages/avatar-group/index.js"
 }

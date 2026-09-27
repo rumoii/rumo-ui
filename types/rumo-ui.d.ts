@@ -85,6 +85,15 @@ import { RumoAvatar } from './avatar'
 import { RumoWatermark } from './watermark'
 import { RumoText } from './text'
 import { RumoResult } from './result'
+import { RumoSegmented } from './segmented'
+import { RumoCheckTag } from './check-tag'
+import { RumoSkeleton } from './skeleton'
+import { RumoSkeletonItem } from './skeleton-item'
+import { RumoDescriptions } from './descriptions'
+import { RumoDescriptionsItem } from './descriptions-item'
+import { RumoStatistic } from './statistic'
+import { RumoCountdown } from './countdown'
+import { RumoAvatarGroup } from './avatar-group'
 
 export interface InstallationOptions {
   locale: any,
@@ -360,3 +369,30 @@ export class Text extends RumoText {}
 
 /** Result Component */
 export class Result extends RumoResult {}
+
+/** Segmented Component */
+export class Segmented extends RumoSegmented {}
+
+/** CheckTag Component */
+export class CheckTag extends RumoCheckTag {}
+
+/** Skeleton Component */
+export class Skeleton extends RumoSkeleton {}
+
+/** SkeletonItem Component */
+export class SkeletonItem extends RumoSkeletonItem {}
+
+/** Descriptions Component */
+export class Descriptions extends RumoDescriptions {}
+
+/** DescriptionsItem Component */
+export class DescriptionsItem extends RumoDescriptionsItem {}
+
+/** Statistic Component */
+export class Statistic extends RumoStatistic {}
+
+/** Countdown Component */
+export class Countdown extends RumoCountdown {}
+
+/** AvatarGroup Component */
+export class AvatarGroup extends RumoAvatarGroup {}

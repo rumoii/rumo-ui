@@ -1,0 +1,17 @@
+// Derived from element-plus/packages/theme-chalk/src/descriptions.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@include b(descriptions) {
+  box-sizing: border-box; color: $--color-text-primary; font-size: $--font-size-base;
+  @include e(header) { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  @include e(title) { font-weight: bold; font-size: 16px; }
+  @include e(body) { width: 100%; }
+  @include e(table) { width: 100%; border-collapse: collapse;
+    &.is-bordered .rumo-descriptions__cell { border: 1px solid $--border-color-lighter; padding: 8px 11px; }
+  }
+  @include e(cell) { box-sizing: border-box; text-align: left; padding-bottom: 12px; line-height: 23px;
+    &.is-center { text-align: center; } &.is-right { text-align: right; }
+  }
+  @include m(small) { .rumo-descriptions__cell { font-size: 12px; padding-bottom: 8px; } .rumo-descriptions__table.is-bordered .rumo-descriptions__cell { padding: 4px 7px; } }
+  @include m(large) { .rumo-descriptions__cell { padding-bottom: 16px; } .rumo-descriptions__table.is-bordered .rumo-descriptions__cell { padding: 12px 15px; } }
+}

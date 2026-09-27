@@ -89,6 +89,15 @@ import Space from '../packages/space/index.js';
 import Watermark from '../packages/watermark/index.js';
 import Text from '../packages/text/index.js';
 import Result from '../packages/result/index.js';
+import Segmented from '../packages/segmented/index.js';
+import CheckTag from '../packages/check-tag/index.js';
+import Skeleton from '../packages/skeleton/index.js';
+import SkeletonItem from '../packages/skeleton-item/index.js';
+import Descriptions from '../packages/descriptions/index.js';
+import DescriptionsItem from '../packages/descriptions-item/index.js';
+import Statistic from '../packages/statistic/index.js';
+import Countdown from '../packages/countdown/index.js';
+import AvatarGroup from '../packages/avatar-group/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -177,6 +186,15 @@ const components = [
   Watermark,
   Text,
   Result,
+  Segmented,
+  CheckTag,
+  Skeleton,
+  SkeletonItem,
+  Descriptions,
+  DescriptionsItem,
+  Statistic,
+  Countdown,
+  AvatarGroup,
   CollapseTransition
 ];
 
@@ -315,5 +333,14 @@ export default {
   Space,
   Watermark,
   Text,
-  Result
+  Result,
+  Segmented,
+  CheckTag,
+  Skeleton,
+  SkeletonItem,
+  Descriptions,
+  DescriptionsItem,
+  Statistic,
+  Countdown,
+  AvatarGroup
 };

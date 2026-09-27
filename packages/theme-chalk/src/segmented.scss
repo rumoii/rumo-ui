@@ -1,0 +1,19 @@
+// Derived from element-plus/packages/theme-chalk/src/segmented.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@include b(segmented) {
+  display: inline-flex; padding: 2px; background: $--color-primary-light-9; border-radius: $--border-radius-base; box-sizing: border-box;
+  @include e(group) { display: flex; position: relative; width: 100%; }
+  @include e(item-selected) { position: absolute; top: 0; left: 0; background: $--color-white; border-radius: $--border-radius-base; box-shadow: 0 1px 3px rgba(0, 0, 0, .12); transition: transform .2s, width .2s, height .2s; pointer-events: none; }
+  @include e(item) { position: relative; display: flex; align-items: center; flex: 1; padding: 8px 12px; cursor: pointer; color: $--color-text-regular; z-index: 1;
+    @include when(selected) { color: $--color-primary; }
+    @include when(disabled) { cursor: not-allowed; color: $--color-text-placeholder; }
+    &:focus-within { outline: 2px solid $--color-primary; outline-offset: -2px; }
+  }
+  @include e(item-input) { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  @include e(item-label) { width: 100%; text-align: center; white-space: nowrap; }
+  @include m(vertical) { .rumo-segmented__group { flex-direction: column; } }
+  @include m(small) { .rumo-segmented__item { padding: 5px 8px; font-size: 12px; } }
+  @include m(large) { .rumo-segmented__item { padding: 11px 14px; font-size: 16px; } }
+  @include when(block) { display: flex; }
+}

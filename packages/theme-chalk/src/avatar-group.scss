@@ -1,0 +1,9 @@
+// Derived from element-plus/packages/theme-chalk/src/avatar-group.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@include b(avatar-group) {
+  display: inline-flex; align-items: center;
+  .rumo-avatar { border: 1px solid $--border-color-extra-light; box-sizing: border-box; }
+  > .rumo-avatar:not(:first-child), > .rumo-tooltip:not(:first-child) { margin-left: -8px; }
+  @include e(collapse-avatars) { display: flex; align-items: center; .rumo-avatar:not(:first-child) { margin-left: -8px; } }
+}

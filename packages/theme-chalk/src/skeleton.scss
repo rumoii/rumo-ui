@@ -1,0 +1,10 @@
+// Derived from element-plus/packages/theme-chalk/src/skeleton.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@keyframes rumo-skeleton-loading { from { background-position: 100% 50%; } to { background-position: 0 50%; } }
+@include b(skeleton) {
+  width: 100%;
+  @include e(section) { margin-bottom: 16px; }
+  @include when(animated) { .rumo-skeleton__item { background: linear-gradient(90deg, $--background-color-base 25%, $--background-color-dark 37%, $--background-color-base 63%); background-size: 400% 100%; animation: rumo-skeleton-loading 1.4s ease infinite; } }
+  @media (prefers-reduced-motion: reduce) { &.is-animated .rumo-skeleton__item { animation: none; } }
+}

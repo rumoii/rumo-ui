@@ -1,0 +1,14 @@
+// Derived from element-plus/packages/theme-chalk/src/check-tag.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@include b(check-tag) {
+  display: inline-block; padding: 7px 15px; border-radius: $--border-radius-base;
+  color: $--color-info; background: $--color-info-lighter; cursor: pointer; font-weight: 600;
+  &:hover { background: $--color-primary-light-7; }
+  &:focus { outline: 2px solid $--color-primary; outline-offset: 2px; }
+  @include when(checked) { color: $--color-primary; background: $--color-primary-light-8; }
+  @include when(disabled) { color: $--color-text-placeholder; cursor: not-allowed; opacity: .6; }
+  @each $type in (success, info, warning, danger) {
+    @include m($type) { &.is-checked { color: map-get((success: $--color-success, info: $--color-info, warning: $--color-warning, danger: $--color-danger), $type); } }
+  }
+}

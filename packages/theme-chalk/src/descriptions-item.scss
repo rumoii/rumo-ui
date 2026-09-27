@@ -1,0 +1,10 @@
+// Derived from element-plus/packages/theme-chalk/src/descriptions-item.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@include b(descriptions) {
+  @include e(label) { color: $--color-text-primary; margin-right: 16px; font-weight: 600;
+    &.is-bordered-label { background: $--color-primary-light-9; color: $--color-text-regular; }
+    &.is-vertical-label { padding-bottom: 6px; }
+  }
+  @include e(content) { color: $--color-text-regular; }
+}

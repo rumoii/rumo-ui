@@ -1,0 +1,15 @@
+// Derived from element-plus/packages/theme-chalk/src/skeleton-item.scss (MIT) — https://github.com/element-plus/element-plus @92d3e8fb383c338eab1c0b3afd3ad33bf18032e1
+@import "mixins/mixins";
+@import "common/var";
+@include b(skeleton) {
+  @include e(item) { display: inline-block; width: 100%; height: 16px; background: $--background-color-base; border-radius: $--border-radius-base; }
+  @include e(p) { display: block; margin-top: 16px; &.is-first { width: 33%; } &.is-last { width: 61%; } }
+  @include e(circle) { width: 48px; height: 48px; border-radius: 50%; }
+  @include e(rect) { width: 100%; height: 100px; }
+  @include e(button) { width: 64px; height: 40px; }
+  @include e(h1) { height: 24px; }
+  @include e(h3) { height: 18px; }
+  @include e(text) { height: 14px; }
+  @include e(caption) { height: 12px; }
+  @include e(image) { display: flex; align-items: center; justify-content: center; width: 100%; height: 100px; }
+}
