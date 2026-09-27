@@ -8,8 +8,8 @@
       "tooltip-text": "前往 jsfiddle.net 运行此示例"
     },
     "header": {
-      "guide": "指南",
-      "components": "组件",
+      "guide": "查看指南",
+      "components": "查看组件",
       "resource": "资源"
     },
     "nav": {
@@ -25,8 +25,8 @@
       "tooltip-text": "Run this demo on jsfiddle.net"
     },
     "header": {
-      "guide": "Guide",
-      "components": "Component",
+      "guide": "View Guide",
+      "components": "View Components",
       "resource": "Resource"
     },
     "nav": {

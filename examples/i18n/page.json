@@ -4,6 +4,7 @@
     "pages": {
       "index": {
         "1": "Rumo UI",
+        "cta": "让我们开始吧",
         "2": "在产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，给设计师和工程师带来很多困扰和重复建设，大大降低了产品的研发效率。我们经过大量的项目实践和总结，沉淀出一个设计语言 Rumo Design。旨在统一项目的前端 UI 设计，屏蔽不必要的设计差异和实现成本，解放设计和前端的研发资源。",
         "3": "在产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，给设计师和工程师带来很多困扰和重复建设，大大降低了产品的研发效率。我们经过大量的项目实践和总结，沉淀出一个设计语言 Rumo Design。旨在统一项目的前端 UI 设计，屏蔽不必要的设计差异和实现成本，解放设计和前端的研发资源。",
         "4": "指南",
@@ -97,6 +98,7 @@
     "pages": {
       "index": {
         "1": "Rumo UI",
+        "cta": "Get Started",
         "2": "In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development. After massive project practice and summaries, Rumo Design, a design language for background applications, is refined by the rumo team, which aims to uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources of design and front-end development.",
         "3": "Rumo Design which is specially created for internal desktop applications, is committed to improving the experience of users and product designers. User interface designers and user experience designers, collectively, are considered as product designers, and the boundaries of product managers, interaction designers, visual designers, front-end developers and develop engineers are blurred. Taking advantage of unitary specifications, Rumo Design makes design and prototype more simple and accessible for all project members, which comprehensively promotes experience and development efficiency of background applications and products.",
         "4": "Guide",

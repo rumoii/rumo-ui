@@ -90,6 +90,7 @@
     font-weight: 600;
     color: #856AF9;
     display: inline-block;
+    white-space: nowrap;
   }
 
   .nav-logo-small {
@@ -137,24 +138,26 @@
 
     a {
       text-decoration: none;
-      color: #888;
-      display: block;
-      padding: 0 22px;
+      color: #856AF9;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 6px 16px;
+      margin: 0 6px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 500;
+      background: rgba(133, 106, 249, .1);
+      transition: all .2s;
 
-      &.active,
       &:hover {
-        color: #333;
+        color: #856AF9;
+        background: rgba(133, 106, 249, .2);
       }
 
-      &.active::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        bottom: 15px;
-        left: calc(50% - 7px);
-        width: 14px;
-        height: 4px;
-        background: #409eff;
+      &.active {
+        color: #fff;
+        background: #856AF9;
       }
     }
   }

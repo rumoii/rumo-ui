@@ -19,6 +19,23 @@
       margin: 10px 0 5px;
     }
   }
+  .banner-cta {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 48px;
+    background: #856AF9;
+    color: #fff;
+    border-radius: 22px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all .2s;
+
+    &:hover {
+      background: #6d54e0;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(133, 106, 249, .35);
+    }
+  }
   .sponsor {
     margin: 0 auto 50px;
     display: flex;
@@ -265,6 +282,7 @@
         <h1><%= 1 ></h1>
         <p><%= 2 ></p>
         <p><%= 3 ></p>
+        <router-link class="banner-cta" :to="`/${lang}/component`"><%= cta ></router-link>
       </div>
     </div>
     <div class="jumbotron">
@@ -291,6 +309,11 @@
   import { Hover } from 'perspective.js';
 
   export default {
+    computed: {
+      lang() {
+        return this.$route.path.split('/')[1] || 'zh-CN';
+      }
+    },
     mounted() {
       new Hover('.jumbotron', { // eslint-disable-line
         max: 3,
