@@ -371,6 +371,10 @@
             {
               "path": "/scroll-reveal",
               "title": "ScrollReveal 滚动显现"
+            },
+            {
+              "path": "/svg-icon",
+              "title": "SvgIcon 矢量图标"
             }
           ]
         }
@@ -737,6 +741,10 @@
             {
               "path": "/scroll-reveal",
               "title": "ScrollReveal"
+            },
+            {
+              "path": "/svg-icon",
+              "title": "SvgIcon"
             }
           ]
         }

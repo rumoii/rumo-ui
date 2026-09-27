@@ -1,0 +1,8 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(svg-icon) {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}

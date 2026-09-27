@@ -101,6 +101,7 @@ import { RumoQr } from './qr'
 import { RumoAnimate } from './animate'
 import { RumoCountup } from './countup'
 import { RumoScrollReveal } from './scroll-reveal'
+import { RumoSvgIcon } from './svg-icon'
 
 export interface InstallationOptions {
   locale: any,
@@ -424,3 +425,6 @@ export class Countup extends RumoCountup {}
 
 /** ScrollReveal Directive */
 export const ScrollReveal: PluginObject<RumoScrollReveal>;
+
+/** SvgIcon Component */
+export class SvgIcon extends RumoSvgIcon {}

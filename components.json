@@ -103,5 +103,6 @@
   "qr": "./packages/qr/index.js",
   "animate": "./packages/animate/index.js",
   "countup": "./packages/countup/index.js",
-  "scroll-reveal": "./packages/scroll-reveal/index.js"
+  "scroll-reveal": "./packages/scroll-reveal/index.js",
+  "svg-icon": "./packages/svg-icon/index.js"
 }
