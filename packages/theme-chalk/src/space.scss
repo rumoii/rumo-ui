@@ -1,0 +1,25 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(space) {
+  display: inline-flex;
+  vertical-align: top;
+
+  @include e(item) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 1;
+    }
+  }
+
+  @include e(spacer) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include m(vertical) {
+    flex-direction: column;
+  }
+}

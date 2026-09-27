@@ -48,12 +48,20 @@
               "title": "Container 布局容器"
             },
             {
+              "path": "/space",
+              "title": "Space 间距"
+            },
+            {
               "path": "/color",
               "title": "Color 色彩"
             },
             {
               "path": "/typography",
               "title": "Typography 字体"
+            },
+            {
+              "path": "/text",
+              "title": "Text 文本"
             },
             {
               "path": "/icon",
@@ -172,6 +180,10 @@
             {
               "path": "/empty",
               "title": "Empty 空状态"
+            },
+            {
+              "path": "/result",
+              "title": "Result 结果"
             }
           ]
         },
@@ -291,6 +303,10 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
+            },
+            {
+              "path": "/watermark",
+              "title": "Watermark 水印"
             }
           ]
         }
@@ -342,12 +358,20 @@
               "title": "Layout Container"
             },
             {
+              "path": "/space",
+              "title": "Space"
+            },
+            {
               "path": "/color",
               "title": "Color"
             },
             {
               "path": "/typography",
               "title": "Typography"
+            },
+            {
+              "path": "/text",
+              "title": "Text"
             },
             {
               "path": "/icon",
@@ -462,6 +486,10 @@
             {
               "path": "/avatar",
               "title": "Avatar"
+            },
+            {
+              "path": "/result",
+              "title": "Result"
             }
           ]
         },
@@ -577,6 +605,10 @@
             {
               "path": "/drawer",
               "title": "Drawer"
+            },
+            {
+              "path": "/watermark",
+              "title": "Watermark"
             }
           ]
         }

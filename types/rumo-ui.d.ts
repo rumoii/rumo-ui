@@ -81,6 +81,10 @@ import { RumoBacktop } from './backtop'
 import { RumoInfiniteScroll } from './infiniteScroll'
 import { RumoPageHeader } from './page-header'
 import { RumoAvatar } from './avatar'
+import { RumoSpace } from './space'
+import { RumoWatermark } from './watermark'
+import { RumoText } from './text'
+import { RumoResult } from './result'
 
 export interface InstallationOptions {
   locale: any,
@@ -344,3 +348,15 @@ export class PageHeader extends RumoPageHeader {}
 
 /** Avatar Component */
 export class Avatar extends RumoAvatar {}
+
+/** Space Component */
+export class Space extends RumoSpace {}
+
+/** Watermark Component */
+export class Watermark extends RumoWatermark {}
+
+/** Text Component */
+export class Text extends RumoText {}
+
+/** Result Component */
+export class Result extends RumoResult {}

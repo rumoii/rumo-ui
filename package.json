@@ -38,12 +38,16 @@
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",
   "dependencies": {
+    "animejs": "^3.2.2",
     "async-validator": "^4.2.5",
     "babel-helper-vue-jsx-merge-props": "^2.0.0",
+    "countup.js": "^2.10.1",
     "deepmerge": "^1.2.0",
     "normalize-wheel": "^1.0.1",
     "perspective.js": "^1.0.0",
+    "qrcode": "^1.5.4",
     "resize-observer-polyfill": "^1.5.0",
+    "signature_pad": "^4.2.0",
     "throttle-debounce": "^1.0.1",
     "vue-virtual-scroll-list": "^2.3.3"
   },

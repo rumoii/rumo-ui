@@ -1,0 +1,64 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(result) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 40px 30px;
+
+  @include e(icon) {
+    .rumo-icons {
+      font-size: 64px;
+
+      @include when(primary) {
+        color: $--color-primary;
+      }
+
+      @include when(success) {
+        color: $--color-success;
+      }
+
+      @include when(warning) {
+        color: $--color-warning;
+      }
+
+      @include when(error) {
+        color: $--color-danger;
+      }
+
+      @include when(info) {
+        color: $--color-info;
+      }
+    }
+  }
+
+  @include e(title) {
+    margin-top: 20px;
+
+    p {
+      margin: 0;
+      font-size: $--font-size-extra-large;
+      color: $--color-text-primary;
+      line-height: 1.3;
+    }
+  }
+
+  @include e(subtitle) {
+    margin-top: 10px;
+
+    p {
+      margin: 0;
+      font-size: $--font-size-base;
+      color: $--color-text-regular;
+      line-height: 1.3;
+    }
+  }
+
+  @include e(extra) {
+    margin-top: 30px;
+  }
+}

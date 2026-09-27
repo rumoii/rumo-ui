@@ -85,6 +85,10 @@ import CascaderPanel from '../packages/cascader-panel/index.js';
 import Avatar from '../packages/avatar/index.js';
 import Drawer from '../packages/drawer/index.js';
 import Empty from '../packages/empty/index.js';
+import Space from '../packages/space/index.js';
+import Watermark from '../packages/watermark/index.js';
+import Text from '../packages/text/index.js';
+import Result from '../packages/result/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -169,6 +173,10 @@ const components = [
   Avatar,
   Drawer,
   Empty,
+  Space,
+  Watermark,
+  Text,
+  Result,
   CollapseTransition
 ];
 
@@ -303,5 +311,9 @@ export default {
   CascaderPanel,
   Avatar,
   Drawer,
-  Empty
+  Empty,
+  Space,
+  Watermark,
+  Text,
+  Result
 };

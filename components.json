@@ -83,5 +83,9 @@
   "cascader-panel": "./packages/cascader-panel/index.js",
   "avatar": "./packages/avatar/index.js",
   "drawer": "./packages/drawer/index.js",
-  "empty": "./packages/empty/index.js"
+  "empty": "./packages/empty/index.js",
+  "space": "./packages/space/index.js",
+  "watermark": "./packages/watermark/index.js",
+  "text": "./packages/text/index.js",
+  "result": "./packages/result/index.js"
 }
