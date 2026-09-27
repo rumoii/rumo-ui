@@ -94,6 +94,10 @@ import { RumoDescriptionsItem } from './descriptions-item'
 import { RumoStatistic } from './statistic'
 import { RumoCountdown } from './countdown'
 import { RumoAvatarGroup } from './avatar-group'
+import { RumoSplitpanes } from './splitpanes'
+import { RumoSplitPane } from './split-pane'
+import { RumoSignature } from './signature'
+import { RumoQr } from './qr'
 
 export interface InstallationOptions {
   locale: any,
@@ -396,3 +400,15 @@ export class Countdown extends RumoCountdown {}
 
 /** AvatarGroup Component */
 export class AvatarGroup extends RumoAvatarGroup {}
+
+/** Splitpanes Component */
+export class Splitpanes extends RumoSplitpanes {}
+
+/** SplitPane Component */
+export class SplitPane extends RumoSplitPane {}
+
+/** Signature Component */
+export class Signature extends RumoSignature {}
+
+/** Qr Component */
+export class Qr extends RumoQr {}

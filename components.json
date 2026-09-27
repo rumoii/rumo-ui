@@ -96,5 +96,9 @@
   "descriptions-item": "./packages/descriptions-item/index.js",
   "statistic": "./packages/statistic/index.js",
   "countdown": "./packages/countdown/index.js",
-  "avatar-group": "./packages/avatar-group/index.js"
+  "avatar-group": "./packages/avatar-group/index.js",
+  "splitpanes": "./packages/splitpanes/index.js",
+  "split-pane": "./packages/split-pane/index.js",
+  "signature": "./packages/signature/index.js",
+  "qr": "./packages/qr/index.js"
 }

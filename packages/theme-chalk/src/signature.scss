@@ -1,0 +1,16 @@
+// Derived from vue-signature-pad/src/components/VueSignaturePad.vue (MIT) — https://github.com/neighborhood999/vue-signature-pad @0473c2ada300c776a139ac71c7ff6ac819160c48
+// Uses signature_pad@4.2.0 (MIT) — https://github.com/szimek/signature_pad
+@import "mixins/mixins";
+@import "common/var";
+@include b(signature) {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid $--border-color-base;
+  background: $--color-white;
+  @include e(canvas) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+  }
+}

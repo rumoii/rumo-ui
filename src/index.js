@@ -98,6 +98,10 @@ import DescriptionsItem from '../packages/descriptions-item/index.js';
 import Statistic from '../packages/statistic/index.js';
 import Countdown from '../packages/countdown/index.js';
 import AvatarGroup from '../packages/avatar-group/index.js';
+import Splitpanes from '../packages/splitpanes/index.js';
+import SplitPane from '../packages/split-pane/index.js';
+import Signature from '../packages/signature/index.js';
+import Qr from '../packages/qr/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -195,6 +199,10 @@ const components = [
   Statistic,
   Countdown,
   AvatarGroup,
+  Splitpanes,
+  SplitPane,
+  Signature,
+  Qr,
   CollapseTransition
 ];
 
@@ -342,5 +350,9 @@ export default {
   DescriptionsItem,
   Statistic,
   Countdown,
-  AvatarGroup
+  AvatarGroup,
+  Splitpanes,
+  SplitPane,
+  Signature,
+  Qr
 };

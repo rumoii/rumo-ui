@@ -343,6 +343,22 @@
             {
               "path": "/watermark",
               "title": "Watermark 水印"
+            },
+            {
+              "path": "/splitpanes",
+              "title": "Splitpanes 分割面板"
+            },
+            {
+              "path": "/split-pane",
+              "title": "SplitPane 面板"
+            },
+            {
+              "path": "/signature",
+              "title": "Signature 手写签名"
+            },
+            {
+              "path": "/qr",
+              "title": "Qr 二维码"
             }
           ]
         }
@@ -681,6 +697,22 @@
             {
               "path": "/watermark",
               "title": "Watermark"
+            },
+            {
+              "path": "/splitpanes",
+              "title": "Splitpanes"
+            },
+            {
+              "path": "/split-pane",
+              "title": "SplitPane"
+            },
+            {
+              "path": "/signature",
+              "title": "Signature"
+            },
+            {
+              "path": "/qr",
+              "title": "Qr"
             }
           ]
         }

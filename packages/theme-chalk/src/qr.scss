@@ -1,0 +1,8 @@
+// Uses qrcode@1.5.4 (MIT) — https://github.com/soldair/node-qrcode
+@import "mixins/mixins";
+@import "common/var";
+@include b(qr) {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
