@@ -100,5 +100,8 @@
   "splitpanes": "./packages/splitpanes/index.js",
   "split-pane": "./packages/split-pane/index.js",
   "signature": "./packages/signature/index.js",
-  "qr": "./packages/qr/index.js"
+  "qr": "./packages/qr/index.js",
+  "animate": "./packages/animate/index.js",
+  "countup": "./packages/countup/index.js",
+  "scroll-reveal": "./packages/scroll-reveal/index.js"
 }

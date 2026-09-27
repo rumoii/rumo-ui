@@ -102,6 +102,9 @@ import Splitpanes from '../packages/splitpanes/index.js';
 import SplitPane from '../packages/split-pane/index.js';
 import Signature from '../packages/signature/index.js';
 import Qr from '../packages/qr/index.js';
+import Animate from '../packages/animate/index.js';
+import Countup from '../packages/countup/index.js';
+import ScrollReveal from '../packages/scroll-reveal/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -203,6 +206,7 @@ const components = [
   SplitPane,
   Signature,
   Qr,
+  Countup,
   CollapseTransition
 ];
 
@@ -215,6 +219,8 @@ const install = function(Vue, opts = {}) {
   });
 
   Vue.use(InfiniteScroll);
+  Vue.use(Animate);
+  Vue.use(ScrollReveal);
   Vue.use(Loading.directive);
 
   Vue.prototype.$RUMO = {
@@ -354,5 +360,8 @@ export default {
   Splitpanes,
   SplitPane,
   Signature,
-  Qr
+  Qr,
+  Animate,
+  Countup,
+  ScrollReveal
 };

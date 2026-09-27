@@ -1,0 +1,9 @@
+// Uses countup.js@2.10.1 (MIT) — https://github.com/inorganik/countUp.js
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(countup) {
+  display: inline-block;
+  color: $--color-text-primary;
+  font-variant-numeric: tabular-nums;
+}

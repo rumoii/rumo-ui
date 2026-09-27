@@ -1,0 +1,10 @@
+// Uses animejs@3.2.2 (MIT) — https://github.com/juliangarnier/anime
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(animate) {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    transition: none !important;
+  }
+}

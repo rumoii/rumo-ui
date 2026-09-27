@@ -98,6 +98,9 @@ import { RumoSplitpanes } from './splitpanes'
 import { RumoSplitPane } from './split-pane'
 import { RumoSignature } from './signature'
 import { RumoQr } from './qr'
+import { RumoAnimate } from './animate'
+import { RumoCountup } from './countup'
+import { RumoScrollReveal } from './scroll-reveal'
 
 export interface InstallationOptions {
   locale: any,
@@ -412,3 +415,12 @@ export class Signature extends RumoSignature {}
 
 /** Qr Component */
 export class Qr extends RumoQr {}
+
+/** Animate Component */
+export class Animate extends RumoAnimate {}
+
+/** Countup Component */
+export class Countup extends RumoCountup {}
+
+/** ScrollReveal Directive */
+export const ScrollReveal: PluginObject<RumoScrollReveal>;

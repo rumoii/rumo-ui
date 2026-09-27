@@ -1,0 +1,21 @@
+// Derived from AOS(精简重写) (MIT) — https://github.com/michalsnik/aos @329fb34f777034345f4d3f4def4dc3bcc300cc2e
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(scroll-reveal) {
+  opacity: 0;
+  transition: opacity .4s ease, transform .4s ease;
+
+  @include m(fade-up) { transform: translateY(24px); }
+  @include m(fade-down) { transform: translateY(-24px); }
+  @include m(fade-left) { transform: translateX(24px); }
+  @include m(fade-right) { transform: translateX(-24px); }
+  @include m(zoom-in) { transform: scale(.85); }
+  @include when(visible) { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

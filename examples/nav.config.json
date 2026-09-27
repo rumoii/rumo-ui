@@ -210,6 +210,10 @@
               "title": "Statistic 统计数值"
             },
             {
+              "path": "/countup",
+              "title": "Countup 数字滚动"
+            },
+            {
               "path": "/countdown",
               "title": "Countdown 倒计时"
             },
@@ -359,6 +363,14 @@
             {
               "path": "/qr",
               "title": "Qr 二维码"
+            },
+            {
+              "path": "/animate",
+              "title": "Animate 动效"
+            },
+            {
+              "path": "/scroll-reveal",
+              "title": "ScrollReveal 滚动显现"
             }
           ]
         }
@@ -572,6 +584,10 @@
               "title": "Statistic"
             },
             {
+              "path": "/countup",
+              "title": "Countup"
+            },
+            {
               "path": "/countdown",
               "title": "Countdown"
             },
@@ -713,6 +729,14 @@
             {
               "path": "/qr",
               "title": "Qr"
+            },
+            {
+              "path": "/animate",
+              "title": "Animate"
+            },
+            {
+              "path": "/scroll-reveal",
+              "title": "ScrollReveal"
             }
           ]
         }

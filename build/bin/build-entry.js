@@ -28,6 +28,8 @@ const install = function(Vue, opts = {}) {
   });
 
   Vue.use(InfiniteScroll);
+  Vue.use(Animate);
+  Vue.use(ScrollReveal);
   Vue.use(Loading.directive);
 
   Vue.prototype.$RUMO = {
@@ -87,7 +89,7 @@ ComponentNames.forEach(name => {
     package: name
   }));
 
-  if (['Loading', 'MessageBox', 'Notification', 'Message', 'InfiniteScroll'].indexOf(componentName) === -1) {
+  if (['Loading', 'MessageBox', 'Notification', 'Message', 'InfiniteScroll', 'Animate', 'ScrollReveal'].indexOf(componentName) === -1) {
     installTemplate.push(render(INSTALL_COMPONENT_TEMPLATE, {
       name: componentName,
       component: name
