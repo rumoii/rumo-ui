@@ -7,6 +7,7 @@ Design Tokens 机制与 Web 端终端线组件（纯增量，非破坏性）：
 - **基础设施**：Design Tokens 单一主源（`tokens/tokens.json`）经 `scripts/gen-tokens.js` 单向生成 `tokens.scss` 与 `tui/src/tokens/index.ts`，挂入 `build:file` / `build:theme`
 - **终端线组件（2）**：LogViewer 日志查看器（虚拟滚动 + ansi-to-html 轻量 ANSI 解析）、Terminal 交互终端（xterm.js 仿真，`xterm@5.3.0` 与 `xterm-addon-fit@0.8.0` 精确锁定，锁定原因与迁移时机见组件源码注释与文档）
 - **命令面板**：CommandPalette 快捷指令浮层（默认 Ctrl+K 唤起，过滤 / 键盘导航 / 可配置热键与作用域，零新依赖）
+- **仓库内终端工具**：`tui/`（`@rumo/tui-internal`，private 不发 npm）——TypeScript + Ink 实现组件清单检索与 Vue 代码模板导出 CLI（`npm run tui`），含 LogStream / TerminalPrompt / CommandSelect 三个终端组件；非 TTY 自动降级静态输出；共享色走 Design Tokens，依赖与根工程完全隔离
 - **i18n**：locale 缺失键多语言回落链（当前语言 → en → zh-CN）
 - 引擎依赖新增：ansi-to-html、xterm、xterm-addon-fit
 - 来源标注：`NOTICE` 与 `licenses/` 已同步；组件文档 zh-CN / en-US 双语交付

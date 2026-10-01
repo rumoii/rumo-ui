@@ -79,6 +79,8 @@ npm run dev         # 启动文档站（http://localhost:8085）
 npm run build       # 构建产物（lib/）
 ```
 
+**仓库内工具**：`npm run tui` 拉起终端内组件检索 / 代码模板导出工具（`tui/`，`@rumo/tui-internal`，需 Node.js >= 22 与 `npm --prefix tui install`）。纯内部工程化工具，不随 npm 包发布；非 TTY 环境自动降级为静态输出，亦适合 AI Agent 调用。详见 [`tui/README.md`](tui/README.md)。
+
 ## 🌍 浏览器支持
 
 现代 Chrome / Firefox / Edge / Safari（Vue 2 技术栈）。
@@ -101,8 +103,12 @@ Rumo UI 融合了多个优秀开源项目的组件与资产，均在文件头与
 | xterm.js（v5.3.0） | MIT | Web 终端仿真引擎（Terminal 交互终端组件，精确锁定版本） |
 | xterm-addon-fit（v0.8.0） | MIT | xterm 自适应缩放插件 |
 | ansi-to-html | MIT | ANSI 转 HTML（LogViewer 日志查看器） |
+| ink（v7.1.1） | MIT | 终端 UI 渲染引擎（仓库内 `tui/` 工具，不随 npm 包发布） |
+| react（v19.3.0） | MIT | ink 运行时依赖（仓库内 `tui/` 工具，不随 npm 包发布） |
+| @inkjs/ui（v2.0.0） | MIT | ink 组件集（仓库内 `tui/` 工具，不随 npm 包发布） |
+| tsx（v4.23.15） | MIT | TSX 运行时（仓库内 `tui/` 工具的开发期依赖，不随 npm 包发布） |
 
-**许可合规说明**：以上项目均为 MIT / Apache-2.0 宽松许可，与本库 MIT 许可完全兼容。每个移植文件的头部均标注上游项目与版本；根目录 `NOTICE` 为来源索引；`licenses/` 目录保存各上游的完整许可文本。所有合入代码均随副本保留版权与许可声明，**完全符合各上游许可要求**。其中 animejs、countup.js、signature_pad、qrcode、ansi-to-html、xterm、xterm-addon-fit 以 npm 依赖方式引用，未拷贝其源码。
+**许可合规说明**：以上项目均为 MIT / Apache-2.0 宽松许可，与本库 MIT 许可完全兼容。每个移植文件的头部均标注上游项目与版本；根目录 `NOTICE` 为来源索引；`licenses/` 目录保存各上游的完整许可文本。所有合入代码均随副本保留版权与许可声明，**完全符合各上游许可要求**。其中 animejs、countup.js、signature_pad、qrcode、ansi-to-html、xterm、xterm-addon-fit 以 npm 依赖方式引用，未拷贝其源码；ink、react、@inkjs/ui、tsx 为仓库内 `tui/` 工具的本地依赖（`tui/node_modules`），不进入发布包。
 
 ## 🤝 参与贡献
 
