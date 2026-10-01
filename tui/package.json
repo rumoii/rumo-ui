@@ -1,0 +1,32 @@
+{
+  "name": "@rumo/tui-internal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "rumo 仓库内终端原生 TUI 工具(组件检索 / 代码模板导出),不发 npm。",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "rumo-tui": "bin/rumo.js"
+  },
+  "scripts": {
+    "start": "node bin/rumo.js",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/run-all.mjs",
+    "gates": "node scripts/check-gates.mjs"
+  },
+  "dependencies": {
+    "@inkjs/ui": "2.0.0",
+    "ink": "7.1.1",
+    "react": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "@types/react": "19.3.0",
+    "ink-testing-library": "4.0.0",
+    "react-devtools-core": "8.0.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

@@ -21,7 +21,8 @@ selenium-debug.log
 lerna-debug.log
 npm-debug.log.*
 lerna-debug.log.*
-lib
+/lib
+packages/*/lib
 examples/rumo-ui
 examples/pages/en-US
 examples/pages/zh-CN
