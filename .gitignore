@@ -32,3 +32,6 @@ build/bin/algolia-key.js
 .envrc
 .history
 .env
+
+# Qwen CLI local session data
+.qwen/
