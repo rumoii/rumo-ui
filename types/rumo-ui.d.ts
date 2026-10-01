@@ -104,6 +104,7 @@ import { RumoScrollReveal } from './scroll-reveal'
 import { RumoSvgIcon } from './svg-icon'
 import { RumoLogViewer } from './log-viewer'
 import { RumoTerminal } from './terminal'
+import { RumoCommandPalette } from './command-palette'
 
 export interface InstallationOptions {
   locale: any,
@@ -436,3 +437,6 @@ export class LogViewer extends RumoLogViewer {}
 
 /** Terminal Component */
 export class Terminal extends RumoTerminal {}
+
+/** CommandPalette Component */
+export class CommandPalette extends RumoCommandPalette {}

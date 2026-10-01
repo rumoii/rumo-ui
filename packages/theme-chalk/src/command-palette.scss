@@ -1,0 +1,124 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(command-palette) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  box-sizing: border-box;
+
+  @include e(panel) {
+    width: 560px;
+    max-width: 90vw;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $--color-white;
+    border-radius: $--border-radius-base;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+  }
+
+  @include e(search) {
+    flex-shrink: 0;
+    border-bottom: 1px solid $--border-color-lighter;
+  }
+
+  @include e(input) {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: $--color-text-primary;
+    background-color: transparent;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: $--color-text-secondary;
+    }
+  }
+
+  @include e(list) {
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  @include e(item) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    font-size: 14px;
+    color: $--color-text-primary;
+    cursor: pointer;
+    line-height: 1.4;
+
+    &.is-active {
+      background-color: rgba($--color-primary, 0.1);
+      color: $--color-primary;
+    }
+  }
+
+  @include e(icon) {
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.75;
+  }
+
+  @include e(title) {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(category) {
+    flex-shrink: 0;
+    font-size: 12px;
+    color: $--color-text-secondary;
+
+    .is-active & {
+      color: $--color-primary;
+      opacity: 0.8;
+    }
+  }
+
+  @include e(shortcut) {
+    flex-shrink: 0;
+    padding: 1px 6px;
+    font-size: 12px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    color: $--color-text-secondary;
+    background-color: $--background-color-base;
+    border: 1px solid $--border-color-lighter;
+    border-radius: 3px;
+
+    .is-active & {
+      color: $--color-primary;
+      border-color: rgba($--color-primary, 0.4);
+      background-color: rgba($--color-primary, 0.08);
+    }
+  }
+
+  @include e(empty) {
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 13px;
+    color: $--color-text-secondary;
+  }
+}

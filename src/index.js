@@ -108,6 +108,7 @@ import ScrollReveal from '../packages/scroll-reveal/index.js';
 import SvgIcon from '../packages/svg-icon/index.js';
 import LogViewer from '../packages/log-viewer/index.js';
 import Terminal from '../packages/terminal/index.js';
+import CommandPalette from '../packages/command-palette/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -213,6 +214,7 @@ const components = [
   SvgIcon,
   LogViewer,
   Terminal,
+  CommandPalette,
   CollapseTransition
 ];
 
@@ -372,5 +374,6 @@ export default {
   ScrollReveal,
   SvgIcon,
   LogViewer,
-  Terminal
+  Terminal,
+  CommandPalette
 };

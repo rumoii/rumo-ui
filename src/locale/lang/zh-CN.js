@@ -134,6 +134,10 @@ export default {
       fit: '自适应',
       copySuccess: '复制成功',
       emptyText: '终端初始化中...'
+    },
+    commandPalette: {
+      placeholder: '键入指令或搜索...',
+      empty: '无匹配指令'
     }
   }
 };

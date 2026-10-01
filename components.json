@@ -106,5 +106,6 @@
   "scroll-reveal": "./packages/scroll-reveal/index.js",
   "svg-icon": "./packages/svg-icon/index.js",
   "log-viewer": "./packages/log-viewer/index.js",
-  "terminal": "./packages/terminal/index.js"
+  "terminal": "./packages/terminal/index.js",
+  "command-palette": "./packages/command-palette/index.js"
 }

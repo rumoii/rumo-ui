@@ -383,6 +383,10 @@
             {
               "path": "/terminal",
               "title": "Terminal 终端模拟器"
+            },
+            {
+              "path": "/command-palette",
+              "title": "CommandPalette 命令面板"
             }
           ]
         }
@@ -761,6 +765,10 @@
             {
               "path": "/terminal",
               "title": "Terminal"
+            },
+            {
+              "path": "/command-palette",
+              "title": "CommandPalette"
             }
           ]
         }

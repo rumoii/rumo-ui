@@ -125,6 +125,10 @@ export default {
       fit: 'Fit',
       copySuccess: 'Copied',
       emptyText: 'Initializing terminal...'
+    },
+    commandPalette: {
+      placeholder: 'Type a command or search...',
+      empty: 'No matching commands'
     }
   }
 };
