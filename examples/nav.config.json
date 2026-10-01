@@ -379,6 +379,10 @@
             {
               "path": "/log-viewer",
               "title": "LogViewer 日志查看器"
+            },
+            {
+              "path": "/terminal",
+              "title": "Terminal 终端模拟器"
             }
           ]
         }
@@ -753,6 +757,10 @@
             {
               "path": "/log-viewer",
               "title": "LogViewer"
+            },
+            {
+              "path": "/terminal",
+              "title": "Terminal"
             }
           ]
         }

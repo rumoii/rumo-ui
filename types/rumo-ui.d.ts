@@ -103,6 +103,7 @@ import { RumoCountup } from './countup'
 import { RumoScrollReveal } from './scroll-reveal'
 import { RumoSvgIcon } from './svg-icon'
 import { RumoLogViewer } from './log-viewer'
+import { RumoTerminal } from './terminal'
 
 export interface InstallationOptions {
   locale: any,
@@ -432,3 +433,6 @@ export class SvgIcon extends RumoSvgIcon {}
 
 /** LogViewer Component */
 export class LogViewer extends RumoLogViewer {}
+
+/** Terminal Component */
+export class Terminal extends RumoTerminal {}

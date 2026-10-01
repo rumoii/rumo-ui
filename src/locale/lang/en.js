@@ -118,6 +118,13 @@ export default {
       copySuccess: 'Copied',
       lines: '({count} lines)',
       emptyText: 'No logs available'
+    },
+    terminal: {
+      copy: 'Copy',
+      clear: 'Clear',
+      fit: 'Fit',
+      copySuccess: 'Copied',
+      emptyText: 'Initializing terminal...'
     }
   }
 };

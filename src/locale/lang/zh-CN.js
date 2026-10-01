@@ -127,6 +127,13 @@ export default {
       copySuccess: '复制成功',
       lines: '({count} 行)',
       emptyText: '暂无日志数据'
+    },
+    terminal: {
+      copy: '复制',
+      clear: '清屏',
+      fit: '自适应',
+      copySuccess: '复制成功',
+      emptyText: '终端初始化中...'
     }
   }
 };

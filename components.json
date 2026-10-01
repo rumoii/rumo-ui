@@ -105,5 +105,6 @@
   "countup": "./packages/countup/index.js",
   "scroll-reveal": "./packages/scroll-reveal/index.js",
   "svg-icon": "./packages/svg-icon/index.js",
-  "log-viewer": "./packages/log-viewer/index.js"
+  "log-viewer": "./packages/log-viewer/index.js",
+  "terminal": "./packages/terminal/index.js"
 }
