@@ -119,6 +119,14 @@ export default {
     },
     empty: {
       description: '暂无数据'
+    },
+    logViewer: {
+      defaultTitle: '日志输出',
+      copy: '复制',
+      clear: '清空',
+      copySuccess: '复制成功',
+      lines: '({count} 行)',
+      emptyText: '暂无日志数据'
     }
   }
 };

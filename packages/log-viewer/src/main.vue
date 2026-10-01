@@ -15,25 +15,25 @@
       <slot name="header">
         <div class="rumo-log-viewer__title">
           <span class="rumo-log-viewer__title-indicator"></span>
-          <span>{{ title || 'Log Output' }}</span>
-          <span v-if="processedLines.length" class="rumo-log-viewer__count">({{ processedLines.length }} lines)</span>
+          <span>{{ displayTitle }}</span>
+          <span v-if="processedLines.length" class="rumo-log-viewer__count">{{ lineCountText }}</span>
         </div>
         <div class="rumo-log-viewer__actions">
           <button
             type="button"
             class="rumo-log-viewer__action-btn"
-            title="Copy logs"
+            :title="copyBtnText"
             @click="handleCopy"
           >
-            Copy
+            {{ copyBtnText }}
           </button>
           <button
             type="button"
             class="rumo-log-viewer__action-btn"
-            title="Clear logs"
+            :title="clearBtnText"
             @click="handleClear"
           >
-            Clear
+            {{ clearBtnText }}
           </button>
         </div>
       </slot>
@@ -56,7 +56,7 @@
       />
       <div v-else class="rumo-log-viewer__empty">
         <slot name="empty">
-          <span>{{ emptyText || 'No logs available' }}</span>
+          <span>{{ displayEmptyText }}</span>
         </slot>
       </div>
     </div>
@@ -67,9 +67,12 @@
 import VirtualList from 'vue-virtual-scroll-list';
 import LogViewerItem from './item.vue';
 import Convert from 'ansi-to-html';
+import Locale from 'rumo-ui/src/mixins/locale';
 
 export default {
   name: 'RumoLogViewer',
+
+  mixins: [Locale],
 
   components: {
     'virtual-list': VirtualList
@@ -134,6 +137,21 @@ export default {
   },
 
   computed: {
+    displayTitle() {
+      return this.title || this.t('rumo.logViewer.defaultTitle');
+    },
+    lineCountText() {
+      return this.t('rumo.logViewer.lines', { count: this.processedLines.length });
+    },
+    copyBtnText() {
+      return this.t('rumo.logViewer.copy');
+    },
+    clearBtnText() {
+      return this.t('rumo.logViewer.clear');
+    },
+    displayEmptyText() {
+      return this.emptyText || this.t('rumo.logViewer.emptyText');
+    },
     hasHeader() {
       return Boolean(this.title || this.$slots.header);
     },
@@ -182,7 +200,7 @@ export default {
     }
   },
 
-  created() {
+  beforeCreate() {
     this.converter = new Convert({
       escapeXML: true,
       newline: false
@@ -208,6 +226,16 @@ export default {
 
       if (!this.ansi) {
         return this.escapeHtml(line);
+      }
+
+      if (!this.lineCache) {
+        this.lineCache = new Map();
+      }
+      if (!this.converter) {
+        this.converter = new Convert({
+          escapeXML: true,
+          newline: false
+        });
       }
 
       // 命中缓存则直接返回

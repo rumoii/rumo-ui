@@ -110,6 +110,14 @@ export default {
       filterPlaceholder: 'Enter keyword', // to be translated
       noCheckedFormat: '{total} items', // to be translated
       hasCheckedFormat: '{checked}/{total} checked' // to be translated
+    },
+    logViewer: {
+      defaultTitle: 'Log Output',
+      copy: 'Copy',
+      clear: 'Clear',
+      copySuccess: 'Copied',
+      lines: '({count} lines)',
+      emptyText: 'No logs available'
     }
   }
 };
