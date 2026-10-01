@@ -36,6 +36,8 @@ export function CodegenView(props: CodegenViewProps): React.ReactElement {
     loadLine,
     '命令:print 打印片段 | export [文件名] 导出 | back 返回清单 | quit 退出'
   ]);
+  // 渲染防御:逐行剥残余 \r(终端会把 \r 当回行首,导致整帧覆写花屏)
+  const displayLines = code.replace(/\r/g, '').split('\n');
 
   const pushLog = (line: string) => setLogLines((ls) => [...ls, line]);
 
@@ -61,17 +63,14 @@ export function CodegenView(props: CodegenViewProps): React.ReactElement {
         height={12}
         overflowY="hidden"
       >
-        {code
-          .split('\n')
-          .slice(0, 10)
-          .map((line, i) => (
-            <Text key={i} wrap="truncate">
-              {line}
-            </Text>
-          ))}
-        {code.split('\n').length > 10 ? (
+        {displayLines.slice(0, 10).map((line, i) => (
+          <Text key={i} wrap="truncate">
+            {line}
+          </Text>
+        ))}
+        {displayLines.length > 10 ? (
           <Text dimColor color="textMuted">
-            {`…(共 ${code.split('\n').length} 行,print/export 查看全量)`}
+            {`…(共 ${displayLines.length} 行,print/export 查看全量)`}
           </Text>
         ) : null}
       </Box>
@@ -85,7 +84,7 @@ export function CodegenView(props: CodegenViewProps): React.ReactElement {
             const [verb, ...rest] = cmd.split(/\s+/);
             if (verb === 'print') {
               pushLog('---- 片段开始 ----');
-              for (const line of code.split('\n')) pushLog(line);
+              for (const line of displayLines) pushLog(line);
               pushLog('---- 片段结束 ----');
               return;
             }

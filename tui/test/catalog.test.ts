@@ -106,6 +106,16 @@ test('真孤儿(全库无示例)仍为占位且标注诚实', () => {
   assert.ok(snip.code.includes('占位模板'));
 });
 
+test('行尾归一化:提取片段字节级无 CR(CRLF 残留会致终端花屏)', () => {
+  for (const id of ['breadcrumb-item', 'checkbox-group', 'button']) {
+    const item = findCatalogItem(id);
+    assert.ok(item, `${id} 应在目录中`);
+    const snip = snippetFor(item);
+    assert.ok(snip.code.includes('rumo-'), `${id} 应为真实片段`);
+    assert.ok(!snip.code.includes('\r'), `${id} 片段不得残留 CR`);
+  }
+});
+
 test('repoRoot 从模块位置定位仓库根(不依赖 cwd)', () => {
   const root = repoRoot();
   assert.ok(fs.existsSync(path.join(root, 'tokens', 'tokens.json')));

@@ -15,7 +15,9 @@ import type { SnippetResult } from './types.js';
 const DEMO_G = /:::demo[^\n]*\r?\n\s*```[ \t]*(?:html|vue)[ \t]*\r?\n([\s\S]*?)```/g;
 
 function clean(code: string): string {
-  return code.replace(/\s+$/, '') + '\n';
+  // 行尾归一化:仓库 md 为 CRLF,残留 \r 会被终端当作"回行首"控制符,
+  // 使 ink 整帧错位覆写(花屏)。提取片段与 export 落盘文件都不带 CR。
+  return code.replace(/\r\n?/g, '\n').replace(/\s+$/, '') + '\n';
 }
 
 /** 文档中全部 :::demo 片段(按出现序) */

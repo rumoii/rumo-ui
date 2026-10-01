@@ -16,6 +16,7 @@ import { FakeStdin, FakeStdout, rawModeRestored, settle } from './helpers/fake-s
 import { CliSession } from '../src/host/lifecycle.js';
 import { renderRoot } from '../src/host/render.js';
 import { CodegenView as CodegenViewRaw } from '../src/views/codegen.js';
+import { findCatalogItem, snippetFor } from '../src/catalog/index.js';
 
 const items = [
   { id: 'button', label: 'Button 按钮', detail: 'Basic' },
@@ -144,4 +145,22 @@ test('lifecycle: teardown 幂等(二次调用 no-op 且退出码稳定)', () => 
   const c2 = s.teardown();
   assert.equal(steps, 1, '步骤只执行一次');
   assert.equal(c1, c2, '退出码稳定');
+});
+
+test('交互: 真实 breadcrumb-item 片段整行渲染(回归 CR 花屏)', async () => {
+  const item = findCatalogItem('breadcrumb-item');
+  assert.ok(item);
+  const snip = snippetFor(item);
+  const inst = render(
+    <CodegenViewRaw item={item} code={snip.code} snippetSource={snip.source} snippetFrom={snip.from} onBack={() => {}} />
+  );
+  await settle();
+  const frame = inst.lastFrame() ?? '';
+  // 整行必须完整出现(CR 花屏时该行会被拦腰截断成碎片)
+  assert.ok(
+    frame.includes(":to=\"{ path: '/' }\">首页</rumo-breadcrumb-item>"),
+    `代码行应完整渲染,实际帧:\n${frame}`
+  );
+  assert.ok(!frame.includes('\r'), '帧文本不得含 CR');
+  inst.unmount();
 });
