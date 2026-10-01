@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.2.0 (2026-10-01)
 
 Design Tokens foundation and Web terminal-line components (purely additive, non-breaking):
 
