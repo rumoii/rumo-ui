@@ -16,11 +16,11 @@ Rumo Design 专为后台应用场景打造，致力于提升用户与产品设�
 
 ## ✨ 特性
 
-- 🧱 **完整的组件体系** —— 106 个组件，覆盖布局 / 表单 / 数据展示 / 导航 / 反馈等场景
+- 🧱 **完整的组件体系** —— 108 个组件，覆盖布局 / 表单 / 数据展示 / 导航 / 反馈等场景
 - 🎨 **融合开源精华** —— 吸收 Element Plus、splitpanes、Tabler Icons 等优秀项目的组件与资产，来源全部标注、许可全部合规
 - 🖼️ **500 个 SVG 图标** —— 内置 Tabler Icons 精选集，分组按需引入
 - 🎬 **动效能力** —— animejs / countUp / 滚动显现三件套，内置 `v-animate`、`v-scroll-reveal` 指令
-- 🔏 **实用增强组件** —— 水印（防删改）、手写签名、二维码、分栏面板
+- 🔏 **实用增强组件** —— 水印（防删改）、手写签名、二维码、分栏面板、日志查看器、交互终端
 - 🎛️ **主题定制** —— theme-chalk SCSS 变量体系，一处换肤
 - 🌐 **中英双语文档站** —— 每个组件含可运行示例与 API 文档
 
@@ -98,8 +98,11 @@ Rumo UI 融合了多个优秀开源项目的组件与资产，均在文件头与
 | countup.js | MIT | 数字滚动 |
 | AOS | MIT | 滚动显现（精简重写，未引入其运行时） |
 | Tabler Icons | MIT | 精选 500 个 SVG 图标（SvgIcon 组件） |
+| xterm.js（v5.3.0） | MIT | Web 终端仿真引擎（Terminal 交互终端组件，精确锁定版本） |
+| xterm-addon-fit（v0.8.0） | MIT | xterm 自适应缩放插件 |
+| ansi-to-html | MIT | ANSI 转 HTML（LogViewer 日志查看器） |
 
-**许可合规说明**：以上项目均为 MIT / Apache-2.0 宽松许可，与本库 MIT 许可完全兼容。每个移植文件的头部均标注上游项目与版本；根目录 `NOTICE` 为来源索引；`licenses/` 目录保存各上游的完整许可文本。所有合入代码均随副本保留版权与许可声明，**完全符合各上游许可要求**。其中 animejs、countup.js、signature_pad、qrcode 以 npm 依赖方式引用，未拷贝其源码。
+**许可合规说明**：以上项目均为 MIT / Apache-2.0 宽松许可，与本库 MIT 许可完全兼容。每个移植文件的头部均标注上游项目与版本；根目录 `NOTICE` 为来源索引；`licenses/` 目录保存各上游的完整许可文本。所有合入代码均随副本保留版权与许可声明，**完全符合各上游许可要求**。其中 animejs、countup.js、signature_pad、qrcode、ansi-to-html、xterm、xterm-addon-fit 以 npm 依赖方式引用，未拷贝其源码。
 
 ## 🤝 参与贡献
 

@@ -8,5 +8,8 @@ This project uses animejs (https://github.com/juliangarnier/anime), licensed und
 This project uses countup.js (https://github.com/inorganik/countUp.js), licensed under the MIT License.
 This project contains code derived from AOS (https://github.com/michalsnik/aos), licensed under the MIT License.
 This project contains code derived from Tabler Icons (https://github.com/tabler/tabler-icons), licensed under the MIT License.
+This project uses xterm.js (https://github.com/xtermjs/xterm), licensed under the MIT License.
+This project uses xterm-addon-fit (https://github.com/xtermjs/xterm-addon-fit), licensed under the MIT License.
+This project uses ansi-to-html (https://github.com/rburns/ansi-to-html), licensed under the MIT License.
 
 Full license texts for the above are preserved in the licenses/ directory.
