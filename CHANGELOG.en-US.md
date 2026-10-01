@@ -6,6 +6,7 @@ Design Tokens foundation and Web terminal-line components (purely additive, non-
 
 - **Infrastructure**: Design Tokens single source of truth (`tokens/tokens.json`) generates `tokens.scss` and `tui/src/tokens/index.ts` one-way via `scripts/gen-tokens.js`, hooked into `build:file` / `build:theme`
 - **Terminal-line components (2)**: LogViewer (virtual scrolling + lightweight ANSI parsing via ansi-to-html), Terminal (xterm.js emulation, exact-pinned `xterm@5.3.0` and `xterm-addon-fit@0.8.0`; pin rationale and migration path in the component source comments and docs)
+- **Command palette**: CommandPalette quick-command overlay (Ctrl+K by default, filtering / keyboard navigation / configurable hotkey and scope, zero new dependencies)
 - **i18n**: multi-language fallback chain for missing locale keys (current language → en → zh-CN)
 - New engine dependencies: ansi-to-html, xterm, xterm-addon-fit
 - Attribution: `NOTICE` and `licenses/` updated accordingly; component docs delivered in both zh-CN and en-US
