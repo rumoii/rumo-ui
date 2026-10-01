@@ -13,17 +13,27 @@ import path from 'node:path';
 export interface CodegenViewProps {
   item: CatalogItem;
   code: string;
+  /** 片段来源(回显口径);缺省按 item.hasDocs 推断 */
+  snippetSource?: 'docs' | 'shared' | 'stub';
+  snippetFrom?: string;
   onBack: () => void;
   /** 导出落盘根(默认 cwd);测试可注入 */
   exportDir?: string;
 }
 
 export function CodegenView(props: CodegenViewProps): React.ReactElement {
-  const { item, code, onBack, exportDir } = props;
+  const { item, code, snippetSource, snippetFrom, onBack, exportDir } = props;
   const { exit } = useExit();
   const [history, setHistory] = useState<string[]>([]);
+  const source = snippetSource ?? (item.hasDocs ? 'docs' : 'stub');
+  const loadLine =
+    source === 'docs'
+      ? `已载入 ${item.label}(${item.docsPath})`
+      : source === 'shared'
+        ? `无独立文档:${item.label} —— 已从 ${snippetFrom ?? '兄弟文档'} 提取共享示例`
+        : `全库无 ${item.id} 示例:占位模板`;
   const [logLines, setLogLines] = useState<string[]>([
-    `已载入 ${item.label}(${item.docsPath})`,
+    loadLine,
     '命令:print 打印片段 | export [文件名] 导出 | back 返回清单 | quit 退出'
   ]);
 

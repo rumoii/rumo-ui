@@ -7,10 +7,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Box, Text, Busy } from '../primitives/index.js';
 import { CommandSelect, LogStream } from '../components/index.js';
 import type { CommandItem } from '../components/index.js';
-import type { CatalogItem } from '../catalog/index.js';
+import type { CatalogItem, SnippetResult } from '../catalog/index.js';
 
 export interface InventoryViewProps {
-  onOpenCodegen: (item: CatalogItem, code: string) => void;
+  onOpenCodegen: (item: CatalogItem, snippet: SnippetResult) => void;
   onBack: () => void;
 }
 
@@ -59,9 +59,11 @@ export function InventoryView(props: InventoryViewProps): React.ReactElement {
           onSelect={(item) => {
             const cat = catalog.find((c) => c.id === item.id);
             if (!cat) return;
-            setLogLines((ls) => [...ls, `选中: ${cat.label} → 代码生成(${cat.hasDocs ? '文档 demo' : '占位模板'})`]);
             void import('../catalog/index.js').then(({ snippetFor }) => {
-              onOpenCodegen(cat, snippetFor(cat).code);
+              const snip = snippetFor(cat);
+              const kind = snip.source === 'docs' ? '文档 demo' : snip.source === 'shared' ? '共享示例' : '占位模板';
+              setLogLines((ls) => [...ls, `选中: ${cat.label} → 代码生成(${kind})`]);
+              onOpenCodegen(cat, snip);
             });
           }}
           onExit={onBack}

@@ -79,6 +79,33 @@ test('目录 id 归一匹配:date-picker 连字符/驼峰均可命中', () => {
   assert.ok(inf.hasDocs, '驼峰文档文件名应被识别');
 });
 
+test('共享回退:checkbox-group 无独立文档,从 checkbox.md 提取含其标签的真实 demo', () => {
+  const item = findCatalogItem('checkbox-group');
+  assert.ok(item, 'checkbox-group 应在目录中');
+  assert.equal(item.hasDocs, false, 'checkbox-group 无独立文档文件');
+  const snip = snippetFor(item);
+  assert.equal(snip.source, 'shared', '应回退兄弟文档');
+  assert.equal(snip.from, 'examples/docs/zh-CN/checkbox.md', '来源应标注 checkbox.md');
+  assert.ok(snip.code.includes('<rumo-checkbox-group'), '提取的 demo 必须含本组件标签');
+  assert.ok(!snip.code.includes('占位模板'), '不应回退到占位');
+});
+
+test('共享回退抽查:radio-group / form-item / menu-item 均拿到含自身标签的真实片段', () => {
+  for (const id of ['radio-group', 'form-item', 'menu-item']) {
+    const item = findCatalogItem(id);
+    assert.ok(item, `${id} 应在目录中`);
+    const snip = snippetFor(item);
+    assert.ok(snip.source !== 'stub', `${id} 不应是占位`);
+    assert.ok(snip.code.includes(`<rumo-${id}`), `${id} 片段应含自身标签`);
+  }
+});
+
+test('真孤儿(全库无示例)仍为占位且标注诚实', () => {
+  const snip = extractSnippet('no-such-comp-zz', 'examples/docs/zh-CN/no-such-comp-zz.md', repoRoot());
+  assert.equal(snip.source, 'stub');
+  assert.ok(snip.code.includes('占位模板'));
+});
+
 test('repoRoot 从模块位置定位仓库根(不依赖 cwd)', () => {
   const root = repoRoot();
   assert.ok(fs.existsSync(path.join(root, 'tokens', 'tokens.json')));

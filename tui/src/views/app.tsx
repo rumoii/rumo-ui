@@ -9,14 +9,14 @@ import { Box, Text, useKeyInput, useExit } from '../primitives/index.js';
 import { TerminalPrompt } from '../components/index.js';
 import { InventoryView } from './inventory.js';
 import { CodegenView } from './codegen.js';
-import type { CatalogItem } from '../catalog/index.js';
+import type { CatalogItem, SnippetResult } from '../catalog/index.js';
 
 type Mode = 'home' | 'inventory' | 'codegen';
 
 export function App(): React.ReactElement {
   const [mode, setMode] = useState<Mode>('home');
   const [history, setHistory] = useState<string[]>([]);
-  const [selected, setSelected] = useState<{ item: CatalogItem; code: string; from: Mode } | null>(null);
+  const [selected, setSelected] = useState<{ item: CatalogItem; snippet: SnippetResult; from: Mode } | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
   const [message, setMessage] = useState('');
   const { exit } = useExit();
@@ -75,7 +75,7 @@ export function App(): React.ReactElement {
                       return;
                     }
                     setMessage('');
-                    setSelected({ item, code: snippetFor(item).code, from: 'home' });
+                    setSelected({ item, snippet: snippetFor(item), from: 'home' });
                     setMode('codegen');
                   });
                   return;
@@ -93,15 +93,21 @@ export function App(): React.ReactElement {
       ) : null}
       {mode === 'inventory' ? (
         <InventoryView
-          onOpenCodegen={(item, code) => {
-            setSelected({ item, code, from: 'inventory' });
+          onOpenCodegen={(item, snippet) => {
+            setSelected({ item, snippet, from: 'inventory' });
             setMode('codegen');
           }}
           onBack={() => setMode('home')}
         />
       ) : null}
       {mode === 'codegen' && selected ? (
-        <CodegenView item={selected.item} code={selected.code} onBack={() => setMode(selected.from)} />
+        <CodegenView
+          item={selected.item}
+          code={selected.snippet.code}
+          snippetSource={selected.snippet.source}
+          snippetFrom={selected.snippet.from}
+          onBack={() => setMode(selected.from)}
+        />
       ) : null}
     </Box>
   );

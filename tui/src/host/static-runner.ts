@@ -114,8 +114,9 @@ export function runStatic(argv: string[]): number {
           return 1;
         }
         const snip = snippetFor(item);
-        if (parsed.json) process.stdout.write(JSON.stringify({ id: item.id, source: snip.source, code: snip.code }, null, 2) + '\n');
-        else process.stdout.write(snip.code);
+        if (parsed.json) {
+          process.stdout.write(JSON.stringify({ id: item.id, source: snip.source, from: snip.from ?? null, code: snip.code }, null, 2) + '\n');
+        } else process.stdout.write(snip.code);
         return 0;
       }
       case 'export': {

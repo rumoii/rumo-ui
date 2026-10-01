@@ -19,6 +19,8 @@ export interface SnippetResult {
   id: string;
   /** 可导出的 Vue 片段文本 */
   code: string;
-  /** 来源:docs(文档首个 :::demo)或 stub(占位模板) */
-  source: 'docs' | 'stub';
+  /** 来源:docs(本组件文档首个 :::demo)/ shared(兄弟文档含本组件标签的 demo)/ stub(占位模板) */
+  source: 'docs' | 'shared' | 'stub';
+  /** shared 档来源文档相对路径(溯源) */
+  from?: string;
 }
