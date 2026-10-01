@@ -106,6 +106,7 @@ import Animate from '../packages/animate/index.js';
 import Countup from '../packages/countup/index.js';
 import ScrollReveal from '../packages/scroll-reveal/index.js';
 import SvgIcon from '../packages/svg-icon/index.js';
+import LogViewer from '../packages/log-viewer/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -209,6 +210,7 @@ const components = [
   Qr,
   Countup,
   SvgIcon,
+  LogViewer,
   CollapseTransition
 ];
 
@@ -366,5 +368,6 @@ export default {
   Animate,
   Countup,
   ScrollReveal,
-  SvgIcon
+  SvgIcon,
+  LogViewer
 };

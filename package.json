@@ -15,8 +15,9 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "build:file": "node build/bin/build-entry.js & node build/bin/i18n.js & node build/bin/version.js",
-    "build:theme": "node build/bin/gen-cssfile && gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
+    "build:tokens": "node scripts/gen-tokens.js",
+    "build:file": "node scripts/gen-tokens.js && node build/bin/build-entry.js & node build/bin/i18n.js & node build/bin/version.js",
+    "build:theme": "node scripts/gen-tokens.js && node build/bin/gen-cssfile && gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",
     "build:utils": "cross-env BABEL_ENV=utils babel src --out-dir lib --ignore src/index.js",
     "build:umd": "node build/bin/build-locale.js",
     "clean": "rimraf lib && rimraf packages/*/lib",
@@ -27,7 +28,8 @@
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run dist",
     "release": "npm run dist",
     "i18n": "node build/bin/i18n.js",
-    "lint": "eslint src/**/* packages/**/* build/**/* --quiet --fix"
+    "lint": "eslint src/**/* packages/**/* build/**/* --quiet --fix",
+    "tui": "node tui/bin/rumo.js"
   },
   "keywords": [
     "ui",
@@ -39,6 +41,7 @@
   "style": "lib/theme-chalk/index.css",
   "dependencies": {
     "animejs": "^3.2.2",
+    "ansi-to-html": "0.7.2",
     "async-validator": "^4.2.5",
     "babel-helper-vue-jsx-merge-props": "^2.0.0",
     "countup.js": "^2.10.1",

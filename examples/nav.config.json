@@ -375,6 +375,10 @@
             {
               "path": "/svg-icon",
               "title": "SvgIcon 矢量图标"
+            },
+            {
+              "path": "/log-viewer",
+              "title": "LogViewer 日志查看器"
             }
           ]
         }
@@ -745,6 +749,10 @@
             {
               "path": "/svg-icon",
               "title": "SvgIcon"
+            },
+            {
+              "path": "/log-viewer",
+              "title": "LogViewer"
             }
           ]
         }

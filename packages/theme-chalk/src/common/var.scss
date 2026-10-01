@@ -11,10 +11,12 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 
 /* Colors
 -------------------------- */
+@import "tokens";
+
 $--color-white: #fff !default;
 $--color-black: #55677d !default;
 
-$--color-primary: #856AF9 !default;
+$--color-primary: $--token-color-primary !default;
 $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* cdb5fb */
 $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* b4a2fd */
 $--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default; /* a68ffc */
@@ -25,10 +27,10 @@ $--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* f2f1ff */
 $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* f8f7ff */
 
-$--color-success: #2ABC80 !default;
-$--color-warning: #FF9c29 !default;
-$--color-danger: #F45757 !default;
-$--color-info: #856AF9 !default;
+$--color-success: $--token-color-success !default;
+$--color-warning: $--token-color-warning !default;
+$--color-danger: $--token-color-danger !default;
+$--color-info: $--token-color-info !default;
 $--color-default: #8090a0 !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
@@ -41,9 +43,9 @@ $--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
 $--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
 $--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
 
-$--color-text-primary: #333333 !default;
-$--color-text-regular: #666666 !default;
-$--color-text-secondary: #999999 !default;
+$--color-text-primary: $--token-color-text-primary !default;
+$--color-text-regular: $--token-color-text-regular !default;
+$--color-text-secondary: $--token-color-text-muted !default;
 $--color-text-placeholder: #cccccc !default;
 $--disabled-color-base: #cccccc !default;
 
