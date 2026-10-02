@@ -274,6 +274,47 @@
 ```
 :::
 
+### Dash Variant
+
+`variant: 'card'` renders the card-style confirm dialog from the dashboard design language (rounded corners, border, soft shadow; cancel/confirm buttons align with the secondary/primary looks); `dark: true` switches to the dark skin. Without `variant` the dialog looks unchanged.
+:::demo
+
+```html
+<template>
+  <rumo-button :plain="true" @click="openCard">Card confirm</rumo-button>
+  <rumo-button :plain="true" @click="openCardDark">Dark card confirm</rumo-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      openCard() {
+        this.$msgbox({
+          title: 'Notice',
+          message: 'Card-style confirm dialog',
+          variant: 'card',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Cancel'
+        });
+      },
+      openCardDark() {
+        this.$msgbox({
+          title: 'Notice',
+          message: 'Dark card-style confirm dialog',
+          variant: 'card',
+          dark: true,
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Cancel'
+        });
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### 全局方法
 
 如果你完整引入了 RumoUI Vue.prototype 添加如下全局方法：$msgbox, $alert, $confirm 和 $prompt。因此在 Vue instance 中可以采用本页面中的方式调用 `MessageBox`。调用参数为：
@@ -323,3 +364,5 @@ import { MessageBox } from 'rumo-ui';
 | inputErrorMessage | 校验未通过时的提示文本 | string | — | 输入的数据不合法! |
 | center | 是否居中布局 | boolean | — | false |
 | roundButton | 是否使用圆角按钮 | boolean | — | false |
+| variant | Dash skin visual variant; `card` renders the card-style dialog | string | card | — |
+| dark | Whether the card variant uses the dark skin | boolean | — | false |

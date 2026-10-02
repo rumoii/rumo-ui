@@ -30,3 +30,19 @@
     padding: $--card-padding;
   }
 }
+
+/* Dash 皮肤:interactive 悬停反馈。
+ * 仅在传入 interactive 时生效,未传时既有渲染路径与样式不变;
+ * padding 由组件内联 style 注入,不走本文件。
+ * 颜色走 --rumo-* 变量(hex 兜底保证脱离 .rumo-dash 作用域也可用);
+ * 暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(card) {
+  &.is-interactive {
+    transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+
+    &:hover {
+      border-color: var(--rumo-c-neutral-300, #c2c7d5);
+      box-shadow: var(--rumo-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+    }
+  }
+}

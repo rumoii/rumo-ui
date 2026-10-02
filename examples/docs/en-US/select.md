@@ -538,6 +538,48 @@
 如果 Select 的绑定值为对象类型，请务必指定 `value-key` 作为它的唯一性标识。
 :::
 
+### Searchable empty state and clearable
+
+Searchable + empty-state copy + clearable combined. `empty-text` shows custom empty copy when filtering finds no match (without it the default empty illustration stays); under a `.rumo-dash` wrapper the clear icon gets an accent hover highlight — show timing and clear behavior are unchanged.
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-select
+    v-model="value11"
+    filterable
+    clearable
+    empty-text="No matching options"
+    placeholder="Select (searchable)">
+    <rumo-option
+      v-for="item in options6"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </rumo-option>
+  </rumo-select>
+</div>
+<script>
+  export default {
+    data() {
+      return {
+        options6: [{
+          value: 'HTML',
+          label: 'HTML'
+        }, {
+          value: 'CSS',
+          label: 'CSS'
+        }, {
+          value: 'JavaScript',
+          label: 'JavaScript'
+        }],
+        value11: ''
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### Select Attributes 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -559,6 +601,7 @@
 | loading-text | 远程加载时显示的文字 | string | — | 加载中 |
 | no-match-text | 搜索条件无匹配时显示的文字 | string | — | 无匹配数据 |
 | no-data-text | 选项为空时显示的文字 | string | — | 无数据 |
+| empty-text | Custom empty-state text when filtering finds no match; replaces the default empty illustration when set | string | — | — |
 | popper-class | Select 下拉框的类名 | string | — | — |
 | reserve-keyword | 多选且可搜索时，是否在选中一个选项后保留当前的搜索关键词 | boolean | — | false |
 | default-first-option | 在输入框按下回车，选择第一个匹配项。需配合 `filterable` 或 `remote` 使用 | boolean | - | false |

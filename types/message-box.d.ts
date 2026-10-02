@@ -133,6 +133,12 @@ export interface RumoMessageBoxOptions {
 
   /** Whether to distinguish canceling and closing */
   distinguishCancelAndClose?: boolean
+
+  /** Dash skin visual variant; when set to 'card', renders the card-style dialog */
+  variant?: 'card'
+
+  /** Whether the card variant renders in dark skin */
+  dark?: boolean
 }
 
 export interface RumoMessageBoxShortcutMethod {

@@ -147,10 +147,26 @@ tooltip 内不支持 `router-link` 组件，请使用 `vm.$router.push` 代替�
 tooltip 内不支持 disabled form 元素，参考[MDN](https://developer.mozilla.org/en-US/docs/Web/Events/mouseenter)，请在 disabled form 元素外层添加一层包裹元素。
 :::
 
+### Dash 变体
+
+`effect="card"` 提供看板设计语言的玻璃卡气泡(描边、半透明底、柔阴影)。默认 `dark` / `light` 效果不变。
+:::demo
+```html
+<div class="rumo-dash" style="display: flex; gap: 16px;">
+  <rumo-tooltip content="玻璃卡提示" placement="top" effect="card">
+    <rumo-button>悬停查看</rumo-button>
+  </rumo-tooltip>
+  <rumo-tooltip content="多行提示&#10;第二行说明文字" placement="bottom" effect="card">
+    <rumo-button>多行内容</rumo-button>
+  </rumo-tooltip>
+</div>
+```
+:::
+
 ### Attributes
 | 参数               | 说明                                                     | 类型              | 可选值      | 默认值 |
 |--------------------|----------------------------------------------------------|-------------------|-------------|--------|
-|  effect        |  默认提供的主题  | String            | dark/light | dark  |
+|  effect        |  默认提供的主题  | String            | dark/light/card | dark  |
 |  content        |  显示的内容，也可以通过 `slot#content` 传入 DOM  | String            | — | — |
 |  placement        |  Tooltip 的出现位置  | String           |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end |  bottom |
 |  value(v-model) |  状态是否可见  | Boolean           | — |  false |

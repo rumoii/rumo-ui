@@ -164,9 +164,74 @@ export default {
 ```
 :::
 
+### Dash Interaction and Padding
+
+`interactive` enables hover feedback (darker border and a weak shadow, 150ms transition); `padding` sets the card body padding — numbers are treated as px, strings are used as-is. Cards are independent information units: **do not nest cards**. Without these props the card looks and behaves exactly as before.
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row :gutter="12">
+    <rumo-col :span="8">
+      <rumo-card interactive>
+        <div class="dash-card-title">Interactive card</div>
+        <div class="dash-card-text">Hover to see the border and shadow feedback</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card interactive>
+        <div class="dash-card-title">Another card</div>
+        <div class="dash-card-text">Shown side by side — do not nest them</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card interactive>
+        <div class="dash-card-title">Third card</div>
+        <div class="dash-card-text">Keep information units clearly bounded</div>
+      </rumo-card>
+    </rumo-col>
+  </rumo-row>
+  <rumo-row :gutter="12" style="margin-top: 12px;">
+    <rumo-col :span="8">
+      <rumo-card :padding="12">
+        <div class="dash-card-title">padding=12</div>
+        <div class="dash-card-text">Numbers are interpreted as px</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card padding="24px">
+        <div class="dash-card-title">padding=24px</div>
+        <div class="dash-card-text">Strings are applied as-is</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card :padding="0">
+        <div class="dash-card-title">padding=0</div>
+        <div class="dash-card-text">Compact edge-to-edge content</div>
+      </rumo-card>
+    </rumo-col>
+  </rumo-row>
+</div>
+
+<style>
+  .dash-card-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .dash-card-text {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+</style>
+```
+:::
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | header | 设置 header，也可以通过 `slot#header` 传入 DOM | string| — | — |
 | body-style | 设置 body 的样式| object| — | { padding: '20px' } |
 | shadow | 设置阴影显示时机 | string | always / hover / never | always |
+| padding | Card body padding; numbers are treated as px | string / number | — | — |
+| interactive | Enable hover feedback (darker border and weak shadow) | boolean | — | false |

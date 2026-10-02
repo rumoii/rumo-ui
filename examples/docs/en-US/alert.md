@@ -225,6 +225,46 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 | show-icon | 是否显示图标 | boolean | — | false |
 
 
+### Remember Dismissal
+
+Combine the `close` event with local storage to build a hint bar that never reappears after being dismissed once (the DismissibleHint convention from the dashboard design language).
+:::demo
+```html
+<template>
+  <rumo-alert
+    v-if="!dismissed"
+    title="Notice"
+    type="info"
+    description="Once dismissed, this hint is remembered and will not reappear after a reload."
+    closable
+    @close="dismiss"
+  />
+  <rumo-button v-else size="small" @click="reset">Reset memory</rumo-button>
+</template>
+
+<script>
+  var KEY = 'rumo-alert-demo-dismissed';
+  export default {
+    data: function() {
+      return {
+        dismissed: localStorage.getItem(KEY) === '1'
+      };
+    },
+    methods: {
+      dismiss: function() {
+        localStorage.setItem(KEY, '1');
+        this.dismissed = true;
+      },
+      reset: function() {
+        localStorage.removeItem(KEY);
+        this.dismissed = false;
+      }
+    }
+  };
+</script>
+```
+:::
+
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |

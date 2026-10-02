@@ -1,7 +1,7 @@
 import { RumoUIComponent } from './component'
 import { PopoverPlacement } from './popover'
 
-export type TooltipEffect = 'dark' | 'light'
+export type TooltipEffect = 'dark' | 'light' | 'card'
 
 /** Tooltip Component */
 export declare class RumoTooltip extends RumoUIComponent {

@@ -164,3 +164,19 @@
     margin-bottom: 0 !important;
   }
 }
+
+/* Dash 皮肤:clearable 清除图标的悬停视觉对齐。
+ * 仅在 .rumo-dash 作用域内生效;不改清除图标的出现时机与清除行为。
+ * 颜色走 --rumo-* 变量(hex 兜底保证脱离 .rumo-dash 变量层也可用)。 */
+.rumo-dash {
+  .rumo-select .rumo-input .rumo-select__caret.is-show-close {
+    opacity: 0.55;
+    transition: color 150ms ease-out, background-color 150ms ease-out, opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 1;
+      color: var(--rumo-c-accent, #856af9);
+      background-color: var(--rumo-c-accent-50, #f4f4ff);
+    }
+  }
+}

@@ -147,10 +147,26 @@ tooltip 内不支持 `router-link` 组件，请使用 `vm.$router.push` 代替�
 tooltip 内不支持 disabled form 元素，参考[MDN](https://developer.mozilla.org/en-US/docs/Web/Events/mouseenter)，请在 disabled form 元素外层添加一层包裹元素。
 :::
 
+### Dash Variant
+
+`effect="card"` renders the glass-card tooltip from the dashboard design language (border, translucent background, soft shadow). The default `dark` / `light` effects are unchanged.
+:::demo
+```html
+<div class="rumo-dash" style="display: flex; gap: 16px;">
+  <rumo-tooltip content="Glass card tooltip" placement="top" effect="card">
+    <rumo-button>Hover me</rumo-button>
+  </rumo-tooltip>
+  <rumo-tooltip content="Multi-line tooltip&#10;second line of detail" placement="bottom" effect="card">
+    <rumo-button>Multi-line</rumo-button>
+  </rumo-tooltip>
+</div>
+```
+:::
+
 ### Attributes
 | 参数               | 说明                                                     | 类型              | 可选值      | 默认值 |
 |--------------------|----------------------------------------------------------|-------------------|-------------|--------|
-|  effect        |  默认提供的主题  | String            | dark/light | dark  |
+|  effect        |  默认提供的主题  | String            | dark/light/card | dark  |
 |  content        |  显示的内容，也可以通过 `slot#content` 传入 DOM  | String            | — | — |
 |  placement        |  Tooltip 的出现位置  | String           |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end |  bottom |
 |  value(v-model) |  状态是否可见  | Boolean           | — |  false |

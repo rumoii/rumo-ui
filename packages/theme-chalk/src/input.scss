@@ -75,7 +75,7 @@
     &:focus {
       outline: none;
       outline: unset;
-      border-color: $--input-focus-border;
+      border-color: var(--rumo-c-accent, #856af9);
       box-shadow: $--input-base-focus-box-shadow;
     }
   }
@@ -383,7 +383,7 @@
     &:focus {
       outline: none;
       outline: unset;
-      border-color: $--input-focus-border;
+      border-color: var(--rumo-c-accent, #856af9);
       box-shadow: $--input-base-focus-box-shadow;
     }
   }
@@ -417,6 +417,40 @@
 
     .rumo-input__count {
       color: $--color-danger;
+    }
+  }
+}
+
+/* Dash 皮肤:size=sm 紧凑视觉。
+ * 仅在传入 size="sm" 时生效,未传时既有渲染路径与样式不变;
+ * focus 边框色走 --rumo-c-accent(hex 兜底,与 $--token-color-primary 等值)。
+ * 颜色走 --rumo-* 变量(hex 兜底保证脱离 .rumo-dash 作用域也可用);
+ * 暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(input) {
+  @include m(sm) {
+    font-size: 13px;
+
+    @include e(inner) {
+      height: 28px;
+      padding: 0 8px;
+      border-radius: var(--rumo-radius-md, 8px);
+
+      &:focus {
+        border-color: var(--rumo-c-accent, #856af9);
+        box-shadow: 0 0 0 3px var(--rumo-c-accent-200, #d4d2fe);
+      }
+    }
+
+    &.rumo-input--suffix {
+      .rumo-input__inner {
+        padding-right: 24px;
+      }
+    }
+
+    &.rumo-input--prefix {
+      .rumo-input__inner {
+        padding-left: 24px;
+      }
     }
   }
 }

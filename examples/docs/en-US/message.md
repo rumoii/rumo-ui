@@ -196,6 +196,41 @@
 `message` 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。因此在 `dangerouslyUseHTMLString` 打开的情况下，请确保 `message` 的内容是可信的，**永远不要**将用户提交的内容赋值给 `message` 属性。
 :::
 
+### Dash Variant
+
+`variant: 'card'` renders the card-style message from the dashboard design language (rounded corners, border, soft shadow); `dark: true` switches the card to the dark skin. Without `variant` the message looks unchanged.
+:::demo
+
+```html
+<template>
+  <rumo-button :plain="true" @click="openCard">Card message</rumo-button>
+  <rumo-button :plain="true" @click="openCardDark">Dark card message</rumo-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      openCard() {
+        this.$message({
+          message: 'Card style message',
+          variant: 'card',
+          showClose: true
+        });
+      },
+      openCardDark() {
+        this.$message({
+          message: 'Dark card message',
+          variant: 'card',
+          dark: true,
+          showClose: true
+        });
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### 全局方法
 
 RumoUI 为 Vue.prototype 添加了全局方法 $message。因此在 vue instance 中可以采用本页面中的方式调用 `Message`。
@@ -224,6 +259,8 @@ import { Message } from 'rumo-ui';
 | center | 文字是否居中 | boolean | — | false |
 | onClose | 关闭时的回调函数, 参数为被关闭的 message 实例 | function | — | — |
 | offset | Message 距离窗口顶部的偏移量 | number | — | 20 |
+| variant | Dash skin visual variant; `card` renders the card-style message | string | card | — |
+| dark | Whether the card variant uses the dark skin | boolean | — | false |
 
 ### 方法
 调用 `Message` 或 `this.$message` 会返回当前 Message 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。

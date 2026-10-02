@@ -122,3 +122,85 @@
     color: $--color-text-secondary;
   }
 }
+
+/* Dash 皮肤 variant="dash":面板圆角/描边/柔阴影,条目圆角与中性选中态,
+ * 快捷键徽标与分类标签收敛为中性芯片。仅在 variant="dash" 时生效,默认外观不变。 */
+@include b(command-palette) {
+  &.rumo-command-palette--variant-dash {
+    background-color: rgba(10, 11, 13, 0.4);
+
+    .rumo-command-palette__panel {
+      border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+      border-radius: var(--rumo-radius-xl, 16px);
+      background-color: var(--rumo-c-paper, #f7f8fc);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .rumo-command-palette__search {
+      border-bottom: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    }
+
+    .rumo-command-palette__input {
+      height: 48px;
+      font-size: 14px;
+      color: var(--rumo-c-ink, #0a0b0d);
+
+      &::placeholder {
+        color: var(--rumo-c-neutral-400, #989eaf);
+      }
+    }
+
+    .rumo-command-palette__list {
+      padding: 6px;
+    }
+
+    .rumo-command-palette__item {
+      margin: 2px 0;
+      padding: 8px 12px;
+      border-radius: var(--rumo-radius-md, 8px);
+      font-size: 14px;
+      color: var(--rumo-c-ink, #0a0b0d);
+      transition: background-color 150ms ease-out;
+
+      &.is-active {
+        background-color: var(--rumo-c-neutral-100, #eff2f9);
+        color: var(--rumo-c-ink, #0a0b0d);
+      }
+    }
+
+    .rumo-command-palette__title {
+      font-weight: 500;
+    }
+
+    .rumo-command-palette__category {
+      font-size: 12px;
+      color: var(--rumo-c-neutral-400, #989eaf);
+
+      .is-active & {
+        color: var(--rumo-c-neutral-600, #505564);
+        opacity: 1;
+      }
+    }
+
+    .rumo-command-palette__shortcut {
+      padding: 1px 6px;
+      font-size: 11px;
+      border-radius: 6px;
+      color: var(--rumo-c-neutral-500, #6b7184);
+      background-color: var(--rumo-c-neutral-100, #eff2f9);
+      border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+
+      .is-active & {
+        color: var(--rumo-c-ink, #0a0b0d);
+        border-color: var(--rumo-c-neutral-300, #c2c7d5);
+        background-color: var(--rumo-c-neutral-200, #dadee8);
+      }
+    }
+
+    .rumo-command-palette__empty {
+      padding: 32px 16px;
+      font-size: 14px;
+      color: var(--rumo-c-neutral-500, #6b7184);
+    }
+  }
+}

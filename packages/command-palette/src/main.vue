@@ -2,6 +2,7 @@
   <div
     v-if="visible"
     class="rumo-command-palette"
+    :class="variant ? 'rumo-command-palette--variant-' + variant : ''"
     @click.self="close"
   >
     <div class="rumo-command-palette__panel">
@@ -112,6 +113,10 @@ export default {
     scope: {
       type: [String, Object],
       default: 'global'
+    },
+    variant: {
+      type: String,
+      default: ''
     }
   },
 

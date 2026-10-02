@@ -22,5 +22,11 @@ export declare class RumoCard extends RumoUIComponent {
   /** When to show card shadows */
   shadow: string
 
+  /** Padding of the card body; numbers are treated as px. When unset, bodyStyle / default padding applies */
+  padding: string | number
+
+  /** Enable hover feedback: darker border and weak shadow (150ms transition) */
+  interactive: boolean
+
   $slots: CardSlots
 }

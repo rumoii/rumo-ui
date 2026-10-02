@@ -225,6 +225,46 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 | show-icon | 是否显示图标 | boolean | — | false |
 
 
+### 记住关闭
+
+结合 `close` 事件与本地存储,可实现"关闭一次后不再出现"的提示条(Dash 设计语言中的 DismissibleHint 约定)。
+:::demo
+```html
+<template>
+  <rumo-alert
+    v-if="!dismissed"
+    title="提示"
+    type="info"
+    description="关闭后本条提示将被记住，刷新页面不再出现。"
+    closable
+    @close="dismiss"
+  />
+  <rumo-button v-else size="small" @click="reset">重置记忆</rumo-button>
+</template>
+
+<script>
+  var KEY = 'rumo-alert-demo-dismissed';
+  export default {
+    data: function() {
+      return {
+        dismissed: localStorage.getItem(KEY) === '1'
+      };
+    },
+    methods: {
+      dismiss: function() {
+        localStorage.setItem(KEY, '1');
+        this.dismissed = true;
+      },
+      reset: function() {
+        localStorage.removeItem(KEY);
+        this.dismissed = false;
+      }
+    }
+  };
+</script>
+```
+:::
+
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------- |-------- |---------- |

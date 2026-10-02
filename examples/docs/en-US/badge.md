@@ -113,6 +113,35 @@
 ```
 :::
 
+### Dash Size and Variant
+
+`size="sm"` gives a compact badge (smaller padding and about 11px type); `variant="secondary"` gives a neutral gray, secondary look. `variant` is orthogonal to `type` and overrides the type-based appearance when set; without these props the badge looks exactly as before.
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row>
+    <rumo-badge value="Default" class="item"></rumo-badge>
+    <rumo-badge value="Small" size="sm" class="item"></rumo-badge>
+    <rumo-badge value="Secondary" variant="secondary" class="item"></rumo-badge>
+    <rumo-badge value="Secondary sm" variant="secondary" size="sm" class="item"></rumo-badge>
+  </rumo-row>
+  <rumo-row>
+    <rumo-badge :value="12" class="item"></rumo-badge>
+    <rumo-badge :value="12" size="sm" class="item"></rumo-badge>
+    <rumo-badge :value="12" variant="secondary" class="item"></rumo-badge>
+    <rumo-badge value="99+" variant="secondary" size="sm" class="item"></rumo-badge>
+  </rumo-row>
+</div>
+
+<style>
+  .item {
+    margin-top: 10px;
+    margin-right: 16px;
+  }
+</style>
+```
+:::
+
 ### Attributes
 | 参数          | 说明            | 类型            | 可选值                 | 默认值   |
 |-------------  |---------------- |---------------- |---------------------- |-------- |
@@ -121,3 +150,5 @@
 | is-dot       | 小圆点    | boolean  |  —  |  false |
 | hidden | 隐藏 badge | boolean | — | false |
 | type         | 类型             | string          | primary / success / warning / danger / info |    —    |
+| size | Dash skin badge size; 'sm' gives the compact look (about 11px type) | string | sm | — |
+| variant | Dash skin visual variant, overrides the type-based appearance | string | secondary | — |

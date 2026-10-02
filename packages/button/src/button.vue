@@ -8,6 +8,7 @@
     :class="[
       type ? 'rumo-button--' + type : '',
       buttonSize ? 'rumo-button--' + buttonSize : '',
+      variant ? 'rumo-button--variant-' + variant : '',
       buttonIconOnly ? 'is-icon-only' : '',
       {
         'is-disabled': buttonDisabled,
@@ -57,6 +58,10 @@ export default {
     type: {
       type: String,
       default: 'default'
+    },
+    variant: {
+      type: String,
+      default: ''
     },
     status: String,
     size: String,

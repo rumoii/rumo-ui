@@ -599,6 +599,48 @@
 如果 Select 的绑定值为对象类型，请务必指定 `value-key` 作为它的唯一性标识。
 :::
 
+### 可搜索空态与清空
+
+可搜索 + 无匹配空态文案 + 可清除的组合示例。`empty-text` 在过滤无匹配时展示自定义空态文案(未设置时保持默认空态插画);`clearable` 的清除图标在 `.rumo-dash` 作用域下有悬停高亮,出现时机与清除行为不变。
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-select
+    v-model="value11"
+    filterable
+    clearable
+    empty-text="无匹配选项"
+    placeholder="请选择(可搜索)">
+    <rumo-option
+      v-for="item in options6"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </rumo-option>
+  </rumo-select>
+</div>
+<script>
+  export default {
+    data() {
+      return {
+        options6: [{
+          value: 'HTML',
+          label: 'HTML'
+        }, {
+          value: 'CSS',
+          label: 'CSS'
+        }, {
+          value: 'JavaScript',
+          label: 'JavaScript'
+        }],
+        value11: ''
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### Select Attributes 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -620,6 +662,7 @@
 | loading-text | 远程加载时显示的文字 | string | — | 加载中 |
 | no-match-text | 搜索条件无匹配时显示的文字 | string | — | 无匹配数据 |
 | no-data-text | 选项为空时显示的文字 | string | — | 无数据 |
+| empty-text | 过滤无匹配等空态时显示的文案,设置后替代默认空态插画 | string | — | — |
 | popper-class | Select 下拉框的类名 | string | — | — |
 | reserve-keyword | 多选且可搜索时，是否在选中一个选项后保留当前的搜索关键词 | boolean | — | false |
 | default-first-option | 在输入框按下回车，选择第一个匹配项。需配合 `filterable` 或 `remote` 使用 | boolean | - | false |

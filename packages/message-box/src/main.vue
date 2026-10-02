@@ -17,6 +17,9 @@
           center && 'rumo-message-box--center',
           titleStatus && 'rumo-message-box--title-status',
           type && `rumo-message-box--status`,
+          variant && `rumo-message-box--variant-${variant}`,
+          variant && 'rumo-dash',
+          variant && dark ? 'is-dark' : '',
         ]"
       >
         <div class="rumo-message-box__header" v-if="title !== null">
@@ -82,6 +85,7 @@
           <rumo-button
             :loading="cancelButtonLoading"
             :class="[cancelButtonClasses]"
+            :variant="variant === 'card' ? 'secondary' : ''"
             v-show="showCancelButton"
             :round="roundButton"
             size="small"
@@ -94,6 +98,7 @@
             :loading="confirmButtonLoading"
             ref="confirm"
             :class="[confirmButtonClasses]"
+            :variant="variant === 'card' ? 'primary' : ''"
             v-show="showConfirmButton"
             :round="roundButton"
             size="small"
@@ -379,6 +384,8 @@ export default {
       focusAfterClosed: null,
       isOnComposition: false,
       distinguishCancelAndClose: false,
+      variant: '',
+      dark: false,
     };
   },
 };

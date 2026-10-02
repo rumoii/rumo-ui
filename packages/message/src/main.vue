@@ -4,6 +4,9 @@
         $RUMO.namespaceClass,
         'rumo-message',
         type && !iconClass ? `rumo-message--${ type }` : '',
+        variant ? `rumo-message--variant-${ variant }` : '',
+        variant ? 'rumo-dash' : '',
+        variant && dark ? 'is-dark' : '',
         center ? 'is-center' : '',
         customClass]"
       :style="positionStyle"
@@ -68,6 +71,8 @@ export default {
       timer: null,
       dangerouslyUseHTMLString: false,
       center: false,
+      variant: '',
+      dark: false,
       beforeCloseSlot: ''
     };
   },

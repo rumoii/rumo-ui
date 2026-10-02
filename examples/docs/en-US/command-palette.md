@@ -193,6 +193,38 @@ export default {
 ```
 :::
 
+### Dash Variant
+
+`variant="dash"` applies the dashboard design language: rounded bordered panel with soft shadow, rounded items with neutral selection, and shortcut badges / category labels collapsed into neutral chips. Without `variant` the look is unchanged.
+:::demo
+```html
+<template>
+  <rumo-button size="small" type="primary" @click="visible = true">Open dash variant</rumo-button>
+  <rumo-command-palette
+    v-model="visible"
+    variant="dash"
+    :hotkey="false"
+    :commands="commands"
+  />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      visible: false,
+      commands: [
+        { id: 'overview', title: 'Usage overview', category: 'Dashboard', shortcut: 'G O' },
+        { id: 'trend', title: 'Trend monitor', category: 'Dashboard', shortcut: 'G T' },
+        { id: 'settings', title: 'Open settings', category: 'General', shortcut: 'Ctrl+,' }
+      ]
+    };
+  }
+};
+</script>
+```
+:::
+
 ### Attributes
 
 | Attribute | Description | Type | Options | Default |
@@ -202,6 +234,7 @@ export default {
 | placeholder | Search input placeholder (defaults to i18n) | string | — | Type a command or search... |
 | hotkey | Global combos, comma-separated; `false` disables global listening | string / boolean | — | 'ctrl+k, command+k' |
 | scope | Response scope | string / HTMLElement | 'global' / container selector / DOM | 'global' |
+| variant | Dash skin visual variant; `dash` enables the dashboard look | string | dash | — |
 
 ### Events
 

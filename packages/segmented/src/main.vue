@@ -26,13 +26,13 @@ export default {
     value: [String, Number, Boolean], options: { type: Array, default: () => [] },
     props: { type: Object, default: () => ({}) }, direction: { type: String, default: 'horizontal' },
     block: Boolean, size: String, disabled: Boolean, validateEvent: { type: Boolean, default: true },
-    name: String, ariaLabel: String
+    name: String, ariaLabel: String, variant: { type: String, default: '' }
   },
   data() { return { radioName: this.name || 'rumo-segmented-' + ++nextName, width: 0, height: 0, x: 0, y: 0, ready: false }; },
   computed: {
     segmentedClass() {
       const size = this.size || (this.rumoForm && this.rumoForm.size) || (this.$RUMO && this.$RUMO.size);
-      return [size && 'rumo-segmented--' + size, 'rumo-segmented--' + this.direction, { 'is-block': this.block }];
+      return [size && 'rumo-segmented--' + size, 'rumo-segmented--' + this.direction, this.variant ? 'rumo-segmented--variant-' + this.variant : '', { 'is-block': this.block }];
     },
     selectedStyle() {
       return { width: this.direction === 'vertical' ? '100%' : this.width + 'px',

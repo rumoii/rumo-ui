@@ -295,6 +295,47 @@
 
 :::
 
+### Dash 变体
+
+`variant: 'card'` 提供看板设计语言的卡片式确认框(圆角、描边、柔阴影,取消/确定按钮对齐 secondary/primary 视觉);`dark: true` 时走暗色皮肤。不传 `variant` 时对话框外观不变。
+:::demo
+
+```html
+<template>
+  <rumo-button :plain="true" @click="openCard">卡片式确认框</rumo-button>
+  <rumo-button :plain="true" @click="openCardDark">暗色卡片确认框</rumo-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      openCard() {
+        this.$msgbox({
+          title: '提示',
+          message: '卡片式确认框示例',
+          variant: 'card',
+          showCancelButton: true,
+          confirmButtonText: '确定',
+          cancelButtonText: '取消'
+        });
+      },
+      openCardDark() {
+        this.$msgbox({
+          title: '提示',
+          message: '暗色卡片确认框示例',
+          variant: 'card',
+          dark: true,
+          showCancelButton: true,
+          confirmButtonText: '确定',
+          cancelButtonText: '取消'
+        });
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### 全局方法
 
 如果你完整引入了 RumoUI Vue.prototype 添加如下全局方法：$msgbox, $alert, $confirm 和 $prompt。因此在 Vue instance 中可以采用本页面中的方式调用 `MessageBox`。调用参数为：
@@ -345,3 +386,5 @@ import { MessageBox } from "rumo-ui";
 | inputErrorMessage        | 校验未通过时的提示文本                                                                             | string                                                                                                                                                           | —                                | 输入的数据不合法!                               |
 | center                   | 是否居中布局                                                                                       | boolean                                                                                                                                                          | —                                | false                                           |
 | roundButton              | 是否使用圆角按钮                                                                                   | boolean                                                                                                                                                          | —                                | false                                           |
+| variant                  | Dash 皮肤视觉变体,设置为 `card` 时为卡片式确认框                                                    | string                                                                                                                                                           | card                             | —                                               |
+| dark                     | 卡片变体是否使用暗色皮肤                                                                           | boolean                                                                                                                                                          | —                                | false                                           |

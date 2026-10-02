@@ -13,4 +13,10 @@ export declare class RumoBadge extends RumoUIComponent {
 
   /** Hidden badge */
   hidden: boolean
+
+  /** Dash skin badge size; 'sm' gives the compact look */
+  size: string
+
+  /** Dash skin visual variant; when set to 'secondary', overrides the type-based appearance */
+  variant: string
 }

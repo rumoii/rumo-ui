@@ -57,3 +57,26 @@
     }
   }
 }
+
+/* Dash 皮肤:size=sm 与 variant=secondary。
+ * 仅在传入 size / variant 时生效,未传时既有渲染路径与样式不变;
+ * variant 设置后覆盖 type 外观(与 Button variant 范式一致)。
+ * 颜色走 --rumo-* 变量(hex 兜底保证脱离 .rumo-dash 作用域也可用);
+ * 暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(badge) {
+  @include e(content) {
+    @include m(sm) {
+      height: 16px;
+      line-height: 16px;
+      font-size: var(--rumo-text-label-size, 11px);
+      padding: 0 5px;
+    }
+
+    &.rumo-badge__content--variant-secondary {
+      background-color: var(--rumo-c-neutral-100, #eff2f9);
+      color: var(--rumo-c-neutral-500, #6b7184);
+      border-radius: var(--rumo-radius-md, 8px);
+      border-color: transparent;
+    }
+  }
+}

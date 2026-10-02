@@ -140,3 +140,58 @@
     }
   }
 }
+
+/* Dash 皮肤 effect="card":玻璃卡气泡(描边/半透明底/柔阴影)。
+ * 仅在 effect="card" 时生效,默认 dark/light 效果不变。 */
+@include b(tooltip) {
+  @include e(popper) {
+    &.is-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--rumo-c-neutral-700, #363a45);
+      border-radius: var(--rumo-radius-lg, 12px);
+      padding: 6px 10px;
+      font-size: 11px;
+      line-height: 1.375;
+      box-shadow: var(--rumo-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1));
+
+      .popper__arrow,
+      .popper__arrow::after {
+        border-color: transparent;
+      }
+
+      &[x-placement^="top"] .popper__arrow {
+        border-top-color: var(--rumo-c-neutral-200, #dadee8);
+
+        &::after {
+          border-top-color: rgba(255, 255, 255, 0.92);
+        }
+      }
+
+      &[x-placement^="bottom"] .popper__arrow {
+        border-bottom-color: var(--rumo-c-neutral-200, #dadee8);
+
+        &::after {
+          border-bottom-color: rgba(255, 255, 255, 0.92);
+        }
+      }
+
+      &[x-placement^="left"] .popper__arrow {
+        border-left-color: var(--rumo-c-neutral-200, #dadee8);
+
+        &::after {
+          border-left-color: rgba(255, 255, 255, 0.92);
+        }
+      }
+
+      &[x-placement^="right"] .popper__arrow {
+        border-right-color: var(--rumo-c-neutral-200, #dadee8);
+
+        &::after {
+          border-right-color: rgba(255, 255, 255, 0.92);
+        }
+      }
+    }
+  }
+}

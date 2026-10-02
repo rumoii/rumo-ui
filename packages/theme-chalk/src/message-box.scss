@@ -242,3 +242,36 @@
     opacity: 0;
   }
 }
+
+/* Dash 皮肤 variant-card:确认对话框卡片化(圆角/描边/柔阴影/按钮排布)。
+ * 仅在 variant="card" 时生效,默认对话框样式不变。
+ * 元素自带 rumo-dash 类使 CSS 变量自洽;dark 选项追加 is-dark 切换暗色。 */
+@include b(message-box) {
+  &.rumo-message-box--variant-card {
+    border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    border-radius: var(--rumo-radius-xl, 16px);
+    background-color: var(--rumo-c-paper, #f7f8fc);
+    box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.25);
+
+    .rumo-message-box__title {
+      color: var(--rumo-c-ink, #0a0b0d);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .rumo-message-box__message {
+      color: var(--rumo-c-neutral-600, #505564);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .rumo-message-box__btns {
+      gap: 8px;
+    }
+
+    &.is-dark {
+      border-color: var(--rumo-c-neutral-800, #1f2129);
+      box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.65);
+    }
+  }
+}

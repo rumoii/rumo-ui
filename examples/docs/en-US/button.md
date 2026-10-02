@@ -347,11 +347,39 @@ Button 组件提供除了默认值以外的五种尺寸，可以在不同场景�
 ```
 :::
 
+### Dash Variant
+
+`variant` provides three looks from the dashboard design language: `primary` (near-black main button), `secondary` (outlined, accent on hover) and `ghost` (transparent, accent on hover). It is orthogonal to `type` and overrides the type-based appearance when set; without it, the button looks and behaves exactly as before.
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row>
+    <rumo-button variant="primary">Primary</rumo-button>
+    <rumo-button variant="secondary">Secondary</rumo-button>
+    <rumo-button variant="ghost">Ghost</rumo-button>
+  </rumo-row>
+  <rumo-row>
+    <rumo-button variant="primary" size="large">Large</rumo-button>
+    <rumo-button variant="primary">Medium</rumo-button>
+    <rumo-button variant="primary" size="small">Small</rumo-button>
+    <rumo-button variant="primary" size="mini">Mini</rumo-button>
+  </rumo-row>
+  <rumo-row>
+    <rumo-button variant="primary" disabled>Disabled</rumo-button>
+    <rumo-button variant="secondary" disabled>Disabled</rumo-button>
+    <rumo-button variant="ghost" disabled>Disabled</rumo-button>
+    <rumo-button variant="primary" loading>Loading</rumo-button>
+  </rumo-row>
+</div>
+```
+:::
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | size     | 尺寸   | string  |   large / medium / small / mini            |    —     |
 | type     | 类型   | string    |   primary / success / warning / danger / info  |     —    |
+| variant  | Dash skin visual variant, overrides the type-based appearance | string | primary / secondary / ghost | — |
 | text     | 是否文字按钮   | boolean    | — | false   |
 | plain     | 是否朴素按钮   | boolean    | — | false   |
 | dashed     | 是否虚线按钮   | boolean    | — | false   |

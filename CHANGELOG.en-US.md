@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Dash atom absorption**: Button gains a `variant` (primary/secondary/ghost) look; Card gains `padding`/`interactive`; Badge gains `size="sm"` and `variant="secondary"`; Input gains `size="sm"`; Select gains `empty-text` and clear-button visuals; Segmented gains `variant="dash"` with a sliding indicator transition (incl. reduced-motion); message/message-box gain a `variant="card"` look (with `dark`); tooltip gains `effect="card"` glass-card popper; CommandPalette gains `variant="dash"`; Alert/Container docs add the "remember dismissal" convention and a dashboard shell layout example. All additive — without the new props rendering matches 1.2.0 (Input's focus border is an equal-value CSS variable substitution)
 - **Dash skin layer**: `tokens/tokens.json` gains a `dash` namespace (accent/neutrals/semantic/categorical series, type scale, radius, shadow, spacing, motion, breakpoints; accent anchored on `#856AF9`); `scripts/gen-tokens.js` additionally generates `tokens-dash.scss` (SCSS variables) and `tokens-dash-css.scss` (runtime CSS variables under the `.rumo-dash` scope, `.is-dark` dark mode, OKLCH `@supports` fallback); `dash-utils.scss` provides `.rumo-panel` / `.rumo-num` and min-height breakpoint mixins. Existing token outputs are unchanged; docs gain a "Dash Skin Tokens" page (zh/en)
 
 ## 1.2.0 (2026-10-01)

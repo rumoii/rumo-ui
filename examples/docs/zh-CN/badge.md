@@ -113,6 +113,35 @@
 ```
 :::
 
+### Dash 尺寸与变体
+
+`size="sm"` 提供更小的 padding / 字号(约 11px);`variant="secondary"` 提供中性灰底的次要视觉。`variant` 与 `type` 正交,设置后覆盖基于 `type` 的外观;两者均未设置时徽标外观不变。
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row>
+    <rumo-badge value="默认" class="item"></rumo-badge>
+    <rumo-badge value="小号" size="sm" class="item"></rumo-badge>
+    <rumo-badge value="次要" variant="secondary" class="item"></rumo-badge>
+    <rumo-badge value="次要小号" variant="secondary" size="sm" class="item"></rumo-badge>
+  </rumo-row>
+  <rumo-row>
+    <rumo-badge :value="12" class="item"></rumo-badge>
+    <rumo-badge :value="12" size="sm" class="item"></rumo-badge>
+    <rumo-badge :value="12" variant="secondary" class="item"></rumo-badge>
+    <rumo-badge value="99+" variant="secondary" size="sm" class="item"></rumo-badge>
+  </rumo-row>
+</div>
+
+<style>
+  .item {
+    margin-top: 10px;
+    margin-right: 16px;
+  }
+</style>
+```
+:::
+
 ### Attributes
 | 参数          | 说明            | 类型            | 可选值                 | 默认值   |
 |-------------  |---------------- |---------------- |---------------------- |-------- |
@@ -121,3 +150,5 @@
 | is-dot       | 小圆点    | boolean  |  —  |  false |
 | hidden | 隐藏 badge | boolean | — | false |
 | type         | 类型             | string          | primary / success / warning / danger / info |    —    |
+| size | Dash 皮肤徽标尺寸,sm 为紧凑视觉(约 11px 字号) | string | sm | — |
+| variant | Dash 皮肤视觉变体,设置后覆盖 type 外观 | string | secondary | — |

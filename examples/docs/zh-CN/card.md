@@ -164,9 +164,74 @@ export default {
 ```
 :::
 
+### Dash 交互与内边距
+
+`interactive` 提供悬停反馈(边框变深 + 弱阴影,150ms 过渡);`padding` 自定义卡体内边距,数字按 px 计,字符串原样使用。卡片是独立信息单元,**不嵌套卡片**。未设置这两个属性时,卡片行为与外观不变。
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row :gutter="12">
+    <rumo-col :span="8">
+      <rumo-card interactive>
+        <div class="dash-card-title">可交互卡片</div>
+        <div class="dash-card-text">悬停查看边框与阴影反馈</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card interactive>
+        <div class="dash-card-title">另一张卡片</div>
+        <div class="dash-card-text">并排展示,不要互相嵌套</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card interactive>
+        <div class="dash-card-title">第三张卡片</div>
+        <div class="dash-card-text">保持信息单元边界清晰</div>
+      </rumo-card>
+    </rumo-col>
+  </rumo-row>
+  <rumo-row :gutter="12" style="margin-top: 12px;">
+    <rumo-col :span="8">
+      <rumo-card :padding="12">
+        <div class="dash-card-title">padding=12</div>
+        <div class="dash-card-text">数字按 px 解释</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card padding="24px">
+        <div class="dash-card-title">padding=24px</div>
+        <div class="dash-card-text">字符串原样应用</div>
+      </rumo-card>
+    </rumo-col>
+    <rumo-col :span="8">
+      <rumo-card :padding="0">
+        <div class="dash-card-title">padding=0</div>
+        <div class="dash-card-text">紧凑贴边内容</div>
+      </rumo-card>
+    </rumo-col>
+  </rumo-row>
+</div>
+
+<style>
+  .dash-card-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .dash-card-text {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+</style>
+```
+:::
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | header | 设置 header，也可以通过 `slot#header` 传入 DOM | string| — | — |
 | body-style | 设置 body 的样式| object| — | { padding: '20px' } |
 | shadow | 设置阴影显示时机 | string | always / hover / never | always |
+| padding | 设置卡体内边距,数字按 px 计 | string / number | — | — |
+| interactive | 是否启用悬停反馈(边框变深 + 弱阴影) | boolean | — | false |

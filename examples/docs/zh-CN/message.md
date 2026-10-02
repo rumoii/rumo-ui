@@ -196,6 +196,41 @@
 `message` 属性虽然支持传入 HTML 片段，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。因此在 `dangerouslyUseHTMLString` 打开的情况下，请确保 `message` 的内容是可信的，**永远不要**将用户提交的内容赋值给 `message` 属性。
 :::
 
+### Dash 变体
+
+`variant: 'card'` 提供看板设计语言的卡片式消息(圆角、描边、柔阴影);`dark: true` 时卡片走暗色皮肤。不传 `variant` 时消息外观不变。
+:::demo
+
+```html
+<template>
+  <rumo-button :plain="true" @click="openCard">卡片式消息</rumo-button>
+  <rumo-button :plain="true" @click="openCardDark">暗色卡片消息</rumo-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      openCard() {
+        this.$message({
+          message: '卡片式消息',
+          variant: 'card',
+          showClose: true
+        });
+      },
+      openCardDark() {
+        this.$message({
+          message: '暗色卡片消息',
+          variant: 'card',
+          dark: true,
+          showClose: true
+        });
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### 全局方法
 
 RumoUI 为 Vue.prototype 添加了全局方法 $message。因此在 vue instance 中可以采用本页面中的方式调用 `Message`。
@@ -225,6 +260,8 @@ import { Message } from 'rumo-ui';
 | onClose | 关闭时的回调函数, 参数为被关闭的 message 实例 | function | — | — |
 | offset | Message 距离窗口顶部的偏移量 | number | — | 20 |
 | beforeCloseSlot | message 右侧（关闭按钮之前）内容 | string / VNode | — | — |
+| variant | Dash 皮肤视觉变体,设置为 `card` 时为卡片式消息 | string | card | — |
+| dark | 卡片变体是否使用暗色皮肤 | boolean | — | false |
 
 ### 方法
 调用 `Message` 或 `this.$message` 会返回当前 Message 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。

@@ -105,7 +105,7 @@
       <rumo-select-menu ref="popper"
         :append-to-body="popperAppendToBody"
         :popover-margin="popoverMargin"
-        v-show="visible && emptyText !== false">
+        v-show="visible && emptyState !== false">
         <rumo-scrollbar tag="ul"
           wrap-class="rumo-select-dropdown__wrap"
           view-class="rumo-select-dropdown__list"
@@ -118,12 +118,10 @@
           </rumo-option>
           <slot></slot>
         </rumo-scrollbar>
-        <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
+        <template v-if="emptyState && (!allowCreate || loading || (allowCreate && options.length === 0 ))">
           <slot name="empty" v-if="$slots.empty"></slot>
+          <p class="rumo-select-dropdown__empty" v-else-if="emptyText">{{ emptyText }}</p>
           <rumo-empty :imageSize="60" v-else />
-          <!-- <p class="rumo-select-dropdown__empty" v-else>
-            {{ emptyText }}
-          </p> -->
         </template>
         <slot name="after-select-menu" />
       </rumo-select-menu>
@@ -212,7 +210,7 @@ export default {
       return this.remote ? 300 : 0;
     },
 
-    emptyText() {
+    emptyState() {
       if (this.loading) {
         return this.loadingText || this.t('rumo.select.loading');
       } else {
@@ -280,6 +278,7 @@ export default {
     loadingText: String,
     noMatchText: String,
     noDataText: String,
+    emptyText: String,
     remoteMethod: Function,
     filterMethod: Function,
     multiple: Boolean,
@@ -688,7 +687,7 @@ export default {
                 sizeInMap
               ) + 'px';
         }
-        if (this.visible && this.emptyText !== false) {
+        if (this.visible && this.emptyState !== false) {
           this.broadcast('RumoSelectDropdown', 'updatePopper');
         }
       });

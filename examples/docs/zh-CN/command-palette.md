@@ -193,6 +193,38 @@ export default {
 ```
 :::
 
+### Dash 变体
+
+`variant="dash"` 提供看板设计语言的视觉:面板圆角描边与柔阴影、条目圆角与中性选中态、快捷键徽标与分类标签收敛为中性芯片。不设 `variant` 时外观不变。
+:::demo
+```html
+<template>
+  <rumo-button size="small" type="primary" @click="visible = true">打开 Dash 变体面板</rumo-button>
+  <rumo-command-palette
+    v-model="visible"
+    variant="dash"
+    :hotkey="false"
+    :commands="commands"
+  />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      visible: false,
+      commands: [
+        { id: 'overview', title: '用量总览', category: 'Dashboard', shortcut: 'G O' },
+        { id: 'trend', title: '趋势监控', category: 'Dashboard', shortcut: 'G T' },
+        { id: 'settings', title: '打开设置', category: 'General', shortcut: 'Ctrl+,' }
+      ]
+    };
+  }
+};
+</script>
+```
+:::
+
 ### Attributes
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
@@ -202,6 +234,7 @@ export default {
 | placeholder | 搜索框占位文案(默认走 i18n) | string | — | 键入指令或搜索... |
 | hotkey | 全局组合键,逗号分隔多组;false 关闭全局监听 | string / boolean | — | 'ctrl+k, command+k' |
 | scope | 响应范围 | string / HTMLElement | 'global' / 容器选择器 / DOM | 'global' |
+| variant | Dash 皮肤视觉变体,设置为 `dash` 时启用看板视觉 | string | dash | — |
 
 ### Events
 

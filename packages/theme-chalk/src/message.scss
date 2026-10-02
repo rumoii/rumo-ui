@@ -131,3 +131,29 @@
   opacity: 0;
   transform: translate(-50%, -100%);
 }
+
+/* Dash 皮肤 variant-card:卡片式消息(圆角/描边/柔阴影)。
+ * 仅在 variant="card" 时生效,默认消息样式不变。
+ * 元素自带 rumo-dash 类使 CSS 变量自洽;dark 选项追加 is-dark 切换暗色。 */
+@include b(message) {
+  &.rumo-message--variant-card {
+    min-width: 320px;
+    max-width: 384px;
+    padding: 12px 16px;
+    border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    border-radius: var(--rumo-radius-lg, 12px);
+    background-color: var(--rumo-c-paper, #f7f8fc);
+    color: var(--rumo-c-ink, #0a0b0d);
+    box-shadow: var(--rumo-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1));
+
+    .rumo-message__content {
+      color: var(--rumo-c-ink, #0a0b0d);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .rumo-message__closeBtn {
+      color: var(--rumo-c-neutral-400, #989eaf);
+    }
+  }
+}

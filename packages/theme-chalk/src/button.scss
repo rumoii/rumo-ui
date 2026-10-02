@@ -385,3 +385,118 @@
     border-width: 8px;
   }
 }
+
+/* Dash 皮肤 variant(primary / secondary / ghost)。
+ * 仅在传入 variant 时生效,未传时既有渲染路径与样式不变。
+ * 颜色走 --rumo-* 变量(hex 兜底保证脱离 .rumo-dash 作用域也可用);
+ * 暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(button) {
+  &.rumo-button--variant-primary,
+  &.rumo-button--variant-secondary,
+  &.rumo-button--variant-ghost {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: var(--rumo-radius-md, 8px);
+    transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out, transform 100ms ease-out;
+
+    &.rumo-button--small {
+      height: 32px;
+      padding: 0 12px;
+    }
+
+    &.rumo-button--mini {
+      height: 28px;
+      padding: 0 10px;
+      font-size: 12px;
+    }
+
+    &.rumo-button--large {
+      height: 48px;
+      padding: 0 24px;
+      font-size: 16px;
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px var(--rumo-c-accent-200, #d4d2fe);
+    }
+
+    &:active:not(.is-disabled):not(.is-loading) {
+      transform: scale(0.98);
+    }
+  }
+
+  &.rumo-button--variant-primary {
+    background: var(--rumo-c-ink, #0a0b0d);
+    color: var(--rumo-c-paper, #f7f8fc);
+    border-color: transparent;
+
+    &:hover:not(.is-disabled):not(.is-loading) {
+      background: var(--rumo-c-neutral-800, #1f2129);
+      color: var(--rumo-c-paper, #f7f8fc);
+      border-color: transparent;
+    }
+
+    &:active:not(.is-disabled):not(.is-loading) {
+      background: var(--rumo-c-neutral-900, #101116);
+      color: var(--rumo-c-paper, #f7f8fc);
+      border-color: transparent;
+    }
+
+    &.is-disabled {
+      background: var(--rumo-c-neutral-300, #c2c7d5);
+      color: var(--rumo-c-neutral-500, #6b7184);
+      border-color: transparent;
+    }
+  }
+
+  &.rumo-button--variant-secondary {
+    background: var(--rumo-c-paper, #f7f8fc);
+    color: var(--rumo-c-ink, #0a0b0d);
+    border: 1px solid var(--rumo-c-neutral-300, #c2c7d5);
+
+    &:hover:not(.is-disabled):not(.is-loading) {
+      background: var(--rumo-c-paper, #f7f8fc);
+      color: var(--rumo-c-accent, #856af9);
+      border-color: var(--rumo-c-accent, #856af9);
+    }
+
+    &:active:not(.is-disabled):not(.is-loading) {
+      background: var(--rumo-c-neutral-50, #f7f8fc);
+      color: var(--rumo-c-accent-dark, #7355e3);
+      border-color: var(--rumo-c-accent-dark, #7355e3);
+    }
+
+    &.is-disabled {
+      background: var(--rumo-c-paper, #f7f8fc);
+      color: var(--rumo-c-neutral-400, #989eaf);
+      border-color: var(--rumo-c-neutral-200, #dadee8);
+    }
+  }
+
+  &.rumo-button--variant-ghost {
+    background: transparent;
+    color: var(--rumo-c-neutral-600, #505564);
+    border: 1px solid transparent;
+
+    &:hover:not(.is-disabled):not(.is-loading) {
+      background: var(--rumo-c-accent-50, #f4f4ff);
+      color: var(--rumo-c-accent, #856af9);
+      border-color: transparent;
+    }
+
+    &:active:not(.is-disabled):not(.is-loading) {
+      background: var(--rumo-c-accent-100, #e9e9fe);
+      color: var(--rumo-c-accent-dark, #7355e3);
+      border-color: transparent;
+    }
+
+    &.is-disabled {
+      background: transparent;
+      color: var(--rumo-c-neutral-400, #989eaf);
+      border-color: transparent;
+    }
+  }
+}

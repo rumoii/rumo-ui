@@ -219,6 +219,29 @@
 ```
 :::
 
+### Dashboard Shell (Dash)
+
+Compose `rumo-container` / `rumo-header` / `rumo-aside` / `rumo-main` into a dashboard shell (top bar + sidebar + main content) and present it with the dash skin tokens.
+:::demo
+```html
+<div class="rumo-dash" style="height: 320px; border: 1px solid var(--rumo-c-neutral-200); border-radius: var(--rumo-radius-lg); overflow: hidden;">
+  <rumo-container>
+    <rumo-header height="48px" style="display: flex; align-items: center; padding: 0 16px; background: var(--rumo-c-paper); border-bottom: 1px solid var(--rumo-c-neutral-200); font-weight: 600;">
+      Dashboard title
+    </rumo-header>
+    <rumo-container>
+      <rumo-aside width="160px" style="background: var(--rumo-c-neutral-50); border-right: 1px solid var(--rumo-c-neutral-200); padding: 12px;">
+        Sidebar
+      </rumo-aside>
+      <rumo-main style="background: var(--rumo-c-paper); padding: 16px;">
+        Main content
+      </rumo-main>
+    </rumo-container>
+  </rumo-container>
+</div>
+```
+:::
+
 ### Container Attributes
 | 参数    | 说明     | 类型    | 可选值      | 默认值 |
 |---------|----------|---------|-------------|--------|

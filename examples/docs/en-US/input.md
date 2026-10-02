@@ -683,6 +683,32 @@ export default {
 
 :::
 
+### Dash Compact Size
+
+`size="sm"` provides a compact look aligned with the dashboard design language: smaller height and padding, 8px radius, and an accent focus border. Without it the input looks and behaves exactly as before.
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row>
+    <rumo-input size="sm" placeholder="Compact input" class="dash-input-item"></rumo-input>
+  </rumo-row>
+  <rumo-row>
+    <rumo-input size="sm" clearable placeholder="Clearable" class="dash-input-item"></rumo-input>
+  </rumo-row>
+  <rumo-row>
+    <rumo-input size="sm" placeholder="With icon" prefix-icon="rumo-icons icon-calendar" class="dash-input-item"></rumo-input>
+  </rumo-row>
+</div>
+
+<style>
+  .dash-input-item {
+    max-width: 280px;
+    margin-top: 12px;
+  }
+</style>
+```
+:::
+
 ### Input Attributes
 
 | 参数          | 说明            | 类型            | 可选值                 | 默认值   |
@@ -697,6 +723,7 @@ export default {
 | show-password | 是否显示切换密码图标| boolean         | — | false |
 | disabled      | 禁用            | boolean         | — | false   |
 | size          | 输入框尺寸，只在 `type!="textarea"` 时有效      | string          | large / medium / small / mini  | — |
+| size="sm" | Dash skin compact size (smaller height/padding, 8px radius, accent focus) | string | sm | — |
 | prefix-icon   | 输入框头部图标    | string          | — | — |
 | suffix-icon   | 输入框尾部图标    | string          | — | — |
 | rows          | 输入框行数，只对 `type="textarea"` 有效  |  number | — |  2   |

@@ -69,6 +69,9 @@ export declare class RumoSelect extends RumoUIComponent {
   /** Displayed text when there is no options */
   noDataText: string
 
+  /** Custom empty-state text (e.g. filter produced no match). When set, replaces the default empty illustration */
+  emptyText: string
+
   /** Custom class name for Select's dropdown */
   popperClass: string
 

@@ -3,6 +3,9 @@ import { RumoUIComponent, RumoUIComponentSize } from './component'
 /** Button type */
 export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'
 
+/** Dash skin visual variant */
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost'
+
 /** Same as native button's type */
 export type ButtonNativeType = 'button' | 'submit' | 'reset' | 'menu'
 
@@ -13,6 +16,9 @@ export declare class RumoButton extends RumoUIComponent {
 
   /** Button type */
   type: ButtonType
+
+  /** Dash skin visual variant; when set, overrides the type-based appearance */
+  variant: ButtonVariant
 
   /** Determine whether it's a plain button */
   plain: boolean

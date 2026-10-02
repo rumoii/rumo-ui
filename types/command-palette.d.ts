@@ -33,4 +33,7 @@ export declare class RumoCommandPalette extends RumoUIComponent {
 
   /** 响应范围:'global' 或容器选择器 / DOM 元素 */
   scope: string | HTMLElement;
+
+  /** Dash 皮肤视觉变体;设置为 'dash' 时启用看板视觉 */
+  variant: string;
 }

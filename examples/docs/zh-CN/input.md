@@ -683,6 +683,32 @@ export default {
 
 :::
 
+### Dash 紧凑尺寸
+
+`size="sm"` 提供与看板设计语言对齐的紧凑视觉:更小高度与内边距、8px 圆角,聚焦边框为强调色。未设置时输入框行为与外观不变。
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row>
+    <rumo-input size="sm" placeholder="紧凑输入框" class="dash-input-item"></rumo-input>
+  </rumo-row>
+  <rumo-row>
+    <rumo-input size="sm" clearable placeholder="可清空" class="dash-input-item"></rumo-input>
+  </rumo-row>
+  <rumo-row>
+    <rumo-input size="sm" placeholder="带图标" prefix-icon="rumo-icons icon-calendar" class="dash-input-item"></rumo-input>
+  </rumo-row>
+</div>
+
+<style>
+  .dash-input-item {
+    max-width: 280px;
+    margin-top: 12px;
+  }
+</style>
+```
+:::
+
 ### Input Attributes
 
 | 参数          | 说明            | 类型            | 可选值                 | 默认值   |
@@ -697,6 +723,7 @@ export default {
 | show-password | 是否显示切换密码图标| boolean         | — | false |
 | disabled      | 禁用            | boolean         | — | false   |
 | size          | 输入框尺寸，只在 `type!="textarea"` 时有效      | string          | large / medium / small / mini  | — |
+| size="sm" | Dash 皮肤紧凑尺寸(更小高度/内边距、8px 圆角、强调色聚焦) | string | sm | — |
 | prefix-icon   | 输入框头部图标    | string          | — | — |
 | suffix-icon   | 输入框尾部图标    | string          | — | — |
 | rows          | 输入框行数，只对 `type="textarea"` 有效  |  number | — |  2   |

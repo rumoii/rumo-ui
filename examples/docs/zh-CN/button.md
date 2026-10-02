@@ -396,11 +396,39 @@ Button 组件提供除了默认值以外的五种尺寸，可以在不同场景�
 ```
 :::
 
+### Dash 变体
+
+`variant` 提供看板设计语言的三种视觉:`primary`(近黑白主按钮)、`secondary`(描边按钮,悬停强调色)、`ghost`(透明按钮,悬停强调色)。与 `type` 正交,设置后覆盖基于 `type` 的外观;未设置时按钮行为与外观不变。
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-row>
+    <rumo-button variant="primary">主要按钮</rumo-button>
+    <rumo-button variant="secondary">次要按钮</rumo-button>
+    <rumo-button variant="ghost">幽灵按钮</rumo-button>
+  </rumo-row>
+  <rumo-row>
+    <rumo-button variant="primary" size="large">大号</rumo-button>
+    <rumo-button variant="primary">中号</rumo-button>
+    <rumo-button variant="primary" size="small">小号</rumo-button>
+    <rumo-button variant="primary" size="mini">迷你</rumo-button>
+  </rumo-row>
+  <rumo-row>
+    <rumo-button variant="primary" disabled>禁用</rumo-button>
+    <rumo-button variant="secondary" disabled>禁用</rumo-button>
+    <rumo-button variant="ghost" disabled>禁用</rumo-button>
+    <rumo-button variant="primary" loading>加载中</rumo-button>
+  </rumo-row>
+</div>
+```
+:::
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | size     | 尺寸   | string  |   large / medium / small / mini            |    —     |
 | type     | 类型   | string    |   primary / success / warning / danger / info  |     —    |
+| variant  | Dash 皮肤视觉变体,设置后覆盖 type 外观 | string | primary / secondary / ghost | — |
 | text     | 是否文字按钮   | boolean    | — | false   |
 | plain     | 是否朴素按钮   | boolean    | — | false   |
 | dashed     | 是否虚线按钮   | boolean    | — | false   |

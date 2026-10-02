@@ -33,8 +33,8 @@ export declare class RumoInput extends RumoUIComponent {
   /** Whether Input is disabled */
   disabled: boolean
 
-  /** Size of Input, works when type is not 'textarea' */
-  size: RumoUIComponentSize
+  /** Size of Input, works when type is not 'textarea'; 'sm' is the Dash skin compact look */
+  size: RumoUIComponentSize | 'sm'
 
   /** Prefix icon class */
   prefixIcon: string

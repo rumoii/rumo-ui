@@ -17,3 +17,52 @@
   @include m(large) { .rumo-segmented__item { padding: 11px 14px; font-size: 16px; } }
   @include when(block) { display: flex; }
 }
+
+/* 滑块过渡:选中指示器位移 200ms ease-out;系统开启减少动态效果时取消过渡。 */
+@include b(segmented) {
+  @include e(item-selected) {
+    transition: transform 200ms ease-out, width 200ms ease-out, height 200ms ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-segmented__item-selected {
+    transition: none;
+  }
+}
+
+/* Dash 皮肤 variant(dash)。
+ * 仅在传入 variant="dash" 时生效,未传时既有渲染路径与样式不变。
+ * 选中块用 accent 相关色;颜色走 --rumo-* 变量(hex 兜底保证脱离 .rumo-dash 作用域也可用)。 */
+@include b(segmented) {
+  &.rumo-segmented--variant-dash {
+    background: var(--rumo-c-neutral-100, #eff2f9);
+    border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    border-radius: var(--rumo-radius-md, 8px);
+
+    .rumo-segmented__item-selected {
+      background: var(--rumo-c-accent-50, #f4f4ff);
+      border-radius: var(--rumo-radius-sm, 4px);
+      box-shadow: none;
+    }
+
+    .rumo-segmented__item {
+      color: var(--rumo-c-neutral-600, #505564);
+      border-radius: var(--rumo-radius-sm, 4px);
+      transition: color 150ms ease-out;
+
+      &.is-selected {
+        color: var(--rumo-c-accent, #856af9);
+        font-weight: 500;
+      }
+
+      &:hover:not(.is-selected):not(.is-disabled) {
+        color: var(--rumo-c-ink, #0a0b0d);
+      }
+
+      &.is-disabled {
+        color: var(--rumo-c-neutral-400, #989eaf);
+      }
+    }
+  }
+}

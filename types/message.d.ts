@@ -2,6 +2,9 @@ import Vue, {VNode} from 'vue'
 
 export type MessageType = 'success' | 'warning' | 'info' | 'error'
 
+/** Dash skin visual variant */
+export type MessageVariant = 'card'
+
 /** Message Component */
 export declare class RumoMessageComponent extends Vue {
   /** Close the Loading instance */
@@ -51,6 +54,12 @@ export interface RumoMessageOptions {
   
   /** Set the slot before the close button */
   beforeCloseSlot?: string | VNode
+
+  /** Dash skin visual variant; when set to 'card', renders the card-style message */
+  variant?: MessageVariant
+
+  /** Whether the card variant renders in dark skin */
+  dark?: boolean
 }
 
 export interface RumoMessage {
