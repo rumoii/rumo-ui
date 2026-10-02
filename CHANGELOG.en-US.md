@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.0 (2026-10-03)
 
 - **Dash card components (6) + range picker**: StatTile/StatGrid stat tiles (responsive grid), RankList leaderboard (share bars), BreakdownList detail list (expandable groups, inline share overlay), RatioCard ratio card, InsightCard insight card, SortableCard draggable card (native pointer-event reordering); DateRangePreset preset range chips (presets + daterange custom popover). Table gains `is-missing`/`is-future` row states and a compact mode (demo shows the data detail view); a "Dashboard composition example" page assembles a full dashboard from the same mock data
 - **Dash data-visualization components (4)**: StackBar distribution bar (proportional bar + legend + custom value formatting), TrendChart bar trend chart (DOM bars, gap interpolation, IQR scale clipping, tooltip auto-flip) with TrendZoom enlarge dialog (reuses dialog), Heatmap calendar heatmap (CSS Grid week columns, month label positioning, scroll initialized to the latest week), QuotaBar quota bar (pace marker, used/remain semantics, threshold coloring). All hand-written DOM/SVG with zero chart libraries, satisfying the Babel 6 artifact constraints
