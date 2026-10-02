@@ -1,0 +1,297 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:柱状趋势图 + 放大弹窗。
+ * 颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。
+ * 柱高变化 height 200ms ease-out;系统开启减少动态效果时取消过渡。 */
+@include b(trend-chart) {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.is-embedded {
+    margin: 0;
+  }
+
+  @include e(header) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  @include e(title) {
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    font-weight: var(--rumo-text-label-weight, 600);
+    letter-spacing: var(--rumo-text-label-ls, 0.02em);
+    text-transform: uppercase;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(zoom-btn) {
+    flex-shrink: 0;
+    padding: 4px;
+    border: none;
+    border-radius: var(--rumo-radius-sm, 4px);
+    background: transparent;
+    color: var(--rumo-c-neutral-400, #989eaf);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 150ms ease-out, background-color 150ms ease-out;
+
+    &:hover {
+      color: var(--rumo-c-ink, #0a0b0d);
+      background-color: var(--rumo-c-neutral-100, #eff2f9);
+    }
+  }
+
+  @include e(body) {
+    width: 100%;
+  }
+
+  @include e(plot) {
+    position: relative;
+    width: 100%;
+  }
+
+  @include e(grid) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @include e(grid-line) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px solid var(--rumo-c-neutral-100, #eff2f9);
+  }
+
+  @include e(bars) {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+    height: 100%;
+  }
+
+  @include e(col) {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    cursor: pointer;
+  }
+
+  /* 悬停高亮只落在当前列,不混入邻柱 */
+  @include e(col-guide) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+    pointer-events: none;
+  }
+
+  @include e(bar) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    transition: height 200ms ease-out;
+  }
+
+  @include e(fill) {
+    width: 100%;
+    height: 100%;
+    background-color: var(--rumo-c-success, #10b981);
+    transition: filter 150ms ease-out;
+  }
+
+  .rumo-trend-chart__col:hover .rumo-trend-chart__col-guide {
+    opacity: 0.7;
+  }
+
+  .rumo-trend-chart__col:hover .rumo-trend-chart__fill {
+    filter: brightness(1.1);
+  }
+
+  .rumo-trend-chart__bar.is-zero .rumo-trend-chart__fill,
+  .rumo-trend-chart__bar.is-missing .rumo-trend-chart__fill,
+  .rumo-trend-chart__bar.is-future .rumo-trend-chart__fill {
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+    filter: none;
+  }
+
+  .rumo-trend-chart__bar.is-missing .rumo-trend-chart__fill {
+    opacity: 0.4;
+  }
+
+  .rumo-trend-chart__bar.is-future .rumo-trend-chart__fill {
+    opacity: 0.28;
+    border: 1px dashed var(--rumo-c-neutral-300, #c2c7d5);
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  .rumo-trend-chart__col:hover .rumo-trend-chart__bar.is-zero .rumo-trend-chart__fill,
+  .rumo-trend-chart__col:hover .rumo-trend-chart__bar.is-missing .rumo-trend-chart__fill,
+  .rumo-trend-chart__col:hover .rumo-trend-chart__bar.is-future .rumo-trend-chart__fill {
+    filter: brightness(0.95);
+  }
+
+  @include e(axis) {
+    display: flex;
+    gap: 2px;
+    margin-top: 6px;
+    user-select: none;
+  }
+
+  @include e(tick) {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+
+    &.is-start {
+      justify-content: flex-start;
+    }
+
+    &.is-center {
+      justify-content: center;
+    }
+
+    &.is-end {
+      justify-content: flex-end;
+    }
+  }
+
+  @include e(tick-label) {
+    font-size: var(--rumo-text-label-size, 11px);
+    line-height: var(--rumo-text-label-lh, 1.3);
+    color: var(--rumo-c-neutral-400, #989eaf);
+    white-space: nowrap;
+    font-family: var(--rumo-font-mono, monospace);
+  }
+
+  @include e(tooltip-anchor) {
+    position: absolute;
+    z-index: 10;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    transition: left 100ms ease-out, top 100ms ease-out;
+  }
+
+  @include e(tooltip) {
+    position: absolute;
+    left: 0;
+    width: 220px;
+    max-width: 280px;
+    padding: 12px 14px;
+    border-radius: var(--rumo-radius-lg, 12px);
+    border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    background-color: var(--rumo-c-paper, #f7f8fc);
+    box-shadow: var(--rumo-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1));
+    pointer-events: auto;
+    opacity: 1;
+    animation: rumo-fade-in 100ms ease-out;
+
+    &.is-flip-up {
+      bottom: 10px;
+    }
+
+    &.is-flip-down {
+      top: 10px;
+    }
+  }
+
+  @include e(tooltip-head) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--rumo-c-neutral-100, #eff2f9);
+  }
+
+  @include e(tooltip-label) {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--rumo-c-neutral-500, #6b7184);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(tooltip-badge) {
+    flex-shrink: 0;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rumo-c-neutral-400, #989eaf);
+  }
+
+  @include e(tooltip-value) {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--rumo-c-ink, #0a0b0d);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @include e(tooltip-arrow) {
+    position: absolute;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    transform: translateX(-50%) rotate(45deg);
+    background-color: var(--rumo-c-paper, #f7f8fc);
+    pointer-events: none;
+
+    &.is-flip-up {
+      bottom: 6px;
+      border-right: 1px solid var(--rumo-c-neutral-200, #dadee8);
+      border-bottom: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    }
+
+    &.is-flip-down {
+      top: 6px;
+      border-top: 1px solid var(--rumo-c-neutral-200, #dadee8);
+      border-left: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    }
+  }
+}
+
+/* 放大弹窗:内容区给图表留出高度 */
+@include b(trend-zoom) {
+  .rumo-trend-chart {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-trend-chart__bar {
+    transition: none;
+  }
+
+  .rumo-trend-chart__tooltip {
+    animation: none;
+  }
+
+  .rumo-trend-chart__tooltip-anchor {
+    transition: none;
+  }
+}

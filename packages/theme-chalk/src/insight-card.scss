@@ -1,0 +1,151 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:要点卡。卡体取 .rumo-panel 视觉;
+ * 颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(insight-card) {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--rumo-c-paper, #f7f8fc);
+  border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+  border-radius: var(--rumo-radius-lg, 12px);
+  padding: var(--rumo-space-6, 24px);
+  color: var(--rumo-c-ink, #0a0b0d);
+
+  @include e(header) {
+    margin: 0 0 12px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    font-weight: var(--rumo-text-label-weight, 600);
+    letter-spacing: var(--rumo-text-label-ls, 0.02em);
+    text-transform: uppercase;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(body) {
+    min-width: 0;
+  }
+
+  @include e(loading) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @include e(placeholder) {
+    height: 14px;
+    border-radius: var(--rumo-radius-sm, 4px);
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+
+    &:nth-child(2) {
+      width: 82%;
+    }
+
+    &:nth-child(3) {
+      width: 64%;
+    }
+  }
+
+  @include e(list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include e(item) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid var(--rumo-c-neutral-100, #eff2f9);
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 2px;
+    }
+
+    &:last-child {
+      padding-bottom: 2px;
+    }
+
+    &:hover {
+      background-color: var(--rumo-c-neutral-50, #f7f8fc);
+    }
+  }
+
+  @include e(icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(label) {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    color: var(--rumo-c-neutral-600, #505564);
+  }
+
+  @include e(delta) {
+    flex-shrink: 0;
+    padding: 1px 6px;
+    border-radius: var(--rumo-radius-full, 9999px);
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--rumo-c-neutral-500, #6b7184);
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+
+    @include m(success) {
+      color: var(--rumo-c-success, #10b981);
+    }
+
+    @include m(warning) {
+      color: var(--rumo-c-warning, #f59e0b);
+    }
+
+    @include m(danger) {
+      color: var(--rumo-c-danger, #ef4444);
+    }
+  }
+
+  @include e(value) {
+    flex-shrink: 0;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    font-weight: 600;
+    color: var(--rumo-c-ink, #0a0b0d);
+  }
+
+  @include e(footer) {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rumo-c-neutral-100, #eff2f9);
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  &.is-loading {
+    .rumo-insight-card__body {
+      min-height: 64px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-insight-card__item {
+    transition: none;
+  }
+}

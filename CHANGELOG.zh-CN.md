@@ -2,6 +2,8 @@
 
 ## 未发布
 
+- **Dash 卡片组件(6)+ 区间选择**：StatTile/StatGrid 统计磁贴(响应式栅格)、RankList 榜单(占比条)、BreakdownList 明细列表(可展开分组、行内占比覆盖层)、RatioCard 占比卡、InsightCard 要点卡、SortableCard 可拖卡片(原生指针事件拖拽排序);DateRangePreset 预设区间(预设胶囊 + daterange 自定义弹层)。Table 补 `is-missing`/`is-future` 行态与紧凑模式(demo 展示数据明细视图);新增「Dashboard 组合示例」页以同 mock 数据拼出完整看板
+- **Dash 数据可视化组件(4)**：StackBar 分布条(比例条 + 图例 + 自定义数值格式)、TrendChart 趋势柱图(DOM 柱图、缺口插值、IQR 量程裁剪、tooltip 自动翻转)+ TrendZoom 放大弹窗(复用 dialog)、Heatmap 日历热力图(CSS Grid 周列、月标定位、滚动初始化到最近周)、QuotaBar 配额条(配速标记、used/remain 双语义、阈值变色)。全部手写 DOM/SVG,零图表库,符合 Babel 6 产物约束
 - **Dash 原子吸收**：Button 新增 `variant`（primary/secondary/ghost）视觉分支；Card 增 `padding`/`interactive`；Badge 增 `size="sm"` 与 `variant="secondary"`；Input 增 `size="sm"`；Select 增 `empty-text` 与清除按钮视觉；Segmented 增 `variant="dash"` 与滑块过渡（含 reduced-motion）；message/message-box 增 `variant="card"` 卡片视觉（配 `dark` 暗色）；tooltip 增 `effect="card"` 玻璃卡气泡；CommandPalette 增 `variant="dash"`；Alert/Container 文档补「记住关闭」约定与看板外壳布局示例。均为加法能力，不使用新参数时渲染与 1.2.0 一致（Input focus 边框色为等值 CSS 变量替换）
 - **Dash 皮肤层**：`tokens/tokens.json` 新增 `dash` 命名空间（强调色/中性灰/语义色/分类色板/字阶/圆角/阴影/间距/动效/断点，主色锚定 `#856AF9`），`scripts/gen-tokens.js` 新增单向生成 `tokens-dash.scss`（SCSS 变量）与 `tokens-dash-css.scss`（运行时 CSS 变量，`.rumo-dash` 作用域、`.is-dark` 暗色、OKLCH `@supports` 回退）；`dash-utils.scss` 提供 `.rumo-panel` / `.rumo-num` 与 min-height 断点 mixin。既有 token 输出零变化，文档新增「Dash 皮肤令牌」页（zh/en）
 

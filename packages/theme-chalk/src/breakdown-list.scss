@@ -1,0 +1,160 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:类别占比列表。
+ * 行内分布条为按占比染色的行背景(宽度即占比);颜色走 --rumo-* 变量(hex 兜底),
+ * 暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(breakdown-list) {
+  width: 100%;
+
+  @include e(title) {
+    margin: 0 0 10px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    font-weight: var(--rumo-text-label-weight, 600);
+    letter-spacing: var(--rumo-text-label-ls, 0.02em);
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include e(row) {
+    position: relative;
+    border-radius: var(--rumo-radius-sm, 4px);
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+
+    &:hover {
+      background-color: var(--rumo-c-neutral-50, #f7f8fc);
+    }
+
+    @include m(child) {
+      .rumo-breakdown-list__label {
+        color: var(--rumo-c-neutral-700, #363a45);
+        font-weight: 400;
+      }
+    }
+  }
+
+  /* 行内分布条:低透明度色块自左向右填满占比宽度 */
+  @include e(share) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: inherit;
+    opacity: 0.12;
+    pointer-events: none;
+    transition: width 200ms ease-out;
+  }
+
+  @include e(main) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    min-width: 0;
+  }
+
+  /* 图标位:固定宽度,各层 label 左缘对齐 */
+  @include e(icon) {
+    flex-shrink: 0;
+    width: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  @include e(dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  @include e(label-wrap) {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  @include e(label) {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--rumo-c-ink, #0a0b0d);
+    font-weight: 500;
+  }
+
+  /* 展开箭头按钮:仅占箭头位,点击切换分组 */
+  @include e(toggle) {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--rumo-c-accent, #856AF9);
+      outline-offset: -2px;
+      border-radius: 2px;
+    }
+  }
+
+  /* 纯 CSS 箭头,展开时旋转 90° */
+  @include e(chevron) {
+    flex-shrink: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 5px;
+    border-color: transparent transparent transparent var(--rumo-c-neutral-400, #989eaf);
+    transition: transform 150ms ease-out;
+
+    &.is-open {
+      transform: rotate(90deg);
+    }
+  }
+
+  @include e(value) {
+    flex-shrink: 0;
+    min-width: 4.5em;
+    text-align: right;
+    white-space: nowrap;
+    color: var(--rumo-c-neutral-600, #505564);
+    font-weight: 500;
+  }
+
+  @include e(percent) {
+    flex-shrink: 0;
+    min-width: 3.2em;
+    text-align: right;
+    white-space: nowrap;
+    font-size: 10px;
+    color: var(--rumo-c-neutral-400, #989eaf);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-breakdown-list__share,
+  .rumo-breakdown-list__chevron {
+    transition: none;
+  }
+}

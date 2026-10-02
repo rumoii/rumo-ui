@@ -1,0 +1,91 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 布局:可拖拽卡片壳。把手上按住才拖,拖动时半透明 + 阴影;
+ * 颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(sortable-card) {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  background: var(--rumo-c-paper, #f7f8fc);
+  border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+  border-radius: var(--rumo-radius-lg, 12px);
+  transition: opacity 150ms ease-out, box-shadow 150ms ease-out, border-color 150ms ease-out;
+
+  @include e(handle) {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 18px;
+    margin-left: -14px;
+    border: none;
+    border-radius: var(--rumo-radius-md, 8px);
+    background: var(--rumo-c-neutral-100, #eff2f9);
+    color: var(--rumo-c-neutral-400, #989eaf);
+    cursor: grab;
+    touch-action: none;
+    opacity: 0.55;
+    transition: opacity 150ms ease-out, background-color 150ms ease-out, color 150ms ease-out;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      color: var(--rumo-c-neutral-600, #505564);
+      background: var(--rumo-c-neutral-200, #dadee8);
+      outline: none;
+    }
+
+    &.is-active {
+      opacity: 1;
+      cursor: grabbing;
+      color: var(--rumo-c-ink, #0a0b0d);
+      background: var(--rumo-c-neutral-200, #dadee8);
+    }
+  }
+
+  @include e(header) {
+    padding: 12px 16px 0;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    font-weight: var(--rumo-text-label-weight, 600);
+    color: var(--rumo-c-ink, #0a0b0d);
+  }
+
+  @include e(body) {
+    padding: 16px;
+  }
+
+  @include when(dragging) {
+    opacity: 0.9;
+    border-color: var(--rumo-c-neutral-300, #c2c7d5);
+    box-shadow: var(--rumo-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1));
+  }
+
+  @include when(disabled) {
+    .rumo-sortable-card__handle {
+      cursor: not-allowed;
+      opacity: 0.35;
+
+      &:hover,
+      &:focus {
+        opacity: 0.35;
+        color: var(--rumo-c-neutral-400, #989eaf);
+        background: var(--rumo-c-neutral-100, #eff2f9);
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-sortable-card {
+    transition: none;
+  }
+}

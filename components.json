@@ -107,5 +107,18 @@
   "svg-icon": "./packages/svg-icon/index.js",
   "log-viewer": "./packages/log-viewer/index.js",
   "terminal": "./packages/terminal/index.js",
-  "command-palette": "./packages/command-palette/index.js"
+  "command-palette": "./packages/command-palette/index.js",
+  "stack-bar": "./packages/stack-bar/index.js",
+  "trend-chart": "./packages/trend-chart/index.js",
+  "trend-zoom": "./packages/trend-zoom/index.js",
+  "heatmap": "./packages/heatmap/index.js",
+  "quota-bar": "./packages/quota-bar/index.js",
+  "stat-tile": "./packages/stat-tile/index.js",
+  "stat-grid": "./packages/stat-grid/index.js",
+  "rank-list": "./packages/rank-list/index.js",
+  "breakdown-list": "./packages/breakdown-list/index.js",
+  "ratio-card": "./packages/ratio-card/index.js",
+  "insight-card": "./packages/insight-card/index.js",
+  "sortable-card": "./packages/sortable-card/index.js",
+  "date-range-preset": "./packages/date-range-preset/index.js"
 }

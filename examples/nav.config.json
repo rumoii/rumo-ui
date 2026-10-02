@@ -228,6 +228,54 @@
             {
               "path": "/result",
               "title": "Result 结果"
+            },
+            {
+              "path": "/stack-bar",
+              "title": "StackBar 分布条"
+            },
+            {
+              "path": "/trend-chart",
+              "title": "TrendChart 趋势图"
+            },
+            {
+              "path": "/heatmap",
+              "title": "Heatmap 热力图"
+            },
+            {
+              "path": "/quota-bar",
+              "title": "QuotaBar 配额条"
+            },
+            {
+              "path": "/stat-tile",
+              "title": "StatTile 统计磁贴"
+            },
+            {
+              "path": "/rank-list",
+              "title": "RankList 榜单"
+            },
+            {
+              "path": "/breakdown-list",
+              "title": "BreakdownList 明细列表"
+            },
+            {
+              "path": "/ratio-card",
+              "title": "RatioCard 占比卡"
+            },
+            {
+              "path": "/insight-card",
+              "title": "InsightCard 要点卡"
+            },
+            {
+              "path": "/sortable-card",
+              "title": "SortableCard 可拖卡片"
+            },
+            {
+              "path": "/date-range-preset",
+              "title": "DateRangePreset 预设区间"
+            },
+            {
+              "path": "/dashboard-combo",
+              "title": "Dashboard 组合示例"
             }
           ]
         },
@@ -618,6 +666,54 @@
             {
               "path": "/result",
               "title": "Result"
+            },
+            {
+              "path": "/stack-bar",
+              "title": "StackBar"
+            },
+            {
+              "path": "/trend-chart",
+              "title": "TrendChart"
+            },
+            {
+              "path": "/heatmap",
+              "title": "Heatmap"
+            },
+            {
+              "path": "/quota-bar",
+              "title": "QuotaBar"
+            },
+            {
+              "path": "/stat-tile",
+              "title": "StatTile"
+            },
+            {
+              "path": "/rank-list",
+              "title": "RankList"
+            },
+            {
+              "path": "/breakdown-list",
+              "title": "BreakdownList"
+            },
+            {
+              "path": "/ratio-card",
+              "title": "RatioCard"
+            },
+            {
+              "path": "/insight-card",
+              "title": "InsightCard"
+            },
+            {
+              "path": "/sortable-card",
+              "title": "SortableCard"
+            },
+            {
+              "path": "/date-range-preset",
+              "title": "DateRangePreset"
+            },
+            {
+              "path": "/dashboard-combo",
+              "title": "Dashboard Composition"
             }
           ]
         },

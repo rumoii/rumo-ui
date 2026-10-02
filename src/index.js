@@ -109,6 +109,19 @@ import SvgIcon from '../packages/svg-icon/index.js';
 import LogViewer from '../packages/log-viewer/index.js';
 import Terminal from '../packages/terminal/index.js';
 import CommandPalette from '../packages/command-palette/index.js';
+import StackBar from '../packages/stack-bar/index.js';
+import TrendChart from '../packages/trend-chart/index.js';
+import TrendZoom from '../packages/trend-zoom/index.js';
+import Heatmap from '../packages/heatmap/index.js';
+import QuotaBar from '../packages/quota-bar/index.js';
+import StatTile from '../packages/stat-tile/index.js';
+import StatGrid from '../packages/stat-grid/index.js';
+import RankList from '../packages/rank-list/index.js';
+import BreakdownList from '../packages/breakdown-list/index.js';
+import RatioCard from '../packages/ratio-card/index.js';
+import InsightCard from '../packages/insight-card/index.js';
+import SortableCard from '../packages/sortable-card/index.js';
+import DateRangePreset from '../packages/date-range-preset/index.js';
 import locale from 'rumo-ui/src/locale';
 import CollapseTransition from 'rumo-ui/src/transitions/collapse-transition';
 
@@ -215,6 +228,19 @@ const components = [
   LogViewer,
   Terminal,
   CommandPalette,
+  StackBar,
+  TrendChart,
+  TrendZoom,
+  Heatmap,
+  QuotaBar,
+  StatTile,
+  StatGrid,
+  RankList,
+  BreakdownList,
+  RatioCard,
+  InsightCard,
+  SortableCard,
+  DateRangePreset,
   CollapseTransition
 ];
 
@@ -262,7 +288,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.1.0',
+  version: '1.2.0',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -375,5 +401,18 @@ export default {
   SvgIcon,
   LogViewer,
   Terminal,
-  CommandPalette
+  CommandPalette,
+  StackBar,
+  TrendChart,
+  TrendZoom,
+  Heatmap,
+  QuotaBar,
+  StatTile,
+  StatGrid,
+  RankList,
+  BreakdownList,
+  RatioCard,
+  InsightCard,
+  SortableCard,
+  DateRangePreset
 };

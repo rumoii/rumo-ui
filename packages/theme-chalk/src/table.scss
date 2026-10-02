@@ -871,3 +871,22 @@
   opacity: 0;
   transform: translateX(300px);
 }
+/* Dash 数据明细行态:供 row-class-name 返回 is-missing / is-future 时使用。
+ * 挂在 .rumo-dash 作用域内,不影响既有表格。 */
+.rumo-dash .rumo-table {
+  tr.is-missing td {
+    color: var(--rumo-c-neutral-400, #989eaf);
+    background-color: var(--rumo-c-neutral-50, #f7f8fc);
+  }
+
+  tr.is-future td {
+    color: var(--rumo-c-neutral-400, #989eaf);
+    background-color: transparent;
+    border-top: 1px dashed var(--rumo-c-neutral-200, #dadee8);
+  }
+
+  &.is-compact td .cell {
+    padding: 4px 8px;
+    font-size: var(--rumo-text-caption-size, 12px);
+  }
+}

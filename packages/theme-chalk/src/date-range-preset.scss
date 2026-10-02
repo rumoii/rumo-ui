@@ -1,0 +1,51 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 预设区间选择:预设胶囊 + 自定义区间弹层。颜色走 --rumo-* 变量(hex 兜底)。 */
+@include b(date-range-preset) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  @include e(chip) {
+    height: 28px;
+    padding: 0 12px;
+    border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+    border-radius: var(--rumo-radius-full, 9999px);
+    background: var(--rumo-c-paper, #f7f8fc);
+    color: var(--rumo-c-neutral-600, #505564);
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+
+    &:hover {
+      border-color: var(--rumo-c-accent, #856af9);
+      color: var(--rumo-c-accent, #856af9);
+    }
+
+    &.is-active {
+      background: var(--rumo-c-accent, #856af9);
+      border-color: var(--rumo-c-accent, #856af9);
+      color: var(--rumo-c-paper, #f7f8fc);
+    }
+  }
+
+  .rumo-button.is-active {
+    border-color: var(--rumo-c-accent, #856af9);
+    color: var(--rumo-c-accent, #856af9);
+  }
+
+  @include e(panel) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @include e(actions) {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}

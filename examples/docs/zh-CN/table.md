@@ -2088,6 +2088,58 @@
 ```
 :::
 
+### 数据明细视图(Dash)
+
+看板风格的数据明细表:列 `sortable` 排序、`height` 固定表头、`row-class-name` 标记 `is-missing`(缺数据)/ `is-future`(未到期)行态,`is-compact` 紧凑行距,均在 `.rumo-dash` 作用域内生效。
+:::demo
+```html
+<div class="rumo-dash">
+  <rumo-table
+    class="is-compact"
+    :data="rows"
+    height="240"
+    :row-class-name="rowClass"
+    :default-sort="{ prop: 'value', order: 'descending' }"
+    border
+  >
+    <rumo-table-column prop="date" label="日期" sortable width="120"></rumo-table-column>
+    <rumo-table-column prop="name" label="来源" sortable></rumo-table-column>
+    <rumo-table-column prop="value" label="调用量" sortable :sort-method="sortByValue">
+      <template slot-scope="scope">
+        <span class="rumo-num">{{ scope.row.missing || scope.row.future ? '—' : scope.row.value.toLocaleString() }}</span>
+      </template>
+    </rumo-table-column>
+  </rumo-table>
+</div>
+<script>
+  export default {
+    data() {
+      return {
+        rows: [
+          { date: '2026-09-28', name: 'A', value: 12840 },
+          { date: '2026-09-29', name: 'B', value: 9320 },
+          { date: '2026-09-30', name: 'A', value: 0, missing: true },
+          { date: '2026-10-01', name: 'C', value: 15210 },
+          { date: '2026-10-02', name: 'B', value: 0, future: true },
+          { date: '2026-10-03', name: 'A', value: 0, future: true }
+        ]
+      };
+    },
+    methods: {
+      rowClass({ row }) {
+        if (row.missing) return 'is-missing';
+        if (row.future) return 'is-future';
+        return '';
+      },
+      sortByValue(a, b) {
+        return a.value - b.value;
+      }
+    }
+  };
+</script>
+```
+:::
+
 ### Table Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |

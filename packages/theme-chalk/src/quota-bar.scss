@@ -1,0 +1,109 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:配额/限额进度条。
+ * 颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(quota-bar) {
+  width: 100%;
+
+  @include e(head) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  @include e(label) {
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--rumo-text-label-size, 11px);
+    line-height: var(--rumo-text-label-lh, 1.3);
+    color: var(--rumo-c-neutral-600, #505564);
+  }
+
+  @include e(meta) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: var(--rumo-text-label-size, 11px);
+    line-height: var(--rumo-text-label-lh, 1.3);
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(value) {
+    color: var(--rumo-c-ink, #0a0b0d);
+    font-weight: 500;
+  }
+
+  @include e(percent) {
+    color: var(--rumo-c-neutral-500, #6b7184);
+    min-width: 2.5em;
+    text-align: right;
+  }
+
+  @include e(reset) {
+    font-size: 10px;
+    color: var(--rumo-c-neutral-400, #989eaf);
+  }
+
+  @include e(track) {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+  }
+
+  @include e(fill) {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 500ms ease-out, background-color 200ms ease-out;
+
+    @include m(success) {
+      background-color: var(--rumo-c-success, #10b981);
+    }
+
+    @include m(warning) {
+      background-color: var(--rumo-c-warning, #f59e0b);
+    }
+
+    @include m(danger) {
+      background-color: var(--rumo-c-danger, #ef4444);
+    }
+  }
+
+  /* 缺口:裸轨道色切片,压在填充上形成刻痕 */
+  @include e(pace-notch) {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+    pointer-events: none;
+  }
+
+  @include e(pace-mark) {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: var(--rumo-c-success, #10b981);
+    pointer-events: none;
+
+    @include m(over) {
+      background-color: var(--rumo-c-danger, #ef4444);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-quota-bar__fill {
+    transition: none;
+  }
+}

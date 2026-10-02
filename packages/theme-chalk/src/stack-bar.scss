@@ -1,0 +1,79 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:分布条。颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(stack-bar) {
+  width: 100%;
+
+  @include e(track) {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+  }
+
+  @include e(segment) {
+    height: 100%;
+    min-width: 2px;
+    cursor: pointer;
+    transition: width 200ms ease-out;
+
+    &:first-child {
+      border-top-left-radius: 9999px;
+      border-bottom-left-radius: 9999px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 9999px;
+      border-bottom-right-radius: 9999px;
+    }
+  }
+
+  @include e(legend) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 8px 0 0;
+
+    & + .rumo-stack-bar__track {
+      margin-top: 8px;
+    }
+  }
+
+  @include e(legend-item) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    color: var(--rumo-c-neutral-600, #505564);
+    cursor: pointer;
+  }
+
+  @include e(dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @include e(label) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 160px;
+  }
+
+  @include e(value) {
+    color: var(--rumo-c-ink, #0a0b0d);
+    font-weight: 500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-stack-bar__segment {
+    transition: none;
+  }
+}

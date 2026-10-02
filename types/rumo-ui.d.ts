@@ -81,7 +81,8 @@ import { RumoBacktop } from './backtop'
 import { RumoInfiniteScroll } from './infiniteScroll'
 import { RumoPageHeader } from './page-header'
 import { RumoAvatar } from './avatar'
-import { RumoSpace } from './space'
+
+import { RumoSpace } from './space'
 import { RumoWatermark } from './watermark'
 import { RumoText } from './text'
 import { RumoResult } from './result'
@@ -105,6 +106,17 @@ import { RumoSvgIcon } from './svg-icon'
 import { RumoLogViewer } from './log-viewer'
 import { RumoTerminal } from './terminal'
 import { RumoCommandPalette } from './command-palette'
+import { RumoStackBar } from './stack-bar'
+import { RumoTrendChart, RumoTrendZoom } from './trend-chart'
+import { RumoHeatmap } from './heatmap'
+import { RumoQuotaBar } from './quota-bar'
+import { RumoStatTile, RumoStatGrid } from './stat-tile'
+import { RumoRankList } from './rank-list'
+import { RumoBreakdownList } from './breakdown-list'
+import { RumoRatioCard } from './ratio-card'
+import { RumoInsightCard } from './insight-card'
+import { RumoSortableCard } from './sortable-card'
+import { RumoDateRangePreset } from './date-range-preset'
 
 export interface InstallationOptions {
   locale: any,
@@ -440,3 +452,42 @@ export class Terminal extends RumoTerminal {}
 
 /** CommandPalette Component */
 export class CommandPalette extends RumoCommandPalette {}
+
+/** StackBar Component */
+export class StackBar extends RumoStackBar {}
+
+/** TrendChart Component */
+export class TrendChart extends RumoTrendChart {}
+
+/** TrendZoom Component */
+export class TrendZoom extends RumoTrendZoom {}
+
+/** Heatmap Component */
+export class Heatmap extends RumoHeatmap {}
+
+/** QuotaBar Component */
+export class QuotaBar extends RumoQuotaBar {}
+
+/** StatTile Component */
+export class StatTile extends RumoStatTile {}
+
+/** StatGrid Component */
+export class StatGrid extends RumoStatGrid {}
+
+/** RankList Component */
+export class RankList extends RumoRankList {}
+
+/** BreakdownList Component */
+export class BreakdownList extends RumoBreakdownList {}
+
+/** RatioCard Component */
+export class RatioCard extends RumoRatioCard {}
+
+/** InsightCard Component */
+export class InsightCard extends RumoInsightCard {}
+
+/** SortableCard Component */
+export class SortableCard extends RumoSortableCard {}
+
+/** DateRangePreset Component */
+export class DateRangePreset extends RumoDateRangePreset {}

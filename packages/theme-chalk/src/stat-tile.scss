@@ -1,0 +1,98 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:指标磁贴与磁贴栅格。颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(stat-tile) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 12px 8px;
+  border-radius: var(--rumo-radius-md, 8px);
+  background-color: var(--rumo-c-neutral-100, #eff2f9);
+  text-align: center;
+
+  @include e(icon) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 4px;
+    color: var(--rumo-c-neutral-500, #6b7184);
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: 1;
+  }
+
+  @include e(value) {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--rumo-text-h3-size, 22px);
+    line-height: var(--rumo-text-h3-lh, 1.3);
+    font-weight: var(--rumo-text-h3-weight, 600);
+    letter-spacing: var(--rumo-text-h3-ls, -0.01em);
+    color: var(--rumo-c-ink, #0a0b0d);
+  }
+
+  @include e(skeleton) {
+    display: inline-block;
+    width: 3.5em;
+    height: 0.85em;
+    border-radius: var(--rumo-radius-sm, 4px);
+    background-color: var(--rumo-c-neutral-200, #dadee8);
+    vertical-align: middle;
+  }
+
+  @include e(label) {
+    width: 100%;
+    min-width: 0;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--rumo-text-label-size, 11px);
+    line-height: var(--rumo-text-label-lh, 1.3);
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(delta) {
+    margin-top: 4px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    color: var(--rumo-c-neutral-500, #6b7184);
+    white-space: nowrap;
+
+    @include m(success) {
+      color: var(--rumo-c-success, #10b981);
+    }
+
+    @include m(warning) {
+      color: var(--rumo-c-warning, #f59e0b);
+    }
+
+    @include m(danger) {
+      color: var(--rumo-c-danger, #ef4444);
+    }
+  }
+}
+
+@include b(stat-grid) {
+  display: grid;
+  gap: var(--rumo-stat-grid-gap, 8px);
+  /* 窄视口按 2 列回落(1 列配置保持 1 列) */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 列数修饰:宽视口恢复 columns 列 */
+@for $i from 1 through 8 {
+  .rumo-stat-grid--cols-#{$i} {
+    grid-template-columns: repeat(if($i < 2, $i, 2), 1fr);
+
+    @media (min-width: $--dash-bp-tall) {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+}

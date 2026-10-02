@@ -1,0 +1,92 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:日历热力图。颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(heatmap) {
+  width: 100%;
+
+  @include e(header) {
+    margin: 0 0 8px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    color: var(--rumo-c-neutral-600, #505564);
+  }
+
+  @include e(scroll) {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background: var(--rumo-c-neutral-300, #c2c7d5);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+
+  @include e(board) {
+    display: inline-block;
+  }
+
+  @include e(months) {
+    display: grid;
+    margin: 0 0 4px;
+  }
+
+  @include e(month) {
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--rumo-c-neutral-500, #6b7184);
+    white-space: nowrap;
+  }
+
+  @include e(weekdays) {
+    display: grid;
+    flex-shrink: 0;
+  }
+
+  @include e(weekday) {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    line-height: 1;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(cells) {
+    display: grid;
+  }
+
+  @include e(cell) {
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 150ms ease-out;
+
+    &:hover {
+      transform: scale(1.25);
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-heatmap__cell {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

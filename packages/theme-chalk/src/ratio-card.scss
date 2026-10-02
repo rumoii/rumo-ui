@@ -1,0 +1,108 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "common/tokens-dash";
+
+/* Dash 数据可视化:占比卡。卡体取 .rumo-panel 视觉(取值与 dash-utils.scss 一致,
+ * 不引用该文件);颜色走 --rumo-* 变量(hex 兜底),暗色由 .rumo-dash.is-dark 覆盖变量实现。 */
+@include b(ratio-card) {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--rumo-c-paper, #f7f8fc);
+  border: 1px solid var(--rumo-c-neutral-200, #dadee8);
+  border-radius: var(--rumo-radius-lg, 12px);
+  padding: var(--rumo-space-6, 24px);
+  color: var(--rumo-c-ink, #0a0b0d);
+
+  @include e(header) {
+    margin: 0 0 12px;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+    font-weight: var(--rumo-text-label-weight, 600);
+    letter-spacing: var(--rumo-text-label-ls, 0.02em);
+    text-transform: uppercase;
+    color: var(--rumo-c-neutral-500, #6b7184);
+  }
+
+  @include e(list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @include e(item) {
+    min-width: 0;
+  }
+
+  @include e(row) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    font-size: var(--rumo-text-caption-size, 12px);
+    line-height: var(--rumo-text-caption-lh, 1.4);
+  }
+
+  /* 图标位:固定宽度,各层 label 左缘对齐 */
+  @include e(icon) {
+    flex-shrink: 0;
+    width: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  @include e(dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  @include e(label) {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--rumo-c-ink, #0a0b0d);
+    font-weight: 500;
+  }
+
+  @include e(value) {
+    flex-shrink: 0;
+    white-space: nowrap;
+    color: var(--rumo-c-ink, #0a0b0d);
+    font-weight: 600;
+  }
+
+  @include e(ratio) {
+    font-weight: 400;
+    color: var(--rumo-c-neutral-400, #989eaf);
+  }
+
+  /* 分布条:细圆角轨道 + 按占比着色的填充 */
+  @include e(track) {
+    width: 100%;
+    height: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: var(--rumo-c-neutral-100, #eff2f9);
+  }
+
+  @include e(fill) {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 500ms ease-out;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rumo-ratio-card__fill {
+    transition: none;
+  }
+}
