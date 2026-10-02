@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Dash skin layer**: `tokens/tokens.json` gains a `dash` namespace (accent/neutrals/semantic/categorical series, type scale, radius, shadow, spacing, motion, breakpoints; accent anchored on `#856AF9`); `scripts/gen-tokens.js` additionally generates `tokens-dash.scss` (SCSS variables) and `tokens-dash-css.scss` (runtime CSS variables under the `.rumo-dash` scope, `.is-dark` dark mode, OKLCH `@supports` fallback); `dash-utils.scss` provides `.rumo-panel` / `.rumo-num` and min-height breakpoint mixins. Existing token outputs are unchanged; docs gain a "Dash Skin Tokens" page (zh/en)
+
 ## 1.2.0 (2026-10-01)
 
 Design Tokens foundation and Web terminal-line components (purely additive, non-breaking):

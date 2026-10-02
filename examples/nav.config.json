@@ -60,6 +60,10 @@
               "title": "Typography 字体"
             },
             {
+              "path": "/dash-token",
+              "title": "Dash 皮肤令牌"
+            },
+            {
               "path": "/text",
               "title": "Text 文本"
             },
@@ -448,6 +452,10 @@
             {
               "path": "/typography",
               "title": "Typography"
+            },
+            {
+              "path": "/dash-token",
+              "title": "Dash Skin Tokens"
             },
             {
               "path": "/text",

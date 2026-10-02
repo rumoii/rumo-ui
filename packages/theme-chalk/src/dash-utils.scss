@@ -1,0 +1,64 @@
+@import "common/tokens-dash";
+
+/* Dash 皮肤层工具类与 mixin。
+ * 变量由 common/tokens-dash-css.scss 挂在 .rumo-dash 作用域,暗色走 .rumo-dash.is-dark。
+ * 既有组件不引用本文件;仅 dash 皮肤组件与文档 demo 使用。 */
+
+/* min-height 断点(营销/看板竖向节奏,矮屏不撑开) */
+@mixin rumo-minh-tall {
+  @media (min-height: $--dash-bp-tall) {
+    @content;
+  }
+}
+
+@mixin rumo-minh-xtall {
+  @media (min-height: $--dash-bp-xtall) {
+    @content;
+  }
+}
+
+/* 等宽数字(统计/表格数值列,防止跳动) */
+.rumo-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 面板容器:看板主容器样式,不嵌套使用 */
+.rumo-panel {
+  background: var(--rumo-c-paper);
+  border: 1px solid var(--rumo-c-neutral-200);
+  border-radius: var(--rumo-radius-lg);
+  padding: var(--rumo-space-6);
+}
+
+.rumo-panel--strong {
+  background: var(--rumo-c-neutral-50);
+  border-color: var(--rumo-c-neutral-300);
+}
+
+/* 皮肤容器:提供默认文本色与字族 */
+.rumo-dash {
+  color: var(--rumo-c-ink);
+  font-family: var(--rumo-font-sans);
+}
+
+@keyframes rumo-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rumo-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

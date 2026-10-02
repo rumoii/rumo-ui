@@ -75,6 +75,274 @@ export const tokens = {
       "web": "solid",
       "tui": "round"
     }
+  },
+  "dash": {
+    "color": {
+      "ink": {
+        "hex": "#0a0b0d",
+        "oklch": "oklch(15% 0.005 270)"
+      },
+      "paper": {
+        "hex": "#f7f8fc",
+        "oklch": "oklch(98% 0.005 270)"
+      },
+      "neutral": {
+        "50": {
+          "hex": "#f7f8fc",
+          "oklch": "oklch(98% 0.005 270)"
+        },
+        "100": {
+          "hex": "#eff2f9",
+          "oklch": "oklch(96% 0.01 270)"
+        },
+        "200": {
+          "hex": "#dadee8",
+          "oklch": "oklch(90% 0.015 270)"
+        },
+        "300": {
+          "hex": "#c2c7d5",
+          "oklch": "oklch(83% 0.02 270)"
+        },
+        "400": {
+          "hex": "#989eaf",
+          "oklch": "oklch(70% 0.025 270)"
+        },
+        "500": {
+          "hex": "#6b7184",
+          "oklch": "oklch(55% 0.03 270)"
+        },
+        "600": {
+          "hex": "#505564",
+          "oklch": "oklch(45% 0.025 270)"
+        },
+        "700": {
+          "hex": "#363a45",
+          "oklch": "oklch(35% 0.02 270)"
+        },
+        "800": {
+          "hex": "#1f2129",
+          "oklch": "oklch(25% 0.015 270)"
+        },
+        "900": {
+          "hex": "#101116",
+          "oklch": "oklch(18% 0.01 270)"
+        },
+        "950": {
+          "hex": "#050607",
+          "oklch": "oklch(12% 0.005 270)"
+        }
+      },
+      "accent": {
+        "50": "#f4f4ff",
+        "100": "#e9e9fe",
+        "200": "#d4d2fe",
+        "300": "#bab3ff",
+        "400": "#9d8ffd",
+        "500": "#856AF9",
+        "600": "#7355e3",
+        "700": "#6247c6",
+        "800": "#4f38a2",
+        "900": "#3f2b85",
+        "950": "#230e56",
+        "DEFAULT": "#856AF9",
+        "dark": "#7355e3",
+        "light": "#9d8ffd"
+      },
+      "amber": {
+        "DEFAULT": "#f59e0b",
+        "dark": "#d97706",
+        "light": "#fbbf24"
+      },
+      "semantic": {
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "danger": "#ef4444",
+        "info": "#856AF9"
+      },
+      "series": [
+        "#8b5cf6",
+        "#3b82f6",
+        "#14b8a6",
+        "#f59e0b",
+        "#f43f5e",
+        "#06b6d4",
+        "#f97316",
+        "#64748b"
+      ]
+    },
+    "colorDark": {
+      "ink": {
+        "hex": "#f7f8fc"
+      },
+      "paper": {
+        "hex": "#0a0b0d"
+      },
+      "neutral": {
+        "50": {
+          "hex": "#161617",
+          "oklch": "oklch(20% 0.002 270)"
+        },
+        "100": {
+          "hex": "#1f1f21",
+          "oklch": "oklch(24% 0.003 270)"
+        },
+        "200": {
+          "hex": "#2d2e30",
+          "oklch": "oklch(30% 0.004 270)"
+        },
+        "300": {
+          "hex": "#46484a",
+          "oklch": "oklch(40% 0.005 270)"
+        },
+        "400": {
+          "hex": "#707175",
+          "oklch": "oklch(55% 0.006 270)"
+        },
+        "500": {
+          "hex": "#8e8f92",
+          "oklch": "oklch(65% 0.005 270)"
+        },
+        "600": {
+          "hex": "#adaeb0",
+          "oklch": "oklch(75% 0.004 270)"
+        },
+        "700": {
+          "hex": "#cdced0",
+          "oklch": "oklch(85% 0.003 270)"
+        },
+        "800": {
+          "hex": "#e4e4e6",
+          "oklch": "oklch(92% 0.002 270)"
+        },
+        "900": {
+          "hex": "#f1f2f2",
+          "oklch": "oklch(96% 0.001 270)"
+        },
+        "950": {
+          "hex": "#f8f8f9",
+          "oklch": "oklch(98% 0.001 270)"
+        }
+      },
+      "accent": {
+        "DEFAULT": "#9d8ffd",
+        "dark": "#856AF9",
+        "light": "#bab3ff"
+      },
+      "semantic": {
+        "success": "#34d399",
+        "warning": "#fbbf24",
+        "danger": "#f87171",
+        "info": "#9d8ffd"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif",
+        "mono": "'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace"
+      },
+      "scale": {
+        "display": {
+          "size": "72px",
+          "lineHeight": "1",
+          "weight": "700",
+          "letterSpacing": "-0.03em"
+        },
+        "display-sm": {
+          "size": "56px",
+          "lineHeight": "1.05",
+          "weight": "700",
+          "letterSpacing": "-0.02em"
+        },
+        "hero": {
+          "size": "48px",
+          "lineHeight": "1.1",
+          "weight": "600",
+          "letterSpacing": "-0.02em"
+        },
+        "h1": {
+          "size": "36px",
+          "lineHeight": "1.2",
+          "weight": "600",
+          "letterSpacing": "-0.02em"
+        },
+        "h2": {
+          "size": "28px",
+          "lineHeight": "1.25",
+          "weight": "600",
+          "letterSpacing": "-0.01em"
+        },
+        "h3": {
+          "size": "22px",
+          "lineHeight": "1.3",
+          "weight": "600",
+          "letterSpacing": "-0.01em"
+        },
+        "h4": {
+          "size": "18px",
+          "lineHeight": "1.4",
+          "weight": "600"
+        },
+        "body": {
+          "size": "16px",
+          "lineHeight": "1.5",
+          "weight": "400"
+        },
+        "body-sm": {
+          "size": "14px",
+          "lineHeight": "1.5",
+          "weight": "400"
+        },
+        "caption": {
+          "size": "12px",
+          "lineHeight": "1.4",
+          "weight": "500",
+          "letterSpacing": "0.01em"
+        },
+        "label": {
+          "size": "11px",
+          "lineHeight": "1.3",
+          "weight": "600",
+          "letterSpacing": "0.02em"
+        }
+      }
+    },
+    "radius": {
+      "sm": "4px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px",
+      "full": "9999px"
+    },
+    "shadow": {
+      "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "base": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)",
+      "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+      "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+    },
+    "space": {
+      "0": "0",
+      "1": "4px",
+      "2": "8px",
+      "3": "12px",
+      "4": "16px",
+      "5": "20px",
+      "6": "24px",
+      "8": "32px",
+      "10": "40px",
+      "12": "48px",
+      "16": "64px",
+      "20": "80px"
+    },
+    "motion": {
+      "fast": "150ms",
+      "base": "200ms",
+      "slow": "250ms",
+      "ease": "ease-out"
+    },
+    "breakpoint": {
+      "tall": "900px",
+      "xtall": "1000px"
+    }
   }
 } as const;
 
