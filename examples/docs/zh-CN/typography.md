@@ -107,7 +107,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">特殊字段</td>
       <td class="special text-color typo-semibold">特殊标题</td>
       <td class="desc">Semibold 600</td>
-      <td class="desc">#55677d</td></td>
+      <td class="desc"><code>$--color-black</code><br>#55677d</td></td>
       <td class="desc">24px</td>
       <td class="desc">32px</td>
       <td class="desc">主要应用于突出展示型文字</td>
@@ -116,7 +116,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">特殊字段</td>
       <td class="h1 text-color typo-semibold">LOGO名称</td>
       <td class="desc">Semibold 600</td>
-      <td class="desc">#55677d</td></td>
+      <td class="desc"><code>$--color-black</code><br>#55677d</td></td>
       <td class="desc">20px</td>
       <td class="desc">28px</td>
       <td class="desc">主要应用于LOGO文字</td>
@@ -125,7 +125,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">一级主标题</td>
       <td class="desc light-text-color typo-semibold">我是标题</td>
       <td class="desc">Medium 500</td>
-      <td class="desc">#55677d</td></td>
+      <td class="desc"><code>$--color-black</code><br>#55677d</td></td>
       <td class="desc">18px</td>
       <td class="desc">24px</td>
       <td class="desc">主要应用于一级导航栏文字，部分按钮文字，页面标题</td>
@@ -134,7 +134,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">二级标题</td>
       <td class="desc text-color typo-medium">我是标题</td>
       <td class="desc">Semibold 500</td>
-      <td class="desc">#55677d</td></td>
+      <td class="desc"><code>$--color-black</code><br>#55677d</td></td>
       <td class="desc">16px</td>
       <td class="desc">24px</td>
       <td class="desc">主要应用于重要的内容标题、模块划分、弹框标题</td>
@@ -143,7 +143,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">二级次标题</td>
       <td class="desc form-text-color typo-medium">我是二级次标题</td>
       <td class="desc">Medium 500</td>
-      <td class="desc">#8090a0</td></td>
+      <td class="desc"><code>$--color-default</code><br>#8090a0</td></td>
       <td class="desc">16px</td>
       <td class="desc">24px</td>
       <td class="desc">主要应用tab</td>
@@ -152,7 +152,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">次级标题</td>
       <td class="h3 form-text-color typo-medium">我是次级标题</td>
       <td class="desc">Medium 500</td>
-      <td class="desc">#8090a0</td></td>
+      <td class="desc"><code>$--color-default</code><br>#8090a0</td></td>
       <td class="desc">14px</td>
       <td class="desc">22px</td>
       <td class="desc">主要应用于表单信息标题</td>
@@ -161,7 +161,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">副标题</td>
       <td class="h4 form-text-color typo-medium">我是副标题</td>
       <td class="desc">Medium 500</td>
-      <td class="desc">#8090a0</td></td>
+      <td class="desc"><code>$--color-default</code><br>#8090a0</td></td>
       <td class="desc">12px</td>
       <td class="desc">20px</td>
       <td class="desc">主要应用于主标题的补充或基础介绍</td>
@@ -170,7 +170,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">正文</td>
       <td class="h3 text-color typo-medium">我是正文</td>
       <td class="desc">Medium 500</td>
-      <td class="desc">#55677d</td></td>
+      <td class="desc"><code>$--color-black</code><br>#55677d</td></td>
       <td class="desc">14px</td>
       <td class="desc">22px</td>
       <td class="desc">主要应用于主要内容信息，二三级导航栏、区块标题</td>
@@ -179,7 +179,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">辅助文字</td>
       <td class="h4 aside-text-color typo-regular">我是辅助文字</td>
       <td class="desc">Regular 400</td>
-      <td class="desc">#9ea7b4</td></td>
+      <td class="desc">—</td></td>
       <td class="desc">12px</td>
       <td class="desc">20px</td>
       <td class="desc">主要应用于注释、表格内容、提示文字、备注性信息</td>
@@ -188,7 +188,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">失效文字</td>
       <td class="h4 useless-text-color typo-regular">我是失效文字</td>
       <td class="desc">Regular 400</td>
-      <td class="desc">#cscbd6</td></td>
+      <td class="desc"><code>$--disabled-color-base</code><br>#cccccc</td></td>
       <td class="desc">12px</td>
       <td class="desc">20px</td>
       <td class="desc">主要应用于不可点击文字</td>
@@ -197,7 +197,7 @@ font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "Pi
       <td class="desc">链接文字</td>
       <td class="h4 link-text-color typo-regular">我是链接文字</td>
       <td class="desc">Regular 400</td>
-      <td class="desc">#0091ff</td></td>
+      <td class="desc"><code>$--link-primary-font-color</code><br>#856AF9</td></td>
       <td class="desc">12px</td>
       <td class="desc">20px</td>
       <td class="desc">主要应用于可点击链接文字</td>

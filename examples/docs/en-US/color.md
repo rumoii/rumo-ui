@@ -6,12 +6,12 @@ RumoUI 为了避免视觉传达差异，使用一套特定的调色板来规定�
 
 ### 主色
 
-RumoUI 主要品牌颜色是鲜艳、友好的蓝色。
+RumoUI 主要品牌颜色是鲜艳、友好的紫色。
 :::demo
 ```html
 <rumo-row :gutter="12">
   <rumo-col :span="6">
-    <div class="demo-color-box bg-blue">Blue<div class="value">#008CEE</div></div>
+    <div class="demo-color-box bg-blue">Primary<div class="value">$--color-primary #856AF9</div></div>
   </rumo-col>
 </rumo-row>
 ```
@@ -24,16 +24,16 @@ RumoUI 主要品牌颜色是鲜艳、友好的蓝色。
 ```html
 <rumo-row :gutter="12">
   <rumo-col :span="6">
-    <div class="demo-color-box bg-success">Success<div class="value">#4BAB4E</div></div>
+    <div class="demo-color-box bg-success">Success<div class="value">$--color-success #2ABC80</div></div>
   </rumo-col>
   <rumo-col :span="6">
-    <div class="demo-color-box bg-warning">Warning<div class="value">#F58032</div></div>
+    <div class="demo-color-box bg-warning">Warning<div class="value">$--color-warning #FF9c29</div></div>
   </rumo-col>
   <rumo-col :span="6">
-    <div class="demo-color-box bg-danger">Danger<div class="value">#E3614A</div></div>
+    <div class="demo-color-box bg-danger">Danger<div class="value">$--color-danger #F45757</div></div>
   </rumo-col>
   <rumo-col :span="6">
-    <div class="demo-color-box bg-default">Default<div class="value">#9FA5AD</div></div>
+    <div class="demo-color-box bg-default">Default<div class="value">$--color-default #8090a0</div></div>
   </rumo-col>
 </rumo-row>
 ```
@@ -47,18 +47,18 @@ RumoUI 主要品牌颜色是鲜艳、友好的蓝色。
 <rumo-row :gutter="12">
   <rumo-col :span="6">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-text-primary">主要文字<div class="value">#0A1D33</div></div>
-      <div class="demo-color-box bg-text-regular">常规文字<div class="value">#525B69</div></div>
-      <div class="demo-color-box bg-text-secondary">次要文字<div class="value">#929BA5</div></div>
-      <div class="demo-color-box bg-text-placeholder">占位文字<div class="value">#C3CAD2</div></div>
+      <div class="demo-color-box bg-text-primary">主要文字<div class="value">$--color-text-primary #333333</div></div>
+      <div class="demo-color-box bg-text-regular">常规文字<div class="value">$--color-text-regular #666666</div></div>
+      <div class="demo-color-box bg-text-secondary">次要文字<div class="value">$--color-text-secondary #999999</div></div>
+      <div class="demo-color-box bg-text-placeholder">占位文字<div class="value">$--color-text-placeholder #cccccc</div></div>
     </div>
   </rumo-col>
   <rumo-col :span="6">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-border-base">一级边框<div class="value">#DCDFE6</div></div>
-      <div class="demo-color-box bg-border-light">二级边框<div class="value">#E4E7ED</div></div>
-      <div class="demo-color-box bg-border-lighter">三级边框<div class="value">#EBEEF5</div></div>
-      <div class="demo-color-box bg-border-extra-light">四级边框<div class="value">#F2F6FC</div></div>
+      <div class="demo-color-box bg-border-base">一级边框<div class="value">$--border-color-base #dddddd</div></div>
+      <div class="demo-color-box bg-border-light">二级边框<div class="value">$--border-color-light #e9edf2</div></div>
+      <div class="demo-color-box bg-border-lighter">三级边框<div class="value">$--border-color-lighter #ebeef5</div></div>
+      <div class="demo-color-box bg-border-extra-light">四级边框<div class="value">$--border-color-extra-light #f2f6fc</div></div>
     </div>
   </rumo-col>
 </rumo-row>

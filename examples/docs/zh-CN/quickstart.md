@@ -3,32 +3,12 @@
 
 ## 快速上手
 
-本节将介绍如何在项目中使用 RumoUI。
+本节介绍如何在 Vue 2.6 项目中使用 Rumo UI。开始之前，请先按上一节"安装"把 rumo-ui 装进项目。
 
-### 使用 Starter Kit
-
-我们提供了通用的[项目模板](https://github.com/RumoUI-starter)，你可以直接使用。对于 Laravel 用户，我们也准备了相应的[模板](https://github.com/RumoUI-in-laravel-starter)，同样可以直接下载使用。
-
-如果不希望使用我们提供的模板，请继续阅读。
-
-### 使用 vue-cli
-
-我们还可以使用 [vue-cli](https://github.com/vuejs/vue-cli) 初始化项目，命令如下：
-
-```shell
-> npm i -g vue-cli
-> mkdir my-project && cd my-project
-> vue init webpack
-> npm i && npm i rumo-ui
-```
-
-### 引入 RumoUI
-
-你可以引入整个 RumoUI，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 RumoUI。
-
-#### 完整引入
+### 完整引入
 
 在 main.js 中写入以下内容：
+
 ```javascript
 import Vue from 'vue'
 import RumoUI from 'rumo-ui'
@@ -42,192 +22,108 @@ new Vue({
   render: h => h(App)
 })
 ```
-以上代码便完成了 RumoUI 的引入。需要注意的是，样式文件需要单独引入。
 
-#### 按需引入
+样式文件需要单独引入。
 
-借助 [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component)，我们可以只引入需要的组件，以达到减小项目体积的目的。
+### 按需引入
 
-首先，安装 babel-plugin-component：
+每个组件都有独立的构建产物 `lib/<组件名>.js` 和样式 `lib/theme-chalk/<组件名>.css`，可以直接按路径引入，不需要额外的 Babel 插件。组件样式依赖公共的 `base.css`。
 
-```bash
-npm install babel-plugin-component -D
-```
-
-然后，将 .babelrc 修改为：
-```json
-{
-  "presets": [
-    ["es2015", { "modules": false }]
-  ],
-  "plugins": [["component", [
-    {
-      "libraryName": "rumo-ui",
-      "styleLibraryName": "theme-chalk"
-    }
-  ]]]
-}
-```
-
-接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：
+按需引入时**必须先设置 `Vue.prototype.$RUMO`**：完整引入时它由 `Vue.use(RumoUI)` 设置，而 Dialog、Message 等组件会直接读取它，缺少时运行报错。
 
 ```javascript
 import Vue from 'vue'
-import { Button, Select } from 'rumo-ui'
-import App from './App.vue'
+import Button from 'rumo-ui/lib/button'
+import Select from 'rumo-ui/lib/select'
+import 'rumo-ui/lib/theme-chalk/base.css'
+import 'rumo-ui/lib/theme-chalk/button.css'
+import 'rumo-ui/lib/theme-chalk/select.css'
 
-Vue.component(Button.name, Button)
-Vue.component(Select.name, Select)
-/* 或写为
- * Vue.use(Button)
- * Vue.use(Select)
- */
+Vue.prototype.$RUMO = {
+  size: '',
+  zIndex: 2000,
+  namespaceClass: '',
+  getPopupContainer: undefined,
+  messageOffsetTop: 20,
+  drawer: { flexLayout: false }
+}
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+Vue.use(Button)
+Vue.use(Select)
 ```
 
-完整组件列表和引入方式（完整组件列表以 [components.json](https://github.com/RumoUI/blob/master/components.json) 为准）
+文件名是组件名的短横线形式，例如 `DatePicker` 对应 `lib/date-picker.js`。全部组件见仓库根目录的 `components.json`。
+
+如果项目使用 Babel，也可以借助 [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component) 把 `import { Button } from 'rumo-ui'` 自动转换成上面的按路径引入：
+
+```json
+{
+  "plugins": [["component", {
+    "libraryName": "rumo-ui",
+    "styleLibraryName": "theme-chalk"
+  }]]
+}
+```
+
+#### 完整列表
+
+下面列出 `rumo-ui` 导出的全部组件、指令和服务，内容与 `src/index.js` 一致：
 
 ```javascript
 import Vue from 'vue'
 import {
-  Pagination,
-  Dialog,
-  Autocomplete,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Menu,
-  Submenu,
-  MenuItem,
-  MenuItemGroup,
-  Input,
-  InputNumber,
-  Radio,
-  RadioGroup,
-  RadioButton,
-  Checkbox,
-  CheckboxButton,
-  CheckboxGroup,
-  Switch,
-  Select,
-  Option,
-  OptionGroup,
-  Button,
-  ButtonGroup,
-  Table,
-  TableColumn,
-  DatePicker,
-  TimeSelect,
-  TimePicker,
-  Popover,
-  Tooltip,
-  Breadcrumb,
-  BreadcrumbItem,
-  Form,
-  FormItem,
-  Tabs,
-  TabPane,
-  Tag,
-  Tree,
-  Alert,
-  Slider,
-  Icon,
-  Row,
-  Col,
-  Upload,
-  Progress,
-  Badge,
-  Card,
-  Rate,
-  Steps,
-  Step,
-  Carousel,
-  CarouselItem,
-  Collapse,
-  CollapseItem,
-  Cascader,
-  ColorPicker,
-  Transfer,
-  Container,
-  Header,
-  Aside,
-  Main,
-  Footer,
-  Loading,
-  MessageBox,
-  Message,
+  Pagination, Dialog, Autocomplete, Dropdown, DropdownMenu,
+  DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input,
+  InputNumber, Radio, RadioGroup, RadioButton, Checkbox,
+  CheckboxButton, CheckboxGroup, RectCheckbox, Switch, Select, Option,
+  OptionGroup, Button, ButtonGroup, Table, TableColumn, DatePicker,
+  TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem,
+  Form, FormItem, Tabs, TabPane, Tag, Tree, Alert, Slider, Icon, Row,
+  Col, Upload, Progress, Spinner, Badge, Card, Rate, Steps, Step,
+  Carousel, Scrollbar, CarouselItem, Collapse, CollapseItem, Cascader,
+  ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Affix,
+  Popconfirm, Timeline, TimelineItem, Link, Divider, Image, Calendar,
+  Backtop, PageHeader, CascaderPanel, Avatar, Drawer, Empty, Space,
+  Watermark, Text, Result, Segmented, CheckTag, Skeleton, SkeletonItem,
+  Descriptions, DescriptionsItem, Statistic, Countdown, AvatarGroup,
+  Splitpanes, SplitPane, Signature, Qr, Countup, SvgIcon, LogViewer,
+  Terminal, CommandPalette, StackBar, TrendChart, TrendZoom, Heatmap,
+  QuotaBar, StatTile, StatGrid, RankList, BreakdownList, RatioCard,
+  InsightCard, SortableCard, DateRangePreset, CollapseTransition,
+  InfiniteScroll, Animate, ScrollReveal, Loading, MessageBox, Message,
   Notification
 } from 'rumo-ui'
+import 'rumo-ui/lib/theme-chalk/index.css'
 
-Vue.use(Pagination)
-Vue.use(Dialog)
-Vue.use(Autocomplete)
-Vue.use(Dropdown)
-Vue.use(DropdownMenu)
-Vue.use(DropdownItem)
-Vue.use(Menu)
-Vue.use(Submenu)
-Vue.use(MenuItem)
-Vue.use(MenuItemGroup)
-Vue.use(Input)
-Vue.use(InputNumber)
-Vue.use(Radio)
-Vue.use(RadioGroup)
-Vue.use(RadioButton)
-Vue.use(Checkbox)
-Vue.use(CheckboxButton)
-Vue.use(CheckboxGroup)
-Vue.use(Switch)
-Vue.use(Select)
-Vue.use(Option)
-Vue.use(OptionGroup)
-Vue.use(Button)
-Vue.use(ButtonGroup)
-Vue.use(Table)
-Vue.use(TableColumn)
-Vue.use(DatePicker)
-Vue.use(TimeSelect)
-Vue.use(TimePicker)
-Vue.use(Popover)
-Vue.use(Tooltip)
-Vue.use(Breadcrumb)
-Vue.use(BreadcrumbItem)
-Vue.use(Form)
-Vue.use(FormItem)
-Vue.use(Tabs)
-Vue.use(TabPane)
-Vue.use(Tag)
-Vue.use(Tree)
-Vue.use(Alert)
-Vue.use(Slider)
-Vue.use(Icon)
-Vue.use(Row)
-Vue.use(Col)
-Vue.use(Upload)
-Vue.use(Progress)
-Vue.use(Badge)
-Vue.use(Card)
-Vue.use(Rate)
-Vue.use(Steps)
-Vue.use(Step)
-Vue.use(Carousel)
-Vue.use(CarouselItem)
-Vue.use(Collapse)
-Vue.use(CollapseItem)
-Vue.use(Cascader)
-Vue.use(ColorPicker)
-Vue.use(Container)
-Vue.use(Header)
-Vue.use(Aside)
-Vue.use(Main)
-Vue.use(Footer)
+// 组件
+[
+  Pagination, Dialog, Autocomplete, Dropdown, DropdownMenu,
+  DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input,
+  InputNumber, Radio, RadioGroup, RadioButton, Checkbox,
+  CheckboxButton, CheckboxGroup, RectCheckbox, Switch, Select, Option,
+  OptionGroup, Button, ButtonGroup, Table, TableColumn, DatePicker,
+  TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem,
+  Form, FormItem, Tabs, TabPane, Tag, Tree, Alert, Slider, Icon, Row,
+  Col, Upload, Progress, Spinner, Badge, Card, Rate, Steps, Step,
+  Carousel, Scrollbar, CarouselItem, Collapse, CollapseItem, Cascader,
+  ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Affix,
+  Popconfirm, Timeline, TimelineItem, Link, Divider, Image, Calendar,
+  Backtop, PageHeader, CascaderPanel, Avatar, Drawer, Empty, Space,
+  Watermark, Text, Result, Segmented, CheckTag, Skeleton, SkeletonItem,
+  Descriptions, DescriptionsItem, Statistic, Countdown, AvatarGroup,
+  Splitpanes, SplitPane, Signature, Qr, Countup, SvgIcon, LogViewer,
+  Terminal, CommandPalette, StackBar, TrendChart, TrendZoom, Heatmap,
+  QuotaBar, StatTile, StatGrid, RankList, BreakdownList, RatioCard,
+  InsightCard, SortableCard, DateRangePreset, CollapseTransition
+].forEach(component => Vue.use(component))
 
+// 指令
+Vue.use(InfiniteScroll)
+Vue.use(Animate)
+Vue.use(ScrollReveal)
 Vue.use(Loading.directive)
 
+// 服务
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
@@ -238,37 +134,43 @@ Vue.prototype.$message = Message
 ```
 
 ### 全局配置
-在引入 RumoUI 时，可以传入一个全局配置对象。该对象目前仅支持 `size` 字段，用于改变组件的默认尺寸。按照引入 RumoUI 的方式，具体操作如下：
 
-完整引入 RumoUI：
-```JS
+`Vue.use(RumoUI, options)` 时可以传入全局配置：
+
+| 字段 | 说明 | 默认值 |
+| --- | --- | --- |
+| size | 拥有 `size` 属性的组件的默认尺寸，可选值以各组件文档的 `size` 属性为准 | — |
+| zIndex | 弹出层的初始 z-index | 2000 |
+| namespaceClass | 追加到弹出层（Dialog、Drawer、Popover、Select 下拉等）根节点上的 class | — |
+| getPopupContainer | 返回弹出层挂载节点的函数 | 挂载到 `document.body` |
+| messageOffsetTop | Message 距窗口顶部的偏移，单位 px | 20 |
+| drawer.flexLayout | Drawer 的默认 `flex-layout` 值 | false |
+| locale / i18n | 语言包与自定义 i18n 处理函数，见"国际化" | — |
+
+```javascript
 import Vue from 'vue'
 import RumoUI from 'rumo-ui'
-Vue.use(RumoUI, { size: 'small' })
+
+Vue.use(RumoUI, { size: 'small', zIndex: 3000 })
 ```
 
-按需引入 RumoUI：
-```JS
-import Vue from 'vue'
-import { Button } from 'rumo-ui'
+按需引入时，在注册组件之前把同样的字段写进 `Vue.prototype.$RUMO`，并且要写全，未改动的字段保留上面的默认值：
 
-Vue.prototype.$RUMO = { size: 'small' }
+```javascript
+import Vue from 'vue'
+import Button from 'rumo-ui/lib/button'
+
+Vue.prototype.$RUMO = {
+  size: 'small',
+  zIndex: 3000,
+  namespaceClass: '',
+  getPopupContainer: undefined,
+  messageOffsetTop: 20,
+  drawer: { flexLayout: false }
+}
 Vue.use(Button)
 ```
-按照以上设置，项目中所有拥有 `size` 属性的组件的默认尺寸均为 'small'。
 
 ### 开始使用
 
-至此，一个基于 Vue 和 RumoUI 的开发环境已经搭建完毕，现在就可以编写代码了。启动开发模式：
-
-```bash
-# 执行如下命令后访问 localhost:8086
-npm run dev
-```
-
-编译：
-
-```bash
-npm run build
-```
-各个组件的使用方法请参阅它们各自的文档。
+各个组件的用法请参阅它们各自的文档。

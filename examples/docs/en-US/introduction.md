@@ -1,8 +1,8 @@
-# 介绍
+# Introduction
 
-Rumo UI 是沉淀出的基础组件库，基于 Vue 实现，开发和服务于企业级后台产品。
+Rumo UI is a Vue 2 component library for admin and back-office products.
 
-## 特性
+## Principles
 ```html
 <rumo-row :gutter="20">
   <rumo-col :xs="24" :sm="12" :md="12" :lg="6">
@@ -53,20 +53,20 @@ Rumo UI 是沉淀出的基础组件库，基于 Vue 实现，开发和服务于�
 </rumo-row>
 ```
 
-## 支持环境
+## Positioning
 
-* 现代浏览器和 IE9 及以上（需要 polyfills）。
-* 支持服务端渲染。
+Rumo UI combines components and assets from open source projects such as Element UI, Element Plus, splitpanes, and Tabler Icons, and adds its own dashboard (Dash), terminal, and command palette components. It is meant for developers and AI coding assistants to **reference and reuse**: import the whole library, or copy a single component's source and styles into your own project. See `NOTICE` and `licenses/` in the repository root for the origin and license of each part.
 
-## 版本
+## Environment
 
-稳定版：V1.0.0
-预览版：V1.0.0
+* Vue 2.6. Vue 3 is not supported.
+* Modern browsers: Chrome, Firefox, Edge, Safari.
+* Developing and building this repository requires Node.js 20 (see `.nvmrc`).
 
-## 安装
+## Version
 
-```bash
-$ xnpm i -S rumo-ui
-```
+The version is the one in the repository's `package.json`; see the changelog for what changed in each release.
 
-**我们推荐使用 [rumo-cli](../component/rumo-cli) 集成的 `xnpm` 的方式进行开发**，不仅可在开发环境轻松调试，也可放心地在生产环境打包部署使用，享受整个生态圈和工具链带来的诸多好处。
+## Installation
+
+Rumo UI is not published to npm. See the next section, Installation, for how to get and use it.

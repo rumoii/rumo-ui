@@ -76,7 +76,7 @@ export default {
       @select="onSelect"
     />
     <rumo-command-palette
-      v-model:visible="controlledVisible"
+      v-model="controlledVisible"
       :hotkey="false"
       :commands="commands"
       @select="onSelect"

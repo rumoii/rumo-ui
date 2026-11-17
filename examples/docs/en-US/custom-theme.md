@@ -1,28 +1,30 @@
-
 [toc]
 
-## 自定义主题
-RumoUI 默认提供一套主题，CSS 命名采用 BEM 的风格，方便使用者覆盖样式。我们提供了三种方法，可以进行不同程度的样式自定义。
+## Custom Theme
 
-### 仅替换主题色
-如果仅希望更换 RumoUI 的主题色，推荐使用[在线主题生成工具](https://rumo-ui.github.io/theme-chalk-preview)RumoUI 默认的主题色是鲜艳、友好的蓝色。通过替换主题色，能够让 RumoUI 的视觉更加符合具体项目的定位。
+Rumo UI's styles live in `packages/theme-chalk/src`, written in SCSS with BEM class names that are easy to override. Base values such as the primary color come from Design Tokens: `tokens/tokens.json` is the single source, `scripts/gen-tokens.js` generates `packages/theme-chalk/src/common/tokens.scss` from it, and `common/var.scss` uses that file.
 
-使用上述工具，可以很方便地实时预览主题色改变之后的视觉，同时它还可以基于新的主题色生成完整的样式文件包，供直接下载使用（关于如何使用下载的主题包，请参考本节「引入自定义主题」和「搭配插件按需引入组件主题」部分）。
+Pick either method below. The optional dashboard skin (Dash) uses its own runtime CSS variables; see the Dash token page.
 
-### 在项目中改变 SCSS 变量
-RumoUI 的 theme-chalk 使用 SCSS 编写，如果你的项目也使用了 SCSS，那么可以直接在项目中改变 RumoUI 的样式变量。新建一个样式文件，例如 `rumo-variables.scss`，写入以下内容：
-```html
-/* 改变主题色变量 */
+### Method 1: override SCSS variables in your project
+
+For projects that already use SCSS. Every variable in `var.scss` is `!default`, so assigning it before importing the theme source overrides it.
+
+Create a stylesheet such as `rumo-variables.scss`:
+
+```scss
+/* primary color */
 $--color-primary: teal;
 
-/* 改变 icon 字体路径变量，必需 */
+/* icon font path, required */
 $--font-path: '~rumo-ui/lib/theme-chalk/fonts';
 
 @import "~rumo-ui/packages/theme-chalk/src/index";
 ```
 
-之后，在项目的入口文件中，直接引入以上样式文件即可（无需引入 RumoUI 编译好的 CSS 文件）：
-```JS
+Import it in your entry file instead of the compiled `lib/theme-chalk/index.css`:
+
+```javascript
 import Vue from 'vue'
 import RumoUI from 'rumo-ui'
 import './rumo-variables.scss'
@@ -31,94 +33,34 @@ Vue.use(RumoUI)
 ```
 
 :::tip
-需要注意的是，覆盖字体路径变量是必需的，将其赋值为 RumoUI 中 icon 图标所在的相对路径即可。
+- You must override `$--font-path` so it points to Rumo UI's icon fonts.
+- The theme source uses `@use 'sass:math'`, so compile it with Dart Sass (the `sass` npm package); node-sass is not supported.
 :::
 
-### 命令行主题工具
-如果你的项目没有使用 SCSS，那么可以使用命令行主题工具进行深层次的主题定制：
+See `packages/theme-chalk/src/common/var.scss` for every variable you can override, for example:
 
-#### <strong>安装工具</strong>
-首先安装「主题生成工具」，可以全局安装或者安装在当前项目下，推荐安装在项目里，方便别人 clone 项目时能直接安装依赖并启动，这里以全局安装做演示。
-```shell
-npm i rumo-theme -g
+```scss
+$--color-primary: $--token-color-primary !default;
+$--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default;
+$--color-success: $--token-color-success !default;
+$--color-warning: $--token-color-warning !default;
+$--color-danger: $--token-color-danger !default;
+$--color-info: $--token-color-info !default;
 ```
 
-安装白垩主题，可以从 npm 安装或者从 GitHub 拉取最新代码。
-```shell
-# 从 npm
-npm i rumo-theme-chalk -D
+### Method 2: edit the Design Tokens and rebuild
 
-# 从 GitHub
-npm i https://github.com/RumoUI/theme-chalk -D
-```
+For working inside this repository, or when you want a new compiled stylesheet.
 
-#### <strong>初始化变量文件</strong>
-主题生成工具安装成功后，如果全局安装可以在命令行里通过 `et` 调用工具，如果安装在当前目录下，需要通过 `node_modules/.bin/et` 访问到命令。执行 `-i` 初始化变量文件。默认输出到 `rumo-variables.scss`，当然你可以传参数指定文件输出目录。
+1. Edit `tokens/tokens.json`, for example `color.primary.hex`.
+2. In the repository root, run:
 
 ```shell
-et -i [可以自定义变量文件]
-
-> ✔ Generator variables file
+npm run build:theme   # generates tokens.scss and compiles the styles into lib/theme-chalk
 ```
 
-如果使用默认配置，执行后当前目录会有一个 `rumo-variables.scss` 文件。内部包含了主题所用到的所有变量，它们使用 SCSS 的格式定义。大致结构如下：
-```css
-$--color-primary: #409EFF !default;
-$--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
-$--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
-$--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default; /* 79bbff */
-$--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default; /* 8cc5ff */
-$--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
-$--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /* b3d8ff */
-$--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
-$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
-$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
+3. Import `lib/theme-chalk/index.css` as with the default theme, or `lib/theme-chalk/<component>.css` per component.
 
-$--color-success: #67c23a !default;
-$--color-warning: #e6a23c !default;
-$--color-danger: #f56c6c !default;
-$--color-info: #909399 !default;
-
-...
-```
-
-#### <strong>修改变量</strong>
-直接编辑 `rumo-variables.scss` 文件，例如修改主题色为红色。
-```CSS
-$--color-primary: red;
-```
-
-#### <strong>编译主题</strong>
-保存文件后，到命令行里执行 `et` 编译主题，如果你想启用 `watch` 模式，实时编译主题，增加 `-w` 参数；如果你在初始化时指定了自定义变量文件，则需要增加 `-c` 参数，并带上你的变量文件名
-```shell
-et
-
-> ✔ build theme font
-> ✔ build rumo-ui theme
-```
-
-#### <strong>引入自定义主题</strong>
-默认情况下编译的主题目录是放在 `./theme` 下，你可以通过 `-o` 参数指定打包目录。像引入默认主题一样，在代码里直接引用 `theme/index.css` 文件即可。
-
-```javascript
-import '../theme/index.css'
-import RumoUI from 'rumo-ui'
-import Vue from 'vue'
-
-Vue.use(RumoUI)
-```
-
-#### <strong>搭配插件按需引入组件主题</strong>
-如果是搭配 `babel-plugin-component` 一起使用，只需要修改 `.babelrc` 的配置，指定 `styleLibraryName` 路径为自定义主题相对于 `.babelrc` 的路径，注意要加 `~`。
-```json
-{
-  "plugins": [["component", [
-    {
-      "libraryName": "rumo-ui",
-      "styleLibraryName": "~theme"
-    }
-  ]]]
-}
-```
-
-如果不清楚 `babel-plugin-component` 是什么，请阅读 <a href="./#/zh-CN/component/quickstart">快速上手</a> 一节。更多 `element-theme` 用法请参考[项目仓库](https://github.com/RumoUI/element-theme)。
+:::tip
+Generated files such as `tokens.scss` say "Do not edit directly" in their header. Do not edit them by hand; change `tokens/tokens.json` and regenerate.
+:::

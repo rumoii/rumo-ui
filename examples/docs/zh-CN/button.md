@@ -94,35 +94,35 @@
   </tr>
   <tr>
     <td>常规状态</td>
-    <td><rumo-button type="primary">button</rumo-button><p>#0091ff</p></td>
-    <td><rumo-button plain>button</rumo-button><p>#55677d</p></td>
+    <td><rumo-button type="primary">button</rumo-button><p><code>$--color-primary</code><br>#856AF9</p></td>
+    <td><rumo-button plain>button</rumo-button><p><code>$--button-default-font-color</code><br>#333333</p></td>
     <td><rumo-button type="primary" plain>button</rumo-button><p>随需求改变颜色</p></td>
-    <td><rumo-button text type="primary">button</rumo-button><p>#0091ff</p></td>
-    <td><rumo-button icon="icon-search" nobord></rumo-button><p>#c3cbd6</p></td>
+    <td><rumo-button text type="primary">button</rumo-button><p><code>$--color-primary</code><br>#856AF9</p></td>
+    <td><rumo-button icon="icon-search" nobord></rumo-button><p><code>$--button-default-font-color</code><br>#333333</p></td>
   </tr>
   <tr class="hover-state">
     <td>悬停状态</td>
-    <td><button class="first" disabled>button</button><p>#0091ff+10%白</p></td>
-    <td><button class="second" disabled>button</button><p>#0091ff+10%白</p></td>
+    <td><button class="first" disabled>button</button><p>主色 <code>$--color-primary</code> + 10% 白</p></td>
+    <td><button class="second" disabled>button</button><p>主色 <code>$--color-primary</code> + 10% 白</p></td>
     <td><button class="third" disabled>button</button><p>随需求改变颜色</p></td>
-    <td><button class="forth" disabled>button</button><p>#0091ff+10%白</p></td>
-    <td class="icon"><rumo-icon name="search"></rumo-icon><p>#0091ff+10%白</p></td>
+    <td><button class="forth" disabled>button</button><p>主色 <code>$--color-primary</code> + 10% 白</p></td>
+    <td class="icon"><rumo-icon name="search"></rumo-icon><p>主色 <code>$--color-primary</code> + 10% 白</p></td>
   </tr>
   <tr class="click-state">
     <td>点击状态</td>
-    <td><button class="first" disabled>button</button><p>#0091ff+10%黑</p></td>
-    <td><button class="second" disabled>button</button><p>#0091ff+10%黑</p></td>
-    <td><button class="third" disabled>button</button><p>颜色+10%黑</p></td>
-    <td><button class="forth" disabled>button</button><p>#0091ff+10%黑</p></td>
-    <td class="icon"><rumo-icon name="search" size="14"></rumo-icon><p>#0091ff+10%黑</p></td>
+    <td><button class="first" disabled>button</button><p>主色 <code>$--color-primary</code> + 10% 黑</p></td>
+    <td><button class="second" disabled>button</button><p>主色 <code>$--color-primary</code> + 10% 黑</p></td>
+    <td><button class="third" disabled>button</button><p>颜色 + 10% 黑</p></td>
+    <td><button class="forth" disabled>button</button><p>主色 <code>$--color-primary</code> + 10% 黑</p></td>
+    <td class="icon"><rumo-icon name="search" size="14"></rumo-icon><p>主色 <code>$--color-primary</code> + 10% 黑</p></td>
   </tr>
   <tr class="double-line">
     <td>不可交互状态</td>
-    <td><rumo-button type="primary" disabled>button</rumo-button><p>#c3cbd6(文)<br>#f6f7f9(底)</p></td>
-    <td><rumo-button disabled>button</rumo-button><p>#c3cbd6(文)<br>#e9edf2(框)</p></td>
-    <td><rumo-button type="danger" plain disabled>button</rumo-button><p>#c3cbd6(文)<br>#e9edf2(框)</p></td>
-    <td><rumo-button text type="primary" disabled>button</rumo-button><p>#c3cbd6</p></td>
-    <td><rumo-button icon="icon-search" nobord disabled></rumo-button><p>#e9edf2</p></td>
+    <td><rumo-button type="primary" disabled>button</rumo-button><p><code>$--button-disabled-font-color</code>(文)<br>#cccccc<br><code>$--button-disabled-background-color</code>(底)<br>#f8f8f8</p></td>
+    <td><rumo-button disabled>button</rumo-button><p><code>$--button-disabled-font-color</code>(文)<br>#cccccc<br><code>$--button-disabled-border-color</code>(框)<br>#e9edf2</p></td>
+    <td><rumo-button type="danger" plain disabled>button</rumo-button><p><code>$--button-disabled-font-color</code>(文)<br>#cccccc<br><code>$--button-disabled-border-color</code>(框)<br>#e9edf2</p></td>
+    <td><rumo-button text type="primary" disabled>button</rumo-button><p><code>$--button-disabled-font-color</code><br>#cccccc</p></td>
+    <td><rumo-button icon="icon-search" nobord disabled></rumo-button><p><code>$--button-disabled-font-color</code><br>#cccccc</p></td>
   </tr>
 </table>
 ```

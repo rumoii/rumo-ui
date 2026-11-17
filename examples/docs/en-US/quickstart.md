@@ -1,34 +1,14 @@
 
 [toc]
 
-## 快速上手
+## Quick Start
 
-本节将介绍如何在项目中使用 RumoUI。
+This section shows how to use Rumo UI in a Vue 2.6 project. First install rumo-ui into your project as described in the previous section, Installation.
 
-### 使用 Starter Kit
+### Full import
 
-我们提供了通用的[项目模板](https://github.com/RumoUI-starter)，你可以直接使用。对于 Laravel 用户，我们也准备了相应的[模板](https://github.com/RumoUI-in-laravel-starter)，同样可以直接下载使用。
+In main.js:
 
-如果不希望使用我们提供的模板，请继续阅读。
-
-### 使用 vue-cli
-
-我们还可以使用 [vue-cli](https://github.com/vuejs/vue-cli) 初始化项目，命令如下：
-
-```shell
-> npm i -g vue-cli
-> mkdir my-project && cd my-project
-> vue init webpack
-> npm i && npm i rumo-ui
-```
-
-### 引入 RumoUI
-
-你可以引入整个 RumoUI，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 RumoUI。
-
-#### 完整引入
-
-在 main.js 中写入以下内容：
 ```javascript
 import Vue from 'vue'
 import RumoUI from 'rumo-ui'
@@ -42,192 +22,108 @@ new Vue({
   render: h => h(App)
 })
 ```
-以上代码便完成了 RumoUI 的引入。需要注意的是，样式文件需要单独引入。
 
-#### 按需引入
+The stylesheet must be imported separately.
 
-借助 [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component)，我们可以只引入需要的组件，以达到减小项目体积的目的。
+### On-demand import
 
-首先，安装 babel-plugin-component：
+Every component has its own build output `lib/<component>.js` and stylesheet `lib/theme-chalk/<component>.css`, so you can import it by path without any Babel plugin. Component styles depend on the shared `base.css`.
 
-```bash
-npm install babel-plugin-component -D
-```
-
-然后，将 .babelrc 修改为：
-```json
-{
-  "presets": [
-    ["es2015", { "modules": false }]
-  ],
-  "plugins": [["component", [
-    {
-      "libraryName": "rumo-ui",
-      "styleLibraryName": "theme-chalk"
-    }
-  ]]]
-}
-```
-
-接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：
+With on-demand import you **must set `Vue.prototype.$RUMO` first**: a full import sets it in `Vue.use(RumoUI)`, and components such as Dialog and Message read it directly and throw without it.
 
 ```javascript
 import Vue from 'vue'
-import { Button, Select } from 'rumo-ui'
-import App from './App.vue'
+import Button from 'rumo-ui/lib/button'
+import Select from 'rumo-ui/lib/select'
+import 'rumo-ui/lib/theme-chalk/base.css'
+import 'rumo-ui/lib/theme-chalk/button.css'
+import 'rumo-ui/lib/theme-chalk/select.css'
 
-Vue.component(Button.name, Button)
-Vue.component(Select.name, Select)
-/* 或写为
- * Vue.use(Button)
- * Vue.use(Select)
- */
+Vue.prototype.$RUMO = {
+  size: '',
+  zIndex: 2000,
+  namespaceClass: '',
+  getPopupContainer: undefined,
+  messageOffsetTop: 20,
+  drawer: { flexLayout: false }
+}
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+Vue.use(Button)
+Vue.use(Select)
 ```
 
-完整组件列表和引入方式（完整组件列表以 [components.json](https://github.com/RumoUI/blob/master/components.json) 为准）
+File names are the kebab-case component names, for example `DatePicker` is `lib/date-picker.js`. See `components.json` in the repository root for every component.
+
+With Babel, [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component) can rewrite `import { Button } from 'rumo-ui'` into the path imports above:
+
+```json
+{
+  "plugins": [["component", {
+    "libraryName": "rumo-ui",
+    "styleLibraryName": "theme-chalk"
+  }]]
+}
+```
+
+#### Full list
+
+Every component, directive, and service exported by `rumo-ui`, matching `src/index.js`:
 
 ```javascript
 import Vue from 'vue'
 import {
-  Pagination,
-  Dialog,
-  Autocomplete,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Menu,
-  Submenu,
-  MenuItem,
-  MenuItemGroup,
-  Input,
-  InputNumber,
-  Radio,
-  RadioGroup,
-  RadioButton,
-  Checkbox,
-  CheckboxButton,
-  CheckboxGroup,
-  Switch,
-  Select,
-  Option,
-  OptionGroup,
-  Button,
-  ButtonGroup,
-  Table,
-  TableColumn,
-  DatePicker,
-  TimeSelect,
-  TimePicker,
-  Popover,
-  Tooltip,
-  Breadcrumb,
-  BreadcrumbItem,
-  Form,
-  FormItem,
-  Tabs,
-  TabPane,
-  Tag,
-  Tree,
-  Alert,
-  Slider,
-  Icon,
-  Row,
-  Col,
-  Upload,
-  Progress,
-  Badge,
-  Card,
-  Rate,
-  Steps,
-  Step,
-  Carousel,
-  CarouselItem,
-  Collapse,
-  CollapseItem,
-  Cascader,
-  ColorPicker,
-  Transfer,
-  Container,
-  Header,
-  Aside,
-  Main,
-  Footer,
-  Loading,
-  MessageBox,
-  Message,
+  Pagination, Dialog, Autocomplete, Dropdown, DropdownMenu,
+  DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input,
+  InputNumber, Radio, RadioGroup, RadioButton, Checkbox,
+  CheckboxButton, CheckboxGroup, RectCheckbox, Switch, Select, Option,
+  OptionGroup, Button, ButtonGroup, Table, TableColumn, DatePicker,
+  TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem,
+  Form, FormItem, Tabs, TabPane, Tag, Tree, Alert, Slider, Icon, Row,
+  Col, Upload, Progress, Spinner, Badge, Card, Rate, Steps, Step,
+  Carousel, Scrollbar, CarouselItem, Collapse, CollapseItem, Cascader,
+  ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Affix,
+  Popconfirm, Timeline, TimelineItem, Link, Divider, Image, Calendar,
+  Backtop, PageHeader, CascaderPanel, Avatar, Drawer, Empty, Space,
+  Watermark, Text, Result, Segmented, CheckTag, Skeleton, SkeletonItem,
+  Descriptions, DescriptionsItem, Statistic, Countdown, AvatarGroup,
+  Splitpanes, SplitPane, Signature, Qr, Countup, SvgIcon, LogViewer,
+  Terminal, CommandPalette, StackBar, TrendChart, TrendZoom, Heatmap,
+  QuotaBar, StatTile, StatGrid, RankList, BreakdownList, RatioCard,
+  InsightCard, SortableCard, DateRangePreset, CollapseTransition,
+  InfiniteScroll, Animate, ScrollReveal, Loading, MessageBox, Message,
   Notification
 } from 'rumo-ui'
+import 'rumo-ui/lib/theme-chalk/index.css'
 
-Vue.use(Pagination)
-Vue.use(Dialog)
-Vue.use(Autocomplete)
-Vue.use(Dropdown)
-Vue.use(DropdownMenu)
-Vue.use(DropdownItem)
-Vue.use(Menu)
-Vue.use(Submenu)
-Vue.use(MenuItem)
-Vue.use(MenuItemGroup)
-Vue.use(Input)
-Vue.use(InputNumber)
-Vue.use(Radio)
-Vue.use(RadioGroup)
-Vue.use(RadioButton)
-Vue.use(Checkbox)
-Vue.use(CheckboxButton)
-Vue.use(CheckboxGroup)
-Vue.use(Switch)
-Vue.use(Select)
-Vue.use(Option)
-Vue.use(OptionGroup)
-Vue.use(Button)
-Vue.use(ButtonGroup)
-Vue.use(Table)
-Vue.use(TableColumn)
-Vue.use(DatePicker)
-Vue.use(TimeSelect)
-Vue.use(TimePicker)
-Vue.use(Popover)
-Vue.use(Tooltip)
-Vue.use(Breadcrumb)
-Vue.use(BreadcrumbItem)
-Vue.use(Form)
-Vue.use(FormItem)
-Vue.use(Tabs)
-Vue.use(TabPane)
-Vue.use(Tag)
-Vue.use(Tree)
-Vue.use(Alert)
-Vue.use(Slider)
-Vue.use(Icon)
-Vue.use(Row)
-Vue.use(Col)
-Vue.use(Upload)
-Vue.use(Progress)
-Vue.use(Badge)
-Vue.use(Card)
-Vue.use(Rate)
-Vue.use(Steps)
-Vue.use(Step)
-Vue.use(Carousel)
-Vue.use(CarouselItem)
-Vue.use(Collapse)
-Vue.use(CollapseItem)
-Vue.use(Cascader)
-Vue.use(ColorPicker)
-Vue.use(Container)
-Vue.use(Header)
-Vue.use(Aside)
-Vue.use(Main)
-Vue.use(Footer)
+// components
+[
+  Pagination, Dialog, Autocomplete, Dropdown, DropdownMenu,
+  DropdownItem, Menu, Submenu, MenuItem, MenuItemGroup, Input,
+  InputNumber, Radio, RadioGroup, RadioButton, Checkbox,
+  CheckboxButton, CheckboxGroup, RectCheckbox, Switch, Select, Option,
+  OptionGroup, Button, ButtonGroup, Table, TableColumn, DatePicker,
+  TimeSelect, TimePicker, Popover, Tooltip, Breadcrumb, BreadcrumbItem,
+  Form, FormItem, Tabs, TabPane, Tag, Tree, Alert, Slider, Icon, Row,
+  Col, Upload, Progress, Spinner, Badge, Card, Rate, Steps, Step,
+  Carousel, Scrollbar, CarouselItem, Collapse, CollapseItem, Cascader,
+  ColorPicker, Transfer, Container, Header, Aside, Main, Footer, Affix,
+  Popconfirm, Timeline, TimelineItem, Link, Divider, Image, Calendar,
+  Backtop, PageHeader, CascaderPanel, Avatar, Drawer, Empty, Space,
+  Watermark, Text, Result, Segmented, CheckTag, Skeleton, SkeletonItem,
+  Descriptions, DescriptionsItem, Statistic, Countdown, AvatarGroup,
+  Splitpanes, SplitPane, Signature, Qr, Countup, SvgIcon, LogViewer,
+  Terminal, CommandPalette, StackBar, TrendChart, TrendZoom, Heatmap,
+  QuotaBar, StatTile, StatGrid, RankList, BreakdownList, RatioCard,
+  InsightCard, SortableCard, DateRangePreset, CollapseTransition
+].forEach(component => Vue.use(component))
 
+// directives
+Vue.use(InfiniteScroll)
+Vue.use(Animate)
+Vue.use(ScrollReveal)
 Vue.use(Loading.directive)
 
+// services
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
@@ -237,38 +133,44 @@ Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 ```
 
-### 全局配置
-在引入 RumoUI 时，可以传入一个全局配置对象。该对象目前仅支持 `size` 字段，用于改变组件的默认尺寸。按照引入 RumoUI 的方式，具体操作如下：
+### Global config
 
-完整引入 RumoUI：
-```JS
+`Vue.use(RumoUI, options)` accepts a global config:
+
+| Field | Description | Default |
+| --- | --- | --- |
+| size | Default size of components that have a `size` prop; see each component's `size` prop for allowed values | — |
+| zIndex | Initial z-index of popups | 2000 |
+| namespaceClass | Class added to the root of popups (Dialog, Drawer, Popover, Select dropdown, and so on) | — |
+| getPopupContainer | Function that returns the node popups mount into | mounts into `document.body` |
+| messageOffsetTop | Distance of Message from the top of the window, in px | 20 |
+| drawer.flexLayout | Default `flex-layout` of Drawer | false |
+| locale / i18n | Language pack and custom i18n handler, see Internationalization | — |
+
+```javascript
 import Vue from 'vue'
 import RumoUI from 'rumo-ui'
-Vue.use(RumoUI, { size: 'small' })
+
+Vue.use(RumoUI, { size: 'small', zIndex: 3000 })
 ```
 
-按需引入 RumoUI：
-```JS
-import Vue from 'vue'
-import { Button } from 'rumo-ui'
+With on-demand import, put the same fields into `Vue.prototype.$RUMO` before registering components. Set every field, keeping the defaults above for the ones you do not change:
 
-Vue.prototype.$RUMO = { size: 'small' }
+```javascript
+import Vue from 'vue'
+import Button from 'rumo-ui/lib/button'
+
+Vue.prototype.$RUMO = {
+  size: 'small',
+  zIndex: 3000,
+  namespaceClass: '',
+  getPopupContainer: undefined,
+  messageOffsetTop: 20,
+  drawer: { flexLayout: false }
+}
 Vue.use(Button)
 ```
-按照以上设置，项目中所有拥有 `size` 属性的组件的默认尺寸均为 'small'。
 
-### 开始使用
+### Start coding
 
-至此，一个基于 Vue 和 RumoUI 的开发环境已经搭建完毕，现在就可以编写代码了。启动开发模式：
-
-```bash
-# 执行如下命令后访问 localhost:8086
-npm run dev
-```
-
-编译：
-
-```bash
-npm run build
-```
-各个组件的使用方法请参阅它们各自的文档。
+See each component's page for how to use it.

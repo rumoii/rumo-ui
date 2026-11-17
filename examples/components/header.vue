@@ -295,9 +295,10 @@
 
         <!-- nav -->
         <ul class="nav">
-          <li class="nav-item nav-algolia-search" v-show="isComponentPage">
+          <!-- 搜索依赖 Algolia 凭据，search.vue 里仍是占位值，接入可用的搜索前先隐藏 -->
+          <!-- <li class="nav-item nav-algolia-search" v-show="isComponentPage">
             <algolia-search></algolia-search>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link active-class="active" :to="`/${ lang }/guide`">{{ langConfig.guide }}
             </router-link>

@@ -51,7 +51,7 @@
 <details>
   <summary>将 RumoUI 克隆至本地，运行时为何会报错/跑不起来？</summary>
   
-  首先，确保克隆的是 master 分支的最新代码，并且文件完整。其次，确保本地的 node 版本在 4.0 以上，npm 版本在 3.0 以上。最后，可以启动开发环境：
+  首先，确保克隆的是 main 分支的最新代码，并且文件完整。其次，确保本地的 Node 版本为 20.19.0，并使用与其兼容的 npm。最后，可以启动开发环境：
   
   ```bash
   npm run dev
@@ -117,81 +117,13 @@
 <details>
   <summary>I cloned RumoUI's repo, but failed to run it. How do I solve it?</summary>
   
-  First, please make sure to clone the latest code in master branch and cloned files are intact. Then, note that the version of Nodejs should be 4.0+ and npm 3.0+. Finally, activate development:
+  First, please make sure to clone the latest code in main branch and cloned files are intact. Then, use Node.js 20.19.0 with a compatible npm version. Finally, activate development:
   
   ```bash
   npm run dev
   ```
   
   or build it:
-  
-  ```bash
-  npm run dist
-  ```
-</details>
-
-## Preguntas más frecuentes
-
-<details>
-  <summary>¿Porque mis receptores de eventos no funcionan?</summary>
-  
-  En Vue 2.0, agregando **nativos** receptores de evento **a medida** componentes requiere el modificador `.native`:
-  ```
-  html
-  <mi-componente @click.native="handleClick">Haga Clic Aquí</mi-componente>
-  ```
-  
-  Para conveniencia, hemos ya procesado eventos para el componente `Button` para que el interfaz sea consistente con `clic` eventos de otros componentes:
-  
-  ```html
-  <rumo-button @click="handleButtonClick">Haga Clic Aquí</rumo-button>
-  ```
-  
-  Para otros componentes el uso del modificador `.native` sigue siendo obligatorio.
-</details>
-
-<details>
-  <summary>¿Como agrego botones en cada linea de una tabla para que operen en los datos de esa linea?</summary>
-  
-  Simplemente agregue [“Scoped slot”](https://vuejs.org/v2/guide/components.html#Scoped-Slots):
-  ```html
-  <rumo-table-column label="Operaciones">
-    <template slot-scope="props">
-      <rumo-button @click.native="verDetalles(props.row)">Detalles</rumo-button>
-    </template>
-  </rumo-table-column>
-  ```
-  El parámetro `row` contiene los datos de la linea correspondiente de la tabla.
-</details>
-
-<details>
-  <summary>¿Como funcionan `render-content` de `Tree` y `render-header` de `Table`?</summary>
-  
-  Por favor refiérase a [Función de representación](http://vuejs.org/v2/guide/render-function.html) en la documentación de `Vue`. Adicionalmente, sí usted está escribiendo funciones de representar con JSX, se requiere el componente `babel-plugin-transform-vue-jsx`. Más información [aquí](https://github.com/vuejs/babel-plugin-transform-vue-jsx) para su uso y configuración.
-</details>
-
-<details>
-  <summary>¿Puedo usar el modificador `.sync` con cada atributo?</summary>
-  
-  No, solamente un grupo pequeño de atributos apoyan el modificador `.sync`, y están anotados claramente en la documentación del IPA. Para información adicional sobre `.sync`, por favor refiérase a [documentación de Vue](https://vuejs.org/v2/guide/components.html#sync-Modifier).
-</details>
-
-<details>
-  <summary>¿Cuando añaden a la documentación de `RumoUI`?</summary>
-  
-  Añadamos la documentación con cada versión nueva de `RumoUI` y los cambios reflejan los cambios del software de esa versión. Los cambios actuales y históricos se encuentran [aquí](./CHANGELOG.en-US.md).
-</details>
-
-<details>
-  <summary>Hice un clon del repositorio de `RumoUI` pero no arranca. ¿Como lo resuelvo?</summary>
-  
-  Primero, pro favor, asegúrese de usar la versión más corriente en la rama  `master` y que los archivos están en orden. Después, revise sí la versión de `Nodejs` es 4.0+ y `npm` debe ser 3.0+. Finalmente active el modo desarrollo:
-  
-  ```bash
-  npm run dev
-  ```
-  
-  O arme su aplicación así:
   
   ```bash
   npm run dist
