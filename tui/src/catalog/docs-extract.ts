@@ -2,7 +2,7 @@
  * 组件文档代码片段提取 —— 零维护来源:examples/docs/zh-CN/*.md
  *
  * 回退链:
- *   1. 本组件文档(:::demo 后首个 html/vue 围栏,镜像 build/md-loader/containers.js 规则)→ source: 'docs'
+ *   1. 本组件文档(优先 <!-- snippet --> 推荐 demo,无标记取首例)→ source: 'docs'
  *   2. 兄弟文档:全量扫 zh-CN/*.md,取首个**内容含 <rumo-<id> 标签**的 :::demo
  *      (子组件如 checkbox-group 无独立文档,示例写在 checkbox.md)→ source: 'shared' + from
  *   3. 全库无示例 → 占位模板(明确标注,不冒充真实 demo)→ source: 'stub'
@@ -12,7 +12,7 @@ import path from 'node:path';
 import type { SnippetResult } from './types.js';
 
 // \s* 吃掉任意空白/换行(含 CRLF 空行残留的孤立 \r);围栏语言名前允许空格(如 ``` html)
-const DEMO_G = /:::demo[^\n]*\r?\n\s*```[ \t]*(?:html|vue)[ \t]*\r?\n([\s\S]*?)```/g;
+const DEMO_G = /^(?:(<!-- snippet -->)[ \t]*\r?\n)?:::demo[^\n]*\r?\n\s*```[ \t]*(?:html|vue)[ \t]*\r?\n([\s\S]*?)```/gm;
 
 function clean(code: string): string {
   // 行尾归一化:仓库 md 为 CRLF,残留 \r 会被终端当作"回行首"控制符,
@@ -21,23 +21,36 @@ function clean(code: string): string {
 }
 
 /** 文档中全部 :::demo 片段(按出现序) */
-function allDemos(md: string): string[] {
-  const out: string[] = [];
+function allDemos(md: string): Array<{ code: string; recommended: boolean }> {
+  const out: Array<{ code: string; recommended: boolean }> = [];
   DEMO_G.lastIndex = 0;
   let m: RegExpExecArray | null;
   while ((m = DEMO_G.exec(md)) !== null) {
-    if (m[1].trim()) out.push(clean(m[1]));
+    if (m[2].trim()) out.push({ code: clean(m[2]), recommended: Boolean(m[1]) });
   }
   return out;
+}
+
+/** demo 可混排模板、script、style;导出统一为单根 Vue 2 SFC。 */
+function toSfc(code: string): string {
+  const blocks: string[] = [];
+  let hasScript = false;
+  let template = clean(code).replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, (block, tag: string) => {
+    if (tag.toLowerCase() === 'script') hasScript = true;
+    blocks.push(block);
+    return '';
+  }).trim();
+  const outer = template.match(/^<template\s*>([\s\S]*)<\/template\s*>$/i);
+  if (outer) template = outer[1].trim();
+  if (!hasScript) blocks.unshift('<script>\nexport default {};\n</script>');
+  return `<template>\n<div>\n${template}\n</div>\n</template>\n\n${blocks.join('\n\n')}\n`;
 }
 
 /** 含目标组件标签的首个 demo;<rumo-id 后必须是空白/>结尾,防 checkbox 误配 checkbox-group */
 function demoForTag(md: string, id: string): string | null {
   const tagRe = new RegExp(`<rumo-${id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[\\s/>])`);
-  for (const code of allDemos(md)) {
-    if (tagRe.test(code)) return code;
-  }
-  return null;
+  const demos = allDemos(md).filter((demo) => tagRe.test(demo.code));
+  return (demos.find((demo) => demo.recommended) ?? demos[0])?.code ?? null;
 }
 
 export function extractSnippet(id: string, docsPath: string, repoRootDir: string): SnippetResult {
@@ -47,7 +60,7 @@ export function extractSnippet(id: string, docsPath: string, repoRootDir: string
     const md = fs.readFileSync(abs, 'utf8');
     const demos = allDemos(md);
     if (demos.length > 0) {
-      return { id, code: demos[0], source: 'docs' };
+      return { id, code: toSfc((demos.find((demo) => demo.recommended) ?? demos[0]).code), source: 'docs' };
     }
   }
 
@@ -62,7 +75,7 @@ export function extractSnippet(id: string, docsPath: string, repoRootDir: string
       const md = fs.readFileSync(absF, 'utf8');
       const hit = demoForTag(md, id);
       if (hit) {
-        return { id, code: hit, source: 'shared', from: rel };
+        return { id, code: toSfc(hit), source: 'shared', from: rel };
       }
     }
   }
@@ -70,7 +83,7 @@ export function extractSnippet(id: string, docsPath: string, repoRootDir: string
   // 3. 占位
   return {
     id,
-    code: `<!-- 文档缺失或无 :::demo,已生成占位模板 -->\n<template>\n  <rumo-${id} />\n</template>\n`,
+    code: toSfc(`<!-- 文档缺失或无 :::demo,已生成占位模板 -->\n<rumo-${id} />`),
     source: 'stub'
   };
 }

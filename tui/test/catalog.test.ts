@@ -121,3 +121,30 @@ test('repoRoot 从模块位置定位仓库根(不依赖 cwd)', () => {
   assert.ok(fs.existsSync(path.join(root, 'tokens', 'tokens.json')));
   assert.ok(fs.existsSync(path.join(root, 'components.json')));
 });
+
+test('snippet 标记选择后面的 demo,并保留 script/style', () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'rumo-marked-snippet-'));
+  fs.writeFileSync(path.join(tmp, 'x.md'), [
+    ':::demo 第一例', '```html', '<first-demo />', '```', ':::', '',
+    '<!-- snippet -->', ':::demo 推荐', '```html',
+    '<second-demo /><third-demo />',
+    '<script>export default { data() { return { n: 1 }; } };</script>',
+    '<style scoped>.demo { color: red; }</style>', '```', ':::'
+  ].join('\r\n'));
+  const snip = extractSnippet('x', 'x.md', tmp);
+  assert.ok(snip.code.startsWith('<template>\n<div>'));
+  assert.ok(snip.code.includes('<second-demo /><third-demo />'));
+  assert.ok(!snip.code.includes('<first-demo'));
+  assert.ok(snip.code.includes('return { n: 1 }'));
+  assert.ok(snip.code.includes('<style scoped>'));
+});
+
+test('snippet 包装已有 template,无 script 时补最小导出,stub 也是 SFC', () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'rumo-sfc-snippet-'));
+  fs.writeFileSync(path.join(tmp, 'x.md'), ':::demo\n```html\n<template><span>A</span><span>B</span></template>\n```\n:::');
+  const snip = extractSnippet('x', 'x.md', tmp);
+  assert.equal((snip.code.match(/<template>/g) ?? []).length, 1);
+  assert.ok(snip.code.includes('<div>\n<span>A</span><span>B</span>\n</div>'));
+  assert.ok(snip.code.includes('export default {}'));
+  assert.ok(extractSnippet('missing', 'missing.md', tmp).code.includes('export default {}'));
+});

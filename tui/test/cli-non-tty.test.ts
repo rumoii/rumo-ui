@@ -55,6 +55,27 @@ test('非 TTY: --help exit 0 且含用法', () => {
   assert.ok(r.stdout.includes('用法'));
 });
 
+test('非 TTY: --api button 输出表格,--json 输出清单原始条目', () => {
+  const human = runCli(['--api', 'button']);
+  assert.equal(human.status, 0, human.stderr);
+  for (const name of ['Props', 'Events', 'Slots', 'Methods', 'variant', 'dashed', 'text']) {
+    assert.ok(human.stdout.includes(name), name);
+  }
+  const json = runCli(['--json', '--api', 'Button']);
+  assert.equal(json.status, 0, json.stderr);
+  const entry = JSON.parse(json.stdout);
+  assert.equal(entry.id, 'button');
+  assert.equal(entry.tag, 'rumo-button');
+  assert.ok(entry.props.some((p: { name: string }) => p.name === 'variant'));
+});
+
+test('非 TTY: --api 缺名或未知组件 exit 2,未知组件有模糊建议', () => {
+  assert.equal(runCli(['--api']).status, 2);
+  const unknown = runCli(['--api', 'but']);
+  assert.equal(unknown.status, 2);
+  assert.ok(unknown.stderr.includes('button'), unknown.stderr);
+});
+
 test('非 TTY: 未装依赖时给出可操作报错(Guard)', () => {
   // RUMO_TUI_MODE 不参与本路径;用缺失入口模拟不可用 —— 直接调 bin 的 node 守卫分支不适用(Node24),
   // 改为断言 tsx 缺失提示逻辑:临时改名不安全,故此条用 --version 冒烟代替,守卫逻辑由源码审查覆盖。

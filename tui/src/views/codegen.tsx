@@ -38,6 +38,8 @@ export function CodegenView(props: CodegenViewProps): React.ReactElement {
   ]);
   // 渲染防御:逐行剥残余 \r(终端会把 \r 当回行首,导致整帧覆写花屏)
   const displayLines = code.replace(/\r/g, '').split('\n');
+  // 12 行面板扣除边框和 padding 后只有 8 行;长片段留一行给提示。
+  const previewLines = displayLines.slice(0, displayLines.length > 8 ? 7 : 8);
 
   const pushLog = (line: string) => setLogLines((ls) => [...ls, line]);
 
@@ -63,12 +65,12 @@ export function CodegenView(props: CodegenViewProps): React.ReactElement {
         height={12}
         overflowY="hidden"
       >
-        {displayLines.slice(0, 10).map((line, i) => (
+        {previewLines.map((line, i) => (
           <Text key={i} wrap="truncate">
             {line}
           </Text>
         ))}
-        {displayLines.length > 10 ? (
+        {displayLines.length > 8 ? (
           <Text dimColor color="textMuted">
             {`…(共 ${displayLines.length} 行,print/export 查看全量)`}
           </Text>

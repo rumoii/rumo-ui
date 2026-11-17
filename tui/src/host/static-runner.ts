@@ -8,9 +8,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadCatalog, findCatalogItem, snippetFor } from '../catalog/index.js';
 import { fuzzyFilter } from '../lib/fuzzy.js';
+import { loadApi, findApi, formatApi } from '../catalog/api.js';
 
 export interface StaticArgs {
-  command: 'help' | 'list' | 'snippet' | 'export' | 'version';
+  command: 'help' | 'list' | 'api' | 'snippet' | 'export' | 'version';
   query?: string;
   name?: string;
   file?: string;
@@ -40,10 +41,10 @@ export function parseArgs(argv: string[]): StaticArgs | { error: string } {
       if (command) return { error: '命令重复指定' };
       command = 'list';
       query = argv[i + 1] && !argv[i + 1].startsWith('-') ? argv[++i] : '';
-    } else if (a === '--snippet') {
+    } else if (a === '--snippet' || a === '--api') {
       if (command) return { error: '命令重复指定' };
-      if (!argv[i + 1] || argv[i + 1].startsWith('-')) return { error: '--snippet 需要组件名' };
-      command = 'snippet';
+      if (!argv[i + 1] || argv[i + 1].startsWith('-')) return { error: `${a} 需要组件名` };
+      command = a === '--api' ? 'api' : 'snippet';
       name = argv[++i];
     } else if (a === '--export') {
       if (command) return { error: '命令重复指定' };
@@ -69,7 +70,8 @@ const USAGE = `rumo TUI —— 组件检索 / 代码模板导出(仓库内工具
 用法:
   npm run tui                    交互界面(需 TTY;非 TTY 自动降级到 --help)
   npm run tui -- --list [q]      列出组件(可选过滤),每行 id\\tlabel\\tgroup\\tpath
-  npm run tui -- --snippet <id>  打印组件 Vue 代码片段(首个文档 demo,缺文档为占位模板)
+  npm run tui -- --api <id>      打印源码 API 清单(--json 输出原始条目)
+  npm run tui -- --snippet <id>  打印 Vue 2 SFC(优先推荐 demo,无标记取首例,缺示例为占位模板)
   npm run tui -- --export <id> [文件]
                                  导出代码片段到文件(默认 rumo-<id>-snippet.vue)
   npm run tui -- --json          上述命令以 JSON 输出
@@ -117,6 +119,18 @@ export function runStatic(argv: string[]): number {
         if (parsed.json) {
           process.stdout.write(JSON.stringify({ id: item.id, source: snip.source, from: snip.from ?? null, code: snip.code }, null, 2) + '\n');
         } else process.stdout.write(snip.code);
+        return 0;
+      }
+      case 'api': {
+        const entries = loadApi();
+        const entry = findApi(parsed.name as string, entries);
+        if (!entry) {
+          const suggestions = fuzzyFilter(parsed.name as string, entries, (item) => `${item.id} ${item.exportName ?? ''}`).slice(0, 5);
+          process.stderr.write(`[rumo-tui] 未找到组件: ${parsed.name}\n`);
+          process.stderr.write(`建议: ${suggestions.length ? suggestions.map((item) => item.id).join(', ') : '用 --list 查询组件名'}\n`);
+          return 2;
+        }
+        process.stdout.write(parsed.json ? JSON.stringify(entry, null, 2) + '\n' : formatApi(entry));
         return 0;
       }
       case 'export': {

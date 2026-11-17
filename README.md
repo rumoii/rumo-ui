@@ -82,6 +82,7 @@ npm run bootstrap   # 安装依赖
 npm run dev         # 启动文档站（http://localhost:8085）
 npm run build       # 构建产物（lib/）
 npm run check:docs  # 检查文档：过时写法、demo 模板编译、色值、导航链接
+npm run check:api   # 检查 components.api.json（组件 API 清单）是否最新；更新用 npm run build:api
 ```
 
 **仓库内工具**：`npm run tui` 拉起终端内组件检索 / 代码模板导出工具（`tui/`，`@rumo/tui-internal`，需 Node.js >= 22 与 `npm --prefix tui install`）。纯内部工程化工具，不随 npm 包发布；非 TTY 环境自动降级为静态输出，亦适合 AI Agent 调用。详见 [`tui/README.md`](tui/README.md)。

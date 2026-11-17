@@ -17,7 +17,7 @@ Rumo UI 是一个 **Vue 2.6** 组件库。大部分组件整合自 Element UI、
 | 要知道什么 | 看哪里 |
 | --- | --- |
 | 有哪些组件 | `components.json`，以及 `src/index.js` 的导出 |
-| 组件的 props、事件、方法 | `packages/<组件名>/src/` 源码，以源码为准 |
+| 组件的 props、事件、插槽、方法、依赖 | **先查 `components.api.json`**：由 `scripts/gen-api.js` 从源码生成，附带中文文档里的说明；每个条目的 `mismatches` 列出文档与源码的出入，`unparsed` 列出未能静态解析的部分。有疑问时以 `packages/<组件名>/src/` 源码为准 |
 | 用法示例和 API 表 | `examples/docs/zh-CN/<组件名>.md`；英文版大部分仍在翻译，以中文为准 |
 | 类型声明 | `types/<组件名>.d.ts`，入口是 `types/index.d.ts` |
 | 主题色、字号等基础值 | `tokens/tokens.json`，以及 `packages/theme-chalk/src/common/var.scss` |
@@ -35,6 +35,7 @@ Rumo UI 是一个 **Vue 2.6** 组件库。大部分组件整合自 Element UI、
 | `packages/theme-chalk/src/index.scss` | `build/bin/gen-cssfile.js` | `components.json` |
 | `packages/theme-chalk/src/common/tokens*.scss`、`tui/src/tokens/index.ts` | `scripts/gen-tokens.js` | `tokens/tokens.json` |
 | `examples/pages/<语言>/*.vue` | `build/bin/i18n.js` | `examples/pages/template/` |
+| `components.api.json` | `scripts/gen-api.js`（`npm run build:api`） | 组件源码与 `examples/docs/zh-CN` |
 | `lib/` | 构建 | 全仓 |
 
 ## 复用单个组件
@@ -52,9 +53,12 @@ Rumo UI 是一个 **Vue 2.6** 组件库。大部分组件整合自 Element UI、
 | 命令 | 作用 |
 | --- | --- |
 | `npm run check:docs` | 检查文档：过时写法、demo 模板能否编译、色彩页色值、导航链接、快速上手组件清单 |
+| `npm run check:api` | 检查 `components.api.json` 是否与源码、文档一致；不一致时先运行 `npm run build:api` 重新生成 |
+| `npm run check:snippets` | 把每个组件的导出示例当作单文件组件编译；需要先执行 `npm --prefix tui install` |
 | `npm run check:types` | 用 `test/types/` 检查类型声明；需要先执行 `npm --prefix tui install` |
 | `npm run tui -- --list --json` | 以 JSON 列出全部组件；需要 Node.js 22+，并先执行 `npm --prefix tui install` |
-| `npm run tui -- --snippet <组件名>` | 打印该组件文档里的第一个示例 |
+| `npm run tui -- --api <组件名> [--json]` | 打印该组件在 `components.api.json` 里的条目 |
+| `npm run tui -- --snippet <组件名>` | 打印该组件的示例，是一个可编译的 Vue 2 单文件组件。默认取文档里的第一个示例；文档中紧挨在某个 `:::demo` 上一行写 `<!-- snippet -->`，可以改为指定那个示例 |
 | `npm run dev` | 启动文档站 http://localhost:8085 |
 | `make new <组件名> [中文名]` | 新建组件骨架，并登记到 `components.json`、导航、类型和样式入口 |
 
@@ -62,6 +66,7 @@ Rumo UI 是一个 **Vue 2.6** 组件库。大部分组件整合自 Element UI、
 
 ## 改完后怎么自查
 
-- 改了文档：运行 `npm run check:docs`。
+- 改了文档：运行 `npm run check:docs`；改动涉及 API 表格时，再运行 `npm run build:api` 和 `npm run check:api`。
+- 改了组件的 props、事件或插槽：运行 `npm run build:api`，并提交更新后的 `components.api.json`。
 - 改了类型：运行 `npm run check:types`。
 - 改了组件：组件库目前**没有单元测试**（`make new` 生成的 `test/unit/specs/*.spec.js` 没有对应的运行器）。用 `npm run dev` 打开对应文档页，手工核对 demo。

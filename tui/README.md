@@ -29,13 +29,49 @@ npm run tui                # 仓库根执行,拉起交互界面
 
 ```bash
 npm run tui -- --list [查询]         # 列出组件(id/label/group/path)
-npm run tui -- --snippet button      # 打印组件 Vue 片段(首个文档 demo)
-npm run tui -- --export button out.vue   # 导出片段到文件
+npm run tui -- --api button          # 查看 props/events/slots/methods 表格
+npm run tui -- --api button --json   # 输出 API 清单的原始条目
+npm run tui -- --snippet button      # 打印可编译的 Vue 2 单文件组件
+npm run tui -- --export button out.vue   # 导出单文件组件
 npm run tui -- --list --json         # JSON 输出
 npm run tui -- --help / --version
 ```
 
 退出码:`0` 成功 / `1` 运行失败 / `2` 参数错误。
+
+`--api` 读取根目录已生成的 `components.api.json`,支持 id、导出名和标签名(忽略大小写、连字符)。未知组件返回 `2`,并给出模糊匹配建议。清单以 `components.json` 与源码为准,包含 mixin props 的来源、文档说明、`mismatches` 和无法静态确认的 `unparsed`。文档的 Options 表保留在 `docs.options`,不当作 Vue props。服务和指令没有组件标签,`tag` 为 `null`。
+
+### 推荐示例与 SFC 导出
+
+在 `:::demo` 的紧邻上一行写 `<!-- snippet -->`,可指定推荐示例:
+
+````markdown
+<!-- snippet -->
+:::demo 推荐用法
+```html
+<rumo-button type="primary">确认</rumo-button>
+```
+:::
+````
+
+没有标记时取本组件文档的第一个 demo;同页多个标记取第一个。没有独立示例时,按文件名顺序查找包含该组件标签的共享示例,同页优先推荐标记;仍找不到则输出明确标注的占位 SFC。
+
+导出时把模板包进 `<template><div>…</div></template>`,保留 demo 的 `<script>` 和 `<style>`,没有脚本时补 `export default {}`。示例中已有的外层 `<template>` 会被解包,作用域插槽的内层 `<template>` 保留。在使用示例的 Vue 2.6 应用中,仍需注册所用的 Rumo 组件并引入样式。
+
+### 更新与检查 API 清单
+
+在仓库根目录执行:
+
+```bash
+npm run build:api                # 从源码/中文文档生成 components.api.json
+npm run check:api                # 只读比较;过期时退出 1 并列出不同的组件
+node --test scripts/gen-api.test.js
+npm run check:snippets           # 逐个导出整个 tui 目录,检查 Vue 模板与 Babel 6 脚本
+```
+
+清单格式由 `schemaVersion: 1` 标识,`components` 按 id 排序,不含时间戳。生成器只使用根目录直接声明的 `babel-core` 6 和 `vue-template-compiler`,不执行组件或默认值函数。非 JSON 常量默认值放在 `defaultExpression`;未声明的默认值省略 `default`,不推测 Vue 的隐式默认值。服务参数和实例 data 不当作 Vue props;动态事件名、动态插槽名及不能枚举的 validator 会说明在 `unparsed` 中。
+
+全量 snippet 检查放在根目录 `scripts/check-snippets.js`,通过 tui 的真实 `--export` 处理函数逐项导出至系统 TEMP,再用根目录编译器验证。这样 tui 不引入根目录的编译依赖。此检查证明 SFC 语法可编译,不证明示例的所有交互或业务依赖已在浏览器运行。
 
 ## 组件(§6.2 合同,props 命名对齐 Web 线)
 
@@ -58,7 +94,7 @@ npm run tui -- --help / --version
 
 ```bash
 npm --prefix tui run gates       # G1-G4 静态红线门禁
-npm --prefix tui test            # 39 条:三组件合同 / catalog 提取 / CLI 两态 / 门禁自测
+npm --prefix tui test            # 三组件合同 / catalog 提取 / CLI 两态与 API / 门禁自测
 npm --prefix tui run typecheck   # tsc --noEmit
 ```
 
