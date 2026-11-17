@@ -1,5 +1,3 @@
-[toc]
-
 ## TrendChart
 
 Dash data-visualization component: a DOM bar chart for a numeric trend, with gap interpolation, faint future bars, hover tooltip, and an optional zoom dialog. No chart library — bar heights are percentage-based, and the grid plus tooltip are plain DOM.

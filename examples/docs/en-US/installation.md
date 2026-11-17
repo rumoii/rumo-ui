@@ -1,6 +1,4 @@
 
-[toc]
-
 ## Installation
 
 Rumo UI is **not published to npm** yet. All the options below start from the source in this repository.

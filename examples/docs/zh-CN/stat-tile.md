@@ -1,5 +1,3 @@
-[toc]
-
 ## StatTile 指标磁贴
 
 Dash 数据可视化组件:大数字指标磁贴与响应式磁贴栅格。`RumoStatTile` 展示「数值 + 名称 + 可选 tooltip/环比」,`RumoStatGrid` 把磁贴排成 2/4 列栅格。数值区使用 `.rumo-num` 等宽数字与 `--rumo-text-*` 字阶。

@@ -1,5 +1,3 @@
-[toc]
-
 ## Dash Skin Tokens
 
 The dash skin layer targets data-dashboard scenarios with a set of runtime CSS custom properties plus matching SCSS variables. It is isolated from the global theme: every variable lives under the `.rumo-dash` scope, and dark mode is applied by `.rumo-dash.is-dark`, so existing components are unaffected.

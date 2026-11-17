@@ -1,5 +1,3 @@
-[toc]
-
 ## InsightCard 要点卡
 
 Dash 数据可视化组件:标题 + 要点列表的通用卡片。每条要点含 `label` / `value` / 可选 `delta` 与 `tone`,支持标题、图标、底部插槽,点击要点触发 `insight-click`。卡体采用 `.rumo-panel` 视觉,颜色走 `--rumo-*` 变量。

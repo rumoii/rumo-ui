@@ -1,5 +1,3 @@
-[toc]
-
 ## 自定义主题
 
 Rumo UI 的样式在 `packages/theme-chalk/src` 下，用 SCSS 编写，CSS 命名采用 BEM 风格，方便覆盖。主题色等基础值来自 Design Tokens：`tokens/tokens.json` 是唯一来源，`scripts/gen-tokens.js` 由它生成 `packages/theme-chalk/src/common/tokens.scss`，再由 `common/var.scss` 引用。

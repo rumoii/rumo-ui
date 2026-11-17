@@ -1,5 +1,3 @@
-[toc]
-
 ## RatioCard
 
 Dash data-visualization component: a panel card showing a set of detail rows and their shares. Each row carries an icon slot, label, value and ratio text, with a thin distribution bar underneath tinted to the share. `total` defaults to the sum of values; colors cycle through the `series-1`–`series-8` categorical palette by default.

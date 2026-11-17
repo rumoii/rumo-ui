@@ -1,5 +1,3 @@
-[toc]
-
 ## StatTile
 
 Dash data-visualization component: a big-number metric tile plus a responsive tile grid. `RumoStatTile` renders value + label with optional tooltip / change caption; `RumoStatGrid` lays tiles out in 2/4 columns. Values use `.rumo-num` tabular figures and the `--rumo-text-*` type scale.

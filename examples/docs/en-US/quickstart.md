@@ -1,6 +1,4 @@
 
-[toc]
-
 ## Quick Start
 
 This section shows how to use Rumo UI in a Vue 2.6 project. First install rumo-ui into your project as described in the previous section, Installation.

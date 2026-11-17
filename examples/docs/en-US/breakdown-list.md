@@ -1,5 +1,3 @@
-[toc]
-
 ## BreakdownList
 
 Dash data-visualization component: one row per category with its value and share, each row carrying an inline share bar (a row background tinted to the share width). Groups with `children` expand and indent their nested rows; the icon slot defaults to a color square and can be replaced. Colors cycle through the `series-1`–`series-8` categorical palette by default.

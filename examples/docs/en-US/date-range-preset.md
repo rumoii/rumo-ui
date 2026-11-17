@@ -1,5 +1,3 @@
-[toc]
-
 ## DateRangePreset
 
 Dash component: preset time-range chips (last 7 days / 30 days, etc.) plus a custom-range popover (reusing DatePicker's `daterange`), for dashboard time-range switching.

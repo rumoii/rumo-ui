@@ -1,5 +1,3 @@
-[toc]
-
 ## RankList
 
 Dash data-visualization component: a top-N ranking list. Each row shows rank, name, value and an optional share bar / percentage; supports a custom value caption, a badge area and row clicks.

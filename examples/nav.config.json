@@ -8,6 +8,10 @@
       "name": "开发指南",
       "children": [
         {
+          "path": "/introduction",
+          "name": "介绍"
+        },
+        {
           "path": "/installation",
           "name": "安装"
         },
@@ -453,6 +457,10 @@
     {
       "name": "Development",
       "children": [
+        {
+          "path": "/introduction",
+          "name": "Introduction"
+        },
         {
           "path": "/installation",
           "name": "Installation"

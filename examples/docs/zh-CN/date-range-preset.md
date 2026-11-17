@@ -1,5 +1,3 @@
-[toc]
-
 ## DateRangePreset 预设区间
 
 Dash 组件:预设时间区间胶囊(7 天 / 30 天等)+ 自定义区间弹层(复用 DatePicker 的 `daterange`),用于看板时间范围切换。

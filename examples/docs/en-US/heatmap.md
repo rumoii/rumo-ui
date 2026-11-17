@@ -1,5 +1,3 @@
-[toc]
-
 ## Heatmap
 
 Dash data-visualization component: a week-column calendar heatmap with a 5-level color scale (empty / low / mid / high / peak). Levels are derived from value quantiles and can be overridden via `palette`. The calendar range covers the min/max date in `cells`; days without a row render as the empty level.

@@ -1,5 +1,3 @@
-[toc]
-
 ## Dashboard Composition Example
 
 A full dashboard layout assembled from the Dash component family, serving as the visual acceptance baseline: top range switcher + stat tiles + trend chart + leaderboard + heatmap + distribution bar + quotas + detail/ratio/insight cards. Every block is driven by the same mock data so radius/shadow/type/spacing consistency can be inspected block by block.

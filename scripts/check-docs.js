@@ -41,7 +41,8 @@ const forbidden = [
   [/\$--color-primary:\s*#409EFF/i, '与主题 token 不一致的主色'],
   [/v-model:/, 'Vue 3 写法,Vue 2.6 不支持'],
   [/Preguntas/, '未本地化的西班牙语内容'],
-  [/node 版本在 4\.0|master 分支/, '过时的环境说明']
+  [/node 版本在 4\.0|master 分支/, '过时的环境说明'],
+  [/^\[toc\]\s*$/, '文档站不渲染 [toc],会按原文字显示']
 ];
 const textFiles = [path.join(rootDir, 'README.md'), path.join(rootDir, 'FAQ.md')]
   .concat(...langs.map(listMd));

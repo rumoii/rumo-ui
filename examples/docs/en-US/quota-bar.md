@@ -1,5 +1,3 @@
-[toc]
-
 ## QuotaBar
 
 Dash data-visualization component: a quota / usage-limit bar. The head row shows the label on the left and the value plus percentage on the right; a rounded track sits below. Supports a reset-time caption, a pace marker and threshold coloring. `mode="used"` fills for consumption, `mode="remain"` flips the semantics to remaining quota.

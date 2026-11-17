@@ -1,5 +1,3 @@
-[toc]
-
 ## Custom Theme
 
 Rumo UI's styles live in `packages/theme-chalk/src`, written in SCSS with BEM class names that are easy to override. Base values such as the primary color come from Design Tokens: `tokens/tokens.json` is the single source, `scripts/gen-tokens.js` generates `packages/theme-chalk/src/common/tokens.scss` from it, and `common/var.scss` uses that file.

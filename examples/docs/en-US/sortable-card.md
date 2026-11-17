@@ -1,5 +1,3 @@
-[toc]
-
 ## SortableCard
 
 Dash layout component: a card shell with a drag handle. Press and hold the handle to reorder; implemented with native mouse/touch pointer events and no drag-and-drop library. The component owns the drag interaction and visual feedback only — the sorted array is maintained by the consumer. Under `v-for`, pass the current position via `index`; `move` reports `(fromIndex, toIndex)` when the card is dropped in a new slot.

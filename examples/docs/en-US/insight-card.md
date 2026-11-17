@@ -1,5 +1,3 @@
-[toc]
-
 ## InsightCard
 
 Dash data-visualization component: a generic title + insights list card. Each insight carries `label` / `value` and optional `delta` with `tone`; title, per-row icon and footer slots are supported, and clicking a row fires `insight-click`. The body uses the `.rumo-panel` visual language with `--rumo-*` color variables.

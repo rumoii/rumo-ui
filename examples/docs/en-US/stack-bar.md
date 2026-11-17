@@ -1,5 +1,3 @@
-[toc]
-
 ## StackBar
 
 Dash data-visualization component: a rounded proportional bar showing each segment's share, with an optional legend and custom value formatting. Colors cycle through the `series-1`–`series-8` categorical palette by default and can be overridden per segment via `color`.
