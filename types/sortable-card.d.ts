@@ -28,11 +28,11 @@ export declare class RumoSortableCard extends RumoUIComponent {
   $slots: SortableCardSlots
 
   /** Fired when the pressed handle starts a drag */
-  $emit(event: 'drag-start'): void
+  $emit(event: 'drag-start'): this
 
   /** Fired when the drag ends (pointer released or cancelled) */
-  $emit(event: 'drag-end'): void
+  $emit(event: 'drag-end'): this
 
   /** Fired when the drag target index changes; consumer reorders the array */
-  $emit(event: 'move', fromIndex: number, toIndex: number): void
+  $emit(event: 'move', fromIndex: number, toIndex: number): this
 }

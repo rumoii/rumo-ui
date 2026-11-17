@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "es2015",
+    "moduleResolution": "node",
+    "types": [],
+    "baseUrl": "../..",
+    "paths": {
+      "rumo-ui": [
+        "types/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "index.ts"
+  ]
+}

@@ -30,6 +30,7 @@
     "i18n": "node build/bin/i18n.js",
     "lint": "eslint src/**/* packages/**/* build/**/* --quiet --fix",
     "check:docs": "node scripts/check-docs.js",
+    "check:types": "node tui/node_modules/typescript/bin/tsc -p test/types",
     "tui": "node tui/bin/rumo.js"
   },
   "keywords": [

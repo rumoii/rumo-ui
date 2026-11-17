@@ -1,4 +1,4 @@
-import { RumoUIComponent } from '../component'
+import { RumoUIComponent } from './component'
 
 /** SvgIcon Component */
 export declare class RumoSvgIcon extends RumoUIComponent {

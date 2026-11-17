@@ -1,4 +1,4 @@
-import { RumoUIComponent } from '../component'
+import { RumoUIComponent } from './component'
 
 export type WatermarkFontType = {
   color?: string

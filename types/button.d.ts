@@ -1,10 +1,10 @@
 import { RumoUIComponent, RumoUIComponentSize } from './component'
 
 /** Button type */
-export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'
+export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'
 
 /** Dash skin visual variant */
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost'
+export type ButtonVariant = '' | 'primary' | 'secondary' | 'ghost'
 
 /** Same as native button's type */
 export type ButtonNativeType = 'button' | 'submit' | 'reset' | 'menu'
@@ -20,8 +20,22 @@ export declare class RumoButton extends RumoUIComponent {
   /** Dash skin visual variant; when set, overrides the type-based appearance */
   variant: ButtonVariant
 
+  status: string
+
   /** Determine whether it's a plain button */
   plain: boolean
+
+  text: boolean
+
+  dashed: boolean
+
+  circle: boolean
+
+  nobord: boolean
+
+  click: boolean
+
+  iconOnly: boolean
 
   /** Determine whether it's a round button */
   round: boolean

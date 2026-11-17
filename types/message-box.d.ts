@@ -47,8 +47,6 @@ export interface RumoMessageBoxOptions {
   title?: string
 
   width?: string
-  
-  customClass?: string
 
   /** Content of the MessageBox */
   message?: string | VNode

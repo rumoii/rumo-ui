@@ -1,4 +1,4 @@
-import { RumoUIComponent } from '../component'
+import { RumoUIComponent } from './component'
 
 /** Text Component */
 export declare class RumoText extends RumoUIComponent {

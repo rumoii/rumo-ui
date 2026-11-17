@@ -22,6 +22,7 @@ import { RumoRectCheckbox } from './rect-checkbox'
 import { RumoCol } from './col'
 import { RumoCollapse } from './collapse'
 import { RumoCollapseItem } from './collapse-item'
+import { RumoCollapseTransition } from './collapse-transition'
 import { RumoColorPicker } from './color-picker'
 import { RumoContainer } from './container'
 import { RumoDatePicker } from './date-picker'
@@ -29,6 +30,8 @@ import { RumoDialog } from './dialog'
 import { RumoDropdown } from './dropdown'
 import { RumoDropdownItem } from './dropdown-item'
 import { RumoDropdownMenu } from './dropdown-menu'
+import { RumoDrawer } from './drawer'
+import { RumoEmpty } from './empty'
 import { RumoFooter } from './footer'
 import { RumoForm } from './form'
 import { RumoFormItem } from './form-item'
@@ -47,6 +50,7 @@ import { RumoOption } from './option'
 import { RumoOptionGroup } from './option-group'
 import { RumoPagination } from './pagination'
 import { RumoPopover } from './popover'
+import { RumoPopconfirm } from './popconfirm'
 import { RumoProgress } from './progress'
 import { RumoRate } from './rate'
 import { RumoRadio } from './radio'
@@ -54,7 +58,9 @@ import { RumoRadioButton } from './radio-button'
 import { RumoRadioGroup } from './radio-group'
 import { RumoRow } from './row'
 import { RumoSelect } from './select'
+import { RumoScrollbar } from './scrollbar'
 import { RumoSlider } from './slider'
+import { RumoSpinner } from './spinner'
 import { RumoStep } from './step'
 import { RumoSteps } from './steps'
 import { RumoSubmenu } from './submenu'
@@ -157,6 +163,9 @@ export const Notification: RumoNotification
 
 // TS cannot merge imported class with namespace, so declare subclasses instead
 
+/** Affix Component */
+export class Affix extends RumoAffix {}
+
 /** Alert Component */
 export class Alert extends RumoAlert {}
 
@@ -205,7 +214,7 @@ export class CheckboxButton extends RumoCheckboxButton {}
 export class CheckboxGroup extends RumoCheckboxGroup {}
 
 /** Rect Checkbox Component */
-export class RumoRectCheckbox extends RumoRectCheckbox {}
+export class RectCheckbox extends RumoRectCheckbox {}
 
 /** Colunm Layout Component */
 export class Col extends RumoCol {}
@@ -215,6 +224,9 @@ export class Collapse extends RumoCollapse {}
 
 /** Collapse Item Component */
 export class CollapseItem extends RumoCollapseItem {}
+
+/** Functional collapse transition */
+export const CollapseTransition: typeof RumoCollapseTransition
 
 /** Color Picker Component */
 export class ColorPicker extends RumoColorPicker {}
@@ -236,6 +248,12 @@ export class DropdownItem extends RumoDropdownItem {}
 
 /** Dropdown Menu Component */
 export class DropdownMenu extends RumoDropdownMenu {}
+
+/** Drawer Component */
+export class Drawer extends RumoDrawer {}
+
+/** Empty Component */
+export class Empty extends RumoEmpty {}
 
 /** Footer Component */
 export class Footer extends RumoFooter {}
@@ -279,6 +297,9 @@ export class Pagination extends RumoPagination {}
 /** Popover Component */
 export class Popover extends RumoPopover {}
 
+/** Popconfirm Component */
+export class Popconfirm extends RumoPopconfirm {}
+
 /** Progress Component */
 export class Progress extends RumoProgress {}
 
@@ -300,8 +321,14 @@ export class Row extends RumoRow {}
 /** Dropdown Select Component */
 export class Select extends RumoSelect {}
 
+/** Scrollbar Component */
+export class Scrollbar extends RumoScrollbar {}
+
 /** Slider Component */
 export class Slider extends RumoSlider {}
+
+/** Spinner Component */
+export class Spinner extends RumoSpinner {}
 
 /** Step Component */
 export class Step extends RumoStep {}
@@ -349,7 +376,7 @@ export class Tooltip extends RumoTooltip {}
 export class Transfer extends RumoTransfer {}
 
 /** Tree Component */
-export class Tree<K = any, D = TreeData> extends RumoTree<K, D> {}
+export class Tree<K = any, D extends TreeData = TreeData> extends RumoTree<K, D> {}
 
 /** Upload Component */
 export class Upload extends RumoUpload {}
