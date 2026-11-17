@@ -64,3 +64,8 @@
 | disabled       | 是否禁用状态                       | boolean | —                                    | false   |
 | href           | 原生 href 属性                     | string  | —                                    | -       |
 | icon           | 图标类名                       | string  | —                                    | -       |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| click | 未设置 href 且未禁用时，点击链接触发 | (event: Event) |

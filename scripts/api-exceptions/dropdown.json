@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "visibleArrow",
+    "reason": "packages/dropdown/src/dropdown.vue:41 仅声明该属性，render:248-284 未传给菜单，其他逻辑也未读取；实际箭头由 packages/dropdown/src/dropdown-menu.vue:22 的 visibleArrow 控制，是未接线的历史属性。"
+  }
+]

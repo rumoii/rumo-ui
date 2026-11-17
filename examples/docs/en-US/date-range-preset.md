@@ -90,4 +90,5 @@ Presets can be fixed ranges; all button labels are customizable.
 | Event | Description | Arguments |
 |---|---|---|
 | change | Fired on selection change | `{ from, to, preset }` |
+| input | 选择日期范围时触发，对应 `v-model` | `[from, to]` |
 | preset-click | Fired on preset click or custom apply | preset key |

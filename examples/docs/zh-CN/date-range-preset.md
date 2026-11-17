@@ -90,4 +90,5 @@ Dash 组件:预设时间区间胶囊(7 天 / 30 天等)+ 自定义区间弹层(�
 | 事件名称 | 说明 | 回调参数 |
 |---|---|---|
 | change | 选择变化时触发 | `{ from, to, preset }` |
+| input | 选择日期范围时触发，对应 `v-model` | `[from, to]` |
 | preset-click | 点击预设或应用自定义时触发 | preset key |

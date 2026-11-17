@@ -1,0 +1,5 @@
+[
+  { "kind": "source-only", "group": "props", "name": "boundariesPadding", "reason": "Submenu 的 poperMixins 在 packages/menu/src/submenu.vue:7-20 复用定位器内部参数，用于弹出菜单定位，不属于公开菜单配置" },
+  { "kind": "source-only", "group": "props", "name": "offset", "reason": "Submenu 的 poperMixins 在 packages/menu/src/submenu.vue:7-20 复用定位器内部参数，用于弹出菜单定位，不属于公开菜单配置" },
+  { "kind": "source-only", "group": "props", "name": "transformOrigin", "reason": "Submenu 的 poperMixins 在 packages/menu/src/submenu.vue:7-20 覆盖定位动画原点，属于内部弹出菜单实现" }
+]

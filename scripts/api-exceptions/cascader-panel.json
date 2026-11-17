@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "close",
+    "reason": "packages/cascader-panel/src/cascader-panel.vue:277-279 在 Escape/Tab 时通知宿主关闭浮层；packages/cascader/src/cascader.vue:83 监听此内部面板通信，独立面板自身没有显隐状态。"
+  }
+]

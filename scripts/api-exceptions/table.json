@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "docs-only",
+    "group": "events",
+    "name": "cell-click",
+    "reason": "packages/table/src/table-body.js:348-371 的 handleContextMenu/handleDoubleClick/handleClick 将事件后缀传入 handleEvent，再通过模板字符串动态 $emit（cell-${name} 或 row-${name}）；事件真实存在，生成器只提取静态事件名，保留原文档。"
+  },
+  {
+    "kind": "docs-only",
+    "group": "events",
+    "name": "cell-dblclick",
+    "reason": "packages/table/src/table-body.js:348-371 的 handleContextMenu/handleDoubleClick/handleClick 将事件后缀传入 handleEvent，再通过模板字符串动态 $emit（cell-${name} 或 row-${name}）；事件真实存在，生成器只提取静态事件名，保留原文档。"
+  },
+  {
+    "kind": "docs-only",
+    "group": "events",
+    "name": "row-click",
+    "reason": "packages/table/src/table-body.js:348-371 的 handleContextMenu/handleDoubleClick/handleClick 将事件后缀传入 handleEvent，再通过模板字符串动态 $emit（cell-${name} 或 row-${name}）；事件真实存在，生成器只提取静态事件名，保留原文档。"
+  },
+  {
+    "kind": "docs-only",
+    "group": "events",
+    "name": "row-contextmenu",
+    "reason": "packages/table/src/table-body.js:348-371 的 handleContextMenu/handleDoubleClick/handleClick 将事件后缀传入 handleEvent，再通过模板字符串动态 $emit（cell-${name} 或 row-${name}）；事件真实存在，生成器只提取静态事件名，保留原文档。"
+  },
+  {
+    "kind": "docs-only",
+    "group": "events",
+    "name": "row-dblclick",
+    "reason": "packages/table/src/table-body.js:348-371 的 handleContextMenu/handleDoubleClick/handleClick 将事件后缀传入 handleEvent，再通过模板字符串动态 $emit（cell-${name} 或 row-${name}）；事件真实存在，生成器只提取静态事件名，保留原文档。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "context",
+    "reason": "packages/table/src/table.vue:257 的内部渲染上下文传给 table-body；packages/table/src/table-body.js:408 使用其构造 _self，默认回退 table.$vnode.context；列内容公开定制入口为作用域插槽，不公开内部 Vue 渲染上下文。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "width",
+    "reason": "packages/table/src/table.vue:240 仅声明此历史属性，根元素及布局未读取 this.width；packages/table/src/table-layout.js:117 使用 table.$el.clientWidth，表格宽度应通过 CSS 设置。"
+  }
+]

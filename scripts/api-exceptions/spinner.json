@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "radius",
+    "reason": "无独立文档页，属性及 SVG 渲染见 packages/spinner/src/spinner.vue:3-32；src/index.js:53、176 仅注册和导出 Spinner，在 packages/ 和 src/ 未找到其他组件导入或使用 RumoSpinner/rumo-spinner。Loading 自绘 SVG（packages/loading/src/loading.vue:11），DatePicker 使用的是独立的 TimeSpinner（packages/date-picker/src/panel/time.vue:34），均非此组件；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "strokeColor",
+    "reason": "无独立文档页，属性及 SVG 渲染见 packages/spinner/src/spinner.vue:3-32；src/index.js:53、176 仅注册和导出 Spinner，在 packages/ 和 src/ 未找到其他组件导入或使用 RumoSpinner/rumo-spinner。Loading 自绘 SVG（packages/loading/src/loading.vue:11），DatePicker 使用的是独立的 TimeSpinner（packages/date-picker/src/panel/time.vue:34），均非此组件；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "strokeWidth",
+    "reason": "无独立文档页，属性及 SVG 渲染见 packages/spinner/src/spinner.vue:3-32；src/index.js:53、176 仅注册和导出 Spinner，在 packages/ 和 src/ 未找到其他组件导入或使用 RumoSpinner/rumo-spinner。Loading 自绘 SVG（packages/loading/src/loading.vue:11），DatePicker 使用的是独立的 TimeSpinner（packages/date-picker/src/panel/time.vue:34），均非此组件；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "type",
+    "reason": "无独立文档页，属性及 SVG 渲染见 packages/spinner/src/spinner.vue:3-32；src/index.js:53、176 仅注册和导出 Spinner，在 packages/ 和 src/ 未找到其他组件导入或使用 RumoSpinner/rumo-spinner。Loading 自绘 SVG（packages/loading/src/loading.vue:11），DatePicker 使用的是独立的 TimeSpinner（packages/date-picker/src/panel/time.vue:34），均非此组件；按任务范围不新建文档页。type 只声明，模板未读取。"
+  }
+]

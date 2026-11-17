@@ -163,3 +163,5 @@
 | color  | 进度条颜色（自定义时会覆盖 status 状态颜色） | string | — | — |
 | width  | 环形进度条画布宽度（只在 type=circle 时可用） | number |  | 126 |
 | show-text  | 是否显示进度条文字内容 | boolean | — | true |
+| format | 自定义进度文字内容 | function(percentage) | — | — |
+| stroke-linecap | 环形或仪表盘进度条端点的形状 | string | butt / round / square | round |

@@ -1,6 +1,26 @@
 ## Checkbox 多选框
 一组备选项中进行多选
 
+### 最简用法
+
+单独使用时，通过 v-model 绑定是否选中。
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-checkbox v-model="checked">备选项</rumo-checkbox>
+</template>
+<script>
+export default {
+  data() {
+    return { checked: true };
+  }
+};
+</script>
+```
+:::
+
 ### 基础用法
 
 单独使用可以表示两种状态之间的切换，写在标签中的内容为 checkbox 按钮后的介绍。
@@ -374,15 +394,20 @@
 | name | 原生 name 属性 | string    |      —         |     —    |
 | checked  | 当前是否勾选    | boolean   |  — | false   |
 | indeterminate  | 设置 indeterminate 状态，只负责样式控制    | boolean   |  — | false   |
+| value / v-model | 单独使用时的绑定值 | boolean / string / number | — | — |
+| id | 原生 id 属性 | string | — | — |
+| controls | 与当前 Checkbox 关联的控件 id，用于辅助技术 | string | — | — |
 
 ### Checkbox Events
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change  | 当绑定值变化时触发的事件 | 更新后的值 |
+| input | 单独使用时绑定值变化触发，对应 `v-model` | 更新后的值 |
 
 ### Checkbox-group Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
+| value / v-model | 绑定值 | array | — | — |
 | size     | 多选框组尺寸，仅对按钮形式的 Checkbox 或带有边框的 Checkbox 有效   | string  | large / medium / small / mini  |    —     |
 | disabled  | 是否禁用    | boolean   | — | false   |
 | min     | 可被勾选的 checkbox 的最小数量   | number    |       —        |     —    |
@@ -398,6 +423,7 @@
 ### Checkbox-button Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
+| value / v-model | 单独使用时的绑定值 | boolean / string / number | — | — |
 | label     | 选中状态的值（只有在`checkbox-group`或者绑定对象类型为`array`时有效）| string / number / boolean  |       —        |     —    |
 | true-label | 选中时的值   | string / number | — |     —    |
 | false-label | 没有选中时的值   | string / number    |      —         |     —    |
@@ -405,9 +431,16 @@
 | name | 原生 name 属性 | string    |      —         |     —    |
 | checked  | 当前是否勾选    | boolean   |  — | false   |
 
+### Checkbox-button Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| input | 单独使用时绑定值变化触发，对应 `v-model` | 更新后的值 |
+| change | 绑定值变化时触发 | 更新后的值、原生事件 |
+
 ### Rect-Checkbox Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
+| model-value / v-model | 绑定值 | boolean / array | — | — |
 | label     | 标签名   | string |       —        |     —    |
 | value     | 属性值   | string / number  | — |     —    |
 | disabled  | 是否禁用 | boolean   |  — | false   |
@@ -417,4 +450,5 @@
 ### Rect-Checkbox Events
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
-| change  | 当绑定值变化时触发的事件 | 更新后的值、对应的属性值 `value` |
+| change  | 当绑定值变化时触发的事件，对应 `v-model` | 更新后的值、对应的属性值 `value` |
+| input | 内部绑定值更新时触发 | 更新后的值 |

@@ -3,6 +3,26 @@
 
 当数据量过多时，使用分页分解数据。
 
+### Minimal usage
+
+Bind pagination data with total and current-page.sync.
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-pagination :current-page.sync="currentPage" :total="100" />
+</template>
+<script>
+export default {
+  data() {
+    return { currentPage: 1 };
+  }
+};
+</script>
+```
+:::
+
 ### 基础用法
 
 :::demo 设置`layout`，表示需要显示的内容，用逗号分隔，布局元素会依次显示。`prev`表示上一页，`next`为下一页，`pager`表示页码列表，除此以外还提供了`jumper`和`total`，`size`和特殊的布局符号`->`，`->`后的元素会靠右显示，`jumper`表示跳页元素，`total`表示显示页码总数，`size`用于设置每页显示的页码数量。
@@ -238,6 +258,7 @@
 | current-change | currentPage 改变时会触发 | 当前页 |
 | prev-click | 用户点击上一页按钮改变当前页后触发 | 当前页 |
 | next-click | 用户点击下一页按钮改变当前页后触发 | 当前页 |
+| update:currentPage | 当前页变化时触发，对应 `current-page.sync` | 当前页 |
 
 ### Slot
 | name | 说明 |

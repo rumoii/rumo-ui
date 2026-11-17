@@ -221,6 +221,7 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 | center | 文字是否居中 | boolean | — | true |
 | close-text | 关闭按钮自定义文本 | string | — | — |
 | show-icon | 是否显示图标 | boolean | — | false |
+| effect | 主题 | string | light / dark | light |
 
 
 ### Remember Dismissal

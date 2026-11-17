@@ -1,0 +1,3 @@
+[
+  { "kind": "source-only", "group": "props", "name": "created", "reason": "Select 允许创建选项时使用的内部标记；packages/select/src/select.vue:115-118 创建该 Option，option.vue:84-90 用它跳过重置选中状态" }
+]

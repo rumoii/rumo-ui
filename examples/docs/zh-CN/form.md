@@ -2,6 +2,30 @@
 
 由输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据
 
+### 最简用法
+
+使用 model 绑定表单数据，并在 Form-Item 中放置输入控件。
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-form :model="form">
+    <rumo-form-item label="名称">
+      <rumo-input v-model="form.name" />
+    </rumo-form-item>
+  </rumo-form>
+</template>
+<script>
+export default {
+  data() {
+    return { form: { name: '' } };
+  }
+};
+</script>
+```
+:::
+
 ### 典型表单
 
 包括各种表单项，比如输入框、选择器、开关、单选框、多选框等。
@@ -714,6 +738,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 | validate-on-rule-change  | 是否在 `rules` 属性改变后立即触发一次验证 | boolean | — | true |
 | size  | 用于控制该表单内组件的尺寸 | string | large / medium / small / mini | - |
 | disabled | 是否禁用该表单内的所有组件。若设置为 true，则表单内组件上的 disabled 属性不再生效 | boolean | — | false |
+| autocomplete | 原生表单的 autocomplete 属性 | string | on / off | on |
 
 ### Form Methods
 
@@ -742,6 +767,9 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 | show-message  | 是否显示校验错误信息 | boolean | — | true |
 | inline-message  | 以行内形式展示校验信息 | boolean | — | false |
 | size  | 用于控制该表单域下组件的尺寸 | string | large / medium / small / mini | - |
+| for | 标签关联的原生控件 id；缺省使用 prop | string | — | — |
+| validate-status | 手动设置校验状态 | string | validating / success / error | — |
+| top-label | 是否将标签显示在内容上方 | boolean | — | false |
 
 ### Form-Item Slot
 | name | 说明 |

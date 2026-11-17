@@ -1,7 +1,7 @@
 ### 固钉
 将页面元素钉在可视范围。
 
-:::demo 用 `target` 设置 `Affix` 需要监听其滚动事件的元素，默认为 `window`。。
+:::demo 用 `offset-top` 或 `offset-bottom` 设置元素固定时相对窗口顶部或底部的偏移量。
 ```html
 <template>
 <main>
@@ -69,7 +69,6 @@ export default {
 | --- | --- | --- | --- | --- |
 | offset-bottom | 距离窗口底部达到指定偏移量后触发 | number | — |  |
 | offset-top | 距离窗口顶部达到指定偏移量后触发 | number | — |  |
-| target | 设置 `Affix` 需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 | () => HTMLElement | — | () => window |
 
 ### Affix events
 | 事件名 | 说明 | 返回值 |

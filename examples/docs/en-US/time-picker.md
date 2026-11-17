@@ -147,7 +147,7 @@
 ```
 :::
 
-### Attributes
+### TimePicker Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | readonly | 完全只读 | boolean | — | false |
@@ -160,16 +160,55 @@
 | end-placeholder | 范围选择时开始日期的占位内容 | string | — | — |
 | is-range | 是否为时间范围选择，仅对`<rumo-time-picker>`有效 | boolean | — | false |
 | arrow-control | 是否使用箭头进行时间选择，仅对`<rumo-time-picker>`有效 | boolean | — | false |
-| value | 绑定值 | date(TimePicker) / string(TimeSelect) | — | — |
+| value | 绑定值；范围选择为数组，设置 value-format 时按该格式绑定 | Date / Date[] / string / string[] / number / number[] | — | — |
 | align | 对齐方式 | string | left / center / right | left |
 | popper-class | TimePicker 下拉框的类名 | string | — | — |
 | picker-options | 当前时间日期选择器特有的选项参考下表 | object | — | {} |
 | range-separator | 选择范围时的分隔符 | string | - | '-' |
 | value-format | 可选，仅TimePicker时可用，绑定值的格式，同DatePicker | string | 小时 `HH`，分 `mm`，秒 `ss`，AM/PM `A` | — |
-| default-value | 可选，选择器打开时默认显示的时间 | Date(TimePicker) / string(TimeSelect) | 可被`new Date()`解析(TimePicker) / 可选值(TimeSelect) | — |
+| default-value | 可选，选择器打开时默认显示的时间 | Date | 可被 `new Date()` 解析 | — |
 | name | 原生属性 | string | — | — |
 | prefix-icon | 自定义头部图标的类名 | string | — | rumo-icons icon-calendar |
 | clear-icon | 自定义清空图标的类名 | string | — | rumo-icons icon-close-fill |
+| format | 输入框显示的时间格式；优先于 picker-options.format | string | — | HH:mm:ss |
+| id | 原生 input 的 id；范围选择时可传入两个 id | string / string[] | — | '' |
+| validate-event | 值变化或失焦时是否触发表单校验 | boolean | — | true |
+| append-to-body | 是否将浮层插入全局弹层容器 | boolean | — | true |
+| offset | 浮层位置偏移量，单位为像素 | number | — | 0 |
+| arrow-offset | 箭头位置偏移量，单位为像素 | number | — | 35 |
+
+### TimeSelect Attributes
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| --- | --- | --- | --- | --- |
+| value / v-model | 选中的时间字符串 | string | — | — |
+| readonly | 完全只读 | boolean | — | false |
+| disabled | 是否禁用 | boolean | — | false |
+| editable | 文本框是否可输入 | boolean | — | true |
+| clearable | 是否显示清除按钮 | boolean | — | true |
+| size | 输入框尺寸 | string | medium / small / mini | — |
+| placeholder | 输入框占位文本 | string | — | — |
+| align | 浮层对齐方式 | string | left / center / right | left |
+| popper-class | 下拉框的类名 | string | — | — |
+| picker-options | 时间选项配置，见 Time Select Options | object | — | — |
+| default-value | 打开时默认滚动到的时间选项 | string | — | — |
+| name | 原生 input 的 name | string | — | '' |
+| id | 原生 input 的 id | string | — | '' |
+| prefix-icon | 自定义头部图标类名 | string | — | rumo-icons icon-clock |
+| clear-icon | 自定义清空图标类名 | string | — | rumo-icons icon-close-fill |
+| validate-event | 值变化或失焦时是否触发表单校验 | boolean | — | true |
+| append-to-body | 是否将浮层插入全局弹层容器 | boolean | — | true |
+| offset | 浮层位置偏移量，单位为像素 | number | — | 0 |
+| arrow-offset | 箭头位置偏移量，单位为像素 | number | — | 35 |
+
+### TimeSelect Events
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| input | 绑定值变化时触发，用于 v-model | 新的时间字符串；清空时为 null |
+| change | 用户确认选定的值时触发 | 组件绑定值 |
+| blur | 输入框失去焦点时触发 | 组件实例 |
+| focus | 输入框获得焦点时触发 | 组件实例 |
 
 ### Time Select Options
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -186,14 +225,15 @@
 | selectableRange | 可选时间段，例如`'18:30:00 - 20:30:00'`或者传入数组`['09:30:00 - 12:00:00', '14:30:00 - 18:30:00']` | string / array | — | — |
 | format | 时间格式化(TimePicker) | string | 小时：`HH`，分：`mm`，秒：`ss`，AM/PM `A` | 'HH:mm:ss' |
 
-### Events
+### TimePicker Events
 | 事件名 | 说明 | 参数 |
 |---------|--------|---------|
 | change | 用户确认选定的值时触发 | 组件绑定值 |
 | blur | 当 input 失去焦点时触发 | 组件实例 |
 | focus | 当 input 获得焦点时触发 | 组件实例 |
+| input | 绑定值变化时触发，用于 v-model | 新的绑定值，受 value-format 控制 |
 
-### Methods
+### TimePicker Methods
 | 方法名 | 说明 | 参数 |
 | ---- | ---- | ---- |
 | focus | 使 input 获取焦点 | - |

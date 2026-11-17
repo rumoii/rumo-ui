@@ -17,7 +17,7 @@
     "bootstrap": "yarn || npm i",
     "build:tokens": "node scripts/gen-tokens.js",
     "build:api": "node scripts/gen-api.js",
-    "check:api": "node scripts/gen-api.js --check",
+    "check:api": "node scripts/gen-api.js --check --strict",
     "check:snippets": "node scripts/check-snippets.js",
     "build:file": "node scripts/gen-tokens.js && node build/bin/build-entry.js & node build/bin/i18n.js & node build/bin/version.js",
     "build:theme": "node scripts/gen-tokens.js && node build/bin/gen-cssfile && gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk",

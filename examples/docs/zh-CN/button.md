@@ -1,11 +1,21 @@
 ## Button 按钮
 常用的操作按钮。
 
+### 最简用法
+
+使用 type 设置按钮类型。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-button type="primary">主要按钮</rumo-button>
+```
+:::
+
 ### 基础用法
 
 基础的按钮用法。
 
-<!-- snippet -->
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
 
 ```html
@@ -438,3 +448,11 @@ Button 组件提供除了默认值以外的五种尺寸，可以在不同场景�
 | icon  | 图标类名 | string   |  —  |  —  |
 | autofocus  | 是否默认聚焦 | boolean   |  —  |  false  |
 | native-type | 原生 type 属性 | string | button / submit / reset | button |
+| click | 是否以点击状态初始化按钮 | boolean | — | false |
+| nobord | 是否隐藏边框 | boolean | — | false |
+| icon-only | 是否使用仅图标按钮样式 | boolean | — | false |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| click | 点击按钮时触发 | (event: Event) |

@@ -2,6 +2,28 @@
 
 当选项过多时，使用下拉菜单展示并选择内容。
 
+### 最简用法
+
+通过 v-model 绑定选中项，并使用 Option 提供选项。
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-select v-model="value">
+    <rumo-option v-for="item in options" :key="item" :label="item" :value="item" />
+  </rumo-select>
+</template>
+<script>
+export default {
+  data() {
+    return { value: '', options: ['选项一', '选项二'] };
+  }
+};
+</script>
+```
+:::
+
 ### 基础用法
 
 适用广泛的基础单选
@@ -667,6 +689,9 @@
 | popper-append-to-body | 是否将弹出框插入至 body 元素。在弹出框的定位出现问题时，可将该属性设置为 false | boolean | - | true |
 | automatic-dropdown | 对于不可搜索的 Select，是否在输入框获得焦点后自动弹出选项菜单 | boolean | - | false |
 | autocomplete | select input 的 autocomplete 属性 | string | — | off |
+| value / v-model | 绑定值 | string / number / boolean / object / array | — | — |
+| id | 输入框的原生 id 属性 | string | — | — |
+| popover-margin | 下拉菜单的外边距 | string | — | 4px 0 |
 
 ### Select Events
 | 事件名称 | 说明 | 回调参数 |
@@ -677,6 +702,7 @@
 | clear | 可清空的单选模式下用户点击清空按钮时触发 | — |
 | blur | 当 input 失去焦点时触发 | (event: Event) |
 | focus | 当 input 获得焦点时触发 | (event: Event) |
+| input | 选中值变化时触发，对应 `v-model` | 目前的选中值 |
 
 ### Select Slots
 |   name  | 说明     |

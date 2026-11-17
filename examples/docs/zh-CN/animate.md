@@ -36,13 +36,18 @@ export default {
 
 指令值也可直接写预设名，例如 `v-animate="'pulse'"`。
 
-### 组件属性与方法
+### Animate Attributes
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | type / effect | 预设名；设置 effect 时优先使用 effect | string | fade-in / 空 |
 | duration / delay | 时长 / 延迟，毫秒 | number | 600 / 0 |
 | autoplay | 挂载时自动播放 | boolean | true |
-| play() | 通过组件 ref 手动重播 | method | — |
+
+### Animate Methods
+
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| play | 通过组件 ref 手动重播 | — |
 
 启用系统「减少动态效果」时直接显示内容并跳过动效。

@@ -1,0 +1,56 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "boundariesPadding",
+    "reason": "来自 src/utils/vue-popper.js:27 的历史 mixin 属性；createPopper（同文件:86-106）只读取 popperOptions，没有读取此顶层属性；此顶层属性未接入定位实现，不作为有效的公开配置。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "defaultTime",
+    "reason": "继承 packages/date-picker/src/picker.vue:368 的日期默认时刻配置；同文件:759 复制给面板，但 packages/date-picker/src/panel/time-select.vue 不读取 defaultTime；时间初始显示使用 default-value。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "endPlaceholder",
+    "reason": "继承 packages/date-picker/src/picker.vue:331-378 的范围输入配置；该模板:34-86 仅在 ranged 时使用，TimeSelect 在 packages/date-picker/src/picker/time-select.js:12-15 固定为 time-select，不呈现范围输入。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "format",
+    "reason": "继承 packages/date-picker/src/picker.vue:333-334 的日期格式配置；TYPE_VALUE_RESOLVER_MAP:163-174 对 time-select 使用不处理格式参数的 default 分支，packages/date-picker/src/panel/time-select.vue:142-179 直接生成 HH:mm 字符串，不提供日期格式转换。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "rangeSeparator",
+    "reason": "继承 packages/date-picker/src/picker.vue:331-378 的范围输入配置；该模板:34-86 仅在 ranged 时使用，TimeSelect 在 packages/date-picker/src/picker/time-select.js:12-15 固定为 time-select，不呈现范围输入。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "startPlaceholder",
+    "reason": "继承 packages/date-picker/src/picker.vue:331-378 的范围输入配置；该模板:34-86 仅在 ranged 时使用，TimeSelect 在 packages/date-picker/src/picker/time-select.js:12-15 固定为 time-select，不呈现范围输入。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "type",
+    "reason": "packages/date-picker/src/picker/time-select.js:12-15 固定默认 type 为 time-select，beforeCreate:19-20 固定挂载 TimeSelect 面板；这是共享 Picker 的内部类型标识，不支持用户改成其他选择器类型。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "unlinkPanels",
+    "reason": "继承 packages/date-picker/src/picker.vue:373 的日期范围面板联动属性；mountPicker:765 复制给面板，但 packages/date-picker/src/panel/time-select.vue 没有联动日历，也不读取此值。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "valueFormat",
+    "reason": "继承 packages/date-picker/src/picker.vue:333-334 的日期格式配置；TYPE_VALUE_RESOLVER_MAP:163-174 对 time-select 使用不处理格式参数的 default 分支，packages/date-picker/src/panel/time-select.vue:142-179 直接生成 HH:mm 字符串，不提供日期格式转换。"
+  }
+]

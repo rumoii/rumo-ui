@@ -2,6 +2,17 @@
 
 用于标记和选择。
 
+### Minimal usage
+
+Use type to set the tag style.
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-tag type="success">标签</rumo-tag>
+```
+:::
+
 ### 基础用法
 
 :::demo 由`type`属性来选择tag的类型，也可以通过`color`属性来自定义背景色。
@@ -240,6 +251,8 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
 | size | 尺寸 | string | large / medium / small / mini | — |
 | editable | 点击是否可编辑 | boolean | — | false |
 | effect | 主题 | string | dark / light / plain | light |
+| text | 可编辑标签的初始文本 | string | — | — |
+| id | 标签的 id；编辑事件的参数中会包含该值 | string | — | — |
 
 
 ### Events

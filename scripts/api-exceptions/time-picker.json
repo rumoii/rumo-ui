@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "boundariesPadding",
+    "reason": "来自 src/utils/vue-popper.js:27 的历史 mixin 属性；createPopper（同文件:86-106）只读取 popperOptions，没有读取此顶层属性；此顶层属性未接入定位实现，不作为有效的公开配置。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "defaultTime",
+    "reason": "继承 packages/date-picker/src/picker.vue:368 的日期默认时刻配置；同文件:759 复制给面板，但 packages/date-picker/src/panel/time.vue 和 time-range.vue 不读取 defaultTime；时间初始显示使用 default-value。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "unlinkPanels",
+    "reason": "继承 packages/date-picker/src/picker.vue:373 的日期范围面板联动属性；mountPicker:765 复制给面板，但 packages/date-picker/src/panel/time.vue 和 time-range.vue 没有联动日历，也不读取此值。"
+  }
+]

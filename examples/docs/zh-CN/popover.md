@@ -160,6 +160,9 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 | popper-class | 为 popper 添加类名 | String | — | — |
 | open-delay | 触发方式为 hover 时的显示延迟，单位为毫秒 | Number | — | — |
 | tabindex   | Popover 组件的 [tabindex] | number | — | 0 |
+| type | 标题图标类型 | string | success / info / warning / error | — |
+| arrow-offset | 箭头的偏移量 | number | — | 0 |
+| reference | 自定义触发元素；通常使用 reference 插槽 | HTMLElement | — | — |
 
 ### Slot
 | 参数 | 说明 |
@@ -174,3 +177,4 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 | after-enter | 显示动画播放完毕后触发 | — |
 | hide | 隐藏时触发 | — |
 | after-leave | 隐藏动画播放完毕后触发 | — |
+| input | 显示状态变化时触发，对应 `v-model` | 是否显示 |

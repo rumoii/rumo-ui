@@ -114,9 +114,13 @@
 | color-format | 写入 v-model 的颜色的格式 | string | hsl / hsv / hex / rgb | hex（show-alpha 为 false）/ rgb（show-alpha 为 true） |
 | popper-class | ColorPicker 下拉框的类名 | string | — | — |
 | predefine | 预定义颜色 | array | — | — |
+| value / v-model | 绑定值 | string | — | — |
+| append-to-body | 是否将颜色面板插入至 body 元素 | boolean | — | true |
+| popover-placement | 颜色面板的弹出位置 | string | top / bottom / left / right 及其 start、end 变体 | bottom-start |
 
 ### Events
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change | 当绑定值变化时触发 | 当前值 |
+| input | 选择或清空颜色时触发，对应 `v-model` | 当前值 |
 | active-change | 面板中当前显示的颜色发生改变时触发 | 当前显示的颜色值 |

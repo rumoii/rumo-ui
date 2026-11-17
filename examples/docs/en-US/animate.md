@@ -36,13 +36,18 @@ export default {
 
 The directive also accepts a preset name directly, for example `v-animate="'pulse'"`.
 
-### Component props and method
+### Animate Attributes
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | type / effect | Preset name; effect takes precedence | string | fade-in / empty |
 | duration / delay | Duration / delay in milliseconds | number | 600 / 0 |
 | autoplay | Play on mount | boolean | true |
-| play() | Replay through a component ref | method | — |
+
+### Animate Methods
+
+| Method | Description | Parameters |
+| --- | --- | --- |
+| play | Replay through a component ref | — |
 
 Content appears immediately when reduced motion is enabled.

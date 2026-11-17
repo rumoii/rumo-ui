@@ -1,0 +1,8 @@
+[
+  { "kind": "source-only", "group": "props", "name": "cellProps", "reason": "内部单元格渲染参数，由 packages/descriptions/src/main.js:52-56 在创建 DescriptionsItem 时传入" },
+  { "kind": "source-only", "group": "props", "name": "cellRowspan", "reason": "内部单元格跨行参数，由 packages/descriptions/src/main.js:52-56 在创建 DescriptionsItem 时传入" },
+  { "kind": "source-only", "group": "props", "name": "cellSpan", "reason": "内部单元格跨列参数，由 packages/descriptions/src/main.js:52-56 在创建 DescriptionsItem 时传入" },
+  { "kind": "source-only", "group": "props", "name": "cellType", "reason": "内部单元格类型参数，由 packages/descriptions/src/main.js:52-56 在创建 DescriptionsItem 时传入" },
+  { "kind": "source-only", "group": "props", "name": "contentNodes", "reason": "内部内容节点参数，由 packages/descriptions/src/main.js:52-56 在创建 DescriptionsItem 时传入" },
+  { "kind": "source-only", "group": "props", "name": "labelNodes", "reason": "内部标签节点参数，由 packages/descriptions/src/main.js:52-56 在创建 DescriptionsItem 时传入" }
+]

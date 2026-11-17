@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "rightLoading",
+    "reason": "packages/transfer/src/main.vue:87-90 仅声明此历史属性；右面板模板:44 显式传入 :loading=\"false\"，没有使用 rightLoading，不能作为有效加载开关公开。"
+  }
+]

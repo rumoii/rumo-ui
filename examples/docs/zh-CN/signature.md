@@ -37,10 +37,15 @@ export default {
 | width / height | 画布显示尺寸 | number / string | 300 / 150 |
 | dotSize | 点尺寸，0 使用引擎默认 | number | 0 |
 
-### 方法与事件
+### Signature Methods
 
-| 名称 | 说明 |
-| --- | --- |
-| save() | 返回 PNG dataURL |
-| clear() / undo() | 清空 / 撤销最后一笔 |
-| onBegin / onEnd | 开始 / 结束一笔 |
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| save | 返回 PNG dataURL | — |
+| clear / undo | 清空 / 撤销最后一笔 | — |
+
+### Signature Events
+
+| 事件名称 | 说明 | 回调参数 |
+| --- | --- | --- |
+| onBegin / onEnd | 开始 / 结束一笔 | 笔画事件详情 |

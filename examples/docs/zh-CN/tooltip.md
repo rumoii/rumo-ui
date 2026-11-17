@@ -2,6 +2,19 @@
 
 常用于展示鼠标 hover 时的提示信息。
 
+### 最简用法
+
+包裹触发元素，并通过 content 设置提示内容。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-tooltip content="提示内容" placement="top">
+  <rumo-button>悬停查看</rumo-button>
+</rumo-tooltip>
+```
+:::
+
 ### 基础用法
 
 在这里我们提供 9 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。
@@ -180,3 +193,9 @@ tooltip 内不支持 disabled form 元素，参考[MDN](https://developer.mozill
 | enterable | 鼠标是否可进入到 tooltip 中 | Boolean | — | true |
 | hide-after | Tooltip 出现后自动隐藏延时，单位毫秒，为 0 则不会自动隐藏 | number | — | 0 |
 | tabindex   | Tooltip 组件的 [tabindex] | number | — | 0 |
+| arrow-offset | 箭头的偏移量 | number | — | 0 |
+
+### Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| input | 显示状态变化时触发，对应 `v-model` | 是否显示 |

@@ -107,9 +107,11 @@
 :::
 
 ### Attributes
-| preview-src-list | Image preview list for preview feature | array | — | [] |
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
+| preview-src-list | Image preview list for preview feature | array | — | [] |
+| initial-index | 图片预览的初始索引 | number | — | 0 |
+| z-index | 图片预览层的 z-index | number | — | 2000 |
 | src | 图片源，同原生 | string | — | - |
 | fit | 确定图片如何适应容器框，同原生 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) | string | fill / contain / cover / none / scale-down | - |
 | alt | 原生 alt | string | - | - |

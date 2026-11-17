@@ -1,0 +1,6 @@
+[
+  { "kind": "docs-only", "group": "props", "name": "infinite-scroll-delay", "reason": "这是指令的 DOM 属性而非组件 prop；packages/infinite-scroll/src/main.js:45-62 定义指令选项，69 行从元素属性读取" },
+  { "kind": "docs-only", "group": "props", "name": "infinite-scroll-disabled", "reason": "这是指令的 DOM 属性而非组件 prop；packages/infinite-scroll/src/main.js:45-62 定义指令选项，69 行从元素属性读取" },
+  { "kind": "docs-only", "group": "props", "name": "infinite-scroll-distance", "reason": "这是指令的 DOM 属性而非组件 prop；packages/infinite-scroll/src/main.js:45-62 定义指令选项，69 行从元素属性读取" },
+  { "kind": "docs-only", "group": "props", "name": "infinite-scroll-immediate", "reason": "这是指令的 DOM 属性而非组件 prop；packages/infinite-scroll/src/main.js:45-62 定义指令选项，69 行从元素属性读取" }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "created",
+    "reason": "src/utils/vue-popper.js:108 发出的定位实例创建通知，仅属于底层 Popper 生命周期；确认框对使用者提供 show、hide 和函数属性 on-confirm/on-cancel，见 packages/popconfirm/src/main.js:243-249、333-341。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "boundariesPadding",
+    "reason": "来自 src/utils/vue-popper.js:27 的历史 mixin 属性；createPopper（同文件:86-106）只读取 popperOptions，没有读取此顶层属性；此顶层属性未接入定位实现，不作为有效的公开配置。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "buttonStyle",
+    "reason": "packages/popconfirm/src/main.js:76 仅声明此历史属性，render:127-177 未读取；确认和取消按钮只使用 size、confirmText、cancelText，没有应用此属性。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "buttonText",
+    "reason": "packages/popconfirm/src/main.js:81 仅声明此历史属性，render:127-177 未读取；确认和取消按钮只使用 size、confirmText、cancelText，没有应用此属性。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "message",
+    "reason": "packages/popconfirm/src/main.js:60 仅声明此历史属性，render:127-177 未读取；内容来自 message/default 插槽或 content 属性，不是 message 属性。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "popper",
+    "reason": "来自 src/utils/vue-popper.js:31-32 的内部 DOM 引用入口；packages/popconfirm/src/main.js:135、182 自行设置浮层和触发元素，不要求使用者手工提供 DOM 引用。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "reference",
+    "reason": "来自 src/utils/vue-popper.js:31-32 的内部 DOM 引用入口；packages/popconfirm/src/main.js:135、182 自行设置浮层和触发元素，不要求使用者手工提供 DOM 引用。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "transformOrigin",
+    "reason": "来自 src/utils/vue-popper.js:19-22 的底层动画原点配置；同文件:144-157 按实际弹出方向计算 transform-origin，现有 Tooltip/Popover 文档也未将此 mixin 细节列为公开属性。"
+  }
+]

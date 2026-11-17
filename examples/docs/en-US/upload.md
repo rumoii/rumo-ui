@@ -87,6 +87,19 @@
 
 通过点击或者拖拽上传文件
 
+### Minimal usage
+
+Set the upload URL and place a trigger button in the default slot.
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-upload action="/upload">
+  <rumo-button>点击上传</rumo-button>
+</rumo-upload>
+```
+:::
+
 ### 点击上传
 
 :::demo 通过 slot 你可以传入自定义的上传按钮类型和文字提示。可通过设置`limit`和`on-exceed`来限制上传文件的个数和定义超出限制时的行为。可通过设置`before-remove`来阻止文件移除操作。

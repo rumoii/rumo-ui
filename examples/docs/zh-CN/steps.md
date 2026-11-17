@@ -180,6 +180,12 @@
 | finish-status | 设置结束步骤的状态 | string | wait / process / finish / error / success | finish |
 | align-center | 进行居中对齐 | boolean | - | false |
 | simple | 是否应用简洁风格 | boolean | - | false |
+| type | 步骤条类型 | string | line / tail | line |
+
+### Steps Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| change | active 属性变化时触发 | 新值、旧值 |
 
 ### Step Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
@@ -188,6 +194,11 @@
 | description | 描述性文字 | string | — | — |
 | icon | 图标 | 传入 icon 的 class 全名来自定义 icon，也支持 slot 方式写入 | string | — |
 | status | 设置当前步骤的状态，不设置则根据 steps 确定状态 | wait / process / finish / error / success | - |
+
+### Step Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| step-click | 点击步骤图标或标题时触发 | 步骤索引，从 0 开始 |
 
 ### Step Slot
 | name | 说明  |

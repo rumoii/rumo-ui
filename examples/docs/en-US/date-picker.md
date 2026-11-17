@@ -2,6 +2,24 @@
 
 用于选择或输入日期
 
+### Minimal usage
+
+通过 v-model 绑定所选日期。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-date-picker v-model="date"></rumo-date-picker>
+<script>
+  export default {
+    data() {
+      return { date: null };
+    }
+  };
+</script>
+```
+:::
+
 ###  选择日
 
 以「日」为基本单位，基础的日期选择控件
@@ -393,6 +411,14 @@
 | unlink-panels | 在范围选择器里取消两个日期面板之间的联动 | boolean | — | false |
 | prefix-icon | 自定义头部图标的类名 | string | — | rumo-icons icon-calendar |
 | clear-icon | 自定义清空图标的类名 | string | — | rumo-icons icon-close-fill |
+| value / v-model | 选中的日期；范围选择为数组，设置 value-format 时按该格式绑定 | Date / Date[] / string / string[] / number / number[] | — | — |
+| default-time | 选定日期后的默认时间；范围选择可分别设置起止时间 | string / string[] | HH:mm:ss | — |
+| time-arrow-control | 日期时间选择时是否用箭头选择时间 | boolean | — | false |
+| id | 原生 input 的 id；范围选择时可传入两个 id | string / string[] | — | '' |
+| validate-event | 值变化或失焦时是否触发表单校验 | boolean | — | true |
+| append-to-body | 是否将浮层插入全局弹层容器 | boolean | — | true |
+| offset | 浮层位置偏移量，单位为像素 | number | — | 0 |
+| arrow-offset | 箭头位置偏移量，单位为像素 | number | — | 35 |
 
 ### Picker Options
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
@@ -414,6 +440,7 @@
 | change | 用户确认选定的值时触发 | 组件绑定值。格式与绑定值一致，可受 `value-format` 控制 |
 | blur | 当 input 失去焦点时触发 | 组件实例 |
 | focus | 当 input 获得焦点时触发 | 组件实例 |
+| input | 绑定值变化时触发，用于 v-model | 新的绑定值，受 value-format 控制 |
 
 ### Methods
 | 方法名 | 说明 | 参数 |

@@ -1,0 +1,8 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "boundariesPadding",
+    "reason": "来自 src/utils/vue-popper.js:27 的历史 mixin 属性；createPopper（同文件:86-106）只读取 popperOptions，没有读取此顶层属性；此顶层属性未接入定位实现，不作为有效的公开配置。"
+  }
+]

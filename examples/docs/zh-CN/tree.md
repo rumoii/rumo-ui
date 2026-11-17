@@ -2,6 +2,24 @@
 
 用清晰的层级结构展示信息，可展开或折叠。
 
+### 最简用法
+
+通过 data 传入包含 label 和 children 的节点数据。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-tree :data="nodes"></rumo-tree>
+<script>
+  export default {
+    data() {
+      return { nodes: [{ label: '一级节点', children: [{ label: '子节点' }] }] };
+    }
+  };
+</script>
+```
+:::
+
 ### 基础用法
 
 基础的树形结构展示。
@@ -886,8 +904,12 @@
 | draggable             | 是否开启拖拽节点功能                                   | boolean            | —    | false |
 | allow-drag            | 判断节点能否被拖拽                  | Function(node)  | —  | —  |
 | allow-drop            | 拖拽时判定目标节点能否被放置。`type` 参数有三种情况：'prev'、'inner' 和 'next'，分别表示放置在目标节点前、插入至目标节点和放置在目标节点后 | Function(draggingNode, dropNode, type)  | —    | —     |
+| check-descendants | 懒加载且父子勾选关联时，勾选节点是否加载并勾选其后代节点 | boolean | — | false |
 
-### props
+### Tree Options
+
+以下字段通过 `props` 对象传入，用于映射节点数据。
+
 | 参数       | 说明                | 类型     | 可选值  | 默认值  |
 | -------- | ----------------- | ------ | ---- | ---- |
 | label    | 指定节点标签为节点对象的某个属性值 | string, function(data, node) | —    | —    |

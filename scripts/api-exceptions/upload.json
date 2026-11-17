@@ -1,0 +1,4 @@
+[
+  { "kind": "source-only", "group": "props", "name": "dragger", "reason": "历史遗留的未使用声明；packages/upload/src/index.vue:52 声明后未传入上传子组件，实际拖拽由 284-308 行传递的 drag 控制" },
+  { "kind": "source-only", "group": "props", "name": "type", "reason": "历史遗留的无行为属性；packages/upload/src/index.vue:284-308 虽向子组件传递 type，但 upload.vue:165-197 和 iframe-upload.vue:135-165 的渲染均未读取它" }
+]

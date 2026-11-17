@@ -89,3 +89,13 @@
 </script>
 ```
 :::
+
+
+### Attributes
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| --- | --- | --- | --- | --- |
+| name | 图标名称，自动添加 `icon-` 前缀 | string | — | — |
+| spin | 是否旋转图标 | boolean | — | false |
+| rotate | 旋转角度 | string / number | 0 / 90 / 180 / 270 | — |
+| flip | 镜像方向 | string | horizontal / vertical | — |
+| size | 图标尺寸 | string / number | 14 / 18 / 24 / 36 / 48 | — |

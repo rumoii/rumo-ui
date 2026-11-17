@@ -2,6 +2,29 @@
  
 分隔内容上有关联但属于不同类别的数据集合。 
  
+### 最简用法
+
+通过 v-model 和 name 指定当前激活的标签页。
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-tabs v-model="activeName">
+    <rumo-tab-pane label="标签一" name="first">内容一</rumo-tab-pane>
+    <rumo-tab-pane label="标签二" name="second">内容二</rumo-tab-pane>
+  </rumo-tabs>
+</template>
+<script>
+export default {
+  data() {
+    return { activeName: 'first' };
+  }
+};
+</script>
+```
+:::
+
 ### 基础用法 
  
 基础的、简洁的标签页。 
@@ -323,6 +346,7 @@
 | closeIcon | 设置关闭按钮图标名称 | string | - | icon-close 
 | closeIconClass | 设置关闭按钮class | string | - | null 
 | headerHeight | 设置头部高度 | string | - | 40px 
+| active-name | 当前激活选项卡的 name；也可使用 value / v-model | string | — | — |
  
 ### Tabs Events 
 | 事件名称 | 说明 | 回调参数 | 
@@ -330,7 +354,8 @@
 | tab-click  | tab 被选中时触发 | 被选中的标签 tab 实例 | 
 | tab-remove  | 点击 tab 移除按钮后触发  | 被删除的标签的 name | 
 | tab-add  | 点击 tabs 的新增按钮后触发  | — | 
-| edit  | 点击 tabs 的新增按钮或 tab 被关闭后触发  | (targetName, action) | 
+| edit  | 点击 tabs 的新增按钮或 tab 被关闭后触发  | (targetName, action) |
+| input | 激活选项卡变化时触发，对应 `v-model` | 选中选项卡的 name |
  
 ### Tab-pane Attributes 
 | 参数       | 说明     | 类型      | 可选值       | 默认值   | 
@@ -339,4 +364,5 @@
 | disabled | 是否禁用 | boolean | — | false | 
 | name      | 与选项卡 activeName 对应的标识符，表示选项卡别名 | string | — | 该选项卡在选项卡列表中的顺序值，如第一个选项卡则为'1' | 
 | closable  | 标签是否可关闭   | boolean   | — |  false  | 
-| lazy  | 标签是否延迟渲染   | boolean   | — |  false  | 
+| lazy  | 标签是否延迟渲染   | boolean   | — |  false  |
+| label-content | 自定义标签内容的渲染函数 | function | — | — |

@@ -1,0 +1,3 @@
+[
+  { "kind": "source-only", "group": "props", "name": "customItem", "reason": "历史遗留属性；packages/autocomplete/src/autocomplete.vue:154-159 的迁移配置明确说明 custom-item 已移除，应使用作用域插槽" }
+]

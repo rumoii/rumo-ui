@@ -1,0 +1,8 @@
+[
+  { "kind": "source-only", "group": "events", "name": "created", "reason": "vue-popper 定位器创建回调，属于 src/utils/vue-popper.js:107-110 的内部定位实现" },
+  { "kind": "source-only", "group": "props", "name": "appendToBody", "reason": "来自 src/utils/vue-popper.js:42-45 的内部挂载配置，仅在 98 行控制定位节点挂载" },
+  { "kind": "source-only", "group": "props", "name": "boundariesPadding", "reason": "来自 src/utils/vue-popper.js:27-30 的定位器内部边距配置；Tooltip 通过 popperOptions 在 packages/tooltip/src/main.js:41-47 设置该值" },
+  { "kind": "source-only", "group": "props", "name": "popper", "reason": "来自 src/utils/vue-popper.js:32 的内部 DOM 覆盖项，在 87-88 行替代 ref=popper 的定位节点" },
+  { "kind": "source-only", "group": "props", "name": "reference", "reason": "来自 src/utils/vue-popper.js:31 的内部 DOM 引用；Tooltip 在 packages/tooltip/src/main.js:133-135 固定使用自身根元素" },
+  { "kind": "source-only", "group": "props", "name": "transformOrigin", "reason": "来自 src/utils/vue-popper.js:19-22 的定位动画内部配置，仅在 144-156 行计算 transform-origin" }
+]

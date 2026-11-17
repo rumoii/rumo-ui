@@ -1,0 +1,5 @@
+[
+  { "kind": "docs-only", "group": "events", "name": "load", "reason": "原生 img 的 load 监听器通过 packages/image/src/main.vue:12-14 的 v-on=\"$listeners\" 透传" },
+  { "kind": "docs-only", "group": "props", "name": "alt", "reason": "透传给原生 img，见 packages/image/src/main.vue:9-17 的 v-bind=\"$attrs\"；加载前也在 158-164 行复制到 Image 实例" },
+  { "kind": "docs-only", "group": "props", "name": "referrer-policy", "reason": "透传给原生 img，见 packages/image/src/main.vue:9-17 的 v-bind=\"$attrs\"；加载前也在 158-164 行复制到 Image 实例" }
+]

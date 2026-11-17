@@ -1,6 +1,29 @@
 ## Dialog 对话框
 在保留当前页面状态的情况下，告知用户并承载相关操作。
 
+### Minimal usage
+
+Control the dialog with visible.sync.
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <div>
+    <rumo-button @click="visible = true">打开对话框</rumo-button>
+    <rumo-dialog title="提示" :visible.sync="visible">对话框内容</rumo-dialog>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return { visible: false };
+  }
+};
+</script>
+```
+:::
+
 ### 基本用法
 
 Dialog 弹出一个对话框，适合需要定制性更大的场景。
@@ -219,6 +242,8 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
 | show-close | 是否显示关闭按钮 | boolean    | — | true |
 | before-close | 关闭前的回调，会暂停 Dialog 的关闭 | function(done)，done 用于关闭 Dialog | — | — |
 | center | 是否对头部和底部采用居中布局 | boolean | — | false |
+| height | Dialog 内容区域的高度；设置后内容区域可滚动 | string | — | — |
+| transition | Dialog 显示和隐藏的过渡动画名称 | string | — | rumo-zoom-in |
 
 ### Slot
 | name | 说明 |
@@ -234,4 +259,5 @@ Dialog 组件的内容可以是任意的，甚至可以是表格或表单，下�
 | opened  | Dialog 打开动画结束时的回调 | — |
 | close  | Dialog 关闭的回调 | — |
 | closed | Dialog 关闭动画结束时的回调 | — |
+| update:visible | 关闭 Dialog 时更新可见状态，对应 `visible.sync` | false |
 

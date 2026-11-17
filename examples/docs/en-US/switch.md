@@ -2,6 +2,26 @@
 
 表示两种相互对立的状态间的切换，多用于触发「开/关」。
 
+### Minimal usage
+
+Bind the switch state with v-model.
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-switch v-model="enabled" />
+</template>
+<script>
+export default {
+  data() {
+    return { enabled: true };
+  }
+};
+</script>
+```
+:::
+
 ### 基本用法
 
 :::demo 绑定`v-model`到一个`Boolean`类型的变量。
@@ -156,11 +176,13 @@
 | inactive-color  | switch 关闭时的背景色    | string   | — | #C0CCDA |
 | name  | switch 对应的 name 属性    | string   | — | — |
 | validate-event  | 改变 switch 状态时是否触发表单的校验     | boolean   | - | true |
+| id | 原生 input 的 id 属性 | string | — | — |
 
 ### Events
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change  | switch 状态发生变化时的回调函数    | 新状态的值 |
+| input | switch 状态变化时触发，对应 `v-model` | 新状态的值 |
 
 ### Methods
 | 方法名 | 说明 | 参数 |

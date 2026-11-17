@@ -10,6 +10,26 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 不支持 `v-model` 修饰符。
 :::
 
+### 最简用法
+
+通过 v-model 绑定输入内容。
+
+<!-- snippet -->
+:::demo
+```html
+<template>
+  <rumo-input v-model="value" placeholder="请输入内容" />
+</template>
+<script>
+export default {
+  data() {
+    return { value: '' };
+  }
+};
+</script>
+```
+:::
+
 ### 基础用法
 
 :::demo
@@ -721,7 +741,7 @@ export default {
 | show-password | 是否显示切换密码图标| boolean         | — | false |
 | disabled      | 禁用            | boolean         | — | false   |
 | size          | 输入框尺寸，只在 `type!="textarea"` 时有效      | string          | large / medium / small / mini  | — |
-| size="sm" | Dash 皮肤紧凑尺寸(更小高度/内边距、8px 圆角、强调色聚焦) | string | sm | — |
+| size | Dash 皮肤紧凑尺寸(更小高度/内边距、8px 圆角、强调色聚焦) | string | sm | — |
 | prefix-icon   | 输入框头部图标    | string          | — | — |
 | suffix-icon   | 输入框尾部图标    | string          | — | — |
 | rows          | 输入框行数，只对 `type="textarea"` 有效  |  number | — |  2   |
@@ -755,6 +775,7 @@ export default {
 | focus | 在 Input 获得焦点时触发 | (event: Event) |
 | change | 在 Input 值改变时触发 | (value: string \| number) |
 | clear | 在点击由 `clearable` 属性生成的清空按钮时触发 | — |
+| input | 输入值变化时触发，对应 `v-model` | (value: string \| number) |
 
 ### Input Methods
 | 方法名 | 说明 | 参数 |
@@ -784,6 +805,11 @@ export default {
 | hide-loading | 是否隐藏远程加载时的加载图标 | boolean | — | false |
 | popper-append-to-body | 是否将下拉列表插入至 body 元素。在下拉列表的定位出现问题时，可将该属性设置为 false | boolean | - | true |
 | highlight-first-item | 是否默认突出显示远程搜索建议中的第一项 | boolean | — | false |
+| autofocus | 是否自动获取焦点 | boolean | — | false |
+| maxlength | 最大输入长度 | number | — | — |
+| minlength | 最小输入长度 | number | — | — |
+| size | 输入框尺寸 | string | large / medium / small / mini | — |
+| popper-options | 下拉列表的 Popper.js 配置 | object | — | — |
 
 ### Autocomplete Slots
 | name | 说明 |
@@ -802,6 +828,9 @@ export default {
 | 事件名称 | 说明 | 回调参数 |
 |---------|--------|---------|
 | select | 点击选中建议项时触发 | 选中建议项 |
+| input | 输入值或选中建议变化时触发，对应 `v-model` | 当前输入值 |
+| focus | 输入框获得焦点时触发 | (event: Event) |
+| blur | 输入框失去焦点时触发 | (event: Event) |
 
 ### Autocomplete Methods
 | 方法名 | 说明 | 参数 |

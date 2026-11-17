@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "tree-node-drag-end",
+    "reason": "packages/tree/src/tree-node.vue:216-231 将原始拖拽信号发给 Tree，packages/tree/src/tree.vue:388 的内部监听器处理拖放状态并转换为文档已有的 node-drag-* 业务事件；tree-node-* 是父子通信。"
+  },
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "tree-node-drag-over",
+    "reason": "packages/tree/src/tree-node.vue:216-231 将原始拖拽信号发给 Tree，packages/tree/src/tree.vue:314 的内部监听器处理拖放状态并转换为文档已有的 node-drag-* 业务事件；tree-node-* 是父子通信。"
+  },
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "tree-node-drag-start",
+    "reason": "packages/tree/src/tree-node.vue:216-231 将原始拖拽信号发给 Tree，packages/tree/src/tree.vue:299 的内部监听器处理拖放状态并转换为文档已有的 node-drag-* 业务事件；tree-node-* 是父子通信。"
+  }
+]

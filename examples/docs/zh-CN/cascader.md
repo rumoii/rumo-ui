@@ -2400,15 +2400,24 @@
 | before-filter | 筛选之前的钩子，参数为输入的值，若返回 false 或者返回 Promise 且被 reject，则停止筛选 | function(value) | — | — |
 | popper-class | 自定义浮层类名   | string | —  | — |
 | popper-height | 自定义浮层高度   | string | —  | — |
+| placement | 浮层位置 | string | top / top-start / top-end / bottom / bottom-start / bottom-end / left / left-start / left-end / right / right-start / right-end | bottom-start |
+| append-to-body | 是否将浮层插入全局弹层容器 | boolean | — | true |
+| visible-arrow | 是否显示浮层箭头 | boolean | — | true |
+| offset | 浮层位置偏移量，单位为像素 | number | — | 0 |
+| arrow-offset | 箭头位置偏移量，单位为像素 | number | — | 35 |
+| popper-options | 浮层定位参数 | object | — | { gpuAcceleration: false } |
+
 ### Cascader Events
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change | 当选中节点变化时触发 | 选中节点的值 |
 | expand-change | 当展开节点发生变化时触发 | 各父级选项值组成的数组 |
+| active-item-change | 展开节点变化时触发的历史事件，已弃用，请使用 expand-change | 各父级选项值组成的数组 |
 | blur | 当失去焦点时触发 | (event: Event) |
 | focus | 当获得焦点时触发 | (event: Event) |
 | visible-change | 下拉框出现/隐藏时触发 | 出现则为 true，隐藏则为 false |
 | remove-tag | 在多选模式下，移除Tag时触发 | 移除的Tag对应的节点的值 |
+| input | 选中值变化时触发，用于 v-model | 选中节点的值 |
 
 ### Cascader Methods
 | 方法名 | 说明 | 参数 |
@@ -2428,12 +2437,16 @@
 | options | 可选项数据源，键名可通过 `Props` 属性配置 | array | — | — |
 | props | 配置选项，具体见下表 | object | — | — |
 | height | 自定义高度   | string | —  | — |
+| border | 是否显示面板边框 | boolean | — | true |
+| render-label | 自定义节点内容；优先于默认作用域插槽 | function({ node, data }) | — | — |
 
 ### CascaderPanel Events
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change | 当选中节点变化时触发 | 选中节点的值 |
 | expand-change | 当展开节点发生变化时触发 | 各父级选项值组成的数组 |
+| active-item-change | 展开节点变化时触发的历史事件，已弃用，请使用 expand-change | 各父级选项值组成的数组 |
+| input | 选中值变化时触发，用于 v-model | 选中节点的值 |
 
 ### CascaderPanel Methods
 | 方法名 | 说明 | 参数 |
@@ -2447,7 +2460,10 @@
 |---------|-------------|
 | - | 自定义备选项的节点内容，参数为 { node, data }，分别为当前节点的 Node 对象和数据 |
 
-### Props
+### Cascader Options
+
+以下字段通过 Cascader 或 CascaderPanel 的 `props` 对象传入，不是组件的顶层属性。
+
 | 参数     | 说明              | 类型   | 可选值 | 默认值 |
 | -------- | ----------------- | ------ | ------ | ------ |
 | expandTrigger | 次级菜单的展开方式 | string | click / hover | 'click' |

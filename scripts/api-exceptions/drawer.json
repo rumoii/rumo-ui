@@ -1,0 +1,8 @@
+[
+  { "kind": "source-only", "group": "props", "name": "closeDelay", "reason": "来自 src/utils/popup/index.js:26 的内部弹层延时配置，仅由该 mixin 的 close 流程在 184-193 行使用" },
+  { "kind": "source-only", "group": "props", "name": "closeOnClickModal", "reason": "Popup mixin 的遗留属性；Drawer 实际在 packages/drawer/src/main.vue:175-179 使用 wrapperClosable 判断遮罩点击，不读取 closeOnClickModal" },
+  { "kind": "source-only", "group": "props", "name": "modalClass", "reason": "来自 src/utils/popup/index.js:36 的遮罩内部类名配置，仅由 PopupManager.openModal 在 141 行消费" },
+  { "kind": "source-only", "group": "props", "name": "modalFade", "reason": "来自 src/utils/popup/index.js:32-35 的遮罩内部动画开关，仅由 PopupManager.openModal 在 141 行消费" },
+  { "kind": "source-only", "group": "props", "name": "openDelay", "reason": "来自 src/utils/popup/index.js:25 的内部弹层延时配置，仅由该 mixin 的 open 流程在 109-117 行使用" },
+  { "kind": "source-only", "group": "props", "name": "zIndex", "reason": "来自 src/utils/popup/index.js:27 的内部层级覆盖项，在 131-134 行直接修改 PopupManager 全局层级" }
+]

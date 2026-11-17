@@ -37,10 +37,15 @@ export default {
 | width / height | Display size | number / string | 300 / 150 |
 | dotSize | Dot size; 0 uses the engine default | number | 0 |
 
-### Methods and events
+### Signature Methods
 
-| Name | Description |
-| --- | --- |
-| save() | Returns a PNG dataURL |
-| clear() / undo() | Clear / undo the last stroke |
-| onBegin / onEnd | Stroke begins / ends |
+| Method | Description | Parameters |
+| --- | --- | --- |
+| save | Returns a PNG dataURL | — |
+| clear / undo | Clear / undo the last stroke | — |
+
+### Signature Events
+
+| Event | Description | Arguments |
+| --- | --- | --- |
+| onBegin / onEnd | Stroke begins / ends | Stroke event detail |

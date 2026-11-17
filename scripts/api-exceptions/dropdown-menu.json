@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "created",
+    "reason": "src/utils/vue-popper.js:108 发出的底层定位实例创建通知；DropdownMenu 在 packages/dropdown/src/dropdown-menu.vue:40-52 由父组件初始化 DOM 和弹层，不将定位实例暴露为业务事件。"
+  },
+  {
+    "kind": "source-only",
+    "group": "events",
+    "name": "input",
+    "reason": "来自 src/utils/vue-popper.js:63-75 的通用显隐同步；packages/dropdown/src/dropdown-menu.vue:44-45 监听父组件内部 visible 消息，菜单显隐由 Dropdown 管理，使用者监听 Dropdown 的 visible-change。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "boundariesPadding",
+    "reason": "来自 src/utils/vue-popper.js:27 的历史 mixin 属性；createPopper（同文件:86-106）只读取 popperOptions，没有读取此顶层属性；此顶层属性未接入定位实现，不作为有效的公开配置。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "placement",
+    "reason": "继承 src/utils/vue-popper.js:23 的底层定位属性；packages/dropdown/src/dropdown-menu.vue:55-61 的 immediate watcher 用 dropdown.placement 覆盖 currentPlacement，使用者应设置 Dropdown 的 placement。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "popper",
+    "reason": "来自 src/utils/vue-popper.js:31-32 的内部 DOM 引用入口；packages/dropdown/src/dropdown-menu.vue:50-51 自行设置 popperElm 和 referenceElm，不要求使用者手工提供 DOM 引用。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "reference",
+    "reason": "来自 src/utils/vue-popper.js:31-32 的内部 DOM 引用入口；packages/dropdown/src/dropdown-menu.vue:50-51 自行设置 popperElm 和 referenceElm，不要求使用者手工提供 DOM 引用。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "transformOrigin",
+    "reason": "来自 src/utils/vue-popper.js:19-22 的底层动画原点配置；同文件:144-157 按实际弹出方向计算 transform-origin，现有 Tooltip/Popover 文档也未将此 mixin 细节列为公开属性。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "value",
+    "reason": "来自 src/utils/vue-popper.js:36 的通用显隐值；packages/dropdown/src/dropdown-menu.vue:44-45 使用父组件 visible 消息设置 showPopper，不提供独立的菜单 v-model 控制。"
+  }
+]

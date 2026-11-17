@@ -5,9 +5,11 @@ const path = require('path');
 const babel = require('babel-core');
 const compiler = require('vue-template-compiler');
 
-const root = path.resolve(__dirname, '..');
-const registry = require('../components.json');
-const npmDependencies = require('../package.json').dependencies;
+function createGenerator(root = path.resolve(__dirname, '..')) {
+root = path.resolve(root);
+const registry = JSON.parse(fs.readFileSync(path.join(root, 'components.json'), 'utf8'));
+const npmDependencies = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).dependencies;
+const exceptions = readExceptions(root, registry);
 const modules = new Map();
 const slash = value => value.split(path.sep).join('/');
 const relative = file => slash(path.relative(root, file));
@@ -288,13 +290,18 @@ const docTexts = new Map(docFiles.map(file => [file, fs.readFileSync(path.join(d
 function headingOwner(title) {
   const name = title.replace(/`/g, '').replace(/\s+(?:Attributes?|Props|Events|(?:Scoped\s+)?Slots?|Methods|Options)\s*$/i, '').trim();
   const english = name.match(/^[a-z][a-z0-9 -]*/i);
-  return english && Object.keys(registry).find(id => norm(id) === norm(english[0]));
+  if (!english) return null;
+  const nameId = norm(english[0]);
+  // These headings use shorter names than the registered component ids.
+  const aliases = { dropdownmenuitem: 'dropdown-item', menugroup: 'menu-item-group' };
+  return Object.keys(registry).find(id => norm(id) === nameId) ||
+    (Object.prototype.hasOwnProperty.call(registry, aliases[nameId]) ? aliases[nameId] : null);
 }
 
 function docNames(row, group) {
   return row.name.replace(/\s*\(v-model\)\s*$/i, '').split(/\s*\/\s*/)
     .filter(name => name !== 'v-model')
-    .map(name => group === 'props' ? norm(name) : group === 'slots' && ['—', '-', '默认'].includes(name) ? 'default' : name);
+    .map(name => group === 'props' ? norm(name) : group === 'methods' ? name.replace(/\(\s*\)$/, '').trim() : group === 'slots' && ['—', '-', '默认'].includes(name) ? 'default' : name);
 }
 
 function docsFor(id, sourceFile, sourceGroups, mismatches, unparsed) {
@@ -340,7 +347,8 @@ function docsFor(id, sourceFile, sourceGroups, mismatches, unparsed) {
         section = { title, groups: combined };
       } else if (api) {
         const prefix = api[1].trim();
-        const owner = prefix ? headingOwner(prefix) : context;
+        // Nested option objects belong to the current component, not Vue props.
+        const owner = (prefix ? headingOwner(prefix) : context) || (api[2].toLowerCase() === 'options' ? context : null);
         if (owner === id) {
           const type = api[2].toLowerCase();
           const group = type === 'options' ? 'options' : /attributes?|props|属性/.test(type) ? 'props' : /events|事件/.test(type) ? 'events' : /slots?|插槽/.test(type) ? 'slots' : 'methods';
@@ -575,6 +583,15 @@ function generate() {
         if (!docs.tables[group].some(row => docNames(row, group).includes(normalize(name)))) mismatches.push({ kind: 'source-only', group, name, file: item.source || item.sources[0] });
       });
     });
+    const acknowledged = [];
+    const unresolved = [];
+    uniqueSorted(mismatches).forEach(item => {
+      const exception = (exceptions.get(id) || []).find(record => exceptionKey(record.value) === exceptionKey(item));
+      if (exception) {
+        exception.matched = true;
+        acknowledged.push(Object.assign({}, item, { reason: exception.value.reason }));
+      } else unresolved.push(item);
+    });
     const optionalFile = file => fs.existsSync(path.join(root, file)) ? file : null;
     return {
       id, exportName, tag: kind === 'component' && componentName ? kebab(componentName) : null, kind,
@@ -583,9 +600,61 @@ function generate() {
       methods: attach(new Map(Array.from(methods).filter(([name]) => docs.tables.methods.some(row => docNames(row, 'methods').includes(name)))), 'methods'),
       dependencies: { source: Array.from(sourceDependencies).sort(), npm: Array.from(packageDependencies).sort() },
       docs: docs.tables,
-      mismatches: uniqueSorted(mismatches), unparsed: uniqueSorted(unparsed)
+      mismatches: unresolved, acknowledged: uniqueSorted(acknowledged), unparsed: uniqueSorted(unparsed)
     };
   }) };
+}
+
+return { generate, exceptions };
+}
+
+function generate(root) {
+  return createGenerator(root).generate();
+}
+
+function exceptionKey(item) {
+  return JSON.stringify([item.kind, item.group, item.section && !item.group ? item.section : null, item.name]);
+}
+
+function readExceptions(root, registry) {
+  const directory = path.join(root, 'scripts/api-exceptions');
+  const result = new Map();
+  if (!fs.existsSync(directory)) return result;
+  fs.readdirSync(directory).filter(file => file.endsWith('.json')).sort().forEach(file => {
+    const relative = 'scripts/api-exceptions/' + file;
+    const fail = message => { throw new Error('Invalid API exceptions: ' + relative + ': ' + message); };
+    const id = file.slice(0, -5);
+    if (!Object.prototype.hasOwnProperty.call(registry, id)) fail('unknown component id');
+    let values;
+    try { values = JSON.parse(fs.readFileSync(path.join(directory, file), 'utf8')); }
+    catch (error) { fail(error.message); }
+    if (!Array.isArray(values)) fail('expected an array');
+    const seen = new Set();
+    const records = values.map((value, index) => {
+      const invalid = message => fail('entry ' + (index + 1) + ': ' + message);
+      if (!value || typeof value !== 'object' || Array.isArray(value)) invalid('expected an object');
+      const fields = {
+        'source-only': ['group', 'name'],
+        'docs-only': ['group', 'name'],
+        'ambiguous-doc-section': ['section'],
+        'ambiguous-doc-row': ['section', 'name']
+      };
+      const required = Object.prototype.hasOwnProperty.call(fields, value.kind) && fields[value.kind];
+      if (!required) invalid('unknown kind');
+      const allowed = ['kind', 'reason', ...required];
+      if (Object.keys(value).some(field => !allowed.includes(field))) invalid('unexpected field');
+      allowed.forEach(field => {
+        if (typeof value[field] !== 'string' || !value[field].trim()) invalid(field + ' must be a non-empty string');
+      });
+      if (value.group && !['props', 'events'].includes(value.group)) invalid('group must be props or events');
+      const key = exceptionKey(value);
+      if (seen.has(key)) invalid('duplicate match');
+      seen.add(key);
+      return { file: relative, value, matched: false };
+    });
+    result.set(id, records);
+  });
+  return result;
 }
 
 function uniqueSorted(items) {
@@ -594,10 +663,23 @@ function uniqueSorted(items) {
 }
 
 function main() {
+  const rootArg = process.argv.indexOf('--root');
+  if (rootArg !== -1 && (!process.argv[rootArg + 1] || process.argv[rootArg + 1].startsWith('--'))) {
+    throw new Error('--root requires a directory');
+  }
+  const root = rootArg === -1 ? path.resolve(__dirname, '..') : path.resolve(process.argv[rootArg + 1]);
+  const check = process.argv.includes('--check');
   const target = path.join(root, 'components.api.json');
-  const result = generate();
+  const generator = createGenerator(root);
+  const result = generator.generate();
   const content = JSON.stringify(result, null, 2) + '\n';
-  if (process.argv.includes('--check')) {
+  if (check) {
+    generator.exceptions.forEach(records => records.forEach(record => {
+      if (!record.matched) {
+        console.error('Stale API exception: ' + record.file + ': ' + JSON.stringify(record.value));
+        process.exitCode = 1;
+      }
+    }));
     const previous = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
     if (previous !== content) {
       let old = { components: [] };
@@ -607,14 +689,24 @@ function main() {
       byId.forEach((item, id) => { if (!result.components.some(value => value.id === id)) changed.push(id); });
       console.error('API manifest differs: ' + (changed.sort().join(', ') || 'schema/format'));
       process.exitCode = 1;
-      return;
-    }
-    console.log('API manifest up to date: ' + result.components.length + ' entries');
+    } else console.log('API manifest up to date: ' + result.components.length + ' entries');
   } else {
     fs.writeFileSync(target, content, 'utf8');
     console.log('Generated components.api.json: ' + result.components.length + ' entries');
   }
+  if (process.argv.includes('--strict')) {
+    const unresolved = result.components.filter(component => component.mismatches.length);
+    const count = unresolved.reduce((total, component) => total + component.mismatches.length, 0);
+    if (count) {
+      console.error('Unresolved API mismatches: ' + unresolved.length + ' components, ' + count + ' entries');
+      unresolved.forEach(component => component.mismatches.forEach(item => console.error(component.id + ': ' + JSON.stringify(item))));
+      process.exitCode = 1;
+    }
+  }
 }
 
-if (require.main === module) main();
+if (require.main === module) {
+  try { main(); }
+  catch (error) { console.error(error.message); process.exitCode = 1; }
+}
 module.exports = { generate };

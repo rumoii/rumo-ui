@@ -1,0 +1,10 @@
+[
+  { "kind": "docs-only", "group": "props", "name": "autofocus", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" },
+  { "kind": "docs-only", "group": "props", "name": "max", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" },
+  { "kind": "docs-only", "group": "props", "name": "maxlength", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107；字数统计也在 248-257 行读取该属性" },
+  { "kind": "docs-only", "group": "props", "name": "min", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" },
+  { "kind": "docs-only", "group": "props", "name": "minlength", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" },
+  { "kind": "docs-only", "group": "props", "name": "name", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" },
+  { "kind": "docs-only", "group": "props", "name": "placeholder", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" },
+  { "kind": "docs-only", "group": "props", "name": "step", "reason": "透传给原生 input 或 textarea，见 packages/input/src/input.vue:22-40、89-107 的 v-bind=\"$attrs\"" }
+]

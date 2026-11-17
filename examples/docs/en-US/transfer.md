@@ -373,6 +373,9 @@
 | autofilter | 是否开启自动筛选 | Boolean | — | true |
 | left-loading | 是否开启左侧载入动画 | Boolean | — | false |
 | disabled-left-waterfall | 是否开启左侧瀑布流 | Boolean | — | true |
+| value / v-model | 右侧列表中数据项的 key 数组 | array | — | [] |
+| column-data | table 模式的列配置；每项的 id 映射为列 prop，其余字段传给 TableColumn | array | — | [] |
+| width | 左右两侧各个列表面板的宽度，需包含 CSS 单位 | string | — | 200px |
 
 ### Slot
 | name | 说明 |
@@ -395,8 +398,7 @@
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change | 右侧列表元素变化时触发 | 当前值、数据移动的方向（'left' / 'right'）、发生移动的数据 key 数组 |
-| left-check-change | 左侧列表元素被用户选中 / 取消选中时触发 | 当前被选中的元素的 key 数组、选中状态发生变化的元素的 key 数组 |
-| right-check-change | 右侧列表元素被用户选中 / 取消选中时触发 | 当前被选中的元素的 key 数组、选中状态发生变化的元素的 key 数组 |
 | update-left-data | 当autoFilter关闭时有效，左侧列表筛选数据变化时自定义更新数据 | 输入框值、区域值、左侧数据|
 | update-right-data | 当autoFilter关闭时有效，右侧列表筛选数据变化时更新数据 | 输入框值、区域值、右侧数据|
 | left-load | 当滚动到达底部时，触发 | — |
+| input | 右侧列表的绑定值变化时触发，用于 v-model | 新的 key 数组 |

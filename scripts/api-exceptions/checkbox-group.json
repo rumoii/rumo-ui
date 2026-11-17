@@ -1,0 +1,3 @@
+[
+  { "kind": "docs-only", "group": "events", "name": "change", "reason": "公开事件由子组件通过 dispatch 触发：packages/checkbox/src/checkbox.vue:188-191 调用 dispatch，src/mixins/emitter.js:14-27 在 CheckboxGroup 实例上执行 $emit" }
+]

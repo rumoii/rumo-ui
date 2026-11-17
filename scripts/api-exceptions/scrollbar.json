@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "native",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "noresize",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "tag",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "viewClass",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "viewStyle",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。viewStyle 目前仅声明，render:61 的应用语句已注释。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "wrapClass",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。"
+  },
+  {
+    "kind": "source-only",
+    "group": "props",
+    "name": "wrapStyle",
+    "reason": "无独立文档页的内部滚动容器，属性声明/渲染见 packages/scrollbar/src/main.js:14-96；被 Autocomplete（packages/autocomplete/src/autocomplete-suggestions.vue:24）、Select（packages/select/src/select.vue:140）、Cascader（packages/cascader/src/cascader.vue:134）、CascaderPanel（packages/cascader-panel/src/cascader-menu.vue:2）、Dialog（packages/dialog/src/component.vue:26）、Table 筛选面板（packages/table/src/filter-panel.vue:8）、DatePicker 的时间面板（packages/date-picker/src/basic/time-spinner.vue:99、panel/time-select.vue:23）使用；按任务范围不新建文档页。"
+  }
+]

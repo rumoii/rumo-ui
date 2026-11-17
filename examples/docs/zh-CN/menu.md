@@ -2,6 +2,20 @@
 
 为网站提供导航功能的菜单。
 
+### 最简用法
+
+使用 Menu-Item 定义菜单项，并通过 default-active 设置当前项。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-menu default-active="1">
+  <rumo-menu-item index="1">首页</rumo-menu-item>
+  <rumo-menu-item index="2">设置</rumo-menu-item>
+</rumo-menu>
+```
+:::
+
 ### 顶栏
 
 适用广泛的基础用法。
@@ -268,6 +282,7 @@
 | hide-timeout | 收起 sub-menu 的延时 | number | — | 300 |
 | disabled  | 是否禁用 | boolean | — | false |
 | popper-append-to-body | 是否将弹出菜单插入至 body 元素。在菜单的定位出现问题时，可尝试修改该属性 | boolean | — | 一级子菜单：true / 非一级子菜单：false |
+| popper-options | 弹出菜单的 Popper.js 配置 | object | — | `{ gpuAcceleration: false }` |
 
 ### Menu-Item Attribute
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
@@ -275,8 +290,14 @@
 | index     | 唯一标志   | string  | — | — |
 | route     | Vue Router 路径对象 | Object | — | — |
 | disabled  | 是否禁用 | boolean | — | false |
+| divided | 是否在菜单项上显示分隔线 | boolean | — | false |
 
-### Menu-Group Attribute
+### Menu-Item Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| click | 点击未禁用的菜单项时触发 | 当前菜单项实例 |
+
+### Menu-Item-Group Attribute
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | title     | 分组标题   | string  | — | — |

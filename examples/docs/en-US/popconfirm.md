@@ -163,12 +163,29 @@ PopConfirm 的属性与 Tooltip 很类似，它们都是基于Vue-popper开发�
 | placement | 出现位置 | String | top / top-start / top-end / bottom / bottom-start / bottom-end / left / left-start / left-end / right / right-start / right-end | top |
 | confirmText | 确认按钮文字 | string | — | 确定 |
 | cancelText | 取消按钮文字 | string | — | 取消 |
+| on-confirm | 点击确认时调用的函数，通过 :on-confirm 传入 | function() | — | 空函数 |
+| on-cancel | 点击取消时调用的函数，通过 :on-cancel 传入 | function() | — | 空函数 |
+| disabled | 是否禁用确认浮层 | boolean | — | false |
+| manual | 是否停止由触发元素自动控制显隐，可结合 v-model 控制 | boolean | — | false |
+| icon | 默认内容前的图标名称 | string | — | warning-fill |
+| effect | 浮层主题 | string | dark / light | dark |
+| arrow-offset | 箭头位置偏移量，单位为像素 | number | — | 0 |
+| popper-class | 自定义浮层类名 | string | — | — |
+| visible-arrow | 是否显示浮层箭头 | boolean | — | true |
+| transition | 浮层过渡动画名称 | string | — | rumo-zoom-in |
+| popper-options | 浮层定位参数 | object | — | { boundariesPadding: 10, gpuAcceleration: false } |
+| enterable | 鼠标是否可进入浮层 | boolean | — | true |
+| hide-after | 触发显示后自动隐藏的延迟，单位为毫秒；0 表示不自动隐藏 | number | — | 0 |
+| value / v-model | 是否显示确认浮层 | boolean | — | false |
+| append-to-body | 是否将浮层插入全局弹层容器 | boolean | — | true |
+| offset | 浮层位置偏移量，单位为像素 | number | — | 0 |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------|--------|---------|
-| onConfirm | 点击确认的回调 | - |
-| onCancel | 点击取消的回调 | - |
+| input | 浮层显隐值变化时触发，用于 v-model | 是否显示 |
+| show | 浮层显示状态变为显示时触发 | — |
+| hide | 浮层显示状态变为隐藏时触发 | — |
 
 ### Slot
 | name | 说明 |

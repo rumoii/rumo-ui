@@ -2,6 +2,22 @@
 
 将动作或菜单折叠到下拉菜单中。
 
+### 最简用法
+
+在默认插槽放置触发元素，在 dropdown 插槽放置菜单。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-dropdown>
+  <rumo-button>操作菜单</rumo-button>
+  <rumo-dropdown-menu slot="dropdown">
+    <rumo-dropdown-item command="edit">编辑</rumo-dropdown-item>
+  </rumo-dropdown-menu>
+</rumo-dropdown>
+```
+:::
+
 ### 基础用法
 
 移动到下拉菜单上，展开更多操作。
@@ -280,6 +296,7 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 | show-timeout  | 展开下拉菜单的延时（仅在 trigger 为 hover 时有效）| number          | — | 250 |
 | hide-timeout  | 收起下拉菜单的延时（仅在 trigger 为 hover 时有效）| number          | — | 150 |
 | tabindex      | Dropdown 组件的 [tabindex] | number | — | 0 |
+| disabled | 是否禁用触发元素和下拉菜单 | boolean | — | false |
 
 ### Dropdown Slots
 
@@ -302,3 +319,13 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 | disabled      | 禁用     | boolean          | — | false |
 | divided       | 显示分割线     | boolean          | — | false |
 | icon          | 图标类名 | string   |  —  |  —  |
+
+### DropdownMenu Attributes
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| --- | --- | --- | --- | --- |
+| visible-arrow | 是否显示菜单浮层箭头 | boolean | — | true |
+| arrow-offset | 箭头位置偏移量，单位为像素 | number | — | 0 |
+| append-to-body | 是否将菜单浮层插入全局弹层容器 | boolean | — | true |
+| offset | 菜单浮层位置偏移量，单位为像素 | number | — | 0 |
+| popper-options | 菜单浮层定位参数 | object | — | { gpuAcceleration: false } |

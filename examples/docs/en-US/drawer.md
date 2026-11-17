@@ -286,6 +286,8 @@ Drawer 提供一个 `destroyOnClose` API, 用来在关闭 Drawer 时销毁子组
 | visible   | 是否显示 Drawer，支持 .sync 修饰符 | boolean | — | false |
 | wrapperClosable | 点击遮罩层是否可以关闭 Drawer | boolean | - | true |
 | withHeader | 控制是否显示 header 栏, 默认为 true, 当此项为 false 时, title attribute 和 title slot 均不生效 | boolean | - | true |
+| lock-scroll | 是否在 Drawer 出现时锁定 body 滚动 | boolean | — | true |
+| flex-layout | 是否让 Drawer 内容区域使用 flex 布局；缺省读取全局配置 | boolean | — | — |
 
 ### Drawer Slot
 
@@ -308,3 +310,4 @@ Drawer 提供一个 `destroyOnClose` API, 用来在关闭 Drawer 时销毁子组
 | opened  | Drawer 打开动画结束时的回调 | — |
 | close  | Drawer 关闭的回调 | — |
 | closed | Drawer 关闭动画结束时的回调 | — |
+| update:visible | 关闭 Drawer 时更新可见状态，对应 `visible.sync` | false |

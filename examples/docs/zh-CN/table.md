@@ -2,6 +2,26 @@
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、对比或其他自定义操作。
 
+### 最简用法
+
+通过 data 传入行数据，用 TableColumn 指定要显示的字段。
+
+<!-- snippet -->
+:::demo
+```html
+<rumo-table :data="rows">
+  <rumo-table-column prop="name" label="姓名"></rumo-table-column>
+</rumo-table>
+<script>
+  export default {
+    data() {
+      return { rows: [{ name: '张三' }, { name: '李四' }] };
+    }
+  };
+</script>
+```
+:::
+
 ### 基础表格
 
 基础的表格展示用法。
@@ -2177,6 +2197,9 @@
 | lazy        | 是否懒加载子节点数据 | Boolean | — | — |
 | load        | 加载子节点数据的函数，lazy 为 true 时生效，函数第二个参数包含了节点的层级信息 | Function(row, treeNode, resolve) | — | — |
 | tree-props  | 渲染嵌套数据的配置选项 | Object | — | { hasChildren: 'hasChildren', children: 'children' } |
+| draggable | 是否允许拖动叶子列的表头调整列宽，还需该列的 resizable 为 true | boolean | — | true |
+| expand-padding | 是否给展开行内容添加内边距 | boolean | — | true |
+| null-string | 普通单元格内容为 null、undefined 或空字符串时的替代文本；不处理自定义插槽 | string | — | -- |
 
 ### Table Events
 | 事件名 | 说明 | 参数 |
@@ -2197,6 +2220,7 @@
 | current-change | 当表格的当前行发生变化的时候会触发该事件，如果要高亮当前行，请打开表格的 highlight-current-row 属性 | currentRow, oldCurrentRow |
 | header-dragend | 当拖动表头改变了列的宽度的时候会触发该事件 | newWidth, oldWidth, column, event |
 | expand-change | 当用户对某一行展开或者关闭的时候会触发该事件 | row, expandedRows |
+| header-contextmenu | 右键点击表头时触发 | column, event |
 
 ### Table Methods
 | 方法名 | 说明 | 参数 |
@@ -2246,6 +2270,8 @@
 | filter-multiple | 数据过滤的选项是否多选 | Boolean | — | true |
 | filter-method | 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 | Function(value, row, column) | — | — |
 | filtered-value | 选中的数据过滤项，如果需要自定义表头过滤的渲染方式，可能会需要此属性。 | Array | — | — |
+| property | 列字段名，与 prop 等价；同时设置时优先使用 prop | string | — | — |
+| show-tooltip-when-overflow | show-overflow-tooltip 的兼容写法，二者任一为 true 时显示溢出提示 | boolean | — | false |
 
 ### Table-column Scoped Slot
 | name | 说明 |
