@@ -1,0 +1,38 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 根依赖按 .nvmrc 的 Node 20 安装；tui 与下面的检查需要 Node 22+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tui/package-lock.json
+      - run: npm --prefix tui ci
+
+      - run: npm run check:docs
+      - run: npm run check:types
+      - run: npm run check:api
+      - run: node --test scripts/gen-api.test.js
+      - run: npm run check:snippets
+      - run: npm --prefix tui run gates
+      - run: npm --prefix tui run typecheck
+      - run: npm --prefix tui test
