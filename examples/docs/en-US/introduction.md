@@ -3,55 +3,20 @@
 Rumo UI is a Vue 2 component library for admin and back-office products.
 
 ## Principles
-```html
-<rumo-row :gutter="20">
-  <rumo-col :xs="24" :sm="12" :md="12" :lg="6">
-    <rumo-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>一致性 Consistency</span>
-      </div>
-      <div class="text item">
-        <p><strong>与现实生活一致：</strong>与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</p>
-        <p><strong>在界面中一致：</strong>所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</p>
-      </div>
-    </rumo-card>
-  </rumo-col>
-  <rumo-col :xs="24" :sm="12" :md="12" :lg="6">
-    <rumo-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>反馈 Feedback</span>
-      </div>
-      <div class="text item">
-        <p><strong>控制反馈：</strong>通过界面样式和交互动效让用户可以清晰的感知自己的操作；</p>
-        <p><strong>页面反馈：</strong>操作后，通过页面元素的变化清晰地展现当前状态。</p>
-      </div>
-    </rumo-card>
-  </rumo-col>
-  <rumo-col :xs="24" :sm="12" :md="12" :lg="6">
-    <rumo-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>效率 Efficiency</span>
-      </div>
-      <div class="text item">
-        <p><strong>简化流程：</strong>设计简洁直观的操作流程；</p>
-        <p><strong>清晰明确：</strong>语言表达清晰且表意明确，让用户快速理解进而作出决策；</p>
-        <p><strong>帮助用户识别：</strong>界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</p>
-      </div>
-    </rumo-card>
-  </rumo-col>
-  <rumo-col :xs="24" :sm="12" :md="12" :lg="6">
-    <rumo-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>可控 Controllability</span>
-      </div>
-      <div class="text item">
-        <p><strong>用户决策：</strong>根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</p>
-        <p><strong>结果可控：</strong>用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</p>
-      </div>
-    </rumo-card>
-  </rumo-col>
-</rumo-row>
-```
+
+- **Consistency**
+  - Consistent with real life: follow real-life processes and logic, and use the language and concepts users are used to.
+  - Consistent within the interface: keep all elements and structures consistent, such as styles, icons, text, and element positions.
+- **Feedback**
+  - Operation feedback: let users clearly perceive their operations through styles and interactive effects.
+  - Visual feedback: after an operation, show the current state clearly through changes on the page.
+- **Efficiency**
+  - Simplify the process: keep operation flows simple and intuitive.
+  - Definite and clear: express things clearly so users can understand and decide quickly.
+  - Easy to identify: keep the interface simple and straightforward so users recognize instead of recall.
+- **Controllability**
+  - Decision making: give advice or warnings when appropriate, but never decide for the user.
+  - Controlled consequences: let users operate freely, including undo, back, and stopping the current operation.
 
 ## Positioning
 
