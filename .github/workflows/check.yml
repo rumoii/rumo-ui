@@ -35,4 +35,7 @@ jobs:
       - run: npm run check:snippets
       - run: npm --prefix tui run gates
       - run: npm --prefix tui run typecheck
+      # ink 检测到 CI 环境变量会关闭交互式重绘（is-in-ci），交互渲染测试需要按本地终端运行
       - run: npm --prefix tui test
+        env:
+          CI: 'false'
